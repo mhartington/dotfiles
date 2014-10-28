@@ -49,7 +49,12 @@ endif
 
 
 filetype on
+
+
 syntax enable
+set background=dark
+colorscheme solarized
+
 let g:solarized_termcolors=256
 
 :set noswapfile
@@ -67,3 +72,11 @@ map <C-/> :gc
 
 "no need to fold things in markdown all the time
 let g:vim_markdown_folding_disabled = 1
+
+
+" dont touch
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
