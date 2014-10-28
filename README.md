@@ -8,6 +8,9 @@ Rule of thumb is to set your terminal emulation to `xterm-256`
 
 I believe OSX's terminal app should be okay, but will make note of that.
 
+##Powerline
+I have my [powerline](https://github.com/Lokaltog/powerline) path in here because it's super powerful and fun.
+Check it out and see if this is for you. If not, just delete the lines in the `.vimrc` and `.tmux.conf`.
 
 ##TODO
 Make install file for my own personal setup.

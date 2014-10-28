@@ -74,7 +74,7 @@ map <C-/> :gc
 let g:vim_markdown_folding_disabled = 1
 
 
-" dont touch
+"Powerline Setup
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
