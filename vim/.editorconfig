@@ -1,0 +1,38 @@
+# This file is for unifying the coding style for different editors and IDEs
+# editorconfig.org
+
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# spaces...always spaces
+[**.js]
+; Path to the external file format
+; The default is taken from the lib folder inside the folder extension.
+path=~/.vim/bundle/js-beautify/js/lib/beautify.js
+; Javascript interpreter to be invoked by default 'node'
+bin=node
+indent_style = space
+indent_size = 2
+
+
+[**.css]
+path=~/.vim/bundle/js-beautify/js/lib/beautify-css.js
+indent_style = space
+indent_size = 2
+
+[**.html]
+; Using special comments
+; And such comments or apply only in global configuration
+; So it's best to avoid them
+path=~/.vim/bundle/js-beautify/js/lib/beautify-html.js
+;vim:max_char=78:brace_style=expand
+indent_style = space
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false

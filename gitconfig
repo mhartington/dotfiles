@@ -1,0 +1,8 @@
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[user]
+	name = mhartington
+	email = mikehartington@gmail.com
+[credential]
+	helper = osxkeychain
