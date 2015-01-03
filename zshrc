@@ -2,20 +2,16 @@ ZLE_RPROMPT_INDENT=0
 
 # Source any other dot files
 # Just .aliases right now
-  for file in ~/.{aliases,functions,prompt}; do
+for file in ~/.{aliases,functions,prompt}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
 
-
 # This is for android crap
-  export PATH=${PATH}:/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+  export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=${JAVA_HOME}/bin:$PATH
   export PATH=/usr/local/bin:$PATH
-
-# User homebrew version of python
-  export PATH=$PATH:~/python2.7/bin
 #
 # # Powerline-shell
 #   function powerline_precmd() {
@@ -37,3 +33,5 @@ ZLE_RPROMPT_INDENT=0
 # Powerline for zsh
 # Config in ./.config/powerline
 # .  /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+source /Users/mhartington/.iterm2_shell_integration.zsh

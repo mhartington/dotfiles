@@ -1,8 +1,8 @@
 " If vundle is not installed, do it first
   let vundleExists = 1
-  if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
-      call system(expand("mkdir -p $HOME/.vim/bundle"))
-      call system(expand("git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle"))
+  if (!isdirectory(expand("$HOME/.dotfiles/vim/bundle/vundle")))
+      call system(expand("mkdir -p $HOME/.dotfiles/vim/bundle"))
+      call system(expand("git clone git://github.com/gmarik/vundle.git $HOME/.dotfiles/vim/bundle/vundle"))
       let vundleExists = 0
   endif
 
@@ -12,8 +12,7 @@
 " required!
   filetype off
 
-
-  set rtp+=~/.vim/bundle/vundle/
+  set rtp+=~/.dotfiles/vim/bundle/vundle/
   call vundle#rc()
 
 " let Vundle manage Vundle
@@ -52,7 +51,6 @@
   Bundle 'airblade/vim-gitgutter',
   Bundle 'bling/vim-airline'
   Bundle 'Xuyuanp/nerdtree-git-plugin'
-
   Bundle 'edkolev/promptline.vim'
 
   if vundleExists == 0
@@ -60,7 +58,6 @@
     :BundleInstall
     echo "Things may not work properly until you restart vim"
   endif
-
 
   set syntax=whitespace
   set noswapfile
@@ -81,7 +78,6 @@
   colorscheme solarized
 
    nnoremap ; :
-"  nnoremap : ;
 
 " NERDTree AutoStartup
   map <C-\> :NERDTreeToggle<CR>
@@ -96,9 +92,7 @@
 " for css or scss
   autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
-
-" Do not mess with these two line
-" TODO figure out why this fucking works
+" Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
 
   let &colorcolumn=join(range(121,122),",")
@@ -130,13 +124,6 @@
       endif
     endif
 
-" go to next item in a popup menu.
-" this will insert a snippet if it's selected in the menu
-" due to neosnippets being the first check.
-    if pumvisible()
-      return "\<C-n>"
-    endif
-
 " expand anything emmet thinks is expandable.
 " I'm not sure anything happens below this block.
     if emmet#isExpandable()
@@ -155,19 +142,7 @@
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
 
-" folding settings
-" fold based on indent
-  set foldmethod=indent
-" deepest fold is 10 levels
-  set foldnestmax=10
-" dont fold by default
-  set nofoldenable
-" this is just what i use
-  set foldlevel=1
-
-
   set tabstop=2 shiftwidth=2 expandtab
-
 
   let g:tmux_navigator_no_mappings = 1
   nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
@@ -175,7 +150,6 @@
   nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
   nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-
 
   set wildmenu
   set laststatus=2
@@ -190,27 +164,6 @@
   \'b' : [ promptline#slices#vcs_branch()  ],
   \'c' : [promptline#slices#git_status()],
   \'warn' : [ promptline#slices#last_exit_code() ]}
-  
-" available slices:
-"
-" promptline#slices#cwd() - current dir, truncated to 3 dirs. To configure: promptline#slices#cwd({ 'dir_limit': 4 })
-" promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({ 'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a branch slows down the prompt
-" promptline#slices#last_exit_code() - display exit code of last command if not zero
-" promptline#slices#jobs() - display number of shell jobs if more than zero
-" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with promptline#slices#battery({ 'threshold': 25 })
-" promptline#slices#host()
-" promptline#slices#user()
-" promptline#slices#python_virtualenv() - display which virtual env is active (empty is none)
-" promptline#slices#git_status() - count of commits ahead/behind upstream, count of modified/added/unmerged files, symbol for clean branch and symbol for existing untraced files
-"
-" any command can be used in a slice, for example to print the output of whoami in section 'b':
-"   \'b' : [ '$(whoami)'],
-"
-" more than one slice can be placed in a section, e.g. print both host and user in section 'a':
-"   \'a': [ promptline#slices#host(), promptline#slices#user() ],
-"
-" to disable powerline symbols
-" `let g:promptline_powerline_symbols = 0`
 
 " Source the vimrc file after saving it
   if has("autocmd")
