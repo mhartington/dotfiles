@@ -1,8 +1,8 @@
 " If vundle is not installed, do it first
   let vundleExists = 1
-  if (!isdirectory(expand("$HOME/.dotfiles/vim/bundle/vundle")))
-      call system(expand("mkdir -p $HOME/.dotfiles/vim/bundle"))
-      call system(expand("git clone git://github.com/gmarik/vundle.git $HOME/.dotfiles/vim/bundle/vundle"))
+  if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
+      call system(expand("mkdir -p $HOME/.vim/bundle"))
+      call system(expand("git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle"))
       let vundleExists = 0
   endif
 
@@ -12,7 +12,7 @@
 " required!
   filetype off
 
-  set rtp+=~/.dotfiles/vim/bundle/vundle/
+  set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
 " let Vundle manage Vundle
