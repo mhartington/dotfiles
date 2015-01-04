@@ -31,10 +31,24 @@ For speed reasons, I've removed any plugins and used available features in tmux.
 [status-bar](https://github.com/mhartington/dotfiles/blob/master/tmux.conf#L77) is setup for solarized, and includes ad
 indicator for when the bind-key is pressed.
 
-##TODO
-Make install file for my own personal setup.
- - maybe a rakefile or a `.sh` file, whatevers easier.
+## Install
+Note this install is if you have a new machine, and need everything setup.
+For that, I sugguest 
 
-Check for dependencies.
- - I use macvim in my system terminal for python bindings, and homebrew to manage things like git, node, python, etc
- - [Maximum Awesome](https://github.com/square/maximum-awesome) and [Paul's Dotfiles](https://github.com/paulirish/dotfiles) do this well.
+```
+curl http://rawgithub.com/mhartington/dotfiles/master/install.sh | sh
+```
+If you already have things like git, homebrew,node etc installed, then here have a cookie and sit back.
+You should just be able to just run these few lines.
+
+```
+brew tap thoughtbot/formulae
+brew install rc
+git clone https://github.com/mhartington/dotfiles.git ~/.dotfiles
+cd $HOME
+rcup
+```
+##Inspiration
+ - [Maximum Awesome](https://github.com/square/maximum-awesome)
+ - [Paul's Dotfiles](https://github.com/paulirish/dotfiles)
+ - [Andrew's Dotfiles](https://github.com/ajoslin/dot)
