@@ -43,7 +43,7 @@ You should just be able to just run these few lines.
 
 ```
 brew tap thoughtbot/formulae
-brew install rc
+brew install rcm
 git clone https://github.com/mhartington/dotfiles.git ~/.dotfiles
 cd $HOME
 rcup
