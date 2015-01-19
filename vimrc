@@ -8,7 +8,7 @@
 
 " be iMproved
   set nocompatible
-
+  let mapleader = ','
 " required!
   filetype off
 
@@ -63,7 +63,7 @@
   set noswapfile
   set showcmd
   filetype on
-
+  map <C-S> ggVG<CR>
 " Turn Line Numbers on
   set number
 " tmux mouse support
@@ -155,8 +155,22 @@
   set laststatus=2
 
 " Powerline
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+  nmap <leader>x :bp <BAR> bd #<CR>
+" This replaces :tabnew which I used to bind to this mapping
+  nmap <leader>n :enew<cr>
+" Move to the next buffer
+ nmap <leader>, :bnext<CR>
+" Move to the previous buffer
+  nmap <leader>. :bprevious<CR> 
+
   let g:airline_powerline_fonts = 1
   let g:airline_theme='solarized'
+  set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 " sections (a, b, c, x, y, z, warn) are optional
   let g:promptline_preset = {

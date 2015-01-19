@@ -36,7 +36,7 @@ function __promptline_ps1 {
   __promptline_wrapper "$(__promptline_last_exit_code)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
-  printf "%s" "${reset_bg}${sep}$reset$space$space"
+  printf "%s" "${reset_bg}${sep}$reset$space"
 }
 function __promptline_vcs_branch {
   local branch
