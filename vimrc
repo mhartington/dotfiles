@@ -19,45 +19,54 @@
   Bundle 'gmarik/vundle'
 
 " github repos
+" syntax
   Bundle 'wavded/vim-stylus'
-  Bundle 'gmarik/ingretu'
-  Bundle 'altercation/vim-colors-solarized'
-  Bundle 'kien/ctrlp.vim'
   Bundle 'kchmck/vim-coffee-script'
-  Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'pangloss/vim-javascript'
+  Bundle 'tpope/vim-markdown'
+  Bundle 'groenewege/vim-less'
   Bundle 'mxw/vim-jsx'
-" Bundle 'scrooloose/syntastic'
+  Bundle 'scrooloose/syntastic'
+
+" colorscheme & syntax highlighting
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'kien/rainbow_parentheses.vim'
+  Bundle 'chrisbra/color_highlight'
+  Bundle 'vim-scripts/SyntaxRange'
+
+" Git helpers
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'airblade/vim-gitgutter'
+  Bundle 'Xuyuanp/nerdtree-git-plugin'
+
+" untils
+  Bundle 'editorconfig/editorconfig-vim'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'terryma/vim-multiple-cursors'
+  Bundle 'junegunn/goyo.vim'
+  Bundle 'sjl/clam.vim'
+  Bundle 'kien/ctrlp.vim'
+  Bundle 'christoomey/vim-tmux-navigator'
+  Bundle 'edkolev/promptline.vim'
+  Bundle 'bling/vim-airline'
+
+  Bundle 'tpope/vim-surround'
+  Bundle 'tpope/vim-commentary'
   Bundle 'tpope/vim-ragtag'
   Bundle 'tpope/vim-repeat'
   Bundle 'tpope/vim-unimpaired'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-commentary'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'godlygeek/tabular'
-  Bundle 'editorconfig/editorconfig-vim'
-  Bundle 'chrisbra/color_highlight'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'terryma/vim-multiple-cursors'
-  Bundle 'groenewege/vim-less'
-  Bundle 'junegunn/goyo.vim'
-  Bundle 'sjl/clam.vim'
-  Bundle 'vim-scripts/SyntaxRange'
-  Bundle 'christoomey/vim-tmux-navigator'
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
   Bundle 'einars/js-beautify',
-  Bundle 'airblade/vim-gitgutter',
-  Bundle 'bling/vim-airline'
-  Bundle 'Xuyuanp/nerdtree-git-plugin'
-  Bundle 'edkolev/promptline.vim'
+
 
   if vundleExists == 0
     echo "Installing Bundles, ignore errors"
     :BundleInstall
     echo "Things may not work properly until you restart vim"
   endif
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
   set syntax=whitespace
   set noswapfile
@@ -77,7 +86,7 @@
   set background=dark
   colorscheme solarized
 
-   nnoremap ; :
+  nnoremap ; :
 
 " NERDTree AutoStartup
   map <C-\> :NERDTreeToggle<CR>
@@ -164,9 +173,9 @@
 " This replaces :tabnew which I used to bind to this mapping
   nmap <leader>n :enew<cr>
 " Move to the next buffer
- nmap <leader>, :bnext<CR>
+  nmap <leader>, :bnext<CR>
 " Move to the previous buffer
-  nmap <leader>. :bprevious<CR> 
+  nmap <leader>. :bprevious<CR>
 
   let g:airline_powerline_fonts = 1
   let g:airline_theme='solarized'
@@ -176,8 +185,9 @@
   let g:promptline_preset = {
   \'a' : [ promptline#slices#cwd()  ],
   \'b' : [ promptline#slices#vcs_branch()  ],
-  \'c' : [promptline#slices#git_status()],
-  \'warn' : [ promptline#slices#last_exit_code() ]}
+  \'c' : [promptline#slices#git_status()]}
+
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " Source the vimrc file after saving it
   if has("autocmd")

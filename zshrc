@@ -14,6 +14,6 @@ for file in ~/.{aliases,functions,prompt}; do
 
 # Disable zsh autocorrect
   zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
+  fpath=(~/.zsh/functions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
-  source ~/.git-completion.zsh
