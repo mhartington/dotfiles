@@ -33,6 +33,8 @@
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'chrisbra/color_highlight'
   Bundle 'vim-scripts/SyntaxRange'
+  Bundle 'nathanaelkane/vim-indent-guides'
+  Bundle 'Raimondi/delimitMate'
 
 " Git helpers
   Bundle 'tpope/vim-fugitive'
@@ -49,7 +51,6 @@
   Bundle 'christoomey/vim-tmux-navigator'
   Bundle 'edkolev/promptline.vim'
   Bundle 'bling/vim-airline'
-
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-commentary'
   Bundle 'tpope/vim-ragtag'
@@ -57,7 +58,9 @@
   Bundle 'tpope/vim-unimpaired'
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
-  Bundle 'einars/js-beautify',
+  Bundle 'einars/js-beautify'
+  Bundle 'Valloric/YouCompleteMe'
+  Bundle 'marijnh/tern_for_vim'
 
 
   if vundleExists == 0
