@@ -17,3 +17,5 @@ for file in ~/.{aliases,functions,prompt}; do
   fpath=(~/.zsh/functions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
+
+  source .zsh-syntax-highlighting.zsh

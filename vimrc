@@ -1,4 +1,4 @@
-" If vundle is not installed, do it first
+ "If vundle is not installed, do it first
   let vundleExists = 1
   if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
       call system(expand("mkdir -p $HOME/.vim/bundle"))
@@ -33,7 +33,7 @@
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'chrisbra/color_highlight'
   Bundle 'vim-scripts/SyntaxRange'
-  Bundle 'nathanaelkane/vim-indent-guides'
+  Bundle 'Yggdroot/indentLine'
   Bundle 'Raimondi/delimitMate'
 
 " Git helpers
@@ -90,6 +90,10 @@
   colorscheme solarized
 
   nnoremap ; :
+
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " NERDTree AutoStartup
   map <C-\> :NERDTreeToggle<CR>
@@ -154,6 +158,55 @@
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
 
+  set foldmethod=syntax
+
+
+  set foldlevelstart=99
+
+" Space to toggle folds.
+  nnoremap <Space> za
+  vnoremap <Space> za
+
+" "Refocus" folds
+  nnoremap ,z zMzvzz
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+  nnoremap zO zCzO
+
+  function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+    endfunction " }}}
+    set foldtext=MyFoldText()
+
+" Javascript {{{
+
+  augroup ft_javascript
+  au!
+
+  au FileType javascript setlocal foldmethod=marker
+  au FileType javascript setlocal foldmarker={,}
+
+" Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
+" positioned inside of them AND the following code doesn't get unfolded.
+  au Filetype javascript inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
+    augroup END
+
+" }}}
+
+
   set tabstop=2 shiftwidth=2 expandtab
 
   let g:tmux_navigator_no_mappings = 1
@@ -169,16 +222,27 @@
 " Powerline
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#show_tab_nr = 1
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
   nmap <leader>x :bp <BAR> bd #<CR>
-" This replaces :tabnew which I used to bind to this mapping
+" This replaes :tabnew which I used to bind to this mapping
   nmap <leader>n :enew<cr>
 " Move to the next buffer
   nmap <leader>, :bnext<CR>
 " Move to the previous buffer
   nmap <leader>. :bprevious<CR>
+   let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
 
   let g:airline_powerline_fonts = 1
   let g:airline_theme='solarized'
