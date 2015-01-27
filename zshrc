@@ -5,6 +5,10 @@ for file in ~/.{aliases,functions,prompt}; do
   done
   unset file
 
+  export EDITOR=vi
+
+  alias journal=~/.journal.sh
+  export JOURNAL_DIR="/Users/mhartington/Journal"
 # git autocomplete
 # This is for android crap
   export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
