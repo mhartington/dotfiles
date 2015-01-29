@@ -89,6 +89,73 @@ function ghUpdate() {
   Dev Advocate for Ionic
   Beer lover and Cat lover" '
 
+# archive file or folder
+  function compress()
+  {
+      dirPriorToExe=`pwd`
+      dirName=`dirname $1`
+      baseName=`basename $1`
+
+      if [ -f $1 ] ; then
+          echo "It was a file change directory to $dirName"
+          cd $dirName
+          case $2 in
+            tar.bz2)
+                      tar cjf $baseName.tar.bz2 $baseName
+                      ;;
+            tar.gz)
+                      tar czf $baseName.tar.gz $baseName
+                      ;;
+            gz)
+                      gzip $baseName
+                      ;;
+            tar)
+                      tar -cvvf $baseName.tar $baseName
+                      ;;
+            zip)
+                      zip -r $baseName.zip $baseName
+                      ;;
+              *)
+                      echo "Method not passed compressing using tar.bz2"
+                      tar cjf $baseName.tar.bz2 $baseName
+                      ;;
+          esac
+          echo "Back to Directory $dirPriorToExe"
+          cd $dirPriorToExe
+      else
+          if [ -d $1 ] ; then
+              echo "It was a Directory change directory to $dirName"
+              cd $dirName
+              case $2 in
+                  tar.bz2)
+                          tar cjf $baseName.tar.bz2 $baseName
+                          ;;
+                  tar.gz)
+                          tar czf $baseName.tar.gz $baseName
+                          ;;
+                  gz)
+                          gzip -r $baseName
+                          ;;
+                  tar)
+                          tar -cvvf $baseName.tar $baseName
+                          ;;
+                  zip)
+                          zip -r $baseName.zip $baseName
+                          ;;
+                  *)
+                      echo "Method not passed compressing using tar.bz2"
+                  tar cjf $baseName.tar.bz2 $baseName
+                          ;;
+              esac
+              echo "Back to Directory $dirPriorToExe"
+              cd $dirPriorToExe
+          else
+              echo "'$1' is not a valid file/folder"
+          fi
+      fi
+      echo "Done"
+      echo "###########################################"
+  }
 
 # Extract archives - use: extract <file>
 # Based on http://dotfiles.org/~pseup/.bashrc
