@@ -248,6 +248,13 @@
  let g:airline_theme='solarized'
  set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
+" Syntastic
+  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_html_checkers = []
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_always_populate_loc_list = 1
+
+
 " sections (a, b, c, x, y, z, warn) are optional
  let g:promptline_preset = {
  \'a' : [ promptline#slices#cwd()  ],
@@ -255,6 +262,19 @@
  \'c' : [promptline#slices#git_status()]}
 
  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " Source the vimrc file after saving it
  if has("autocmd")

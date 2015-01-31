@@ -17,9 +17,8 @@ for file in ~/.{aliases,functions,prompt}; do
   export PATH=/usr/local/bin:$PATH
 
 # Disable zsh autocorrect
-  zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
-  fpath=(~/.zsh/functions $fpath)
+  zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
+#  fpath=(~/.zsh/functions $fpath)
+  fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
-
-  source .zsh-syntax-highlighting.zsh
