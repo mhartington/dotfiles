@@ -2,6 +2,7 @@
 ###
 Nothing super crazy going on here, but some sensable vim and tmux configs.
 
+
 ##Note to iterm
 I use solarized for my color scheme, but iterm is wonky with it.
 Rule of thumb is to set your terminal emulation to `xterm-256`
