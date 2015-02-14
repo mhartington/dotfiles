@@ -58,7 +58,7 @@
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
   Bundle 'einars/js-beautify'
-  Bundle 'Valloric/YouCompleteMe'
+ "Bundle 'Valloric/YouCompleteMe'
   Bundle 'marijnh/tern_for_vim'
 
 
@@ -75,7 +75,6 @@
   set showcmd
   set nopaste
   filetype on
-  map <C-S> ggVG<CR>
 
 " Turn Line Numbers on
   set number
@@ -117,35 +116,51 @@
   let &colorcolumn=join(range(121,122),",")
 
 " white space, tabs, eol plz
-  set list
-  set listchars=nbsp:•,eol:¬,tab:>-,extends:»,precedes:•,trail:•
-  let g:showwhite_space_char = '•'
+" set list
+" set listchars=nbsp:•,eol:¬,tab:>-,extends:»,precedes:•,trail:•
+" let g:showwhite_space_char = '•'
 
+  set columns=120
+  set winwidth=120
+  set wrap linebreak  
+
+  set wrap linebreak nolist
+  set virtualedit=
+  set display+=lastline
+  noremap  <silent> <Up>   gk
+  noremap  <silent> <Down> gj
+  noremap  <silent> <Home> g<Home>
+  noremap  <silent> <End>  g<End>
+  inoremap <silent> <Up>   <C-o>gk
+  inoremap <silent> <Down> <C-o>gj
+  inoremap <silent> <Home> <C-o>g<Home>
+  inoremap <silent> <End>  <C-o>g<End>
+
+ 
 
 " Emmet customization
 " Enable Emmet in all modes
   let g:user_emmet_mode='a'
 
 " Remapping <C-y>, just doesn't cut it.
-" This is a bit better and works for
-" angular directives or web components
   function! s:expand_html_tab()
 " try to determine if we're within quotes or tags.
 " if so, assume we're in an emmet fill area.
    let line = getline('.')
+
    if col('.') < len(line)
      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
 
      if len(line) >= 2
        return "\<C-y>n"
      endif
+
    endif
 
 " expand anything emmet thinks is expandable.
-" I'm not sure anything happens below this block.
-   if emmet#isExpandable()
-     return "\<C-y>,"
-   endif
+  if emmet#isExpandable()
+    return "\<C-y>,"
+  endif
 
 " return a regular tab character
    return "\<tab>"
