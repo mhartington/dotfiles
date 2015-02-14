@@ -35,7 +35,7 @@
   Bundle 'chrisbra/color_highlight'
   Bundle 'vim-scripts/SyntaxRange'
   Bundle 'Yggdroot/indentLine'
-" Bundle 'Raimondi/delimitMate'
+  Bundle 'Raimondi/delimitMate'
 
 " Git helpers
   Bundle 'tpope/vim-fugitive'
@@ -73,6 +73,7 @@
   set syntax=whitespace
   set noswapfile
   set showcmd
+  set nopaste
   filetype on
   map <C-S> ggVG<CR>
 
@@ -158,51 +159,9 @@
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
 
-  set foldmethod=syntax
-  set foldlevelstart=99
-" Space to toggle folds.
-  nnoremap <Space> za
-  vnoremap <Space> za
-" "Refocus" folds
-  nnoremap ,z zMzvzz
-
-" Make zO recursively open whatever top level fold we're in, no matter where the
-" cursor happens to be.
-  nnoremap zO zCzO
-
-  function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
-
-   " expand tabs into spaces
-   let onetab = strpart('          ', 0, &tabstop)
-   let line = substitute(line, '\t', onetab, 'g')
-
-   let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-   let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-   return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
-   endfunction " }}}
-   set foldtext=MyFoldText()
-
-" Javascript {{{
-
- augroup ft_javascript
- au!
-
- au FileType javascript setlocal foldmethod=marker
- au FileType javascript setlocal foldmarker={,}
-
-" Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
-" positioned inside of them AND the following code doesn't get unfolded.
- au Filetype javascript inoremap <buffer> {<cr> {}<left><cr><space><space><space><space>.<cr><esc>kA<bs>
-   augroup END
-
-" }}}
-
- set tabstop=2 shiftwidth=2 expandtab
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
 
  let g:tmux_navigator_no_mappings = 1
  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
@@ -258,18 +217,18 @@
 
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-"function s:MkNonExDir(file, buf)
-""    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-""        let dir=fnamemodify(a:file, ':h')
-""        if !isdirectory(dir)
-""            call mkdir(dir, 'p')
-""        endif
-""    endif
-"endfunction
-"augroup BWCCreateDir
- ""   autocmd!
- ""   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-"augroup END
+  function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " Source the vimrc file after saving it
  if has("autocmd")

@@ -68,6 +68,10 @@
 function run(){
   ionic build "$1" && ionic run "$1"
 }
+
+function download(){
+  curl -O "$1"
+}
 function ghUpdate() {
     if git remote | grep upstream > /dev/null;
   then
