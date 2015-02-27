@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-for file in ~/.{aliases,functions,prompt}; do
+for file in ~/.{aliases,functions,prompt,keys}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -9,7 +9,7 @@ for file in ~/.{aliases,functions,prompt}; do
   sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
+  
 
   alias journal=~/.journal.sh
   export JOURNAL_DIR="/Users/mhartington/Journal"

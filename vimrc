@@ -28,6 +28,7 @@
   Bundle 'mxw/vim-jsx'
   Bundle 'scrooloose/syntastic'
   Bundle 'tmux-plugins/vim-tmux'
+  Bundle 'digitaltoad/vim-jade'
 
 " colorscheme & syntax highlighting
   Bundle 'altercation/vim-colors-solarized'
@@ -36,6 +37,7 @@
   Bundle 'vim-scripts/SyntaxRange'
   Bundle 'Yggdroot/indentLine'
   Bundle 'Raimondi/delimitMate'
+  Bundle 'valloric/MatchTagAlways'
 
 " Git helpers
   Bundle 'tpope/vim-fugitive'
@@ -53,7 +55,7 @@
   Bundle 'edkolev/promptline.vim'
   Bundle 'bling/vim-airline'
   Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-commentary'
+  Bundle 'tomtom/tcomment_vim'
   Bundle 'tpope/vim-unimpaired'
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
@@ -113,12 +115,6 @@
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
 
-  let &colorcolumn=join(range(121,122),",")
-
-" white space, tabs, eol plz
-" set list
-" set listchars=nbsp:•,eol:¬,tab:>-,extends:»,precedes:•,trail:•
-" let g:showwhite_space_char = '•'
 
   set columns=120
   set winwidth=120

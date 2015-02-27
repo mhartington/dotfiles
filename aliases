@@ -23,7 +23,10 @@
 
 # Give me z Please
 . ~/z/z.sh
-
+# OSX shorthands
+  function sleep(){
+    #pmset sleepnow
+  }
 
 # Desktop Programs
   alias xcode="open -a '/Applications/XCode.app'"
@@ -59,7 +62,8 @@
 # Start an HTTP server from a directory, optionally specifying the port
   function server() {
     local port="${1:-8000}"
-    open "http://localhost:${port}/"
+#    open "http://localhost:${port}/"
+    open -a google\ chrome\ canary "http://localhost:${port}/" --args --disable-web-security
     # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
     python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
@@ -186,7 +190,7 @@ function extract() {
 
   remove_archive=1
   if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
-    remove_archive=0 
+    remove_archive=0
     shift
   fi
 
@@ -227,10 +231,10 @@ function extract() {
         cd ..; rm *.tar.gz debian-binary
         cd ..
       ;;
-      (*) 
+      (*)
         echo "extract: '$1' cannot be extracted" 1>&2
-        success=1 
-      ;; 
+        success=1
+      ;;
     esac
 
     (( success = $success > 0 ? $success : $? ))
