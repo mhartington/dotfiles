@@ -18,6 +18,7 @@ packages=(
 "tmux"
 "lua"
 "luarocks"
+"ant"
 "macvim --override-system-vim"
 )
 
