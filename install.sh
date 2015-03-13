@@ -16,6 +16,8 @@ packages=(
 "git"
 "node"
 "tmux"
+"lua"
+"luarocks"
 "macvim --override-system-vim"
 )
 
@@ -50,12 +52,6 @@ cp ~/.zshrc ~/.zshrc.back
 echo "Old zshrc is now saved as zshrc.bak"
 echo "---------------------------------------------------------"
 
-echo "installing the powerline-fonts"
-git clone https://github.com/powerline/fonts.git ~/.fonts
-cd ~/.fonts
-./install.sh
-
-
 # Okay so everything should be good
 # Fingers cross at least
 # Now lets clone my dotfiles repo into .dotfiles/
@@ -72,11 +68,15 @@ echo "---------------------------------------------------------"
 rcup
 
 echo "---------------------------------------------------------"
+
 echo "Changing to zsh"
 chsh -s $(which zsh)
+
 echo "You'll need to log out for this to take effect"
 echo "---------------------------------------------------------"
 
+echo "running oxs defaults"
+~./osx.sh
 
 echo "All done!"
 echo "Now your part, change iterms settings to use xterm256color"

@@ -20,14 +20,7 @@
 
 # because I'm to lazy to write vim
   alias v='vim'
-
-# Give me z Please
-. ~/z/z.sh
-# OSX shorthands
-  function sleep(){
-    #pmset sleepnow
-  }
-
+  alias s="sudo"
 # Desktop Programs
   alias xcode="open -a '/Applications/XCode.app'"
   alias safari="open -a safari"
@@ -71,6 +64,9 @@
 
 function run(){
   ionic build "$1" && ionic run "$1"
+}
+function sim(){
+  ionic build "$1" && ionic emulate "$1"
 }
 
 function download(){

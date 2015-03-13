@@ -21,14 +21,12 @@
 " github repos
 " syntax
   Bundle 'wavded/vim-stylus'
-  Bundle 'kchmck/vim-coffee-script'
   Bundle 'pangloss/vim-javascript'
   Bundle 'tpope/vim-markdown'
-  Bundle 'groenewege/vim-less'
-  Bundle 'mxw/vim-jsx'
   Bundle 'scrooloose/syntastic'
   Bundle 'tmux-plugins/vim-tmux'
   Bundle 'digitaltoad/vim-jade'
+  Bundle 'leafgarland/typescript-vim'
 
 " colorscheme & syntax highlighting
   Bundle 'altercation/vim-colors-solarized'
@@ -48,7 +46,6 @@
   Bundle 'editorconfig/editorconfig-vim'
   Bundle 'scrooloose/nerdtree'
   Bundle 'terryma/vim-multiple-cursors'
-  Bundle 'junegunn/goyo.vim'
   Bundle 'sjl/clam.vim'
   Bundle 'kien/ctrlp.vim'
   Bundle 'christoomey/vim-tmux-navigator'
@@ -60,7 +57,6 @@
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
   Bundle 'einars/js-beautify'
- "Bundle 'Valloric/YouCompleteMe'
   Bundle 'marijnh/tern_for_vim'
 
 
@@ -77,6 +73,7 @@
   set showcmd
   set nopaste
   filetype on
+  
 
 " Turn Line Numbers on
   set number
@@ -88,10 +85,16 @@
   set mouse=a
 
 " Solarized is good
-  let g:solarized_termcolors=16
+
   syntax enable
-  set background=dark
   colorscheme solarized
+" other highlighting
+  set background=dark
+  let g:solarized_visibility = "high"
+  let g:solarized_contrast = "high"
+
+  highlight clear SignColumn
+  call gitgutter#highlight#define_highlights()
 
   nnoremap ; :
 
@@ -111,6 +114,7 @@
   autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
   autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+  autocmd FileType scss noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>

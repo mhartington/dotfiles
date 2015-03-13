@@ -9,11 +9,13 @@ for file in ~/.{aliases,functions,prompt,keys}; do
   sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  export _Z_DATA="$HOME/z-data"
+  source ~/.z/z.sh  
+
   
 
   alias journal=~/.journal.sh
-  export JOURNAL_DIR="/Users/mhartington/Journal"
-# git autocomplete
+  export JOURNAL_DIR="/Users/mhartington/Journal"  
 # This is for android crap
   export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
   export JAVA_HOME=$(/usr/libexec/java_home)
