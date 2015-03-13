@@ -1,0 +1,27 @@
+2014-12-05 12:13:44	SpiffyJr	Possible for me to send you the app zipped?
+2014-12-05 12:14:07	mhartington	yeah, send me an email mike[at]drifty[dot]com
+2014-12-05 12:14:12	SpiffyJr	Will do.
+2014-12-05 12:15:12	mhartington	and just incase you coulnd't tell, ionic team member here
+2014-12-05 12:15:23	SpiffyJr	I assumed so :D
+2014-12-05 12:15:33	SpiffyJr	Thank you for your time - I know how OSS support can be.
+2014-12-05 12:15:49	SpiffyJr	(ZF2/PHP contributor)
+2014-12-05 12:16:28	mhartington	its something we try to focus on
+2014-12-05 12:16:44	mhartington	being there for people when ever we can
+2014-12-05 12:16:50	SpiffyJr	Wonderful!
+2014-12-05 12:17:48	SpiffyJr	Sent.
+2014-12-05 12:19:31	mhartington	cool will check it out
+2014-12-05 12:19:41	SpiffyJr	Thank you.
+2014-12-05 12:27:17	SpiffyJr	Also, when clearing out the inner content of <ion-nav-back-button></ion-nav-back-button>
+2014-12-05 12:27:23	SpiffyJr	I get this: https://dl.dropboxusercontent.com/u/62485357/ShareX/2014-12/2014-12-05_11-27-21.png
+2014-12-05 12:27:50	SpiffyJr	(Going through the post to verify all the changes)
+2014-12-05 12:35:53	SpiffyJr	Heh, I think it's fixed.
+2014-12-05 12:35:56	SpiffyJr	I just recompiled the css...
+2014-12-05 12:36:13	SpiffyJr	Yep, it appears to be working now. My mistake :(
+2014-12-05 12:37:41	mhartington	ahh alright, good to hear
+2014-12-05 12:37:48	SpiffyJr	Surprised CSS was causing all that
+2014-12-05 12:37:58	mhartington	css is a magic black box
+2014-12-05 12:38:02	SpiffyJr	Indeed...
+2014-12-05 12:38:05	mhartington	who knows what goes on 
+2014-12-05 12:38:49	mhartington	so all good?
+2014-12-05 12:38:56	SpiffyJr	Yep
+2014-12-05 12:39:19	SpiffyJr	Well, other than the gigantic mess of this that I have to refactor ;)

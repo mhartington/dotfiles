@@ -1,0 +1,35 @@
+2014-12-02 10:50:29	user12345	hi
+2014-12-02 10:50:50	mhartington	hey there
+2014-12-02 10:51:17	user12345	this is the room for ionic framework right ?
+2014-12-02 10:51:59	mhartington	yup
+2014-12-02 10:52:18	user12345	can i ask you a question about it if you are not busy ? 
+2014-12-02 10:52:37	mhartington	sure whats up?
+2014-12-02 10:52:49	user12345	i am trying to integrate ngMaterial into Ionic and i have something like this 
+2014-12-02 10:53:03	user12345	error  Uncaught Error: [$injector:unpr] Unknown provider: $$qProvider <- $$q <- $animate
+2014-12-02 10:53:30	user12345	i don't understand what it causing it, or what is the proper way to integrate ngMaterial into ionic
+2014-12-02 10:53:37	user12345	is*
+2014-12-02 10:54:32	user12345	in my index.html i have the ionic.bundle.js and all the other requirements for ngMaterial, (aria, animate and hammer)
+2014-12-02 10:58:41	mhartington	so animte is already part of ionic.bundle, and so is hammer
+2014-12-02 10:59:13	mhartington	maybe try excluding them
+2014-12-02 10:59:35	user12345	yah i did and it says ngMateiral requires hammerjs to be preloaded :(
+2014-12-02 11:00:01	mhartington	right, but hammer js is baked into ionic at its core
+2014-12-02 11:00:28	user12345	hmm wondering what version of angular ionic bundle is using, ngMaterial requires 1.3
+2014-12-02 11:00:50	mhartington	if you're using the nightly builds, we just upgraded to 1.3
+2014-12-02 11:01:00	mhartington	but beta 13 is using 1.2.7 
+2014-12-02 11:02:18	user12345	aah.. well wehn i get rid of animate it works, but i still have hammer.js.. i getting other errors now, but its working lol
+2014-12-02 11:02:30	user12345	TypeError: Cannot read property 'required' of undefined     at ngAriaModule.directive.directive.directive.link (http://localhost:8100/lib/angular-aria/angular-aria.js:285:30)
+2014-12-02 11:02:34	user12345	that is what i am getting now
+2014-12-02 11:04:38	user12345	awesome so it was version conflicting with each other
+2014-12-02 11:04:42	user12345	i just did the nightly build and it worked
+2014-12-02 11:04:54	mhartington	ahh good to hear
+2014-12-02 11:04:54	user12345	just included the nightly build* and it worked
+2014-12-02 11:05:00	user12345	thanks for the help
+2014-12-02 11:05:04	user12345	you work for ionic ?
+2014-12-02 11:05:14	mhartington	no help from me, it was all you
+2014-12-02 11:05:16	mhartington	yep
+2014-12-02 11:05:48	user12345	lol, nice it would be awesome if u guys can include stuff like material design, 
+2014-12-02 11:06:03	user12345	but i used to do android apps before 
+2014-12-02 11:06:12	user12345	and i love ionic because it makes it so easy 
+2014-12-02 11:06:35	mhartington	yeah there is some plans to include some more android/material design stuff down the road
+2014-12-02 11:06:46	mhartington	just focusing on getting to 1.0 final first
+2014-12-02 11:06:49	user12345	awesome! 

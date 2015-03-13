@@ -1,0 +1,17 @@
+2014-11-15 09:36:22	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #angularjs
+2014-11-15 09:36:22	--	Topic for #angularjs is "http://angularjs.org/ | Docs: http://docs.angularjs.org/ | Latest release: 1.2.26 / 1.3.2 | Be respectful! Code Of Conduct: http://goo.gl/m7MHxk | Paste your code here: http://plnkr.co/edit/tpl:FrTqqTNoY8BEfHs9bB0f | #ionic for Ionic questions | The channel is being logged at: http://goo.gl/8Wwttq | Be polite! ☃"
+2014-11-15 09:36:22	--	Topic set by caitp (~caitp@CPE48f8b385c01c-CM84948c4c6f80.cpe.net.cable.rogers.com) on Wed, 12 Nov 2014 23:58:46
+2014-11-15 09:36:22	--	Channel #angularjs: 752 nicks (1 ops, 0 voices, 751 normals)
+2014-11-15 09:36:24	--	Channel created on Thu, 04 Nov 2010 00:28:04
+2014-11-19 11:50:07	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #angularjs
+2014-11-19 11:50:07	--	Topic for #angularjs is "http://angularjs.org/ | Docs: http://docs.angularjs.org/ | Latest release: 1.2.26 / 1.3.2 | Be respectful! Code Of Conduct: http://goo.gl/m7MHxk | Paste your code here: http://plnkr.co/edit/tpl:FrTqqTNoY8BEfHs9bB0f | #ionic for Ionic questions | The channel is being logged at: http://goo.gl/8Wwttq | Be polite! ☃"
+2014-11-19 11:50:07	--	Topic set by caitp (~caitp@CPE48f8b385c01c-CM84948c4c6f80.cpe.net.cable.rogers.com) on Wed, 12 Nov 2014 23:58:46
+2014-11-19 11:50:07	--	Channel #angularjs: 886 nicks (1 ops, 0 voices, 885 normals)
+2014-11-19 11:50:09	--	Channel created on Thu, 04 Nov 2010 00:28:04
+2014-11-19 11:50:14	<--	edy_ (~edy@kohana/user/edy) has quit (Read error: Connection reset by peer)
+2014-11-19 11:50:20	hicker	I think it might be having trouble because referral.practice is an object, not an id?
+2014-11-19 11:50:58	<--	yts (~yts@91.199.234.214) has quit (Remote host closed the connection)
+2014-11-19 11:51:06	<--	diosney (~Thunderbi@200.55.153.71) has quit (Quit: diosney)
+2014-11-19 11:51:32	-->	slopjong (~slopjong@lindb.rhrk.uni-kl.de) has joined #angularjs
+2014-11-19 11:51:33	hicker	Do I need to store an id instead?
+2014-11-19 11:51:42	-->	sandalon (~textual@pool-173-78-139-18.tampfl.fios.verizon.net) has joined #angularjs

@@ -1,0 +1,76 @@
+2014-11-17 10:00:34	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #phonegap
+2014-11-17 10:00:34	--	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-11-17 10:00:34	--	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-11-17 10:00:34	--	Channel #phonegap: 111 nicks (1 ops, 0 voices, 110 normals)
+2014-11-17 10:00:36	--	Channel created on Mon, 25 Jan 2010 12:49:26
+2014-11-17 10:06:49	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 10:07:30	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #phonegap
+2014-11-17 10:10:15	-->	techsethi (~techsethi@182.64.137.183) has joined #phonegap
+2014-11-17 10:15:52	<--	MGyveR_ (~mgyver@213.106.234.250) has quit (Remote host closed the connection)
+2014-11-17 10:20:13	-->	bbankes_ (~bbankes@67-2-196-12.slkc.qwest.net) has joined #phonegap
+2014-11-17 10:21:40	-->	MGyveR (~mgyver@62.254.236.250) has joined #phonegap
+2014-11-17 10:23:48	<--	bbankes (~bbankes@67-2-196-12.slkc.qwest.net) has quit (Ping timeout: 250 seconds)
+2014-11-17 10:25:29	<--	Atque (~Atque@unaffiliated/atque) has quit (Ping timeout: 258 seconds)
+2014-11-17 10:25:38	<--	bbankes_ (~bbankes@67-2-196-12.slkc.qwest.net) has quit (Ping timeout: 244 seconds)
+2014-11-17 10:28:06	<--	MGyveR (~mgyver@62.254.236.250) has quit (Remote host closed the connection)
+2014-11-17 10:28:22	-->	jhoff (~jhoff@63.230.32.211) has joined #phonegap
+2014-11-17 10:29:28	-->	MGyveR (~mgyver@213.106.234.250) has joined #phonegap
+2014-11-17 10:29:52	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 10:30:29	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #phonegap
+2014-11-17 10:33:48	-->	bbankes (~bbankes@67-2-196-12.slkc.qwest.net) has joined #phonegap
+2014-11-17 10:40:59	-->	balazs (~balazs@71-218-50-65.hlrn.qwest.net) has joined #phonegap
+2014-11-17 10:42:33	<--	bbankes (~bbankes@67-2-196-12.slkc.qwest.net) has quit (Ping timeout: 264 seconds)
+2014-11-17 10:46:12	-->	modcure (~cure@rrcs-97-79-215-10.sw.biz.rr.com) has joined #phonegap
+2014-11-17 10:53:13	-->	jheady1 (~jheady@ajc212-74.ajc.com) has joined #phonegap
+2014-11-17 10:53:25	<--	jheady1 (~jheady@ajc212-74.ajc.com) has left #phonegap
+2014-11-17 11:16:15	<--	balazs (~balazs@71-218-50-65.hlrn.qwest.net) has quit (Ping timeout: 255 seconds)
+2014-11-17 11:18:15	<--	VictorCL (~textual@73-35-228.uoc.es) has quit (Ping timeout: 265 seconds)
+2014-11-17 11:20:48	-->	VictorCL (~textual@73-34-113.uoc.es) has joined #phonegap
+2014-11-17 11:22:57	-->	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has joined #phonegap
+2014-11-17 11:27:58	<--	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has quit (Ping timeout: 258 seconds)
+2014-11-17 11:28:33	-->	balazs (~balazs@157.166.167.129) has joined #phonegap
+2014-11-17 11:30:46	<--	carlsimpson (~carlsimps@host90-152-2-53.ipv4.regusnet.com) has quit (Quit: carlsimpson)
+2014-11-17 11:34:52	<--	gua_ould (~gua_ould@84-199-115-74.iFiber.telenet-ops.be) has quit (Ping timeout: 258 seconds)
+2014-11-17 11:36:10	-->	gregory (~gregory@host-92-30-205-199.as13285.net) has joined #phonegap
+2014-11-17 11:39:15	-->	jheady (~jheady@ajc212-74.ajc.com) has joined #phonegap
+2014-11-17 11:42:39	-->	jerryitt (uid17132@gateway/web/irccloud.com/x-rsaxfixlsmewgwoe) has joined #phonegap
+2014-11-17 11:45:35	-->	beckyconning_ (uid31604@gateway/web/irccloud.com/x-jkjuwqmgjetvevtf) has joined #phonegap
+2014-11-17 11:49:11	<--	FrancescoV (b275506e@gateway/web/freenode/ip.178.117.80.110) has quit (Quit: Page closed)
+2014-11-17 11:50:29	-->	captain_morgan (~morgan@104-13-209-202.lightspeed.sntcca.sbcglobal.net) has joined #phonegap
+2014-11-17 11:53:04	<--	jangoh (~kof@fip12c171.banglalionwimax.com) has quit (Quit: Be back later.. :)
+2014-11-17 11:56:27	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #phonegap
+2014-11-17 11:56:33	<--	whyameye (~John@ip68-102-48-118.ks.ok.cox.net) has quit (Ping timeout: 245 seconds)
+2014-11-17 12:01:23	-->	arasbm (~zooby@S01067cb21b22b03a.ok.shawcable.net) has joined #phonegap
+2014-11-17 12:03:28	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #phonegap
+2014-11-17 12:11:31	-->	teamcoltra (~textual@S0106bcee7b356cb0.vc.shawcable.net) has joined #phonegap
+2014-11-17 12:13:50	<--	jheady (~jheady@ajc212-74.ajc.com) has quit (Quit: Leaving.)
+2014-11-17 12:14:09	<--	Bnaya (~Bnaya@unaffiliated/bnaya) has quit (Quit: Bnaya)
+2014-11-17 12:18:59	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 12:19:36	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #phonegap
+2014-11-17 12:22:07	-->	whyameye (~John@ip68-102-48-118.ks.ok.cox.net) has joined #phonegap
+2014-11-17 12:26:32	-->	bbankes (~bbankes@50-200-100-242-static.hfc.comcastbusiness.net) has joined #phonegap
+2014-11-17 12:27:48	--	abram_ is now known as abram
+2014-11-17 12:41:28	wodim	devgeeks: <audio> keeps playing on the background on iOS, right?
+2014-11-17 12:41:57	wodim	even though the app is "frozen"
+2014-11-17 12:42:08	abram	so when I've changed my app's version number in config.xml and have updated to the latest phonegap version 3.6.3, what's the process to update my phonegap build?  I run "phonegap remote build android" and I see the build happening on the pg site but the versions never change
+2014-11-17 12:42:36	<--	MGyveR (~mgyver@213.106.234.250) has quit (Remote host closed the connection)
+2014-11-17 12:44:21	<--	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has quit (Ping timeout: 264 seconds)
+2014-11-17 12:46:16	<--	VictorCL (~textual@73-34-113.uoc.es) has quit (Read error: Connection reset by peer)
+2014-11-17 12:49:23	-->	VictorCL (~textual@73-34-113.uoc.es) has joined #phonegap
+2014-11-17 12:50:53	<--	exezic (~exezic@199.81-167-145.customer.lyse.net) has quit (Remote host closed the connection)
+2014-11-17 12:51:13	<--	nimomo (~nimomo@bzq-109-65-122-178.red.bezeqint.net) has quit (Remote host closed the connection)
+2014-11-17 12:56:24	<--	Sebastien-L (~sebastien@AMontsouris-651-1-238-120.w86-212.abo.wanadoo.fr) has quit (Ping timeout: 272 seconds)
+2014-11-17 12:57:22	-->	frank_o (~frankie@233.80-203-58.nextgentel.com) has joined #phonegap
+2014-11-17 12:57:26	frank_o	Hi! Anybody know why https://github.com/h5bp/html5-boilerplate/blob/master/dist/index.html contains `meta name="viewport"` and `link rel="apple-touch-icon"`? Isn't that https://github.com/h5bp/mobile-boilerplate/blob/master/index.html's job?
+2014-11-17 13:01:30	-->	jheady (~jheady@ajc212-74.ajc.com) has joined #phonegap
+2014-11-17 13:02:58	<--	jheady (~jheady@ajc212-74.ajc.com) has left #phonegap
+2014-11-19 11:51:23	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #phonegap
+2014-11-19 11:51:23	--	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-11-19 11:51:23	--	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-11-19 11:51:23	--	Channel #phonegap: 116 nicks (0 ops, 0 voices, 116 normals)
+2014-11-19 11:51:25	--	Channel created on Mon, 25 Jan 2010 12:49:26
+2014-11-21 10:46:01	-->	mhartington (~mhartingt@ip68-9-73-243.ri.ri.cox.net) has joined #phonegap
+2014-11-21 10:46:01	--	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-11-21 10:46:01	--	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-11-21 10:46:01	--	Channel #phonegap: 111 nicks (0 ops, 0 voices, 111 normals)
+2014-11-21 10:46:03	--	Channel created on Mon, 25 Jan 2010 12:49:26

@@ -1,0 +1,221 @@
+2014-12-05 13:21:32	mhartington	If you want, I could zip everthing and send it to you
+2014-12-05 13:25:36	christo_m	sure
+2014-12-05 13:25:46	christo_m	i dont understand what i could be doing wrong though.
+2014-12-05 13:25:52	christo_m	the plugin is there, i see it in plugins ls
+2014-12-05 13:26:21	mhartington	i mean in my code, I'm not even calling the plugin
+2014-12-05 13:27:09	christo_m	you didnt try disabling scroll?
+2014-12-05 13:27:12	mhartington	http://pastebin.com/9NGCdtuE
+2014-12-05 13:27:14	christo_m	thats where the error comes from
+2014-12-05 13:27:27	mhartington	well I did, but in a run function
+2014-12-05 13:27:46	mhartington	https://github.com/driftyco/ionic-app-base/blob/master/www/js/app.js#L8
+2014-12-05 13:29:28	mhartington	https://app.box.com/s/g2yfyuazckotwtpwyk2y
+2014-12-05 13:29:32	mhartington	theres the project
+2014-12-05 13:30:23	christo_m	weird i guess that does work..
+2014-12-05 13:30:45	christo_m	it still focuses the box and shows it though.
+2014-12-05 13:30:50	christo_m	even though i did opacity: 0
+2014-12-05 13:30:54	christo_m	different problem i guess though
+2014-12-05 13:30:59	christo_m	maybe visibility:hidden
+2014-12-05 13:31:18	christo_m	actually visibility:hidden elements are focusable are they
+2014-12-05 13:31:23	christo_m	arent*
+2014-12-05 13:34:11	christo_m	is it possible to disable scrolling without that plugin?
+2014-12-05 13:34:16	christo_m	like scroll-to with the keyboard?
+2014-12-05 13:34:46	mhartington	no you need the plugin, it uses navtive code
+2014-12-05 13:34:52	christo_m	according to the docs here: http://ionicframework.com/docs/api/page/keyboard/ you have to use cordova.plugins.Keyboard.disableScroll(true) which i cant seem to work
+2014-12-05 13:36:36	mhartington	I just tried this with out any error
+2014-12-05 13:36:48	mhartington	http://pastebin.com/8YfyJHnd
+2014-12-05 13:37:37	christo_m	*sigh* ya its not working for me
+2014-12-05 13:37:40	christo_m	i even pushed things into .run like you had it
+2014-12-05 13:38:09	christo_m	is this dependent on a certain version of cordova?
+2014-12-05 13:39:09	mhartington	so lets try this
+2014-12-05 13:39:23	mhartington	IT 101: remove the plugin then add it back
+2014-12-05 13:39:39	christo_m	lol
+2014-12-05 13:39:43	christo_m	unplug my computer?
+2014-12-05 13:40:11	mhartington	hah, no but run ionic plugin rm com.ionic.keyboard
+2014-12-05 13:40:16	mhartington	then add it back
+2014-12-05 13:40:34	mhartington	maybe something happened and we need to jump start the build process
+2014-12-05 13:42:50	christo_m	im not using ionic tools
+2014-12-05 13:42:52	christo_m	im using cordova.
+2014-12-05 13:43:05	christo_m	but im sure its just s/ionic/cordova
+2014-12-05 13:43:12	mhartington	exactly
+2014-12-05 13:43:36	christo_m	ok
+2014-12-05 13:43:40	christo_m	trying now
+2014-12-05 13:43:46	christo_m	is there some cordova celan i can do?
+2014-12-05 13:43:48	christo_m	actually ill do it in xcode
+2014-12-05 13:45:16	christo_m	Could not start debugserver  ... well thats not good
+2014-12-05 13:46:24	christo_m	maybe its been failing the build the whole time, which is odd because the binary always ends up on the phone..
+2014-12-05 13:49:34	mhartington	again, with out looking at the project, i can't be 100% sure
+2014-12-05 13:50:03	christo_m	thats fine
+2014-12-05 13:50:05	christo_m	i will test on android device
+2014-12-05 13:50:10	christo_m	if it fails there...gg
+2014-12-05 13:51:13	christo_m	thanks for your help man
+2014-12-05 13:51:14	christo_m	i appreciate it
+2014-12-05 13:51:32	mhartington	no problem, let know if you need anything else
+2014-12-17 14:15:37	mhartington	if you want, you can record what your seeing and send it to me
+2014-12-17 14:15:49	mhartington	mike at drifty dot com
+2014-12-17 14:16:48	christo_m	ok
+2014-12-17 14:25:21	christo_m	sent
+2014-12-17 14:25:51	christo_m	its hard to see but after i get off that Range slider screen, the title flashes weirdly at the top.. the problem is a bit more exasperated when i go to the keyboard and media controls screen, you'll see the footer doesnt disappear till the animation is fully finished
+2014-12-17 14:26:36	christo_m	i think the title flashes there also
+2014-12-17 14:27:03	mhartington	alright, the videos downloading right now so I'll see whats up
+2014-12-17 14:27:40	christo_m	it may just be a web thing.. might have to turn off transitions
+2014-12-17 14:28:13	mhartington	maybe, but lets consider that as a last resort
+2014-12-17 14:28:21	christo_m	absolutely
+2014-12-17 14:31:24	mhartington	okay, I see what you mean about the nav-bar
+2014-12-17 14:31:28	christo_m	ya
+2014-12-17 14:31:33	christo_m	well also the keyboard-attach footer
+2014-12-17 14:31:39	christo_m	it stays there until the entire screen is fully transitioned
+2014-12-17 14:31:47	christo_m	not sure if its a related issue
+2014-12-17 14:32:49	mhartington	hmmm, let me try something on my side about the nav-bar
+2014-12-17 14:33:03	mhartington	but for that footer, are you including it inside the ion-view?
+2014-12-17 14:33:26	christo_m	no its chilling top level
+2014-12-17 14:33:37	christo_m	it is ng-shown when i know im showing a keyboard
+2014-12-17 14:33:49	mhartington	hmm, that maybe the issue
+2014-12-17 14:34:00	christo_m	yes i think so
+2014-12-17 14:34:16	mhartington	try including it into your view, but outside the ion-content
+2014-12-17 14:34:29	christo_m	okay
+2014-12-17 14:34:33	christo_m	ill try that now
+2014-12-17 14:34:38	mhartington	this way it will transition with the view 
+2014-12-17 14:36:32	christo_m	oh ya, thats much better
+2014-12-17 14:38:04	mhartington	:) awesome, good to hear
+2014-12-17 14:48:53	christo_m	the navbar though
+2014-12-17 14:49:27	mhartington	yup, I think I got something, but testing it out
+2014-12-17 14:49:32	christo_m	oh ok
+2014-12-17 15:08:20	mhartington	damn, didn't work as well as I thought it would
+2014-12-17 15:08:26	christo_m	hm?
+2014-12-17 15:08:31	christo_m	can i see
+2014-12-17 15:08:40	christo_m	desktop is super misleading but whatever
+2014-12-17 15:08:49	mhartington	well I tried on my device
+2014-12-17 15:10:10	christo_m	ah
+2014-12-17 15:10:41	mhartington	yeah, even with some tricks, it still behaved the same as your recording 
+2014-12-17 15:10:55	mhartington	one last trick
+2014-12-17 15:10:58	mhartington	5 mins
+2014-12-17 15:13:49	christo_m	okie
+2014-12-17 15:13:59	christo_m	whats the last resort, remove transition animations period?
+2014-12-17 15:14:34	mhartington	well right now I'm trying to do an animation as the nav-bar enters so at leasts its not abrupt 
+2014-12-17 15:14:51	mhartington	but if that doesn't work you can disable animations for that one view
+2014-12-17 15:17:01	christo_m	hmm
+2014-12-17 15:36:40	mhartington	damn, couldn't get it to work right :\
+2014-12-17 15:37:03	mhartington	guess disabling transition for that view is the way to go
+2014-12-17 15:37:05	mhartington	http://ionicframework.com/docs/api/directive/navTransition/
+2014-12-17 15:42:28	christo_m	mhartington im actually doing a $state.go('tui');
+2014-12-17 15:42:50	christo_m	ill just use nextViewOptions
+2014-12-17 15:42:50	christo_m	disableAnimate
+2014-12-17 15:42:59	mhartington	yeah that will work too
+2015-01-27 14:44:36	mhartington	Hey yeah, you can send me a video
+2015-01-27 14:45:00	christo_m	cool, thanks
+2015-01-27 14:45:08	mhartington	you still have my email right?
+2015-01-27 14:45:39	christo_m	nopeee
+2015-01-27 14:45:46	christo_m	oh yup
+2015-01-27 14:45:47	christo_m	found it
+2015-01-27 14:45:51	mhartington	alright
+2015-01-27 14:48:43	christo_m	sent
+2015-01-27 14:49:11	christo_m	i must have had auto rotate locked because the video is portrait but its actually shot landscape
+2015-01-27 14:49:14	christo_m	sorryyy
+2015-01-27 14:51:12	mhartington	no worries, just got it
+2015-01-27 14:54:59	christo_m	i should have actually shown you without keyboard.show() and .close() for comparison
+2015-01-27 14:55:16	christo_m	as well as with, because i think without keyboard.show its actually pretty smooth on android. not as butter as iOS but still good
+2015-01-27 14:56:24	mhartington	hmm, so the keyboard was being called by the js methods, alright
+2015-01-27 14:56:50	mhartington	yeah cus I jsut tested it out a 4.1 device with crosswalk and just focusing on inputs, it came up really smooth
+2015-01-27 14:57:01	christo_m	really?
+2015-01-27 14:57:05	mhartington	and yeah, nothing is as smooth as ios
+2015-01-27 14:57:06	christo_m	thats what i do too, focus on inputs
+2015-01-27 14:58:24	christo_m	mhartington if it means anything, that view there with mouse and scroll is a canvas object
+2015-01-27 14:58:27	christo_m	webgl
+2015-01-27 14:58:59	mhartington	yeah thats probably the issue, webgl is pretty expensive 
+2015-01-27 15:00:01	christo_m	i have to though to draw the remote properly without worrying about screen size etc
+2015-01-27 15:00:09	christo_m	plus its legacy stuff. the way we draw remotes is all webgl 
+2015-01-27 15:00:27	christo_m	i actually figured webgl would be fast in theory because it would use the GPU over the CPU or am i wrong?
+2015-01-27 15:01:57	mhartington	right, but its still two different process going on at once 
+2015-01-27 15:02:19	mhartington	hmm, just watched the video again, any way you could delay the focus of the input?
+2015-01-27 15:03:03	mhartington	it seems that the modal is opening, keyboard is showing, and theres a webgl
+2015-01-27 15:03:09	mhartington	a lot going on 
+2015-01-27 15:03:10	christo_m	mhartington i could do a timeout.
+2015-01-27 15:03:22	mhartington	yeah, for at least 750ms
+2015-01-27 15:03:33	mhartington	roughly the animtion length
+2015-01-27 15:03:48	christo_m	the reason i did it all at once
+2015-01-27 15:03:53	christo_m	is because the effect looks dope on iOS
+2015-01-27 15:03:57	christo_m	the keyboard slides in with the modal at once.
+2015-01-27 15:04:12	christo_m	i could delay it specifically on android.. or just do away with the slide up altogether.
+2015-01-27 15:04:44	mhartington	yeahh it does look good on ios
+2015-01-27 15:05:00	mhartington	I would try to delay it on android at least
+2015-01-27 15:06:50	christo_m	i will try
+2015-01-27 15:06:58	christo_m	is tehre any way to do platform specific animation stuff?
+2015-01-27 15:07:12	christo_m	i dont really want to wrap every place with some if logic ..
+2015-01-27 15:07:31	mhartington	yeah you could do `.platform-android .animation-class {}`
+2015-01-27 15:08:00	mhartington	if you prefix any css with `.platform-[platform]`, it will only show up on that platform 
+2015-01-27 15:08:29	christo_m	but no way to just globally disable animation on the android side of things for example?
+2015-01-27 15:08:39	christo_m	i just have a feeling animations arent going to be nice on there for a while
+2015-01-27 15:08:52	christo_m	save for the ion side navs , which work really well
+2015-01-27 15:08:55	christo_m	well and the scroll
+2015-01-27 15:34:40	christo_m	mhartington did you try keyboard-attach'ing a footer?
+2015-01-27 15:34:58	mhartington	in the example? 
+2015-01-27 15:35:02	christo_m	ive turned off the animation, and put a delay , and it still looks awful
+2015-01-27 15:35:14	christo_m	but its because the keyboard-attach flashes in over top forcing the content to bump.
+2015-01-27 15:35:19	christo_m	so it redraws and flashes white for a sec
+2015-01-27 15:36:36	mhartington	so if you remove the keyboard attach directive, it animates better?
+2015-01-27 15:37:00	christo_m	ugh nope, its still bad
+2015-01-27 15:37:03	christo_m	one more video?
+2015-01-27 15:37:08	mhartington	yeah if you don't mind
+2015-01-27 15:37:09	christo_m	theres no animation, theres a time out
+2015-01-27 15:37:13	christo_m	and theres no keyboard attach
+2015-01-27 15:37:22	christo_m	all im doing is showing a modal, and then showing a keyboard.
+2015-01-27 15:37:46	mhartington	hmm, alright let me try that locally 
+2015-01-27 15:42:23	christo_m	sec emailing now
+2015-01-27 15:51:57	mhartington	okay, testing something now
+2015-01-27 15:57:29	christo_m	ok
+2015-01-27 16:00:51	mhartington	sent you an email back
+2015-01-27 16:01:06	mhartington	so I got it to work pretty smooth, though in a simplified example 
+2015-01-27 16:01:15	christo_m	weird its not bumping or redrawing your content.
+2015-01-27 16:01:25	christo_m	mhartington can you try vertically centering that content?
+2015-01-27 16:01:26	mhartington	heres the code
+2015-01-27 16:01:27	mhartington	http://pastebin.com/yHmCAVhg
+2015-01-27 16:01:29	christo_m	it looks like nothing has to bump 
+2015-01-27 16:01:30	christo_m	ok
+2015-01-27 16:01:41	mhartington	or the relavant code to make the keyboard show
+2015-01-27 16:01:59	christo_m	right
+2015-01-27 16:02:32	christo_m	i see, let me refactor it to that because currently i have a method bound to ng-click of a button that does a $modal.show()
+2015-01-27 16:02:39	christo_m	and the keyboard logic in the same function.
+2015-01-27 16:02:49	mhartington	hmm yeah that could be an issue
+2015-01-27 16:02:50	christo_m	ill do it on the shown callback
+2015-01-27 16:02:56	christo_m	err event
+2015-01-27 16:03:10	christo_m	could you just try centering the content real quick though?
+2015-01-27 16:03:25	christo_m	you actually have it so that it doesnt need to move any elements on the page.
+2015-01-27 16:03:35	mhartington	one sec
+2015-01-27 16:04:56	christo_m	beacuse i think that happens with the keyboard attach as well
+2015-01-27 16:05:01	christo_m	its forcing a serious bump
+2015-01-27 16:06:53	christo_m	trying your method now
+2015-01-27 16:07:30	christo_m	ugh, no still bumping after the 750 ms, and then the white box where the keyboard used to be.
+2015-01-27 16:07:43	christo_m	ill just force the background to be black so it doesnt look so bad.
+2015-01-27 16:08:56	christo_m	do you have something similar for when you call keyboard.close()
+2015-01-27 16:09:21	christo_m	because i do a modal hide and then do a keyboard close , i should listen for the hidden event and then close right?
+2015-01-27 16:09:38	christo_m	or sorry, do a close and listen for that then hide the modal
+2015-01-27 16:10:37	mhartington	yeah getting a serious bump as well
+2015-01-27 16:10:59	mhartington	so it seems the centering of content is causing issues
+2015-01-27 16:11:02	mhartington	hmm
+2015-01-27 16:11:21	christo_m	yes
+2015-01-27 16:11:41	mhartington	let me try something real quick
+2015-01-27 16:11:56	christo_m	sure
+2015-01-27 16:15:40	mhartington	so is it just a footer with keyboard attach?
+2015-01-27 16:15:45	christo_m	ya thats right.
+2015-01-27 16:15:59	christo_m	nothing complicated in there just some media buttons.
+2015-01-27 16:16:07	mhartington	okay, i think I may have found something, but let me be sure
+2015-01-27 16:16:15	christo_m	absolutely
+2015-01-27 16:24:11	mhartington	hmm, no dice, 
+2015-01-27 16:24:21	mhartington	still getting a bump
+2015-01-27 16:25:23	christo_m	mhartington are you suggesting i just scrap vertical centering?
+2015-01-27 16:25:44	mhartington	yeah that seems to be the only case where it doesnt have any issues
+2015-01-27 16:25:46	christo_m	do you get a white box when you close the keyboard on modal hide,
+2015-01-27 16:25:54	christo_m	or rather, hide the modal on keyboard close, either or.
+2015-01-27 16:26:21	mhartington	can't really tell, my bg is white
+2015-01-27 16:26:24	christo_m	i can do away with vertically centering.
+2015-01-27 16:26:30	christo_m	ya ill just change the background.. whatever
+2015-01-27 16:26:50	mhartington	well where are you applying the bg?
+2015-01-27 16:27:07	christo_m	i dont know yet, i dont even know where the white is coming from
+2015-01-27 16:27:09	christo_m	maybe the body or something
+2015-01-27 16:27:36	christo_m	oh wait, the black there for that modal is applied to the ion content
+2015-01-27 16:28:54	mhartington	yeah apply the black to the entire modal view instead
+2015-01-27 16:29:04	mhartington	thats why you're seing a white box
+2015-01-27 16:29:16	mhartington	it's the actually content area resizing 
+2015-01-27 16:36:17	christo_m	<ion-modal-view style="background: #000;">
+2015-01-27 16:36:22	christo_m	shouldnt this be enough? its still there
+2015-01-27 16:36:22	christo_m	:(

@@ -20,6 +20,7 @@ packages=(
 "luarocks"
 "ant"
 "macvim --override-system-vim"
+"weechat --with-lua --with-perl --with-python --with-ruby"
 )
 
 for i in "${packages[@]}"

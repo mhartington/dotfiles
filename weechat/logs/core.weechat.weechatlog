@@ -1,0 +1,2013 @@
+2014-09-11 21:10:48		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-09-11 21:11:13	=!=	You can not write text in this buffer
+2014-09-11 21:11:17	=!=	You can not write text in this buffer
+2014-09-11 21:11:54		[core]
+2014-09-11 21:11:54		  away     color    debug    help     key      mute     proxy    repeat   set      uptime   window 
+2014-09-11 21:11:54		  bar      command  eval     history  layout   plugin   quit     save     unset    version
+2014-09-11 21:11:54		  buffer   cursor   filter   input    mouse    print    reload   secure   upgrade  wait   
+2014-09-11 21:11:54		[alias]
+2014-09-11 21:11:54		  AAWAY    AMSG     BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    W        WII    
+2014-09-11 21:11:54		  alias    ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        unalias  WC       WW     
+2014-09-11 21:11:54		  AME      BEEP     CHAT     EXIT     K        M        N        SAY      UB       V        WI     
+2014-09-11 21:11:54		[charset]
+2014-09-11 21:11:54		  charset
+2014-09-11 21:11:54		[exec]
+2014-09-11 21:11:54		  exec
+2014-09-11 21:11:54		[irc]
+2014-09-11 21:11:54		  admin       cycle       halfop      kickban     mode        op          quote       sanick      squit       unquiet     who       
+2014-09-11 21:11:54		  allchan     dcc         ignore      kill        motd        oper        reconnect   sapart      stats       userhost    whois     
+2014-09-11 21:11:54		  allpv       dehalfop    info        links       msg         part        rehash      saquit      summon      users       whowas    
+2014-09-11 21:11:54		  allserv     deop        invite      list        names       ping        remove      server      time        version   
+2014-09-11 21:11:54		  ban         devoice     ison        lusers      nick        pong        restart     service     topic       voice     
+2014-09-11 21:11:54		  connect     die         join        map         notice      query       sajoin      servlist    trace       wallchops 
+2014-09-11 21:11:54		  ctcp        disconnect  kick        me          notify      quiet       samode      squery      unban       wallops   
+2014-09-11 21:11:54		[logger]
+2014-09-11 21:11:54		  logger
+2014-09-11 21:11:54		[relay]
+2014-09-11 21:11:54		  relay
+2014-09-11 21:11:54		[script]
+2014-09-11 21:11:54		  script
+2014-09-11 21:11:54		[tcl]
+2014-09-11 21:11:54		  tcl
+2014-09-11 21:11:54		[trigger]
+2014-09-11 21:11:54		  trigger
+2014-09-11 21:11:54		[xfer]
+2014-09-11 21:11:54		  me  xfer
+2014-09-11 21:12:22	=!=	Option "irc" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-09-11 21:12:29		[look] (irc.conf)
+2014-09-11 21:12:29		  irc.look.buffer_switch_autojoin = on
+2014-09-11 21:12:29		  irc.look.buffer_switch_join = on
+2014-09-11 21:12:29		  irc.look.color_nicks_in_names = off
+2014-09-11 21:12:29		  irc.look.color_nicks_in_nicklist = off
+2014-09-11 21:12:29		  irc.look.color_nicks_in_server_messages = on
+2014-09-11 21:12:29		  irc.look.color_pv_nick_like_channel = on
+2014-09-11 21:12:29		  irc.look.ctcp_time_format = "%a, %d %b %Y %T %z"
+2014-09-11 21:12:29		  irc.look.display_away = local
+2014-09-11 21:12:29		  irc.look.display_ctcp_blocked = on
+2014-09-11 21:12:29		  irc.look.display_ctcp_reply = on
+2014-09-11 21:12:29		  irc.look.display_ctcp_unknown = on
+2014-09-11 21:12:29		  irc.look.display_host_join = on
+2014-09-11 21:12:29		  irc.look.display_host_join_local = on
+2014-09-11 21:12:29		  irc.look.display_host_quit = on
+2014-09-11 21:12:29		  irc.look.display_join_message = "329,332,333,366"
+2014-09-11 21:12:29		  irc.look.display_old_topic = on
+2014-09-11 21:12:29		  irc.look.display_pv_away_once = on
+2014-09-11 21:12:29		  irc.look.display_pv_back = on
+2014-09-11 21:12:29		  irc.look.highlight_channel = "$nick"
+2014-09-11 21:12:29		  irc.look.highlight_pv = "$nick"
+2014-09-11 21:12:29		  irc.look.highlight_server = "$nick"
+2014-09-11 21:12:29		  irc.look.highlight_tags_restrict = "irc_privmsg,irc_notice"
+2014-09-11 21:12:29		  irc.look.item_away_message = on
+2014-09-11 21:12:29		  irc.look.item_channel_modes_hide_args = "k"
+2014-09-11 21:12:29		  irc.look.item_display_server = buffer_plugin
+2014-09-11 21:12:29		  irc.look.item_nick_modes = on
+2014-09-11 21:12:29		  irc.look.item_nick_prefix = on
+2014-09-11 21:12:29		  irc.look.join_auto_add_chantype = off
+2014-09-11 21:12:29		  irc.look.msgbuffer_fallback = current
+2014-09-11 21:12:29		  irc.look.new_channel_position = none
+2014-09-11 21:12:29		  irc.look.new_pv_position = none
+2014-09-11 21:12:29		  irc.look.nick_color_force = ""
+2014-09-11 21:12:29		  irc.look.nick_color_hash = sum
+2014-09-11 21:12:29		  irc.look.nick_color_stop_chars = "_|["
+2014-09-11 21:12:29		  irc.look.nick_completion_smart = speakers
+2014-09-11 21:12:29		  irc.look.nick_mode = prefix
+2014-09-11 21:12:29		  irc.look.nick_mode_empty = off
+2014-09-11 21:12:29		  irc.look.nicks_hide_password = "nickserv"
+2014-09-11 21:12:29		  irc.look.notice_as_pv = auto
+2014-09-11 21:12:29		  irc.look.notice_welcome_redirect = on
+2014-09-11 21:12:29		  irc.look.notice_welcome_tags = ""
+2014-09-11 21:12:29		  irc.look.notify_tags_ison = "notify_message"
+2014-09-11 21:12:29		  irc.look.notify_tags_whois = "notify_message"
+2014-09-11 21:12:29		  irc.look.part_closes_buffer = off
+2014-09-11 21:12:29		  irc.look.pv_buffer = independent
+2014-09-11 21:12:29		  irc.look.pv_tags = "notify_private"
+2014-09-11 21:12:29		  irc.look.raw_messages = 256
+2014-09-11 21:12:29		  irc.look.server_buffer = merge_with_core
+2014-09-11 21:12:29		  irc.look.smart_filter = on
+2014-09-11 21:12:29		  irc.look.smart_filter_delay = 5
+2014-09-11 21:12:29		  irc.look.smart_filter_join = on
+2014-09-11 21:12:29		  irc.look.smart_filter_join_unmask = 30
+2014-09-11 21:12:29		  irc.look.smart_filter_mode = "+"
+2014-09-11 21:12:29		  irc.look.smart_filter_nick = on
+2014-09-11 21:12:29		  irc.look.smart_filter_quit = on
+2014-09-11 21:12:29		  irc.look.topic_strip_colors = off
+2014-09-11 21:12:29		[color] (irc.conf)
+2014-09-11 21:12:29		  irc.color.input_nick = lightcyan
+2014-09-11 21:12:29		  irc.color.item_away = yellow
+2014-09-11 21:12:29		  irc.color.item_channel_modes = default
+2014-09-11 21:12:29		  irc.color.item_lag_counting = default
+2014-09-11 21:12:29		  irc.color.item_lag_finished = yellow
+2014-09-11 21:12:29		  irc.color.item_nick_modes = default
+2014-09-11 21:12:29		  irc.color.message_join = green
+2014-09-11 21:12:29		  irc.color.message_quit = red
+2014-09-11 21:12:29		  irc.color.mirc_remap = "1,-1:darkgray"
+2014-09-11 21:12:29		  irc.color.nick_prefixes = "q:lightred;a:lightcyan;o:lightgreen;h:lightmagenta;v:yellow;*:lightblue"
+2014-09-11 21:12:29		  irc.color.notice = green
+2014-09-11 21:12:29		  irc.color.reason_quit = default
+2014-09-11 21:12:29		  irc.color.topic_new = white
+2014-09-11 21:12:29		  irc.color.topic_old = default
+2014-09-11 21:12:29		[network] (irc.conf)
+2014-09-11 21:12:29		  irc.network.alternate_nick = on
+2014-09-11 21:12:29		  irc.network.autoreconnect_delay_growing = 2
+2014-09-11 21:12:29		  irc.network.autoreconnect_delay_max = 600
+2014-09-11 21:12:29		  irc.network.ban_mask_default = "*!$ident@$host"
+2014-09-11 21:12:29		  irc.network.colors_receive = on
+2014-09-11 21:12:29		  irc.network.colors_send = on
+2014-09-11 21:12:29		  irc.network.lag_check = 60
+2014-09-11 21:12:29		  irc.network.lag_max = 1800
+2014-09-11 21:12:29		  irc.network.lag_min_show = 500
+2014-09-11 21:12:29		  irc.network.lag_reconnect = 0
+2014-09-11 21:12:29		  irc.network.lag_refresh_interval = 1
+2014-09-11 21:12:29		  irc.network.notify_check_ison = 1
+2014-09-11 21:12:29		  irc.network.notify_check_whois = 5
+2014-09-11 21:12:29		  irc.network.send_unknown_commands = off
+2014-09-11 21:12:29		  irc.network.whois_double_nick = off
+2014-09-11 21:12:29		[server_default] (irc.conf)
+2014-09-11 21:12:29		  irc.server_default.addresses = ""
+2014-09-11 21:12:29		  irc.server_default.anti_flood_prio_high = 2
+2014-09-11 21:12:29		  irc.server_default.anti_flood_prio_low = 2
+2014-09-11 21:12:29		  irc.server_default.autoconnect = off
+2014-09-11 21:12:29		  irc.server_default.autojoin = ""
+2014-09-11 21:12:29		  irc.server_default.autoreconnect = on
+2014-09-11 21:12:29		  irc.server_default.autoreconnect_delay = 10
+2014-09-11 21:12:29		  irc.server_default.autorejoin = off
+2014-09-11 21:12:29		  irc.server_default.autorejoin_delay = 30
+2014-09-11 21:12:29		  irc.server_default.away_check = 0
+2014-09-11 21:12:29		  irc.server_default.away_check_max_nicks = 25
+2014-09-11 21:12:29		  irc.server_default.capabilities = ""
+2014-09-11 21:12:29		  irc.server_default.command = ""
+2014-09-11 21:12:29		  irc.server_default.command_delay = 0
+2014-09-11 21:12:29		  irc.server_default.connection_timeout = 60
+2014-09-11 21:12:29		  irc.server_default.default_msg_kick = ""
+2014-09-11 21:12:29		  irc.server_default.default_msg_part = "WeeChat %v"
+2014-09-11 21:12:29		  irc.server_default.default_msg_quit = "WeeChat %v"
+2014-09-11 21:12:29		  irc.server_default.ipv6 = on
+2014-09-11 21:12:29		  irc.server_default.local_hostname = ""
+2014-09-11 21:12:29		  irc.server_default.nicks = "mhartington,mhartington1,mhartington2,mhartington3,mhartington4"  (default: "")
+2014-09-11 21:12:29		  irc.server_default.notify = ""
+2014-09-11 21:12:29		  irc.server_default.password = ""
+2014-09-11 21:12:29		  irc.server_default.proxy = ""
+2014-09-11 21:12:29		  irc.server_default.realname = ""
+2014-09-11 21:12:29		  irc.server_default.sasl_mechanism = plain
+2014-09-11 21:12:29		  irc.server_default.sasl_password = ""
+2014-09-11 21:12:29		  irc.server_default.sasl_timeout = 15
+2014-09-11 21:12:29		  irc.server_default.sasl_username = ""
+2014-09-11 21:12:29		  irc.server_default.ssl = off
+2014-09-11 21:12:29		  irc.server_default.ssl_cert = ""
+2014-09-11 21:12:29		  irc.server_default.ssl_dhkey_size = 2048
+2014-09-11 21:12:29		  irc.server_default.ssl_fingerprint = ""
+2014-09-11 21:12:29		  irc.server_default.ssl_priorities = "NORMAL"
+2014-09-11 21:12:29		  irc.server_default.ssl_verify = on
+2014-09-11 21:12:29		  irc.server_default.username = "mhartington"  (default: "")
+2014-09-11 21:12:29		[server] (irc.conf)
+2014-09-11 21:12:29		  irc.server.freenode.addresses = "chat.freenode.net/6667"  (default: (undefined))
+2014-09-11 21:12:29		  irc.server.freenode.anti_flood_prio_high
+2014-09-11 21:12:29		  irc.server.freenode.anti_flood_prio_low
+2014-09-11 21:12:29		  irc.server.freenode.autoconnect
+2014-09-11 21:12:29		  irc.server.freenode.autojoin
+2014-09-11 21:12:29		  irc.server.freenode.autoreconnect
+2014-09-11 21:12:29		  irc.server.freenode.autoreconnect_delay
+2014-09-11 21:12:29		  irc.server.freenode.autorejoin
+2014-09-11 21:12:29		  irc.server.freenode.autorejoin_delay
+2014-09-11 21:12:29		  irc.server.freenode.away_check
+2014-09-11 21:12:29		  irc.server.freenode.away_check_max_nicks
+2014-09-11 21:12:29		  irc.server.freenode.capabilities
+2014-09-11 21:12:29		  irc.server.freenode.command
+2014-09-11 21:12:29		  irc.server.freenode.command_delay
+2014-09-11 21:12:29		  irc.server.freenode.connection_timeout
+2014-09-11 21:12:29		  irc.server.freenode.default_msg_kick
+2014-09-11 21:12:29		  irc.server.freenode.default_msg_part
+2014-09-11 21:12:29		  irc.server.freenode.default_msg_quit
+2014-09-11 21:12:29		  irc.server.freenode.ipv6
+2014-09-11 21:12:29		  irc.server.freenode.local_hostname
+2014-09-11 21:12:29		  irc.server.freenode.nicks
+2014-09-11 21:12:29		  irc.server.freenode.notify
+2014-09-11 21:12:29		  irc.server.freenode.password
+2014-09-11 21:12:29		  irc.server.freenode.proxy
+2014-09-11 21:12:29		  irc.server.freenode.realname
+2014-09-11 21:12:29		  irc.server.freenode.sasl_mechanism
+2014-09-11 21:12:29		  irc.server.freenode.sasl_password
+2014-09-11 21:12:29		  irc.server.freenode.sasl_timeout
+2014-09-11 21:12:29		  irc.server.freenode.sasl_username
+2014-09-11 21:12:29		  irc.server.freenode.ssl
+2014-09-11 21:12:29		  irc.server.freenode.ssl_cert
+2014-09-11 21:12:29		  irc.server.freenode.ssl_dhkey_size
+2014-09-11 21:12:29		  irc.server.freenode.ssl_fingerprint
+2014-09-11 21:12:29		  irc.server.freenode.ssl_priorities
+2014-09-11 21:12:29		  irc.server.freenode.ssl_verify
+2014-09-11 21:12:29		  irc.server.freenode.username
+2014-09-11 21:12:29		157 options (matching with "irc.*")
+2014-09-11 21:13:38	=!=	Option "chat.freenode.net" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-09-11 21:13:50	=!=	Option "chat.free" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-09-11 21:13:55	=!=	Option "chat.freenode" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-09-11 21:13:58	=!=	Option "chat.freenode.*" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-09-11 21:14:08		[look] (irc.conf)
+2014-09-11 21:14:08		  irc.look.buffer_switch_autojoin = on
+2014-09-11 21:14:08		  irc.look.buffer_switch_join = on
+2014-09-11 21:14:08		  irc.look.color_nicks_in_names = off
+2014-09-11 21:14:08		  irc.look.color_nicks_in_nicklist = off
+2014-09-11 21:14:08		  irc.look.color_nicks_in_server_messages = on
+2014-09-11 21:14:08		  irc.look.color_pv_nick_like_channel = on
+2014-09-11 21:14:08		  irc.look.ctcp_time_format = "%a, %d %b %Y %T %z"
+2014-09-11 21:14:08		  irc.look.display_away = local
+2014-09-11 21:14:08		  irc.look.display_ctcp_blocked = on
+2014-09-11 21:14:08		  irc.look.display_ctcp_reply = on
+2014-09-11 21:14:08		  irc.look.display_ctcp_unknown = on
+2014-09-11 21:14:08		  irc.look.display_host_join = on
+2014-09-11 21:14:08		  irc.look.display_host_join_local = on
+2014-09-11 21:14:08		  irc.look.display_host_quit = on
+2014-09-11 21:14:08		  irc.look.display_join_message = "329,332,333,366"
+2014-09-11 21:14:08		  irc.look.display_old_topic = on
+2014-09-11 21:14:08		  irc.look.display_pv_away_once = on
+2014-09-11 21:14:08		  irc.look.display_pv_back = on
+2014-09-11 21:14:08		  irc.look.highlight_channel = "$nick"
+2014-09-11 21:14:08		  irc.look.highlight_pv = "$nick"
+2014-09-11 21:14:08		  irc.look.highlight_server = "$nick"
+2014-09-11 21:14:08		  irc.look.highlight_tags_restrict = "irc_privmsg,irc_notice"
+2014-09-11 21:14:08		  irc.look.item_away_message = on
+2014-09-11 21:14:08		  irc.look.item_channel_modes_hide_args = "k"
+2014-09-11 21:14:08		  irc.look.item_display_server = buffer_plugin
+2014-09-11 21:14:08		  irc.look.item_nick_modes = on
+2014-09-11 21:14:08		  irc.look.item_nick_prefix = on
+2014-09-11 21:14:08		  irc.look.join_auto_add_chantype = off
+2014-09-11 21:14:08		  irc.look.msgbuffer_fallback = current
+2014-09-11 21:14:08		  irc.look.new_channel_position = none
+2014-09-11 21:14:08		  irc.look.new_pv_position = none
+2014-09-11 21:14:08		  irc.look.nick_color_force = ""
+2014-09-11 21:14:08		  irc.look.nick_color_hash = sum
+2014-09-11 21:14:08		  irc.look.nick_color_stop_chars = "_|["
+2014-09-11 21:14:08		  irc.look.nick_completion_smart = speakers
+2014-09-11 21:14:08		  irc.look.nick_mode = prefix
+2014-09-11 21:14:08		  irc.look.nick_mode_empty = off
+2014-09-11 21:14:08		  irc.look.nicks_hide_password = "nickserv"
+2014-09-11 21:14:08		  irc.look.notice_as_pv = auto
+2014-09-11 21:14:08		  irc.look.notice_welcome_redirect = on
+2014-09-11 21:14:08		  irc.look.notice_welcome_tags = ""
+2014-09-11 21:14:08		  irc.look.notify_tags_ison = "notify_message"
+2014-09-11 21:14:08		  irc.look.notify_tags_whois = "notify_message"
+2014-09-11 21:14:08		  irc.look.part_closes_buffer = off
+2014-09-11 21:14:08		  irc.look.pv_buffer = independent
+2014-09-11 21:14:08		  irc.look.pv_tags = "notify_private"
+2014-09-11 21:14:08		  irc.look.raw_messages = 256
+2014-09-11 21:14:08		  irc.look.server_buffer = merge_with_core
+2014-09-11 21:14:08		  irc.look.smart_filter = on
+2014-09-11 21:14:08		  irc.look.smart_filter_delay = 5
+2014-09-11 21:14:08		  irc.look.smart_filter_join = on
+2014-09-11 21:14:08		  irc.look.smart_filter_join_unmask = 30
+2014-09-11 21:14:08		  irc.look.smart_filter_mode = "+"
+2014-09-11 21:14:08		  irc.look.smart_filter_nick = on
+2014-09-11 21:14:08		  irc.look.smart_filter_quit = on
+2014-09-11 21:14:08		  irc.look.topic_strip_colors = off
+2014-09-11 21:14:08		[color] (irc.conf)
+2014-09-11 21:14:08		  irc.color.input_nick = lightcyan
+2014-09-11 21:14:08		  irc.color.item_away = yellow
+2014-09-11 21:14:08		  irc.color.item_channel_modes = default
+2014-09-11 21:14:08		  irc.color.item_lag_counting = default
+2014-09-11 21:14:08		  irc.color.item_lag_finished = yellow
+2014-09-11 21:14:08		  irc.color.item_nick_modes = default
+2014-09-11 21:14:08		  irc.color.message_join = green
+2014-09-11 21:14:08		  irc.color.message_quit = red
+2014-09-11 21:14:08		  irc.color.mirc_remap = "1,-1:darkgray"
+2014-09-11 21:14:08		  irc.color.nick_prefixes = "q:lightred;a:lightcyan;o:lightgreen;h:lightmagenta;v:yellow;*:lightblue"
+2014-09-11 21:14:08		  irc.color.notice = green
+2014-09-11 21:14:08		  irc.color.reason_quit = default
+2014-09-11 21:14:08		  irc.color.topic_new = white
+2014-09-11 21:14:08		  irc.color.topic_old = default
+2014-09-11 21:14:08		[network] (irc.conf)
+2014-09-11 21:14:08		  irc.network.alternate_nick = on
+2014-09-11 21:14:08		  irc.network.autoreconnect_delay_growing = 2
+2014-09-11 21:14:08		  irc.network.autoreconnect_delay_max = 600
+2014-09-11 21:14:08		  irc.network.ban_mask_default = "*!$ident@$host"
+2014-09-11 21:14:08		  irc.network.colors_receive = on
+2014-09-11 21:14:08		  irc.network.colors_send = on
+2014-09-11 21:14:08		  irc.network.lag_check = 60
+2014-09-11 21:14:08		  irc.network.lag_max = 1800
+2014-09-11 21:14:08		  irc.network.lag_min_show = 500
+2014-09-11 21:14:08		  irc.network.lag_reconnect = 0
+2014-09-11 21:14:08		  irc.network.lag_refresh_interval = 1
+2014-09-11 21:14:08		  irc.network.notify_check_ison = 1
+2014-09-11 21:14:08		  irc.network.notify_check_whois = 5
+2014-09-11 21:14:08		  irc.network.send_unknown_commands = off
+2014-09-11 21:14:08		  irc.network.whois_double_nick = off
+2014-09-11 21:14:08		[server_default] (irc.conf)
+2014-09-11 21:14:08		  irc.server_default.addresses = ""
+2014-09-11 21:14:08		  irc.server_default.anti_flood_prio_high = 2
+2014-09-11 21:14:08		  irc.server_default.anti_flood_prio_low = 2
+2014-09-11 21:14:08		  irc.server_default.autoconnect = off
+2014-09-11 21:14:08		  irc.server_default.autojoin = ""
+2014-09-11 21:14:08		  irc.server_default.autoreconnect = on
+2014-09-11 21:14:08		  irc.server_default.autoreconnect_delay = 10
+2014-09-11 21:14:08		  irc.server_default.autorejoin = off
+2014-09-11 21:14:08		  irc.server_default.autorejoin_delay = 30
+2014-09-11 21:14:08		  irc.server_default.away_check = 0
+2014-09-11 21:14:08		  irc.server_default.away_check_max_nicks = 25
+2014-09-11 21:14:08		  irc.server_default.capabilities = ""
+2014-09-11 21:14:08		  irc.server_default.command = ""
+2014-09-11 21:14:08		  irc.server_default.command_delay = 0
+2014-09-11 21:14:08		  irc.server_default.connection_timeout = 60
+2014-09-11 21:14:08		  irc.server_default.default_msg_kick = ""
+2014-09-11 21:14:08		  irc.server_default.default_msg_part = "WeeChat %v"
+2014-09-11 21:14:08		  irc.server_default.default_msg_quit = "WeeChat %v"
+2014-09-11 21:14:08		  irc.server_default.ipv6 = on
+2014-09-11 21:14:08		  irc.server_default.local_hostname = ""
+2014-09-11 21:14:08		  irc.server_default.nicks = "mhartington,mhartington1,mhartington2,mhartington3,mhartington4"  (default: "")
+2014-09-11 21:14:08		  irc.server_default.notify = ""
+2014-09-11 21:14:08		  irc.server_default.password = ""
+2014-09-11 21:14:08		  irc.server_default.proxy = ""
+2014-09-11 21:14:08		  irc.server_default.realname = ""
+2014-09-11 21:14:08		  irc.server_default.sasl_mechanism = plain
+2014-09-11 21:14:08		  irc.server_default.sasl_password = ""
+2014-09-11 21:14:08		  irc.server_default.sasl_timeout = 15
+2014-09-11 21:14:08		  irc.server_default.sasl_username = ""
+2014-09-11 21:14:08		  irc.server_default.ssl = off
+2014-09-11 21:14:08		  irc.server_default.ssl_cert = ""
+2014-09-11 21:14:08		  irc.server_default.ssl_dhkey_size = 2048
+2014-09-11 21:14:08		  irc.server_default.ssl_fingerprint = ""
+2014-09-11 21:14:08		  irc.server_default.ssl_priorities = "NORMAL"
+2014-09-11 21:14:08		  irc.server_default.ssl_verify = on
+2014-09-11 21:14:08		  irc.server_default.username = "mhartington"  (default: "")
+2014-09-11 21:14:08		[server] (irc.conf)
+2014-09-11 21:14:08		  irc.server.freenode.addresses = "chat.freenode.net/6667"  (default: (undefined))
+2014-09-11 21:14:08		  irc.server.freenode.anti_flood_prio_high
+2014-09-11 21:14:08		  irc.server.freenode.anti_flood_prio_low
+2014-09-11 21:14:08		  irc.server.freenode.autoconnect
+2014-09-11 21:14:08		  irc.server.freenode.autojoin
+2014-09-11 21:14:08		  irc.server.freenode.autoreconnect
+2014-09-11 21:14:08		  irc.server.freenode.autoreconnect_delay
+2014-09-11 21:14:08		  irc.server.freenode.autorejoin
+2014-09-11 21:14:08		  irc.server.freenode.autorejoin_delay
+2014-09-11 21:14:08		  irc.server.freenode.away_check
+2014-09-11 21:14:08		  irc.server.freenode.away_check_max_nicks
+2014-09-11 21:14:08		  irc.server.freenode.capabilities
+2014-09-11 21:14:08		  irc.server.freenode.command
+2014-09-11 21:14:08		  irc.server.freenode.command_delay
+2014-09-11 21:14:08		  irc.server.freenode.connection_timeout
+2014-09-11 21:14:08		  irc.server.freenode.default_msg_kick
+2014-09-11 21:14:08		  irc.server.freenode.default_msg_part
+2014-09-11 21:14:08		  irc.server.freenode.default_msg_quit
+2014-09-11 21:14:08		  irc.server.freenode.ipv6
+2014-09-11 21:14:08		  irc.server.freenode.local_hostname
+2014-09-11 21:14:08		  irc.server.freenode.nicks
+2014-09-11 21:14:08		  irc.server.freenode.notify
+2014-09-11 21:14:08		  irc.server.freenode.password
+2014-09-11 21:14:08		  irc.server.freenode.proxy
+2014-09-11 21:14:08		  irc.server.freenode.realname
+2014-09-11 21:14:08		  irc.server.freenode.sasl_mechanism
+2014-09-11 21:14:08		  irc.server.freenode.sasl_password
+2014-09-11 21:14:08		  irc.server.freenode.sasl_timeout
+2014-09-11 21:14:08		  irc.server.freenode.sasl_username
+2014-09-11 21:14:08		  irc.server.freenode.ssl
+2014-09-11 21:14:08		  irc.server.freenode.ssl_cert
+2014-09-11 21:14:08		  irc.server.freenode.ssl_dhkey_size
+2014-09-11 21:14:08		  irc.server.freenode.ssl_fingerprint
+2014-09-11 21:14:08		  irc.server.freenode.ssl_priorities
+2014-09-11 21:14:08		  irc.server.freenode.ssl_verify
+2014-09-11 21:14:08		  irc.server.freenode.username
+2014-09-11 21:14:08		157 options (matching with "irc.*")
+2014-09-11 21:17:04		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-09-11 21:20:07		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-09-11 21:20:20		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-09-11 21:37:19		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-09-11 21:37:35		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-09-13 12:26:10		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-09-13 12:26:15	=!=	Error: unknown command "/loing" (type /help for help)
+2014-09-13 12:26:19	=!=	Error: unknown command "/login" (type /help for help)
+2014-09-13 12:26:34		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-09-13 12:26:43	=!=	irc: command "join" must be executed on connected irc server
+2014-10-07 12:43:44		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-10-07 12:44:06	=!=	Error: unknown command "/connct" (type /help for help)
+2014-10-07 12:44:47	=!=	You can not write text in this buffer
+2014-10-07 12:44:55		[core]
+2014-10-07 12:44:55		  away     color    debug    help     key      mute     proxy    repeat   set      uptime   window 
+2014-10-07 12:44:55		  bar      command  eval     history  layout   plugin   quit     save     unset    version
+2014-10-07 12:44:55		  buffer   cursor   filter   input    mouse    print    reload   secure   upgrade  wait   
+2014-10-07 12:44:55		[alias]
+2014-10-07 12:44:55		  AAWAY    AMSG     BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    W        WII    
+2014-10-07 12:44:55		  alias    ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        unalias  WC       WW     
+2014-10-07 12:44:55		  AME      BEEP     CHAT     EXIT     K        M        N        SAY      UB       V        WI     
+2014-10-07 12:44:55		[charset]
+2014-10-07 12:44:55		  charset
+2014-10-07 12:44:55		[exec]
+2014-10-07 12:44:55		  exec
+2014-10-07 12:44:55		[irc]
+2014-10-07 12:44:55		  admin       cycle       halfop      kickban     mode        op          quote       sanick      squit       unquiet     who       
+2014-10-07 12:44:55		  allchan     dcc         ignore      kill        motd        oper        reconnect   sapart      stats       userhost    whois     
+2014-10-07 12:44:55		  allpv       dehalfop    info        links       msg         part        rehash      saquit      summon      users       whowas    
+2014-10-07 12:44:55		  allserv     deop        invite      list        names       ping        remove      server      time        version   
+2014-10-07 12:44:55		  ban         devoice     ison        lusers      nick        pong        restart     service     topic       voice     
+2014-10-07 12:44:55		  connect     die         join        map         notice      query       sajoin      servlist    trace       wallchops 
+2014-10-07 12:44:55		  ctcp        disconnect  kick        me          notify      quiet       samode      squery      unban       wallops   
+2014-10-07 12:44:55		[logger]
+2014-10-07 12:44:55		  logger
+2014-10-07 12:44:55		[relay]
+2014-10-07 12:44:55		  relay
+2014-10-07 12:44:55		[script]
+2014-10-07 12:44:55		  script
+2014-10-07 12:44:55		[tcl]
+2014-10-07 12:44:55		  tcl
+2014-10-07 12:44:55		[trigger]
+2014-10-07 12:44:55		  trigger
+2014-10-07 12:44:55		[xfer]
+2014-10-07 12:44:55		  me  xfer
+2014-10-07 12:45:08	=!=	Error: unknown command "/irc" (type /help for help)
+2014-10-07 12:45:11	=!=	Error with command "/connect" (help on command: /help connect)
+2014-10-07 12:45:27		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-10-07 13:08:56		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-10-07 13:09:07		Option changed: weechat.look.mouse = on  (default: off)
+2014-10-07 13:09:28		Mouse enabled
+2014-10-07 13:10:05		Plugins loaded:
+2014-10-07 13:10:05		  alias: Alias commands
+2014-10-07 13:10:05		  charset: Charset conversions
+2014-10-07 13:10:05		  exec: Execution of external commands in WeeChat
+2014-10-07 13:10:05		  fifo: FIFO pipe for remote control
+2014-10-07 13:10:05		  irc: IRC (Internet Relay Chat) protocol
+2014-10-07 13:10:05		  logger: Log buffers to files
+2014-10-07 13:10:05		  relay: Relay WeeChat data to remote application (irc/weechat protocols)
+2014-10-07 13:10:05		  script: Scripts manager
+2014-10-07 13:10:05		  tcl: Support of tcl scripts
+2014-10-07 13:10:05		  trigger: Text replacement and command execution on events triggered by WeeChat/plugins
+2014-10-07 13:10:05		  xfer: DCC file transfer and direct chat
+2014-10-07 13:11:00	=!=	Error with command "/plugin script" (help on command: /help plugin)
+2014-11-11 23:22:31		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-11-11 23:22:39	=!=	You can not write text in this buffer
+2014-11-11 23:22:44	=!=	You can not write text in this buffer
+2014-11-11 23:22:51	=!=	You can not write text in this buffer
+2014-11-11 23:22:54	=!=	You can not write text in this buffer
+2014-11-15 08:16:17		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-11-15 08:16:27	=!=	Error with command "/connect" (help on command: /help connect)
+2014-11-15 08:16:36		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-15 08:20:00		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-11-15 08:20:11		script: downloading list of scripts...
+2014-11-15 08:20:12		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 08:24:22		script: script "snotify.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:24:26	=!=	Error: unknown command "/i" (type /help for help)
+2014-11-15 08:24:52	=!=	Error: unknown command "/scripts" (type /help for help)
+2014-11-15 08:25:33		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 08:25:33		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-11-15 08:27:37	=!=	Error: unknown command "/scripts" (type /help for help)
+2014-11-15 08:31:36		script: script "vimode.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:32:06		script: script "tinyurl.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:32:40		script: script "snotify.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:33:24		script: script "snotify.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:36:35		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 08:36:35		Plugins loaded: alias, charset, exec, fifo, irc, logger, relay, script, tcl, trigger, xfer
+2014-11-15 08:38:59	=!=	No help available, "scripts" is not a command or an option
+2014-11-15 08:39:01		[script]  /script  list [-o|-i]
+2014-11-15 08:39:01		                   search <text>
+2014-11-15 08:39:01		                   show <script>
+2014-11-15 08:39:01		                   load|unload|reload <script> [<script>...]
+2014-11-15 08:39:01		                   autoload|noautoload|toggleautoload <script> [<script>...]
+2014-11-15 08:39:01		                   install|remove|installremove|hold [-q] <script> [<script>...]
+2014-11-15 08:39:01		                   upgrade
+2014-11-15 08:39:01		                   update
+2014-11-15 08:39:01		WeeChat scripts manager
+2014-11-15 08:39:01		          list: list loaded scripts (all languages)
+2014-11-15 08:39:01		            -o: send list of loaded scripts to buffer
+2014-11-15 08:39:01		            -i: copy list of loaded scripts in command line (for sending to buffer)
+2014-11-15 08:39:01		        search: search scripts by tags or text and display result on scripts buffer
+2014-11-15 08:39:01		          show: show detailed info about a script
+2014-11-15 08:39:01		          load: load script(s)
+2014-11-15 08:39:01		        unload: unload script(s)
+2014-11-15 08:39:01		        reload: reload script(s)
+2014-11-15 08:39:01		      autoload: autoload the script
+2014-11-15 08:39:01		    noautoload: do not autoload the script
+2014-11-15 08:39:01		toggleautoload: toggle autoload
+2014-11-15 08:39:01		       install: install/upgrade script(s)
+2014-11-15 08:39:01		        remove: remove script(s)
+2014-11-15 08:39:01		 installremove: install or remove script(s), depending on current state
+2014-11-15 08:39:01		          hold: hold/unhold script(s) (a script held will not be upgraded any more and cannot be removed)
+2014-11-15 08:39:01		            -q: quiet mode: do not display messages
+2014-11-15 08:39:01		       upgrade: upgrade all installed scripts which are obsolete (new version available)
+2014-11-15 08:39:01		        update: update local scripts cache
+2014-11-15 08:39:01		Without argument, this command opens a buffer with list of scripts.
+2014-11-15 08:39:01		On script buffer, the possible status for each script are:
+2014-11-15 08:39:01		  * i a H r N
+2014-11-15 08:39:01		  | | | | | |
+2014-11-15 08:39:01		  | | | | | obsolete (new version available)
+2014-11-15 08:39:01		  | | | | running (loaded)
+2014-11-15 08:39:01		  | | | held
+2014-11-15 08:39:01		  | | autoloaded
+2014-11-15 08:39:01		  | installed
+2014-11-15 08:39:01		  popular script
+2014-11-15 08:39:01		Keys on script buffer:
+2014-11-15 08:39:01		  alt+i  install script
+2014-11-15 08:39:01		  alt+r  remove script
+2014-11-15 08:39:01		  alt+l  load script
+2014-11-15 08:39:01		  alt+L  reload script
+2014-11-15 08:39:01		  alt+u  unload script
+2014-11-15 08:39:01		  alt+A  autoload script
+2014-11-15 08:39:01		  alt+h  (un)hold script
+2014-11-15 08:39:01		  alt+v  view script
+2014-11-15 08:39:01		Input allowed on script buffer:
+2014-11-15 08:39:01		  i/r/l/L/u/h  action on script (same as keys above)
+2014-11-15 08:39:01		  q            close buffer
+2014-11-15 08:39:01		  $            refresh buffer
+2014-11-15 08:39:01		  s:x,y        sort buffer using keys x and y (see /help script.look.sort)
+2014-11-15 08:39:01		  s:           reset sort (use default sort)
+2014-11-15 08:39:01		  word(s)      filter scripts: search word(s) in scripts (description, tags, ...)
+2014-11-15 08:39:01		  *            remove filter
+2014-11-15 08:39:01		Mouse actions on script buffer:
+2014-11-15 08:39:01		  wheel         scroll list
+2014-11-15 08:39:01		  left button   select script
+2014-11-15 08:39:01		  right button  install/remove script
+2014-11-15 08:39:01		Examples:
+2014-11-15 08:39:01		  /script search url
+2014-11-15 08:39:01		  /script install iset.pl buffers.pl
+2014-11-15 08:39:01		  /script remove iset.pl
+2014-11-15 08:39:01		  /script hold urlserver.py
+2014-11-15 08:39:01		  /script reload urlserver
+2014-11-15 08:39:01		  /script upgrade
+2014-11-15 08:40:06		script: script "vimode.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:44:41	=!=	You can not write text in this buffer
+2014-11-15 08:45:04	=!=	You can not write text in this buffer
+2014-11-15 08:46:22		script: script "vimode.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:46:34		script: script "python" not found
+2014-11-15 08:47:11		script: script "snotify.p" not found
+2014-11-15 08:47:13		script: script "snotify.py" can not be installed because plugin "python" is not loaded
+2014-11-15 08:47:40	=!=	You can not write text in this buffer
+2014-11-15 08:48:42		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 08:48:42		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 08:48:48		script: script "brew" not found
+2014-11-15 08:48:48		script: script "install" not found
+2014-11-15 08:48:48		script: script "weechat" not found
+2014-11-15 08:48:48		script: script "--with-python" not found
+2014-11-15 08:49:03		python: loading script "/Users/mhartington/.weechat/python/snotify.py"
+2014-11-15 08:49:03		python: registered script "snotify", version 0.1.3 (Play a soundfile for messages in choosable channels or queries)
+2014-11-15 08:49:12		python: loading script "/Users/mhartington/.weechat/python/vimode.py"
+2014-11-15 08:49:12		python: registered script "vimode", version 0.4 (Add vi/vim-like modes and keybindings to WeeChat.)
+2014-11-15 08:49:12		[vimode.py] Problematic keybindings detected:
+2014-11-15 08:49:12		[vimode.py]     meta-jmeta-f -> /buffer -
+2014-11-15 08:49:12		[vimode.py]     meta-jmeta-l -> /buffer +
+2014-11-15 08:49:12		[vimode.py]     meta-jmeta-r -> /server raw
+2014-11-15 08:49:12		[vimode.py]     meta-jmeta-s -> /server jump
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-meta2-A -> /window up
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-meta2-B -> /window down
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-meta2-C -> /window right
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-meta2-D -> /window left
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta2-1;3A -> /window up
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta2-1;3B -> /window down
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta2-1;3C -> /window right
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta2-1;3D -> /window left
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-b -> /window balance
+2014-11-15 08:49:12		[vimode.py]     meta-wmeta-s -> /window swap
+2014-11-15 08:49:12		[vimode.py] These keybindings may conflict with vimode.
+2014-11-15 08:49:12		[vimode.py] You can remove problematic key bindings and add recommended ones by using /vimode bind_keys, or only list them with /vimode bind_keys --list
+2014-11-15 08:49:12		[vimode.py] For help, see: https://github.com/GermainZ/weechat-vimode/blob/master/FAQ#problematic-key-bindings.md
+2014-11-15 08:49:12		[vimode.py] To force disable warnings, you can set plugins.var.python.vimode.no_warn to 'on'
+2014-11-15 08:49:35	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-15 08:49:41	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-15 08:49:43	=!=	You can not write text in this buffer
+2014-11-15 08:49:45	=!=	You can not write text in this buffer
+2014-11-15 08:49:46	=!=	Error: unknown command "/clear" (type /help for help)
+2014-11-15 08:49:50	=!=	Error: WeeChat main buffer can't be closed
+2014-11-15 08:49:54		python: scripts unloaded
+2014-11-15 08:49:54		[vimode.py] Problematic keybindings detected:
+2014-11-15 08:49:54		[vimode.py]     meta-jmeta-f -> /buffer -
+2014-11-15 08:49:54		[vimode.py]     meta-jmeta-l -> /buffer +
+2014-11-15 08:49:54		[vimode.py]     meta-jmeta-r -> /server raw
+2014-11-15 08:49:54		[vimode.py]     meta-jmeta-s -> /server jump
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-meta2-A -> /window up
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-meta2-B -> /window down
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-meta2-C -> /window right
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-meta2-D -> /window left
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta2-1;3A -> /window up
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta2-1;3B -> /window down
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta2-1;3C -> /window right
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta2-1;3D -> /window left
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-b -> /window balance
+2014-11-15 08:49:54		[vimode.py]     meta-wmeta-s -> /window swap
+2014-11-15 08:49:54		[vimode.py] These keybindings may conflict with vimode.
+2014-11-15 08:49:54		[vimode.py] You can remove problematic key bindings and add recommended ones by using /vimode bind_keys, or only list them with /vimode bind_keys --list
+2014-11-15 08:49:54		[vimode.py] For help, see: https://github.com/GermainZ/weechat-vimode/blob/master/FAQ#problematic-key-bindings.md
+2014-11-15 08:49:54		[vimode.py] To force disable warnings, you can set plugins.var.python.vimode.no_warn to 'on'
+2014-11-15 08:49:54		python scripts loaded: snotify, vimode
+2014-11-15 08:49:54		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 08:49:54		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 08:50:07	=!=	Error: unknown command "/scripts" (type /help for help)
+2014-11-15 08:50:14	=!=	Error with command "/script uninstall vimode.py" (help on command: /help script)
+2014-11-15 08:50:20		python: unloading script "vimode"
+2014-11-15 08:50:20		python: script removed: /Users/mhartington/.weechat/python/autoload/vimode.py
+2014-11-15 08:50:20		python: script removed: /Users/mhartington/.weechat/python/vimode.py
+2014-11-15 08:50:33	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-15 08:50:37	=!=	Error: unknown command "/irc" (type /help for help)
+2014-11-15 08:50:40		[core]
+2014-11-15 08:50:40		  away     color    debug    help     key      mute     proxy    repeat   set      uptime   window 
+2014-11-15 08:50:40		  bar      command  eval     history  layout   plugin   quit     save     unset    version
+2014-11-15 08:50:40		  buffer   cursor   filter   input    mouse    print    reload   secure   upgrade  wait   
+2014-11-15 08:50:40		[alias]
+2014-11-15 08:50:40		  AAWAY    AMSG     BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    W        WII    
+2014-11-15 08:50:40		  alias    ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        unalias  WC       WW     
+2014-11-15 08:50:40		  AME      BEEP     CHAT     EXIT     K        M        N        SAY      UB       V        WI     
+2014-11-15 08:50:40		[charset]
+2014-11-15 08:50:40		  charset
+2014-11-15 08:50:40		[exec]
+2014-11-15 08:50:40		  exec
+2014-11-15 08:50:40		[irc]
+2014-11-15 08:50:40		  admin       dcc         info        list        nick        query       samode      squit       userhost    whowas    
+2014-11-15 08:50:40		  allchan     dehalfop    invite      lusers      notice      quiet       sanick      stats       users     
+2014-11-15 08:50:40		  allpv       deop        ison        map         notify      quote       sapart      summon      version   
+2014-11-15 08:50:40		  allserv     devoice     join        me          op          reconnect   saquit      time        voice     
+2014-11-15 08:50:40		  ban         die         kick        mode        oper        rehash      server      topic       wallchops 
+2014-11-15 08:50:40		  connect     disconnect  kickban     motd        part        remove      service     trace       wallops   
+2014-11-15 08:50:40		  ctcp        halfop      kill        msg         ping        restart     servlist    unban       who       
+2014-11-15 08:50:40		  cycle       ignore      links       names       pong        sajoin      squery      unquiet     whois     
+2014-11-15 08:50:40		[logger]
+2014-11-15 08:50:40		  logger
+2014-11-15 08:50:40		[python]
+2014-11-15 08:50:40		  python  snotify
+2014-11-15 08:50:40		[relay]
+2014-11-15 08:50:40		  relay
+2014-11-15 08:50:40		[script]
+2014-11-15 08:50:40		  script
+2014-11-15 08:50:40		[tcl]
+2014-11-15 08:50:40		  tcl
+2014-11-15 08:50:40		[trigger]
+2014-11-15 08:50:40		  trigger
+2014-11-15 08:50:40		[xfer]
+2014-11-15 08:50:40		  me  xfer
+2014-11-15 08:51:03	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-15 08:51:15		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-15 09:49:35	=!=	Error: WeeChat main buffer can't be closed
+2014-11-15 09:49:38		python: scripts unloaded
+2014-11-15 09:52:29		python scripts loaded: snotify
+2014-11-15 09:52:29		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 09:52:29		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 09:53:48		python: loading script "/Users/mhartington/.weechat/python/notification_center.py"
+2014-11-15 09:53:48		python: stdout/stderr: Traceback (most recent call last):
+2014-11-15 09:53:48		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/notification_center.py", line 7, in <module>
+2014-11-15 09:53:48		python: stdout/stderr:     from pync import Notifier
+2014-11-15 09:53:48		python: stdout/stderr: ImportError: No module named pync
+2014-11-15 09:53:48	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/notification_center.py"
+2014-11-15 09:54:19	=!=	Error: WeeChat main buffer can't be closed
+2014-11-15 09:54:21		python: scripts unloaded
+2014-11-15 09:54:41		python scripts loaded: notification_center, snotify
+2014-11-15 09:54:41		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 09:54:41		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 09:54:48		script: script "notification_center.py" is already installed and up-to-date
+2014-11-15 09:55:00		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-15 10:25:32		python: scripts unloaded
+2014-11-15 15:26:14		python scripts loaded: notification_center, snotify
+2014-11-15 15:26:14		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 15:26:14		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 15:26:27		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-15 16:18:09		python: scripts unloaded
+2014-11-15 16:58:00		python scripts loaded: notification_center, snotify
+2014-11-15 16:58:00		script: 279 scripts for WeeChat 1.0.1
+2014-11-15 16:58:00		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-15 16:58:08		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-15 17:20:14		python: scripts unloaded
+2014-11-16 12:11:12		python scripts loaded: notification_center, snotify
+2014-11-16 12:11:12		script: downloading list of scripts...
+2014-11-16 12:11:12		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-16 12:11:12		script: 279 scripts for WeeChat 1.0.1
+2014-11-16 12:11:25	=!=	You can not write text in this buffer
+2014-11-16 12:11:34		python: scripts unloaded
+2014-11-16 12:11:37		python scripts loaded: notification_center, snotify
+2014-11-16 12:11:37		script: 279 scripts for WeeChat 1.0.1
+2014-11-16 12:11:37		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-16 12:11:46		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-16 13:17:19		python: scripts unloaded
+2014-11-16 13:50:21		python scripts loaded: notification_center, snotify
+2014-11-16 13:50:21		script: 279 scripts for WeeChat 1.0.1
+2014-11-16 13:50:21		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-16 13:50:28		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-16 13:59:40		python: scripts unloaded
+2014-11-16 13:59:52		python scripts loaded: notification_center, snotify
+2014-11-16 13:59:52		script: 279 scripts for WeeChat 1.0.1
+2014-11-16 13:59:52		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-16 14:02:39		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-16 16:00:50	=!=	Error: unknown command "/closde" (type /help for help)
+2014-11-16 16:00:55		python: scripts unloaded
+2014-11-17 09:36:06		python scripts loaded: notification_center, snotify
+2014-11-17 09:36:06		script: 279 scripts for WeeChat 1.0.1
+2014-11-17 09:36:06		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-17 09:36:16	=!=	Error: unknown command "/conect" (type /help for help)
+2014-11-17 09:36:27		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-17 18:12:37		python: scripts unloaded
+2014-11-17 22:02:10		python scripts loaded: notification_center, snotify
+2014-11-17 22:02:10		script: downloading list of scripts...
+2014-11-17 22:02:10		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-17 22:02:11		script: 279 scripts for WeeChat 1.0.1
+2014-11-17 22:02:18		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-17 22:20:46		python: scripts unloaded
+2014-11-18 09:40:42		python scripts loaded: notification_center, snotify
+2014-11-18 09:40:42		script: 279 scripts for WeeChat 1.0.1
+2014-11-18 09:40:42		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-18 09:45:09		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-18 19:10:30	=!=	irc: command "join" must be executed on connected irc server
+2014-11-18 23:35:44		python: scripts unloaded
+2014-11-19 09:17:56		python scripts loaded: notification_center, snotify
+2014-11-19 09:17:56		script: downloading list of scripts...
+2014-11-19 09:17:56		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-19 09:17:57		script: 279 scripts for WeeChat 1.0.1
+2014-11-19 09:18:06	=!=	Error: unknown command "/scripts" (type /help for help)
+2014-11-19 09:19:02		python: loading script "/Users/mhartington/.weechat/python/apply_corrections.py"
+2014-11-19 09:19:02		python: registered script "apply_corrections", version 1.2 (When a correction (ex: s/typo/replacement) is sent, print the user's previous message(s) with the corrected text instead.)
+2014-11-19 09:22:39		script: script "mplex.pl" can not be installed because plugin "perl" is not loaded
+2014-11-19 09:23:07		script: script "pastebuf.lua" can not be installed because plugin "lua" is not loaded
+2014-11-19 09:24:07	=!=	Error with command "/connect" (help on command: /help connect)
+2014-11-19 09:24:13		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-19 16:43:05		python: scripts unloaded
+2014-11-20 09:19:18		python scripts loaded: apply_corrections, notification_center, snotify
+2014-11-20 09:19:18		script: downloading list of scripts...
+2014-11-20 09:19:18		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-20 09:19:19		script: 279 scripts for WeeChat 1.0.1
+2014-11-20 09:19:25		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-20 16:50:43		python: scripts unloaded
+2014-11-21 10:23:33		python scripts loaded: apply_corrections, notification_center, snotify
+2014-11-21 10:23:33		script: downloading list of scripts...
+2014-11-21 10:23:33		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-21 10:23:34		script: 279 scripts for WeeChat 1.0.1
+2014-11-21 10:24:56		irc: server irc.freenode.net created (temporary server, NOT SAVED!)
+2014-11-21 10:46:56		python: scripts unloaded
+2014-11-21 10:46:58		python scripts loaded: apply_corrections, notification_center, snotify
+2014-11-21 10:46:58		script: 279 scripts for WeeChat 1.0.1
+2014-11-21 10:46:58		Plugins loaded: alias, charset, exec, fifo, irc, logger, python, relay, script, tcl, trigger, xfer
+2014-11-21 10:48:25	=!=	Error: unknown command "/buffy" (type /help for help)
+2014-11-21 10:48:27		Buffers list:
+2014-11-21 10:48:27		  [1] core.weechat (notify: all)
+2014-11-21 10:48:27		  [1] irc.server.freenode (notify: all)
+2014-11-21 10:48:27		  [2] irc.freenode.#ionic (notify: all)
+2014-11-21 10:50:02		Mouse enabled
+2014-11-21 10:56:22		script: script "buffers.pl" can not be installed because plugin "perl" is not loaded
+2014-11-21 10:59:11		python: scripts unloaded
+2014-11-21 11:00:12		python scripts loaded: apply_corrections, notification_center, snotify
+2014-11-21 11:00:12		script: 279 scripts for WeeChat 1.0.1
+2014-11-21 11:00:12		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-21 11:01:07		perl: loading script "/Users/mhartington/.weechat/perl/buffers.pl"
+2014-11-21 11:01:07		perl: registered script "buffers", version 4.9 (Sidebar with list of buffers)
+2014-11-21 11:01:07		New key binding (context "mouse"): @bar(buffers):ctrl-wheeldown => hsignal:buffers_mouse
+2014-11-21 11:01:07		New key binding (context "mouse"): @bar(buffers):ctrl-wheelup => hsignal:buffers_mouse
+2014-11-21 11:01:07		New key binding (context "mouse"): @item(buffers):button2* => hsignal:buffers_mouse
+2014-11-21 11:01:07		New key binding (context "mouse"): @item(buffers):button1* => hsignal:buffers_mouse
+2014-11-21 11:07:33		Option changed: buffers.look.hotlist_counter = on  (default: off)
+2014-11-21 11:08:09		perl: loading script "/Users/mhartington/.weechat/perl/iset.pl"
+2014-11-21 11:08:09		perl: registered script "iset", version 3.6 (Interactive Set for configuration options)
+2014-11-21 11:08:09		New key binding (context "mouse"): @chat(perl.iset):button1 => hsignal:iset_mouse
+2014-11-21 11:08:09		New key binding (context "mouse"): @chat(perl.iset):button2* => hsignal:iset_mouse
+2014-11-21 11:08:09		New key binding (context "mouse"): @chat(perl.iset):wheeldown => /repeat 5 /iset **down
+2014-11-21 11:08:09		New key binding (context "mouse"): @chat(perl.iset):wheelup => /repeat 5 /iset **up
+2014-11-21 11:13:18		script: script "notification_center.py" is already installed and up-to-date
+2014-11-21 11:13:54		script: script "snotify.py" is already installed and up-to-date
+2014-11-21 14:18:40		script: script "buffers.pl" is already installed and up-to-date
+2014-11-21 14:18:40		script: script "iset.pl" is already installed and up-to-date
+2014-11-21 14:18:40		python: loading script "/Users/mhartington/.weechat/python/buffer_autoclose.py"
+2014-11-21 14:18:40		python: registered script "buffer_autoclose", version 0.3 (Automatically close inactive private message buffers)
+2014-11-21 14:18:41		python: loading script "/Users/mhartington/.weechat/python/go.py"
+2014-11-21 14:18:41		python: registered script "go", version 2.0 (Quick jump to buffers)
+2014-11-21 14:18:41		python: loading script "/Users/mhartington/.weechat/python/colorize_nicks.py"
+2014-11-21 14:18:41		python: registered script "colorize_nicks", version 16 (Use the weechat nick colors in the chat area)
+2014-11-21 14:19:07		Option changed: weechat.bar.status.color_bg = 0  (default: blue)
+2014-11-21 14:19:13		Option changed: weechat.bar.title.color_bg = 0  (default: blue)
+2014-11-21 14:19:27		Option changed: weechat.color.chat_nick_colors = "1,2,3,4,5,6"  (default: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2014-11-21 14:19:36		Option changed: buffers.color.hotlist_message_fg = 7  (default: yellow)
+2014-11-21 14:19:41		Option changed: weechat.bar.buffers.position = top  (default: left)
+2014-11-21 14:19:55		Option changed: weechat.bar.buffers.items = "buffers"  (default: "")
+2014-11-21 14:20:06		Option changed: buffers.look.hide_merged_buffers = server  (default: none)
+2014-11-21 14:20:23		Option changed: buffers.look.detach = 600  (default: 0)
+2014-11-21 14:23:58	=!=	You can not write text in this buffer
+2014-11-21 14:24:02		Option changed: weechat.color.chat_nick_colors = "1,2,3,4,5,6"  (default: "cyan,magenta,green,brown,lightblue,default,lightcyan,lightmagenta,lightgreen,blue")
+2014-11-21 14:24:16		New key binding (context "default"): meta-g => /go
+2014-11-21 14:26:06		Option changed: weechat.look.prefix_same_nick = "⤷"  (default: "")
+2014-11-21 14:26:24		Option changed: weechat.look.prefix_network = "ℹ "  (default: "--")
+2014-11-21 14:26:28		Option changed: weechat.look.prefix_action = "⚡"  (default: " *")
+2014-11-21 14:26:40		Option changed: weechat.look.prefix_action = " *"
+2014-11-21 14:26:52		Option changed: weechat.look.bar_more_down = "▼▼"  (default: "++")
+2014-11-21 14:26:52		Option changed: weechat.look.bar_more_left = "◀◀"  (default: "<<")
+2014-11-21 14:26:52		Option changed: weechat.look.bar_more_right = "▶▶"  (default: ">>")
+2014-11-21 14:26:52		Option changed: weechat.look.bar_more_up = "▲▲"  (default: "--")
+2014-11-21 14:26:52		Option changed: weechat.look.prefix_suffix = "╡"  (default: "|")
+2014-11-21 14:27:38		Option changed: weechat.look.prefix_align_max = 15  (default: 0)
+2014-11-21 14:31:47	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-21 14:31:59	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-21 14:37:58		Option created: weechat.notify.irc.freenode.#ionic = all  (default: none)
+2014-11-21 14:40:04		Option changed: irc.look.color_nicks_in_nicklist = on  (default: off)
+2014-11-21 15:47:30	=!=	Error: unknown command "/clos" (type /help for help)
+2014-11-21 15:47:46	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-21 15:48:03	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2014-11-21 17:20:11	=!=	Error: WeeChat main buffer can't be closed
+2014-11-21 17:20:23		python: scripts unloaded
+2014-11-21 17:20:23		perl: scripts unloaded
+2014-11-21 17:20:27		perl scripts loaded: buffers, iset
+2014-11-21 17:20:27		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-21 17:20:27		script: 279 scripts for WeeChat 1.0.1
+2014-11-21 17:20:27		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-21 17:20:49		python: scripts unloaded
+2014-11-21 17:20:49		perl: scripts unloaded
+2014-11-22 11:31:16		perl scripts loaded: buffers, iset
+2014-11-22 11:31:16		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-22 11:31:16		script: downloading list of scripts...
+2014-11-22 11:31:16		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-22 11:31:17		script: 279 scripts for WeeChat 1.0.1
+2014-11-22 12:07:33		python: scripts unloaded
+2014-11-22 12:07:33		perl: scripts unloaded
+2014-11-23 22:15:32		perl scripts loaded: buffers, iset
+2014-11-23 22:15:33		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-23 22:15:33		script: downloading list of scripts...
+2014-11-23 22:15:33		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-23 22:15:34		script: 279 scripts for WeeChat 1.0.1
+2014-11-23 22:15:43		python: scripts unloaded
+2014-11-23 22:15:43		perl: scripts unloaded
+2014-11-24 10:22:29		perl scripts loaded: buffers, iset
+2014-11-24 10:22:30		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-24 10:22:30		script: 279 scripts for WeeChat 1.0.1
+2014-11-24 10:22:30		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-24 12:12:09		xfer: incoming chat request from PercolatorLa (173.78.118.234, irc.freenode)
+2014-11-24 21:01:43		python: scripts unloaded
+2014-11-24 21:01:43		perl: scripts unloaded
+2014-11-25 09:17:41		perl scripts loaded: buffers, iset
+2014-11-25 09:17:41		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-25 09:17:41		script: downloading list of scripts...
+2014-11-25 09:17:41		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-25 09:17:42		script: 279 scripts for WeeChat 1.0.1
+2014-11-25 12:10:31	=!=	Error with command "/msg" (help on command: /help msg)
+2014-11-25 12:10:54	=!=	Error: unknown command "/xlose" (type /help for help)
+2014-11-25 16:47:05		python: scripts unloaded
+2014-11-25 16:47:05		perl: scripts unloaded
+2014-11-26 10:16:46		perl scripts loaded: buffers, iset
+2014-11-26 10:16:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-26 10:16:46		script: downloading list of scripts...
+2014-11-26 10:16:47		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-26 10:16:48		script: 279 scripts for WeeChat 1.0.1
+2014-11-26 18:06:32		python: scripts unloaded
+2014-11-26 18:06:32		perl: scripts unloaded
+2014-11-27 11:14:46		perl scripts loaded: buffers, iset
+2014-11-27 11:14:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-27 11:14:46		script: downloading list of scripts...
+2014-11-27 11:14:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-27 11:14:47		script: 279 scripts for WeeChat 1.0.1
+2014-11-27 17:36:43		python: scripts unloaded
+2014-11-27 17:36:43		perl: scripts unloaded
+2014-11-28 10:37:03		perl scripts loaded: buffers, iset
+2014-11-28 10:37:03		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-28 10:37:03		script: 279 scripts for WeeChat 1.0.1
+2014-11-28 10:37:03		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-28 11:27:49		python: scripts unloaded
+2014-11-28 11:27:49		perl: scripts unloaded
+2014-11-28 12:54:49		perl scripts loaded: buffers, iset
+2014-11-28 12:54:50		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-28 12:54:50		script: downloading list of scripts...
+2014-11-28 12:54:50		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-28 12:54:51		script: 279 scripts for WeeChat 1.0.1
+2014-11-28 14:42:38	=!=	Error: unknown command "/quir" (type /help for help)
+2014-11-28 14:42:41		python: scripts unloaded
+2014-11-28 14:42:41		perl: scripts unloaded
+2014-11-30 10:12:17		perl scripts loaded: buffers, iset
+2014-11-30 10:12:18		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-11-30 10:12:18		script: downloading list of scripts...
+2014-11-30 10:12:18		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-11-30 10:12:19		script: 279 scripts for WeeChat 1.0.1
+2014-11-30 11:12:46	=!=	Error: unknown command "/qui" (type /help for help)
+2014-11-30 11:12:50		python: scripts unloaded
+2014-11-30 11:12:50		perl: scripts unloaded
+2014-12-01 07:55:43		perl scripts loaded: buffers, iset
+2014-12-01 07:55:44		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-01 07:55:44		script: 279 scripts for WeeChat 1.0.1
+2014-12-01 07:55:44		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-01 16:20:43		perl scripts loaded: buffers, iset
+2014-12-01 16:20:43		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-01 16:20:43		script: downloading list of scripts...
+2014-12-01 16:20:43		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-01 16:20:44		script: 279 scripts for WeeChat 1.0.1
+2014-12-01 18:04:13		python: scripts unloaded
+2014-12-01 18:04:13		perl: scripts unloaded
+2014-12-02 10:25:38		perl scripts loaded: buffers, iset
+2014-12-02 10:25:38		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-02 10:25:38		script: 279 scripts for WeeChat 1.0.1
+2014-12-02 10:25:38		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-02 18:01:02		python: scripts unloaded
+2014-12-02 18:01:02		perl: scripts unloaded
+2014-12-03 08:37:03		perl scripts loaded: buffers, iset
+2014-12-03 08:37:04		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 08:37:04		script: downloading list of scripts...
+2014-12-03 08:37:04		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 08:37:05		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:44:55		Option changed: weechat.network.gnutls_ca_file = "/usr/share/curl/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2014-12-03 09:45:06		python: scripts unloaded
+2014-12-03 09:45:06		perl: scripts unloaded
+2014-12-03 09:45:08		perl scripts loaded: buffers, iset
+2014-12-03 09:45:08		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 09:45:09		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:45:09		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 09:46:34		Passphrase added
+2014-12-03 09:46:39		python: scripts unloaded
+2014-12-03 09:46:39		perl: scripts unloaded
+2014-12-03 09:47:03		perl scripts loaded: buffers, iset
+2014-12-03 09:47:03		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 09:47:03		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:47:03		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 09:47:05	=!=	Error with command "/connect" (help on command: /help connect)
+2014-12-03 09:47:39		Secured data "freenode" set
+2014-12-03 09:47:39		Options saved to sec.conf
+2014-12-03 09:47:56		python: scripts unloaded
+2014-12-03 09:47:56		perl: scripts unloaded
+2014-12-03 09:47:59		perl scripts loaded: buffers, iset
+2014-12-03 09:47:59		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 09:47:59		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:47:59		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 09:49:02		Passphrase added
+2014-12-03 09:49:02		Options saved to sec.conf
+2014-12-03 09:51:40		python: scripts unloaded
+2014-12-03 09:51:40		perl: scripts unloaded
+2014-12-03 09:51:47		perl scripts loaded: buffers, iset
+2014-12-03 09:51:48		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 09:51:48		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:51:48		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 09:56:01		Option changed: irc.server.freenode.command = "/msg nickserv identify Feb194311!"  (default: (undefined))
+2014-12-03 09:56:25		Option changed: irc.server.freenode.autojoin = "#ionic"  (default: (undefined))
+2014-12-03 09:56:42	=!=	Error: option "irc.server.freenode.autoconect" not found
+2014-12-03 09:56:53	=!=	Error: option "irc.server.freenode" not found
+2014-12-03 09:57:38		python: scripts unloaded
+2014-12-03 09:57:38		perl: scripts unloaded
+2014-12-03 09:57:53		perl scripts loaded: buffers, iset
+2014-12-03 09:57:53		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-03 09:57:53		script: 279 scripts for WeeChat 1.0.1
+2014-12-03 09:57:53		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-03 09:58:03	=!=	Error: option "irc.server.freenode.autoconect" not found
+2014-12-03 09:58:14	=!=	You can not write text in this buffer
+2014-12-03 15:55:31		python: scripts unloaded
+2014-12-03 15:55:31		perl: scripts unloaded
+2014-12-04 09:18:21		perl scripts loaded: buffers, iset
+2014-12-04 09:18:21		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-04 09:18:21		script: downloading list of scripts...
+2014-12-04 09:18:21		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-04 09:18:22		script: 279 scripts for WeeChat 1.0.1
+2014-12-04 13:42:42		buffer_autoclose: Closing buffer: freenode.qwebirc12429
+2014-12-04 17:24:18		python: scripts unloaded
+2014-12-04 17:24:18		perl: scripts unloaded
+2014-12-05 09:23:37		perl scripts loaded: buffers, iset
+2014-12-05 09:23:38		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-05 09:23:38		script: downloading list of scripts...
+2014-12-05 09:23:38		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-05 09:23:39		script: 279 scripts for WeeChat 1.0.1
+2014-12-05 13:20:57	=!=	Error with command "/msg christo_m" (help on command: /help msg)
+2014-12-05 14:56:25		python: scripts unloaded
+2014-12-05 14:56:25		perl: scripts unloaded
+2014-12-05 15:07:25		perl scripts loaded: buffers, iset
+2014-12-05 15:07:26		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-05 15:07:26		script: 279 scripts for WeeChat 1.0.1
+2014-12-05 15:07:26		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-07 19:36:41		python: scripts unloaded
+2014-12-07 19:36:41		perl: scripts unloaded
+2014-12-07 21:07:19		perl scripts loaded: buffers, iset
+2014-12-07 21:07:19		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-07 21:07:19		script: downloading list of scripts...
+2014-12-07 21:07:19		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-07 21:07:21		script: 279 scripts for WeeChat 1.0.1
+2014-12-07 22:25:03		python: scripts unloaded
+2014-12-07 22:25:03		perl: scripts unloaded
+2014-12-08 09:17:29		perl scripts loaded: buffers, iset
+2014-12-08 09:17:29		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-08 09:17:29		script: 279 scripts for WeeChat 1.0.1
+2014-12-08 09:17:29		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-08 09:18:40	=!=	Error: option "freenode" not found
+2014-12-08 09:19:00	=!=	Error: option "irc.freenode.net" not found
+2014-12-08 12:12:29		buffer_autoclose: Closing buffer: freenode.qwebirc42512
+2014-12-08 12:50:29		buffer_autoclose: Closing buffer: freenode.qwebirc42512
+2014-12-08 21:03:46		python: scripts unloaded
+2014-12-08 21:03:46		perl: scripts unloaded
+2014-12-09 09:32:27		perl scripts loaded: buffers, iset
+2014-12-09 09:32:27		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-09 09:32:27		script: downloading list of scripts...
+2014-12-09 09:32:27		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-09 09:32:28		script: 279 scripts for WeeChat 1.0.1
+2014-12-09 12:22:34		python: scripts unloaded
+2014-12-09 12:22:34		perl: scripts unloaded
+2014-12-10 09:24:57		perl scripts loaded: buffers, iset
+2014-12-10 09:24:58		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-10 09:24:58		script: 279 scripts for WeeChat 1.0.1
+2014-12-10 09:24:58		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-10 16:22:54		python: scripts unloaded
+2014-12-10 16:22:54		perl: scripts unloaded
+2014-12-11 10:13:53		perl scripts loaded: buffers, iset
+2014-12-11 10:13:53		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-11 10:13:54		script: downloading list of scripts...
+2014-12-11 10:13:54		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-11 10:13:55		script: 279 scripts for WeeChat 1.0.1
+2014-12-11 12:38:53		buffer_autoclose: Closing buffer: freenode.ioudas
+2014-12-11 14:13:53		buffer_autoclose: Closing buffer: freenode.ioudas
+2014-12-11 16:31:53		buffer_autoclose: Closing buffer: freenode.qwebirc7974
+2014-12-11 18:56:50		python: scripts unloaded
+2014-12-11 18:56:50		perl: scripts unloaded
+2014-12-12 09:41:29		perl scripts loaded: buffers, iset
+2014-12-12 09:41:29		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-12 09:41:29		script: 279 scripts for WeeChat 1.0.1
+2014-12-12 09:41:29		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-12 10:40:32	=!=	Error with command "/msg ioudas" (help on command: /help msg)
+2014-12-12 10:40:41		[core]
+2014-12-12 10:40:41		  away     buffer   command  debug    filter   history  key      mouse    plugin   proxy    reload   save     set      upgrade  version  window 
+2014-12-12 10:40:41		  bar      color    cursor   eval     help     input    layout   mute     print    quit     repeat   secure   unset    uptime   wait   
+2014-12-12 10:40:41		[alias]
+2014-12-12 10:40:41		  AAWAY    AME      ANICK    BYE      CHAT     CLOSE    IG       K        LEAVE    MSGBUF   N        REDRAW   SIGNOFF  UB       unalias  W        WI       WW     
+2014-12-12 10:40:41		  alias    AMSG     BEEP     C        CL       EXIT     J        KB       M        MUB      Q        SAY      T        UMODE    V        WC       WII    
+2014-12-12 10:40:41		[charset]
+2014-12-12 10:40:41		  charset
+2014-12-12 10:40:41		[exec]
+2014-12-12 10:40:41		  exec
+2014-12-12 10:40:41		[irc]
+2014-12-12 10:40:41		  admin       ban         dcc         die         info        kick        list        mode        nick        oper        query       rehash      samode      server      squit       topic       userhost    wallchops   whowas    
+2014-12-12 10:40:41		  allchan     connect     dehalfop    disconnect  invite      kickban     lusers      motd        notice      part        quiet       remove      sanick      service     stats       trace       users       wallops   
+2014-12-12 10:40:41		  allpv       ctcp        deop        halfop      ison        kill        map         msg         notify      ping        quote       restart     sapart      servlist    summon      unban       version     who       
+2014-12-12 10:40:41		  allserv     cycle       devoice     ignore      join        links       me          names       op          pong        reconnect   sajoin      saquit      squery      time        unquiet     voice       whois     
+2014-12-12 10:40:41		[logger]
+2014-12-12 10:40:41		  logger
+2014-12-12 10:40:41		[lua]
+2014-12-12 10:40:41		  lua
+2014-12-12 10:40:41		[perl]
+2014-12-12 10:40:41		  buffers_detach  buffers_whitelist  iset  perl
+2014-12-12 10:40:41		[python]
+2014-12-12 10:40:41		  go  python  snotify
+2014-12-12 10:40:41		[relay]
+2014-12-12 10:40:41		  relay
+2014-12-12 10:40:41		[ruby]
+2014-12-12 10:40:41		  ruby
+2014-12-12 10:40:41		[script]
+2014-12-12 10:40:41		  script
+2014-12-12 10:40:41		[tcl]
+2014-12-12 10:40:41		  tcl
+2014-12-12 10:40:41		[trigger]
+2014-12-12 10:40:41		  trigger
+2014-12-12 10:40:41		[xfer]
+2014-12-12 10:40:41		  me  xfer
+2014-12-12 11:40:04		perl scripts loaded: buffers, iset
+2014-12-12 11:40:04		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-12 11:40:04		script: downloading list of scripts...
+2014-12-12 11:40:04		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-12 11:40:05		script: 279 scripts for WeeChat 1.0.1
+2014-12-12 16:10:39		python: scripts unloaded
+2014-12-12 16:10:39		perl: scripts unloaded
+2014-12-13 12:57:22		perl scripts loaded: buffers, iset
+2014-12-13 12:57:23		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-13 12:57:24		script: downloading list of scripts...
+2014-12-13 12:57:24		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-13 12:57:25		script: 279 scripts for WeeChat 1.0.1
+2014-12-13 13:22:13		python: scripts unloaded
+2014-12-13 13:22:13		perl: scripts unloaded
+2014-12-13 15:12:11		perl scripts loaded: buffers, iset
+2014-12-13 15:12:11		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-13 15:12:11		script: 279 scripts for WeeChat 1.0.1
+2014-12-13 15:12:11		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-13 15:41:15	=!=	Option "away" not found (tip: you can use wildcard "*" in option to see a sublist)
+2014-12-13 15:41:20	=!=	Error: unknown command "/isset" (type /help for help)
+2014-12-13 15:42:18		python: scripts unloaded
+2014-12-13 15:42:18		perl: scripts unloaded
+2014-12-14 14:30:54		perl scripts loaded: buffers, iset
+2014-12-14 14:30:54		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-14 14:30:54		script: downloading list of scripts...
+2014-12-14 14:30:54		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-14 14:30:55		script: 279 scripts for WeeChat 1.0.1
+2014-12-14 14:39:18		python: scripts unloaded
+2014-12-14 14:39:18		perl: scripts unloaded
+2014-12-15 09:16:15		perl scripts loaded: buffers, iset
+2014-12-15 09:16:15		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 09:16:15		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 09:16:15		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-15 09:49:14		python: scripts unloaded
+2014-12-15 09:49:14		perl: scripts unloaded
+2014-12-15 10:41:40		perl scripts loaded: buffers, iset
+2014-12-15 10:41:40		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 10:41:40		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 10:41:40		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-15 18:14:55		python: scripts unloaded
+2014-12-15 18:14:55		perl: scripts unloaded
+2014-12-15 20:48:35		perl scripts loaded: buffers, iset
+2014-12-15 20:48:35		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 20:48:35		script: downloading list of scripts...
+2014-12-15 20:48:35		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-15 20:48:36		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 20:50:45		python: scripts unloaded
+2014-12-15 20:50:45		perl: scripts unloaded
+2014-12-15 20:52:28		perl scripts loaded: buffers, iset
+2014-12-15 20:52:28		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 20:52:28		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 20:52:28		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-15 20:53:11		python: scripts unloaded
+2014-12-15 20:53:11		perl: scripts unloaded
+2014-12-15 21:37:32		perl scripts loaded: buffers, iset
+2014-12-15 21:37:32		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 21:37:32		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 21:37:32		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-15 21:54:14		python: scripts unloaded
+2014-12-15 21:54:14		perl: scripts unloaded
+2014-12-15 23:55:24		perl scripts loaded: buffers, iset
+2014-12-15 23:55:27		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-15 23:55:28		script: 279 scripts for WeeChat 1.0.1
+2014-12-15 23:55:28		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-16 00:00:05		python: scripts unloaded
+2014-12-16 00:00:05		perl: scripts unloaded
+2014-12-16 09:15:39		perl scripts loaded: buffers, iset
+2014-12-16 09:15:39		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-16 09:15:39		script: 279 scripts for WeeChat 1.0.1
+2014-12-16 09:15:39		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-16 09:18:06		python: scripts unloaded
+2014-12-16 09:18:06		perl: scripts unloaded
+2014-12-16 10:35:18		perl scripts loaded: buffers, iset
+2014-12-16 10:35:18		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-16 10:35:18		script: 279 scripts for WeeChat 1.0.1
+2014-12-16 10:35:18		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-16 14:18:07		python: scripts unloaded
+2014-12-16 14:18:07		perl: scripts unloaded
+2014-12-16 14:19:02		perl scripts loaded: buffers, iset
+2014-12-16 14:19:02		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-16 14:19:02		script: 279 scripts for WeeChat 1.0.1
+2014-12-16 14:19:02		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-16 17:03:06		python: scripts unloaded
+2014-12-16 17:03:06		perl: scripts unloaded
+2014-12-17 08:59:01		perl scripts loaded: buffers, iset
+2014-12-17 08:59:01		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-17 08:59:01		script: downloading list of scripts...
+2014-12-17 08:59:01		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-17 08:59:02		script: 279 scripts for WeeChat 1.0.1
+2014-12-17 10:06:15		perl scripts loaded: buffers, iset
+2014-12-17 10:06:15		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-17 10:06:16		script: 279 scripts for WeeChat 1.0.1
+2014-12-17 10:06:16		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-17 11:40:09		python: scripts unloaded
+2014-12-17 11:40:09		perl: scripts unloaded
+2014-12-17 12:08:04		perl scripts loaded: buffers, iset
+2014-12-17 12:08:04		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-17 12:08:05		script: 279 scripts for WeeChat 1.0.1
+2014-12-17 12:08:05		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-17 15:48:35		python: scripts unloaded
+2014-12-17 15:48:35		perl: scripts unloaded
+2014-12-18 09:29:52		perl scripts loaded: buffers, iset
+2014-12-18 09:29:52		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-18 09:29:52		script: downloading list of scripts...
+2014-12-18 09:29:52		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-18 09:29:58		script: 279 scripts for WeeChat 1.0.1
+2014-12-18 17:50:32		python: scripts unloaded
+2014-12-18 17:50:32		perl: scripts unloaded
+2014-12-19 10:18:39		perl scripts loaded: buffers, iset
+2014-12-19 10:18:40		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-19 10:18:40		script: downloading list of scripts...
+2014-12-19 10:18:40		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-19 10:18:41		script: 279 scripts for WeeChat 1.0.1
+2014-12-19 12:03:51		python: scripts unloaded
+2014-12-19 12:03:51		perl: scripts unloaded
+2014-12-19 12:15:19		perl scripts loaded: buffers, iset
+2014-12-19 12:15:20		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-19 12:15:20		script: 279 scripts for WeeChat 1.0.1
+2014-12-19 12:15:20		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-19 14:11:11		python: scripts unloaded
+2014-12-19 14:11:11		perl: scripts unloaded
+2014-12-19 18:34:41		perl scripts loaded: buffers, iset
+2014-12-19 18:34:42		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-19 18:34:42		script: 279 scripts for WeeChat 1.0.1
+2014-12-19 18:34:42		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-19 18:56:23		python: scripts unloaded
+2014-12-19 18:56:23		perl: scripts unloaded
+2014-12-19 18:56:35		perl scripts loaded: buffers, iset
+2014-12-19 18:56:35		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-19 18:56:35		script: 279 scripts for WeeChat 1.0.1
+2014-12-19 18:56:35		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-19 18:56:37		python: scripts unloaded
+2014-12-19 18:56:37		perl: scripts unloaded
+2014-12-21 15:11:13		perl scripts loaded: buffers, iset
+2014-12-21 15:11:14		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-21 15:11:14		script: downloading list of scripts...
+2014-12-21 15:11:14		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-21 15:11:15		script: 279 scripts for WeeChat 1.0.1
+2014-12-21 15:20:22		python: scripts unloaded
+2014-12-21 15:20:22		perl: scripts unloaded
+2014-12-21 15:31:29		perl scripts loaded: buffers, iset
+2014-12-21 15:31:29		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-21 15:31:29		script: 279 scripts for WeeChat 1.0.1
+2014-12-21 15:31:29		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-21 15:40:39		python: scripts unloaded
+2014-12-21 15:40:39		perl: scripts unloaded
+2014-12-22 10:45:16		perl scripts loaded: buffers, iset
+2014-12-22 10:45:17		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-22 10:45:17		script: 279 scripts for WeeChat 1.0.1
+2014-12-22 10:45:17		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-22 10:47:21		python: scripts unloaded
+2014-12-22 10:47:21		perl: scripts unloaded
+2014-12-22 11:43:39		perl scripts loaded: buffers, iset
+2014-12-22 11:43:39		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-22 11:43:39		script: 279 scripts for WeeChat 1.0.1
+2014-12-22 11:43:39		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-22 11:48:12		python: scripts unloaded
+2014-12-22 11:48:12		perl: scripts unloaded
+2014-12-23 12:44:16		perl scripts loaded: buffers, iset
+2014-12-23 12:44:16		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 12:44:16		script: downloading list of scripts...
+2014-12-23 12:44:16		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 12:44:17		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 12:44:29		python: scripts unloaded
+2014-12-23 12:44:29		perl: scripts unloaded
+2014-12-23 12:53:36		perl scripts loaded: buffers, iset
+2014-12-23 12:53:36		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 12:53:36		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 12:53:36		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 12:56:10		Option changed: weechat.bar.title.color_bg = 1  (default: 0)
+2014-12-23 12:56:12		Option changed: weechat.bar.title.color_bg = 0
+2014-12-23 12:56:28	=!=	You can not write text in this buffer
+2014-12-23 12:56:31	=!=	Error: unknown command "/isset" (type /help for help)
+2014-12-23 12:56:34	=!=	Error: unknown command "/is-set" (type /help for help)
+2014-12-23 12:57:47		Option changed: buffers.color.current_fg = white  (default: lightcyan)
+2014-12-23 12:58:17		Option changed: buffers.color.current_bg = magenta  (default: red)
+2014-12-23 12:58:28		Option changed: buffers.color.current_bg = blue  (default: red)
+2014-12-23 12:58:51		Option changed: buffers.color.default_fg = blue  (default: default)
+2014-12-23 13:01:12		Option changed: buffers.color.number = white  (default: lightgreen)
+2014-12-23 13:01:45		Option changed: buffers.color.number_char = white  (default: lightgreen)
+2014-12-23 13:02:52		Option changed: buffers.look.number_char = ">"  (default: ".")
+2014-12-23 13:03:36	=!=	Error: unknown command "/" (type /help for help)
+2014-12-23 13:09:08		python: scripts unloaded
+2014-12-23 13:09:08		perl: scripts unloaded
+2014-12-23 13:09:13		perl scripts loaded: buffers, iset
+2014-12-23 13:09:13		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:09:13		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:09:13		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:09:35		python: scripts unloaded
+2014-12-23 13:09:35		perl: scripts unloaded
+2014-12-23 13:09:41		perl scripts loaded: buffers, iset
+2014-12-23 13:09:41		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:09:41		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:09:41		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:10:48		Option changed: buffers.look.number_char = ")"  (default: ".")
+2014-12-23 13:11:05		Option changed: buffers.look.number_char = ")"  (default: ".")
+2014-12-23 13:13:41		python: scripts unloaded
+2014-12-23 13:13:41		perl: scripts unloaded
+2014-12-23 13:13:51		perl scripts loaded: buffers, iset
+2014-12-23 13:13:51		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:13:52		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:13:52		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:14:05		python: scripts unloaded
+2014-12-23 13:14:05		perl: scripts unloaded
+2014-12-23 13:15:45		perl scripts loaded: buffers, iset
+2014-12-23 13:15:45		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:15:45		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:15:45		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:16:17	=!=	Error: unknown command "/quitr" (type /help for help)
+2014-12-23 13:16:19		python: scripts unloaded
+2014-12-23 13:16:19		perl: scripts unloaded
+2014-12-23 13:16:23		perl scripts loaded: buffers, iset
+2014-12-23 13:16:23		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:16:23		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:16:23		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:16:30		python: scripts unloaded
+2014-12-23 13:16:30		perl: scripts unloaded
+2014-12-23 13:16:39		perl scripts loaded: buffers, iset
+2014-12-23 13:16:39		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:16:40		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:16:40		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:16:46		python: scripts unloaded
+2014-12-23 13:16:46		perl: scripts unloaded
+2014-12-23 13:21:26		perl scripts loaded: buffers, iset
+2014-12-23 13:21:26		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 13:21:26		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 13:21:26		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 13:21:37	=!=	You can not write text in this buffer
+2014-12-23 13:30:51		Option changed: weechat.color.chat_highlight = white  (default: yellow)
+2014-12-23 13:31:06		Option changed: weechat.color.chat_highlight_bg = blue  (default: magenta)
+2014-12-23 13:31:45		Option changed: weechat.color.chat_highlight_bg = magenta
+2014-12-23 14:02:13		Option changed: buffers.look.number_char = "\u2B80"  (default: ".")
+2014-12-23 14:02:33		Option changed: buffers.look.number_char = "\u2B80"  (default: ".")
+2014-12-23 14:03:28		Option changed: buffers.look.number_char = "'\u2B80'"  (default: ".")
+2014-12-23 14:03:44		python: scripts unloaded
+2014-12-23 14:03:44		perl: scripts unloaded
+2014-12-23 14:05:17		perl scripts loaded: buffers, iset
+2014-12-23 14:05:17		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 14:05:17		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 14:05:17		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 14:05:29		python: scripts unloaded
+2014-12-23 14:05:29		perl: scripts unloaded
+2014-12-23 14:05:59		perl scripts loaded: buffers, iset
+2014-12-23 14:05:59		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 14:05:59		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 14:05:59		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 14:06:24		irc: server freenoe created (temporary server, NOT SAVED!)
+2014-12-23 14:09:03		charset: terminal: UTF-8, internal: UTF-8
+2014-12-23 14:11:46	=!=	Error: unknown command "/mouse_wheel" (type /help for help)
+2014-12-23 14:12:25		Option changed: buffers.look.mouse_move_buffer = off  (default: on)
+2014-12-23 14:19:04		Option changed: buffers.look.mouse_wheel = off  (default: on)
+2014-12-23 14:22:27	=!=	Error: unknown command "/clos" (type /help for help)
+2014-12-23 14:22:33	=!=	Error: unknown command "/scripts" (type /help for help)
+2014-12-23 14:24:05		script: script "intunes.rb" not found
+2014-12-23 14:24:18		script: script "itnues" not found
+2014-12-23 14:24:23		script: script "itnues.rb" not found
+2014-12-23 14:24:39		ruby: loading script "/Users/mhartington/.weechat/ruby/itunes.rb"
+2014-12-23 14:24:39		ruby: registered script "itunes", version 1.0 (An iTunes control / now playing script)
+2014-12-23 14:28:22		ruby: scripts unloaded
+2014-12-23 14:28:22		python: scripts unloaded
+2014-12-23 14:28:22		perl: scripts unloaded
+2014-12-23 18:42:29		perl scripts loaded: buffers, iset
+2014-12-23 18:42:29		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 18:42:29		ruby scripts loaded: itunes
+2014-12-23 18:42:29		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 18:42:29		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 18:42:42		ruby: scripts unloaded
+2014-12-23 18:42:42		python: scripts unloaded
+2014-12-23 18:42:42		perl: scripts unloaded
+2014-12-23 18:43:46		perl scripts loaded: buffers, iset
+2014-12-23 18:43:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-23 18:43:46		ruby scripts loaded: itunes
+2014-12-23 18:43:46		script: 279 scripts for WeeChat 1.0.1
+2014-12-23 18:43:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-23 18:45:04		ruby: scripts unloaded
+2014-12-23 18:45:04		python: scripts unloaded
+2014-12-23 18:45:04		perl: scripts unloaded
+2014-12-25 11:51:39		perl scripts loaded: buffers, iset
+2014-12-25 11:51:40		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-25 11:51:40		ruby scripts loaded: itunes
+2014-12-25 11:51:40		script: downloading list of scripts...
+2014-12-25 11:51:40		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-25 11:51:42		script: 279 scripts for WeeChat 1.0.1
+2014-12-25 11:52:32		ruby: scripts unloaded
+2014-12-25 11:52:32		python: scripts unloaded
+2014-12-25 11:52:32		perl: scripts unloaded
+2014-12-27 01:10:12		perl scripts loaded: buffers, iset
+2014-12-27 01:10:12		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 01:10:12		ruby scripts loaded: itunes
+2014-12-27 01:10:12		script: downloading list of scripts...
+2014-12-27 01:10:12		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 01:10:13		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 01:16:31		perl: loading script "/Users/mhartington/.weechat/perl/colorize_lines.pl"
+2014-12-27 01:16:31		perl: registered script "colorize_lines", version 3.3 (colors text in chat area with according nick color, including highlights)
+2014-12-27 01:21:53	=!=	irc: command "msg" must be executed on irc buffer (server or channel)
+2014-12-27 01:25:12		Option changed: irc.server_default.realname = "Mike Hartington"  (default: "")
+2014-12-27 01:25:49		[server] (irc.conf)
+2014-12-27 01:25:49		  irc.server.freenode.command = "/msg nickserv identify Feb194311!"  (default: (undefined))
+2014-12-27 01:25:49		1 options (matching with "irc.server.freenode.command")
+2014-12-27 01:26:12		Option changed: irc.server.freenode.command = ""  (default: (undefined))
+2014-12-27 01:26:26		[server] (irc.conf)
+2014-12-27 01:26:26		  irc.server.freenode.command = ""  (default: (undefined))
+2014-12-27 01:26:26		1 options (matching with "irc.server.freenode.command")
+2014-12-27 09:17:51	=!=	Error: unknown command "/quir" (type /help for help)
+2014-12-27 09:17:53	=!=	Error: unknown command "/quir" (type /help for help)
+2014-12-27 09:22:44		ruby: scripts unloaded
+2014-12-27 09:22:44		python: scripts unloaded
+2014-12-27 09:22:44		perl: scripts unloaded
+2014-12-27 09:22:52		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 09:22:52		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 09:22:52		ruby scripts loaded: itunes
+2014-12-27 09:22:52		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 09:22:52		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 09:27:26		ruby: scripts unloaded
+2014-12-27 09:27:26		python: scripts unloaded
+2014-12-27 09:27:26		perl: scripts unloaded
+2014-12-27 09:33:07		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 09:33:07		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 09:33:07		ruby scripts loaded: itunes
+2014-12-27 09:33:07		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 09:33:07		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 09:33:16	=!=	Error: option "irc.server.oftc.ssl_cert" not found
+2014-12-27 09:34:10	=!=	Error: option "irc.server.default.ssl_cert" not found
+2014-12-27 09:34:35	=!=	Error: unknown command "/irc.server_default.ssl" (type /help for help)
+2014-12-27 09:34:52	=!=	Error: unknown command "/irc.server_default.ssl" (type /help for help)
+2014-12-27 09:35:03		Option changed: irc.server_default.ssl = on  (default: off)
+2014-12-27 09:35:38		Option changed: irc.server_default.ssl_cert = "%h/ssl/nick.pem"  (default: "")
+2014-12-27 09:36:37		Option changed: irc.server_default.ssl = off
+2014-12-27 09:39:05		Option changed: irc.server_default.ssl_fingerprint = "405340112cd7e702f5d1915c3f6766505e262da5"  (default: "")
+2014-12-27 09:40:59		Option changed: irc.server.freenode.ssl_cert = "%h/ssl/nick.pem"  (default: (undefined))
+2014-12-27 09:41:20		Option changed: irc.server.freenode.ssl_fingerprint = "405340112cd7e702f5d1915c3f6766505e262da5"  (default: (undefined))
+2014-12-27 09:45:21		ruby: scripts unloaded
+2014-12-27 09:45:21		python: scripts unloaded
+2014-12-27 09:45:21		perl: scripts unloaded
+2014-12-27 09:45:26		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 09:45:26		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 09:45:26		ruby scripts loaded: itunes
+2014-12-27 09:45:26		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 09:45:26		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 09:50:38		ruby: scripts unloaded
+2014-12-27 09:50:38		python: scripts unloaded
+2014-12-27 09:50:38		perl: scripts unloaded
+2014-12-27 09:52:37		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 09:52:37		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 09:52:37		ruby scripts loaded: itunes
+2014-12-27 09:52:37		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 09:52:37		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 09:53:35	=!=	Error: unknown command "/clse" (type /help for help)
+2014-12-27 09:59:34		ruby: scripts unloaded
+2014-12-27 09:59:34		python: scripts unloaded
+2014-12-27 09:59:34		perl: scripts unloaded
+2014-12-27 10:00:01		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:00:01		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:00:01		ruby scripts loaded: itunes
+2014-12-27 10:00:01		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:00:01		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:00:32	=!=	Error: unknown command "/xlose" (type /help for help)
+2014-12-27 10:01:06		ruby: scripts unloaded
+2014-12-27 10:01:06		python: scripts unloaded
+2014-12-27 10:01:06		perl: scripts unloaded
+2014-12-27 10:04:10		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:04:10		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:04:10		ruby scripts loaded: itunes
+2014-12-27 10:04:10		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:04:10		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:08:40		Option changed: irc.server.freenode.sasl_mechanism = external  (default: (undefined))
+2014-12-27 10:11:31		Option changed: irc.server.freenode.ssl = on  (default: (undefined))
+2014-12-27 10:13:32		Option changed: irc.server.freenode.ssl = off  (default: (undefined))
+2014-12-27 10:13:44		Option changed: irc.server.freenode.sasl_password = "Feb194311!"  (default: (undefined))
+2014-12-27 10:14:05		Option changed: irc.server.freenode.sasl_username = "mhartington"  (default: (undefined))
+2014-12-27 10:14:25		Option changed: irc.server.freenode.realname = "Mike Hartington"  (default: (undefined))
+2014-12-27 10:15:20		[server] (irc.conf)
+2014-12-27 10:15:20		  irc.server.freenode.autojoin = "#ionic"  (default: (undefined))
+2014-12-27 10:15:20		1 options (matching with "irc.server.freenode.autojoin")
+2014-12-27 10:15:25		Option changed: irc.server.freenode.autojoin = ""  (default: (undefined))
+2014-12-27 10:17:16		Option changed: irc.server.freenode.sasl_mechanism = plain  (default: (undefined))
+2014-12-27 10:18:04		ruby: scripts unloaded
+2014-12-27 10:18:04		python: scripts unloaded
+2014-12-27 10:18:04		perl: scripts unloaded
+2014-12-27 10:20:49		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:20:49		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:20:49		ruby scripts loaded: itunes
+2014-12-27 10:20:49		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:20:49		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:27:05		ruby: scripts unloaded
+2014-12-27 10:27:05		python: scripts unloaded
+2014-12-27 10:27:05		perl: scripts unloaded
+2014-12-27 10:46:14		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:46:14		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:46:14		ruby scripts loaded: itunes
+2014-12-27 10:46:14		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:46:14		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:46:57	=!=	Error: failed to set option "irc.server.freenode.sasl_mechanism"
+2014-12-27 10:47:14	=!=	Error: failed to set option "irc.server.freenode.sasl_mechanism"
+2014-12-27 10:47:24		ruby: scripts unloaded
+2014-12-27 10:47:24		python: scripts unloaded
+2014-12-27 10:47:24		perl: scripts unloaded
+2014-12-27 10:47:46		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:47:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:47:46		ruby scripts loaded: itunes
+2014-12-27 10:47:46		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:47:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:47:54		ruby: scripts unloaded
+2014-12-27 10:47:54		python: scripts unloaded
+2014-12-27 10:47:55		perl: scripts unloaded
+2014-12-27 10:48:34		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:48:34		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:48:34		ruby scripts loaded: itunes
+2014-12-27 10:48:34		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:48:34		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:48:59		[server] (irc.conf)
+2014-12-27 10:48:59		  irc.server.freenode.sasl_mechanism = plain  (default: (undefined))
+2014-12-27 10:48:59		1 options (matching with "irc.server.freenode.sasl_mechanism")
+2014-12-27 10:49:08	=!=	Error: failed to set option "irc.server.freenode.sasl_mechanism"
+2014-12-27 10:49:59		ruby: scripts unloaded
+2014-12-27 10:49:59		python: scripts unloaded
+2014-12-27 10:49:59		perl: scripts unloaded
+2014-12-27 10:50:11		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:50:11		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:50:11		ruby scripts loaded: itunes
+2014-12-27 10:50:11		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:50:11		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:51:33		ruby: scripts unloaded
+2014-12-27 10:51:33		python: scripts unloaded
+2014-12-27 10:51:33		perl: scripts unloaded
+2014-12-27 10:52:01		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:52:01		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:52:01		ruby scripts loaded: itunes
+2014-12-27 10:52:01		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:52:01		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:53:49		ruby: scripts unloaded
+2014-12-27 10:53:49		python: scripts unloaded
+2014-12-27 10:53:49		perl: scripts unloaded
+2014-12-27 10:58:18		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 10:58:19		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 10:58:19		ruby scripts loaded: itunes
+2014-12-27 10:58:19		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 10:58:19		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 10:58:45		Option changed: irc.server.freenode.ssl = on  (default: (undefined))
+2014-12-27 11:03:09	=!=	You can not write text in this buffer
+2014-12-27 11:03:11		irc: server /etc/ssl/certs created (temporary server, NOT SAVED!)
+2014-12-27 11:03:11		irc: server chat.freenode.net created (temporary server, NOT SAVED!)
+2014-12-27 11:03:12		irc: server 6697 created (temporary server, NOT SAVED!)
+2014-12-27 11:03:53	=!=	Error: WeeChat main buffer can't be closed
+2014-12-27 11:03:56	=!=	You can not write text in this buffer
+2014-12-27 11:05:32		Option changed: irc.server.chat.freenode.net.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2014-12-27 11:06:19		ruby: scripts unloaded
+2014-12-27 11:06:19		python: scripts unloaded
+2014-12-27 11:06:19		perl: scripts unloaded
+2014-12-27 11:06:26		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 11:06:26		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 11:06:26		ruby scripts loaded: itunes
+2014-12-27 11:06:26		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 11:06:26		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 11:08:03		Option changed: weechat.network.gnutls_ca_file = "/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2014-12-27 11:10:08	=!=	You can not write text in this buffer
+2014-12-27 11:10:47		Option changed: irc.server.freenode.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2014-12-27 11:10:55	=!=	Error with command "/connect" (help on command: /help connect)
+2014-12-27 11:40:48		ruby: scripts unloaded
+2014-12-27 11:40:48		python: scripts unloaded
+2014-12-27 11:40:49		perl: scripts unloaded
+2014-12-27 11:43:09		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 11:43:10		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 11:43:10		ruby scripts loaded: itunes
+2014-12-27 11:43:10		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 11:43:10		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 11:43:31		Option changed: weechat.network.gnutls_ca_file = "%h/ssl/nick.pem"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2014-12-27 11:44:00		Option changed: weechat.network.gnutls_ca_file = "/etc/ssl/certs/ca-certificates.crt"
+2014-12-27 11:46:53	=!=	Error: option "irc.server.xxx.ssl_priorities" not found
+2014-12-27 11:47:09		Option changed: irc.server.freenode.ssl_priorities = "NORMAL:-VERS-TLS-ALL:+VERS-TLS1.0:+VERS-SSL3.0:%COMPAT"  (default: (undefined))
+2014-12-27 12:02:46		Option changed: weechat.network.gnutls_ca_file = ""/usr/share/curl/ca-bundle.crt/"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2014-12-27 12:04:10		Option changed: irc.server.freenode.ssl = off  (default: (undefined))
+2014-12-27 12:04:27		Option changed: irc.server.freenode.sasl_mechanism = plain  (default: (undefined))
+2014-12-27 12:04:48		Option changed: irc.server.freenode.sasl_password = "Feb194311!"  (default: (undefined))
+2014-12-27 12:04:57		Option changed: irc.server.freenode.sasl_username = "mhartington"  (default: (undefined))
+2014-12-27 12:05:25		ruby: scripts unloaded
+2014-12-27 12:05:25		python: scripts unloaded
+2014-12-27 12:05:25		perl: scripts unloaded
+2014-12-27 15:36:28		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 15:36:28		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 15:36:28		ruby scripts loaded: itunes
+2014-12-27 15:36:28		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 15:36:28		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 15:36:49	=!=	Error: failed to set option "irc.server.freenode.sasl_mechanism"
+2014-12-27 15:37:01	=!=	Error: failed to set option "irc.server.freenode.sasl_mechanism"
+2014-12-27 15:37:11		ruby: scripts unloaded
+2014-12-27 15:37:11		python: scripts unloaded
+2014-12-27 15:37:11		perl: scripts unloaded
+2014-12-27 15:37:28		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 15:37:28		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 15:37:28		ruby scripts loaded: itunes
+2014-12-27 15:37:28		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 15:37:28		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 15:37:39		ruby: scripts unloaded
+2014-12-27 15:37:39		python: scripts unloaded
+2014-12-27 15:37:39		perl: scripts unloaded
+2014-12-27 15:37:51		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 15:37:51		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 15:37:51		ruby scripts loaded: itunes
+2014-12-27 15:37:51		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 15:37:51		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 15:38:21		ruby: scripts unloaded
+2014-12-27 15:38:21		python: scripts unloaded
+2014-12-27 15:38:22		perl: scripts unloaded
+2014-12-27 15:38:32		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-27 15:38:32		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-27 15:38:32		ruby scripts loaded: itunes
+2014-12-27 15:38:32		script: 279 scripts for WeeChat 1.0.1
+2014-12-27 15:38:32		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-27 15:39:06		Option changed: irc.server.freenode.ssl = on  (default: (undefined))
+2014-12-27 15:39:10	=!=	Error: unknown command "/x" (type /help for help)
+2014-12-27 15:43:53		Option changed: weechat.network.gnutls_ca_file = "/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt"  (default: "/etc/ssl/certs/ca-certificates.crt")
+2014-12-28 18:03:33		ruby: scripts unloaded
+2014-12-28 18:03:33		python: scripts unloaded
+2014-12-28 18:03:33		perl: scripts unloaded
+2014-12-29 11:30:49		perl scripts loaded: buffers, colorize_lines, iset
+2014-12-29 11:30:50		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2014-12-29 11:30:50		ruby scripts loaded: itunes
+2014-12-29 11:30:50		script: downloading list of scripts...
+2014-12-29 11:30:50		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2014-12-29 11:30:51		script: 279 scripts for WeeChat 1.0.1
+2014-12-29 11:31:25		Option changed: irc.server.freenode.ssl = off  (default: (undefined))
+2014-12-29 11:31:35		Option changed: irc.server_default.ssl = off
+2014-12-29 11:32:28	=!=	Error: unknown command "/sasl" (type /help for help)
+2014-12-29 15:49:43		ruby: scripts unloaded
+2014-12-29 15:49:43		python: scripts unloaded
+2014-12-29 15:49:43		perl: scripts unloaded
+2015-01-02 13:31:11		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-02 13:31:12		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-02 13:31:12		ruby scripts loaded: itunes
+2015-01-02 13:31:12		script: downloading list of scripts...
+2015-01-02 13:31:12		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-02 13:31:13		script: 279 scripts for WeeChat 1.0.1
+2015-01-02 15:54:10		ruby: scripts unloaded
+2015-01-02 15:54:10		python: scripts unloaded
+2015-01-02 15:54:10		perl: scripts unloaded
+2015-01-05 10:45:34		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-05 10:45:35		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-05 10:45:35		ruby scripts loaded: itunes
+2015-01-05 10:45:35		script: downloading list of scripts...
+2015-01-05 10:45:35		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-05 10:45:36		script: 279 scripts for WeeChat 1.0.1
+2015-01-05 14:12:47		ruby: scripts unloaded
+2015-01-05 14:12:47		python: scripts unloaded
+2015-01-05 14:12:47		perl: scripts unloaded
+2015-01-05 15:39:55		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-05 15:39:55		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-05 15:39:56		ruby scripts loaded: itunes
+2015-01-05 15:39:56		script: 279 scripts for WeeChat 1.0.1
+2015-01-05 15:39:56		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-05 19:06:11		ruby: scripts unloaded
+2015-01-05 19:06:11		python: scripts unloaded
+2015-01-05 19:06:11		perl: scripts unloaded
+2015-01-09 11:19:46		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-09 11:19:47		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-09 11:19:47		ruby scripts loaded: itunes
+2015-01-09 11:19:47		script: downloading list of scripts...
+2015-01-09 11:19:47		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-09 11:19:49		script: 279 scripts for WeeChat 1.0.1
+2015-01-09 12:03:32		ruby: scripts unloaded
+2015-01-09 12:03:32		python: scripts unloaded
+2015-01-09 12:03:32		perl: scripts unloaded
+2015-01-09 12:57:30		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-09 12:57:31		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-09 12:57:31		ruby scripts loaded: itunes
+2015-01-09 12:57:31		script: 279 scripts for WeeChat 1.0.1
+2015-01-09 12:57:31		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-09 14:12:48		ruby: scripts unloaded
+2015-01-09 14:12:48		python: scripts unloaded
+2015-01-09 14:12:48		perl: scripts unloaded
+2015-01-13 15:05:46		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-13 15:05:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-13 15:05:46		ruby scripts loaded: itunes
+2015-01-13 15:05:46		script: downloading list of scripts...
+2015-01-13 15:05:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-13 15:05:47		script: 279 scripts for WeeChat 1.0.1
+2015-01-13 16:59:46		ruby: scripts unloaded
+2015-01-13 16:59:46		python: scripts unloaded
+2015-01-13 16:59:46		perl: scripts unloaded
+2015-01-21 15:19:18		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-21 15:19:19		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-21 15:19:19		ruby scripts loaded: itunes
+2015-01-21 15:19:19		script: downloading list of scripts...
+2015-01-21 15:19:19		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-21 15:19:20		script: 279 scripts for WeeChat 1.1
+2015-01-21 21:10:46		ruby: scripts unloaded
+2015-01-21 21:10:46		python: scripts unloaded
+2015-01-21 21:10:46		perl: scripts unloaded
+2015-01-23 10:17:45		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-23 10:17:46		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, notification_center, snotify
+2015-01-23 10:17:46		ruby scripts loaded: itunes
+2015-01-23 10:17:46		script: downloading list of scripts...
+2015-01-23 10:17:46		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-23 10:17:48		script: 279 scripts for WeeChat 1.1
+2015-01-23 15:17:11		ruby: scripts unloaded
+2015-01-23 15:17:11		python: scripts unloaded
+2015-01-23 15:17:11		perl: scripts unloaded
+2015-01-27 10:06:56		perl scripts loaded: buffers, colorize_lines, iset
+2015-01-27 10:06:57		python: stdout/stderr: Traceback (most recent call last):
+2015-01-27 10:06:57		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-01-27 10:06:57		python: stdout/stderr:     from pync import Notifier
+2015-01-27 10:06:57		python: stdout/stderr: ImportError: No module named pync
+2015-01-27 10:06:57	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-01-27 10:06:57		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-01-27 10:06:57		ruby scripts loaded: itunes
+2015-01-27 10:06:57		script: downloading list of scripts...
+2015-01-27 10:06:57		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-01-27 10:06:58		script: 279 scripts for WeeChat 1.1.1
+2015-01-27 14:41:36	=!=	Too few arguments for command "/msg" (help on command: /help msg)
+2015-01-27 16:42:37		ruby: scripts unloaded
+2015-01-27 16:42:37		python: scripts unloaded
+2015-01-27 16:42:37		perl: scripts unloaded
+2015-02-02 15:55:03		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-02 15:55:03		python: stdout/stderr: Traceback (most recent call last):
+2015-02-02 15:55:03		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-02 15:55:03		python: stdout/stderr:     from pync import Notifier
+2015-02-02 15:55:03		python: stdout/stderr: ImportError: No module named pync
+2015-02-02 15:55:03	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-02 15:55:03		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-02 15:55:03		ruby scripts loaded: itunes
+2015-02-02 15:55:03		script: downloading list of scripts...
+2015-02-02 15:55:03		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-02 15:55:05		script: 279 scripts for WeeChat 1.1.1
+2015-02-02 21:08:02		ruby: scripts unloaded
+2015-02-02 21:08:02		python: scripts unloaded
+2015-02-02 21:08:02		perl: scripts unloaded
+2015-02-03 12:56:42		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-03 12:56:42		python: stdout/stderr: Traceback (most recent call last):
+2015-02-03 12:56:42		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-03 12:56:42		python: stdout/stderr:     from pync import Notifier
+2015-02-03 12:56:42		python: stdout/stderr: ImportError: No module named pync
+2015-02-03 12:56:42	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-03 12:56:42		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-03 12:56:42		ruby scripts loaded: itunes
+2015-02-03 12:56:42		script: 279 scripts for WeeChat 1.1.1
+2015-02-03 12:56:42		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-03 12:57:08	=!=	Error: unknown command "/" (type /help for help)
+2015-02-03 19:55:51		ruby: scripts unloaded
+2015-02-03 19:55:51		python: scripts unloaded
+2015-02-03 19:55:51		perl: scripts unloaded
+2015-02-04 11:16:34		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-04 11:16:34		python: stdout/stderr: Traceback (most recent call last):
+2015-02-04 11:16:34		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-04 11:16:34		python: stdout/stderr:     from pync import Notifier
+2015-02-04 11:16:34		python: stdout/stderr: ImportError: No module named pync
+2015-02-04 11:16:34	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-04 11:16:34		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-04 11:16:34		ruby scripts loaded: itunes
+2015-02-04 11:16:34		script: downloading list of scripts...
+2015-02-04 11:16:34		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-04 11:16:35		script: 279 scripts for WeeChat 1.1.1
+2015-02-04 12:45:53		ruby: scripts unloaded
+2015-02-04 12:45:53		python: scripts unloaded
+2015-02-04 12:45:53		perl: scripts unloaded
+2015-02-04 12:46:07		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-04 12:46:08		python: stdout/stderr: Traceback (most recent call last):
+2015-02-04 12:46:08		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-04 12:46:08		python: stdout/stderr:     from pync import Notifier
+2015-02-04 12:46:08		python: stdout/stderr: ImportError: No module named pync
+2015-02-04 12:46:08	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-04 12:46:08		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-04 12:46:08		ruby scripts loaded: itunes
+2015-02-04 12:46:08		script: 279 scripts for WeeChat 1.1.1
+2015-02-04 12:46:08		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-04 12:46:52	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2015-02-04 18:24:42		ruby: scripts unloaded
+2015-02-04 18:24:42		python: scripts unloaded
+2015-02-04 18:24:42		perl: scripts unloaded
+2015-02-05 10:37:04		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-05 10:37:04		python: stdout/stderr: Traceback (most recent call last):
+2015-02-05 10:37:04		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-05 10:37:04		python: stdout/stderr:     from pync import Notifier
+2015-02-05 10:37:04		python: stdout/stderr: ImportError: No module named pync
+2015-02-05 10:37:04	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-05 10:37:04		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-05 10:37:04		ruby scripts loaded: itunes
+2015-02-05 10:37:04		script: 279 scripts for WeeChat 1.1.1
+2015-02-05 10:37:04		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-05 10:37:22	=!=	irc: command "msg" must be executed on connected irc server
+2015-02-05 13:42:20		ruby: scripts unloaded
+2015-02-05 13:42:20		python: scripts unloaded
+2015-02-05 13:42:20		perl: scripts unloaded
+2015-02-05 16:59:37		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-05 16:59:37		python: stdout/stderr: Traceback (most recent call last):
+2015-02-05 16:59:37		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-05 16:59:37		python: stdout/stderr:     from pync import Notifier
+2015-02-05 16:59:37		python: stdout/stderr: ImportError: No module named pync
+2015-02-05 16:59:37	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-05 16:59:37		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-05 16:59:37		ruby scripts loaded: itunes
+2015-02-05 16:59:37		script: downloading list of scripts...
+2015-02-05 16:59:37		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-05 16:59:39		script: 279 scripts for WeeChat 1.1.1
+2015-02-05 17:50:43		ruby: scripts unloaded
+2015-02-05 17:50:43		python: scripts unloaded
+2015-02-05 17:50:43		perl: scripts unloaded
+2015-02-06 11:12:32		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-06 11:12:33		python: stdout/stderr: Traceback (most recent call last):
+2015-02-06 11:12:33		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-06 11:12:33		python: stdout/stderr:     from pync import Notifier
+2015-02-06 11:12:33		python: stdout/stderr: ImportError: No module named pync
+2015-02-06 11:12:33	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-06 11:12:33		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-06 11:12:33		ruby scripts loaded: itunes
+2015-02-06 11:12:33		script: 279 scripts for WeeChat 1.1.1
+2015-02-06 11:12:33		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-06 11:51:18	=!=	Error: unknown command "/DNS" (type /help for help)
+2015-02-06 11:53:05		[core]
+2015-02-06 11:53:05		  away  bar  buffer  color  command  cursor  debug  eval  filter  help  history  input  key  layout  mouse  mute  plugin  print  proxy  quit  reload  repeat  save  secure  set  unset  upgrade  uptime  version  wait  window
+2015-02-06 11:53:05		[alias]
+2015-02-06 11:53:05		  AAWAY    AME      ANICK    BYE      CHAT     CLOSE    IG       K        LEAVE    MSGBUF   N        REDRAW   SIGNOFF  UB       unalias  W        WI       WW     
+2015-02-06 11:53:05		  alias    AMSG     BEEP     C        CL       EXIT     J        KB       M        MUB      Q        SAY      T        UMODE    V        WC       WII    
+2015-02-06 11:53:05		[charset]
+2015-02-06 11:53:05		  charset
+2015-02-06 11:53:05		[exec]
+2015-02-06 11:53:05		  exec
+2015-02-06 11:53:05		[irc]
+2015-02-06 11:53:05		  admin       ban         dcc         die         info        kick        list        mode        nick        oper        query       rehash      samode      server      squit       topic       userhost    wallchops   whowas    
+2015-02-06 11:53:05		  allchan     connect     dehalfop    disconnect  invite      kickban     lusers      motd        notice      part        quiet       remove      sanick      service     stats       trace       users       wallops   
+2015-02-06 11:53:05		  allpv       ctcp        deop        halfop      ison        kill        map         msg         notify      ping        quote       restart     sapart      servlist    summon      unban       version     who       
+2015-02-06 11:53:05		  allserv     cycle       devoice     ignore      join        links       me          names       op          pong        reconnect   sajoin      saquit      squery      time        unquiet     voice       whois     
+2015-02-06 11:53:05		[logger]
+2015-02-06 11:53:05		  logger
+2015-02-06 11:53:05		[lua]
+2015-02-06 11:53:05		  lua
+2015-02-06 11:53:05		[perl]
+2015-02-06 11:53:05		  buffers_detach  buffers_whitelist  iset  perl
+2015-02-06 11:53:05		[python]
+2015-02-06 11:53:05		  go  python  snotify
+2015-02-06 11:53:05		[relay]
+2015-02-06 11:53:05		  relay
+2015-02-06 11:53:05		[ruby]
+2015-02-06 11:53:05		  itunes  ruby
+2015-02-06 11:53:05		[script]
+2015-02-06 11:53:05		  script
+2015-02-06 11:53:05		[tcl]
+2015-02-06 11:53:05		  tcl
+2015-02-06 11:53:05		[trigger]
+2015-02-06 11:53:05		  trigger
+2015-02-06 11:53:05		[xfer]
+2015-02-06 11:53:05		  me  xfer
+2015-02-06 17:21:05		ruby: scripts unloaded
+2015-02-06 17:21:05		python: scripts unloaded
+2015-02-06 17:21:05		perl: scripts unloaded
+2015-02-09 11:38:08		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-09 11:38:08		python: stdout/stderr: Traceback (most recent call last):
+2015-02-09 11:38:08		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-09 11:38:08		python: stdout/stderr:     from pync import Notifier
+2015-02-09 11:38:08		python: stdout/stderr: ImportError: No module named pync
+2015-02-09 11:38:08	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-09 11:38:08		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-09 11:38:08		ruby scripts loaded: itunes
+2015-02-09 11:38:08		script: downloading list of scripts...
+2015-02-09 11:38:09		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-09 11:38:10		script: 279 scripts for WeeChat 1.1.1
+2015-02-09 16:10:18		ruby: scripts unloaded
+2015-02-09 16:10:18		python: scripts unloaded
+2015-02-09 16:10:18		perl: scripts unloaded
+2015-02-10 10:38:17		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-10 10:38:17		python: stdout/stderr: Traceback (most recent call last):
+2015-02-10 10:38:17		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-10 10:38:17		python: stdout/stderr:     from pync import Notifier
+2015-02-10 10:38:17		python: stdout/stderr: ImportError: No module named pync
+2015-02-10 10:38:17	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-10 10:38:17		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-10 10:38:18		ruby scripts loaded: itunes
+2015-02-10 10:38:18		script: 279 scripts for WeeChat 1.1.1
+2015-02-10 10:38:18		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-10 10:56:17		buffer_autoclose: Closing buffer: freenode.perryg
+2015-02-10 11:46:17		buffer_autoclose: Closing buffer: freenode.breakingthings
+2015-02-10 18:05:21		ruby: scripts unloaded
+2015-02-10 18:05:21		python: scripts unloaded
+2015-02-10 18:05:21		perl: scripts unloaded
+2015-02-11 09:47:57		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-11 09:47:57		python: stdout/stderr: Traceback (most recent call last):
+2015-02-11 09:47:57		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-11 09:47:57		python: stdout/stderr:     from pync import Notifier
+2015-02-11 09:47:57		python: stdout/stderr: ImportError: No module named pync
+2015-02-11 09:47:57	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-11 09:47:57		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-11 09:47:57		ruby scripts loaded: itunes
+2015-02-11 09:47:57		script: downloading list of scripts...
+2015-02-11 09:47:57		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-11 09:47:59		script: 279 scripts for WeeChat 1.1.1
+2015-02-11 14:42:52		[cmd] (alias.conf)
+2015-02-11 14:42:52		  alias.cmd.AAWAY = "allserv /away"
+2015-02-11 14:42:52		1 option (matching with "alias.cmd.AAWAY")
+2015-02-11 14:42:58		ruby: scripts unloaded
+2015-02-11 14:42:58		python: scripts unloaded
+2015-02-11 14:42:58		perl: scripts unloaded
+2015-02-12 13:03:16		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-12 13:03:17		python: stdout/stderr: Traceback (most recent call last):
+2015-02-12 13:03:17		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-12 13:03:17		python: stdout/stderr:     from pync import Notifier
+2015-02-12 13:03:17		python: stdout/stderr: ImportError: No module named pync
+2015-02-12 13:03:17	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-12 13:03:17		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-12 13:03:17		ruby scripts loaded: itunes
+2015-02-12 13:03:17		script: downloading list of scripts...
+2015-02-12 13:03:17		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-12 13:03:19		script: 279 scripts for WeeChat 1.1.1
+2015-02-12 14:20:38		ruby: scripts unloaded
+2015-02-12 14:20:38		python: scripts unloaded
+2015-02-12 14:20:38		perl: scripts unloaded
+2015-02-18 11:55:41		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-18 11:55:41		python: stdout/stderr: Traceback (most recent call last):
+2015-02-18 11:55:41		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-18 11:55:41		python: stdout/stderr:     from pync import Notifier
+2015-02-18 11:55:41		python: stdout/stderr: ImportError: No module named pync
+2015-02-18 11:55:41	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-18 11:55:41		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-02-18 11:55:41		ruby scripts loaded: itunes
+2015-02-18 11:55:41		script: downloading list of scripts...
+2015-02-18 11:55:41		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-18 11:57:44	=!=	python: script "weeget" not found
+2015-02-18 11:57:52	=!=	python: script "weeget" not found
+2015-02-18 11:57:58	=!=	Error: unknown command "/install" (type /help for help)
+2015-02-18 11:58:00		Plugins loaded:
+2015-02-18 11:58:00		  alias: Alias commands
+2015-02-18 11:58:00		  charset: Charset conversions
+2015-02-18 11:58:00		  exec: Execution of external commands in WeeChat
+2015-02-18 11:58:00		  fifo: FIFO pipe for remote control
+2015-02-18 11:58:00		  irc: IRC (Internet Relay Chat) protocol
+2015-02-18 11:58:00		  logger: Log buffers to files
+2015-02-18 11:58:00		  lua: Support of lua scripts
+2015-02-18 11:58:00		  perl: Support of perl scripts
+2015-02-18 11:58:00		  python: Support of python scripts
+2015-02-18 11:58:00		  relay: Relay WeeChat data to remote application (irc/weechat protocols)
+2015-02-18 11:58:00		  ruby: Support of ruby scripts
+2015-02-18 11:58:00		  script: Scripts manager
+2015-02-18 11:58:00		  tcl: Support of tcl scripts
+2015-02-18 11:58:00		  trigger: Text replacement and command execution on events triggered by WeeChat/plugins
+2015-02-18 11:58:00		  xfer: DCC file transfer and direct chat
+2015-02-18 11:58:30	=!=	Error: unknown command "/weechat" (type /help for help)
+2015-02-18 11:58:40	=!=	Error: unknown command "/scripts" (type /help for help)
+2015-02-18 11:58:43		[core]
+2015-02-18 11:58:43		  away     color    debug    help     key      mute     proxy    repeat   set      uptime   window 
+2015-02-18 11:58:43		  bar      command  eval     history  layout   plugin   quit     save     unset    version
+2015-02-18 11:58:43		  buffer   cursor   filter   input    mouse    print    reload   secure   upgrade  wait   
+2015-02-18 11:58:43		[alias]
+2015-02-18 11:58:43		  AAWAY    AMSG     BYE      CL       IG       KB       MSGBUF   Q        SIGNOFF  UMODE    W        WII    
+2015-02-18 11:58:43		  alias    ANICK    C        CLOSE    J        LEAVE    MUB      REDRAW   T        unalias  WC       WW     
+2015-02-18 11:58:43		  AME      BEEP     CHAT     EXIT     K        M        N        SAY      UB       V        WI     
+2015-02-18 11:58:43		[charset]
+2015-02-18 11:58:43		  charset
+2015-02-18 11:58:43		[exec]
+2015-02-18 11:58:43		  exec
+2015-02-18 11:58:43		[irc]
+2015-02-18 11:58:43		  admin       cycle       halfop      kickban     mode        op          quote       sanick      squit       unquiet     who       
+2015-02-18 11:58:43		  allchan     dcc         ignore      kill        motd        oper        reconnect   sapart      stats       userhost    whois     
+2015-02-18 11:58:43		  allpv       dehalfop    info        links       msg         part        rehash      saquit      summon      users       whowas    
+2015-02-18 11:58:43		  allserv     deop        invite      list        names       ping        remove      server      time        version   
+2015-02-18 11:58:43		  ban         devoice     ison        lusers      nick        pong        restart     service     topic       voice     
+2015-02-18 11:58:43		  connect     die         join        map         notice      query       sajoin      servlist    trace       wallchops 
+2015-02-18 11:58:43		  ctcp        disconnect  kick        me          notify      quiet       samode      squery      unban       wallops   
+2015-02-18 11:58:43		[logger]
+2015-02-18 11:58:43		  logger
+2015-02-18 11:58:43		[lua]
+2015-02-18 11:58:43		  lua
+2015-02-18 11:58:43		[perl]
+2015-02-18 11:58:43		  buffers_detach  buffers_whitelist  iset  perl
+2015-02-18 11:58:43		[python]
+2015-02-18 11:58:43		  go  python  snotify
+2015-02-18 11:58:43		[relay]
+2015-02-18 11:58:43		  relay
+2015-02-18 11:58:43		[ruby]
+2015-02-18 11:58:43		  itunes  ruby
+2015-02-18 11:58:43		[script]
+2015-02-18 11:58:43		  script
+2015-02-18 11:58:43		[tcl]
+2015-02-18 11:58:43		  tcl
+2015-02-18 11:58:43		[trigger]
+2015-02-18 11:58:43		  trigger
+2015-02-18 11:58:43		[xfer]
+2015-02-18 11:58:43		  me  xfer
+2015-02-18 11:58:48		script: downloading list of scripts...
+2015-02-18 11:59:33		ruby: scripts unloaded
+2015-02-18 11:59:33		python: scripts unloaded
+2015-02-18 11:59:33		perl: scripts unloaded
+2015-02-18 11:59:37		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-18 11:59:37		python: stdout/stderr: Traceback (most recent call last):
+2015-02-18 11:59:37		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-18 11:59:37		python: stdout/stderr:     from pync import Notifier
+2015-02-18 11:59:37		python: stdout/stderr: ImportError: No module named pync
+2015-02-18 11:59:37	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-18 11:59:38	=!=	WARNING: the script weeget.py is obsolete since WeeChat 0.3.9 (it is replaced by command /script)
+2015-02-18 11:59:38	=!=	To uninstall weeget.py: /weeget remove weeget.py
+2015-02-18 11:59:38		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify, weeget
+2015-02-18 11:59:38		ruby scripts loaded: itunes
+2015-02-18 11:59:38		script: downloading list of scripts...
+2015-02-18 11:59:38		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-18 12:00:59		[python/weeget]  /weeget  list|listinstalled [<text>|<tag>]
+2015-02-18 12:00:59		                          show <script>
+2015-02-18 12:00:59		                          install|remove <script> [<script>...]
+2015-02-18 12:00:59		                          check|update|upgrade
+2015-02-18 12:00:59		WeeChat scripts manager
+2015-02-18 12:00:59		         list: list scripts (search text if given)
+2015-02-18 12:00:59		listinstalled: list installed scripts (search text if given)
+2015-02-18 12:00:59		         show: show detailed information about a script (in repository)
+2015-02-18 12:00:59		      install: install/upgrade script(s)
+2015-02-18 12:00:59		        check: check if local scripts needs upgrade
+2015-02-18 12:00:59		       update: update local scripts cache
+2015-02-18 12:00:59		      upgrade: upgrade all local scripts if they are obsolete
+2015-02-18 12:00:59		       remove: remove script(s)
+2015-02-18 12:00:59		Indicators in lists (first column):
+2015-02-18 12:00:59		  i  script is installed
+2015-02-18 12:00:59		  ?  unknown script
+2015-02-18 12:00:59		  r  script is running (loaded)
+2015-02-18 12:00:59		  N  script is obsolete (new version available)
+2015-02-18 12:00:59		Examples:
+2015-02-18 12:00:59		  /weeget list             => list all scripts
+2015-02-18 12:00:59		  /weeget list game        => list all scripts with text/tag "game"
+2015-02-18 12:00:59		  /weeget install beep.pl  => install script beep.pl
+2015-02-18 12:00:59		  /weeget remove beep.pl   => remove script beep.pl
+2015-02-18 12:01:17	=!=	Error: unknown command "/weechat" (type /help for help)
+2015-02-18 12:02:16		weeget: downloading list of scripts...
+2015-02-18 12:02:17		weeget: scripts downloaded
+2015-02-18 12:02:17		weeget: downloading "jabber.py"...
+2015-02-18 12:02:18		python: loading script "/Users/mhartington/.weechat/python/jabber.py"
+2015-02-18 12:02:18		python: stdout/stderr: Package python-xmpp (xmpppy) must be installed to use Jabber protocol.
+2015-02-18 12:02:18		python: stdout/stderr: Get xmpppy with your package manager, or at this URL: http://xmpppy.sourceforge.net/
+2015-02-18 12:02:18	=!=	python: function "register" not found (or failed) in file "/Users/mhartington/.weechat/python/jabber.py"
+2015-02-18 12:06:08		weeget: script "jabber.py" is already installed and up to date
+2015-02-18 12:06:41	=!=	Error: unknown command "/x" (type /help for help)
+2015-02-18 12:06:43		ruby: scripts unloaded
+2015-02-18 12:06:43		python: scripts unloaded
+2015-02-18 12:06:43		perl: scripts unloaded
+2015-02-18 13:08:26		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-18 13:08:26		python: stdout/stderr: Traceback (most recent call last):
+2015-02-18 13:08:26		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-18 13:08:26		python: stdout/stderr:     from pync import Notifier
+2015-02-18 13:08:26		python: stdout/stderr: ImportError: No module named pync
+2015-02-18 13:08:26	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-18 13:08:26	=!=	WARNING: the script weeget.py is obsolete since WeeChat 0.3.9 (it is replaced by command /script)
+2015-02-18 13:08:26	=!=	To uninstall weeget.py: /weeget remove weeget.py
+2015-02-18 13:08:26		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify, weeget
+2015-02-18 13:08:26		ruby scripts loaded: itunes
+2015-02-18 13:08:26		script: downloading list of scripts...
+2015-02-18 13:08:26		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-18 13:08:28		script: 279 scripts for WeeChat 1.1.1
+2015-02-18 16:14:35		ruby: scripts unloaded
+2015-02-18 16:14:35		python: scripts unloaded
+2015-02-18 16:14:35		perl: scripts unloaded
+2015-02-21 14:12:55		perl scripts loaded: buffers, colorize_lines, iset
+2015-02-21 14:12:55		python: stdout/stderr: Traceback (most recent call last):
+2015-02-21 14:12:55		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-02-21 14:12:55		python: stdout/stderr:     from pync import Notifier
+2015-02-21 14:12:55		python: stdout/stderr: ImportError: No module named pync
+2015-02-21 14:12:55	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-02-21 14:12:55	=!=	WARNING: the script weeget.py is obsolete since WeeChat 0.3.9 (it is replaced by command /script)
+2015-02-21 14:12:55	=!=	To uninstall weeget.py: /weeget remove weeget.py
+2015-02-21 14:12:55		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify, weeget
+2015-02-21 14:12:55		ruby scripts loaded: itunes
+2015-02-21 14:12:55		script: downloading list of scripts...
+2015-02-21 14:12:55		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-02-21 14:12:57		script: 279 scripts for WeeChat 1.1.1
+2015-02-21 16:07:11		ruby: scripts unloaded
+2015-02-21 16:07:11		python: scripts unloaded
+2015-02-21 16:07:11		perl: scripts unloaded
+2015-03-05 13:31:45		perl scripts loaded: buffers, iset
+2015-03-05 13:31:45		python: stdout/stderr: Traceback (most recent call last):
+2015-03-05 13:31:45		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-05 13:31:45		python: stdout/stderr:     from pync import Notifier
+2015-03-05 13:31:45		python: stdout/stderr: ImportError: No module named pync
+2015-03-05 13:31:45	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-05 13:31:45		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-05 13:31:45		script: downloading list of scripts...
+2015-03-05 13:31:45		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-05 13:32:04		script: 279 scripts for WeeChat 1.1.1
+2015-03-05 13:44:07		python: scripts unloaded
+2015-03-05 13:44:07		perl: scripts unloaded
+2015-03-05 15:41:38		perl scripts loaded: buffers, iset
+2015-03-05 15:41:38		python: stdout/stderr: Traceback (most recent call last):
+2015-03-05 15:41:38		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-05 15:41:38		python: stdout/stderr:     from pync import Notifier
+2015-03-05 15:41:38		python: stdout/stderr: ImportError: No module named pync
+2015-03-05 15:41:38	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-05 15:41:38		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-05 15:41:38		script: 279 scripts for WeeChat 1.1.1
+2015-03-05 15:41:38		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-05 16:01:44		python: scripts unloaded
+2015-03-05 16:01:44		perl: scripts unloaded

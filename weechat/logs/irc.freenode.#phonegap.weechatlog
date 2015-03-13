@@ -1,0 +1,54 @@
+2014-11-24 11:45:31	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #phonegap
+2014-11-24 11:45:31	ℹ 	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-11-24 11:45:31	ℹ 	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-11-24 11:45:31	ℹ 	Channel #phonegap: 116 nicks (0 ops, 0 voices, 116 normals)
+2014-11-24 11:45:33	ℹ 	Channel created on Mon, 25 Jan 2010 12:49:26
+2014-11-24 11:51:25	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #phonegap
+2014-11-24 11:52:55	-->	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has joined #phonegap
+2014-11-24 11:53:51	ℹ 	abram_away is now known as abram
+2014-11-24 11:57:15	<--	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has quit (Ping timeout: 244 seconds)
+2014-11-24 11:58:00	-->	jheady1 (~jheady@169.137.194.252) has joined #phonegap
+2014-11-24 12:00:24	<--	jheady1 (~jheady@169.137.194.252) has left #phonegap
+2014-11-24 12:20:43	<--	negaduck (~negaduck@91.206.116.254) has quit (Quit: (null))
+2014-11-24 12:25:53	-->	nimomo (~nimomo@bzq-109-65-122-178.red.bezeqint.net) has joined #phonegap
+2014-11-24 12:28:52	-->	marthinal_ (~chatzilla@217.Red-83-52-244.dynamicIP.rima-tde.net) has joined #phonegap
+2014-11-24 12:29:53	<--	marthinal (~chatzilla@46.Red-95-121-0.dynamicIP.rima-tde.net) has quit (Ping timeout: 264 seconds)
+2014-11-24 12:30:35	<--	MGyveR_ (~mgyver@62.254.236.250) has quit (Remote host closed the connection)
+2014-12-18 10:58:30	-->	mhartington (~mhartingt@pool-74-97-53-213.prvdri.fios.verizon.net) has joined #phonegap
+2014-12-18 10:58:30	ℹ 	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-12-18 10:58:30	ℹ 	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-12-18 10:58:30	ℹ 	Channel #phonegap: 116 nicks (1 ops, 0 voices, 115 normals)
+2014-12-18 10:58:32	ℹ 	Channel created on Mon, 25 Jan 2010 12:49:26
+2014-12-18 10:59:25	<--	shaisnir (~shaisnir@109.64.10.120) has quit (Remote host closed the connection)
+2014-12-18 11:00:00	-->	shaisnir (~shaisnir@87.68.37.111.cable.012.net.il) has joined #phonegap
+2014-12-18 11:00:45	-->	bbankes (~bbankes@50-200-100-242-static.hfc.comcastbusiness.net) has joined #phonegap
+2014-12-18 11:04:48	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-12-18 11:05:28	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #phonegap
+2014-12-18 11:08:14	<--	jotaefe (~jotaefe@c-24-7-58-38.hsd1.ca.comcast.net) has quit (Quit: Computer has gone to sleep.)
+2014-12-18 11:08:36	<--	Aricwithana (~me@63-155-205-80.frgo.qwest.net) has quit (Quit: Leaving.)
+2014-12-18 11:08:49	-->	jotaefe (~jotaefe@c-24-7-58-38.hsd1.ca.comcast.net) has joined #phonegap
+2014-12-18 11:08:56	<--	stampz (c3eabafa@gateway/web/freenode/ip.195.234.186.250) has quit (Quit: Page closed)
+2014-12-18 11:09:20	-->	Aricwithana (~me@63-155-205-80.frgo.qwest.net) has joined #phonegap
+2014-12-18 11:13:08	<--	jotaefe (~jotaefe@c-24-7-58-38.hsd1.ca.comcast.net) has quit (Ping timeout: 256 seconds)
+2014-12-18 11:20:50	-->	jotaefe (~jotaefe@c-24-7-58-38.hsd1.ca.comcast.net) has joined #phonegap
+2014-12-18 11:23:55	-->	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has joined #phonegap
+2014-12-18 11:27:27	<--	jotaefe (~jotaefe@c-24-7-58-38.hsd1.ca.comcast.net) has quit (Quit: Lingo - http://www.lingoirc.com)
+2014-12-18 11:29:17	<--	abraxas_ (~abraxas@113x33x180x18.ap113.ftth.ucom.ne.jp) has quit (Ping timeout: 264 seconds)
+2014-12-18 11:32:48	<--	jhoff (~jhoff@63.230.32.211) has quit
+2014-12-18 11:41:14	-->	teamcoltra (~textual@opennic/teamcoltra) has joined #phonegap
+2014-12-18 11:41:17	-->	teamcolt_ (~textual@S0106bcee7b356cb0.vc.shawcable.net) has joined #phonegap
+2014-12-18 11:41:54	-->	okdamn (~Adium@host68-94-static.104-82-b.business.telecomitalia.it) has joined #phonegap
+2014-12-18 11:43:39	okdamn	Does anybody knows how to to read a fresh recorded .wav file form the temp directory ?
+2014-12-18 11:44:05	okdamn	im using the media plugin to record an audio file and it seems it is not saved or in the tmp file i can't find it damn
+2014-12-18 11:55:51	<--	nimomo (~nimomo@109.66.149.180) has quit (Remote host closed the connection)
+2014-12-18 12:03:38	okdamn	hey any help here? http://stackoverflow.com/questions/27545475/phonegap-cordova-read-file-as-text-from-temporary-directory
+2014-12-18 12:05:00	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit
+2014-12-18 12:08:25	<--	fandi (~fandi@101.255.36.66) has quit (Ping timeout: 250 seconds)
+2014-12-18 12:09:53	<--	anatolys (~stranger@cr.rlisystems.ru) has quit (Quit: Leaving.)
+2014-12-18 12:16:38	-->	fandi (~fandi@101.255.36.66) has joined #phonegap
+2014-12-21 15:39:00	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #phonegap
+2014-12-21 15:39:00	ℹ 	Topic for #phonegap is "PhoneGap | phonegap.com | docs.phonegap.com | build.phonegap.com | PhoneGap is powered by Apache Cordova | IRC Archives workgroup.ca/cordova/irc"
+2014-12-21 15:39:00	ℹ 	Topic set by closer (~eV9kqKUNT@jenkins.closure.jp) on Wed, 17 Sep 2014 13:01:27
+2014-12-21 15:39:01	ℹ 	Channel #phonegap: 108 nicks (1 ops, 0 voices, 107 normals)
+2014-12-21 15:39:02	ℹ 	Channel created on Mon, 25 Jan 2010 12:49:26
+2014-12-21 15:39:37	-->	oVerde (~overde@177.181.10.247) has joined #phonegap

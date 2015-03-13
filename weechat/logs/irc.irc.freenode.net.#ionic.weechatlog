@@ -1,0 +1,1647 @@
+2014-09-11 21:20:51	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-09-11 21:20:51	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-09-11 21:20:51	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-09-11 21:20:51	--	Channel #ionic: 62 nicks (2 ops, 0 voices, 60 normals)
+2014-09-11 21:20:54	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-09-11 21:22:49	<--	kay-z (~kpoorman@cpe-075-177-186-021.nc.res.rr.com) has quit (Quit: Leaving...)
+2014-09-11 21:23:09	-->	qwebirc87368 (187adf2d@gateway/web/freenode/ip.24.122.223.45) has joined #ionic
+2014-09-11 21:24:49	-->	qwebirc23036 (bb5ea7bf@gateway/web/freenode/ip.187.94.167.191) has joined #ionic
+2014-09-11 21:25:09	<--	qwebirc23036 (bb5ea7bf@gateway/web/freenode/ip.187.94.167.191) has quit (Client Quit)
+2014-09-11 21:25:43	mhartington	Just checking is this going through?
+2014-09-11 21:26:03	FIFOd	yes
+2014-09-11 21:26:27	mhartington	sweet, just finished setting up weechat for terminal
+2014-09-11 21:26:36	mhartington	making sure all is good
+2014-09-11 21:27:28	<--	qwebirc87368 (187adf2d@gateway/web/freenode/ip.24.122.223.45) has quit (Ping timeout: 246 seconds)
+2014-09-11 21:37:52	-->	mhartington1 (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-09-11 21:37:52	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-09-11 21:37:52	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-09-11 21:37:52	--	Channel #ionic: 61 nicks (3 ops, 0 voices, 58 normals)
+2014-09-11 21:37:53	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-09-13 12:27:18	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-09-13 12:27:18	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-09-13 12:27:18	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-09-13 12:27:18	--	Channel #ionic: 60 nicks (1 ops, 0 voices, 59 normals)
+2014-09-13 12:27:18	--	Mode #ionic [+o mhartington] by ChanServ
+2014-09-13 12:27:20	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-09-13 12:28:07	EoN	so does that mean I'd use a different technique other than the ng-repeat="item in myDayListItems" to populate it?
+2014-09-13 12:28:17	-->	arabot (~nodebot@ec2-54-187-190-224.us-west-2.compute.amazonaws.com) has joined #ionic
+2014-09-13 12:28:20	EoN	sounds like i'd need to populate it from the js side, rather than within the template directive
+2014-09-13 12:28:20	FIFOd	No, because of databinding you can still use that
+2014-09-13 12:28:27	EoN	yeah?
+2014-09-13 12:28:36	<--	arabot (~nodebot@ec2-54-187-190-224.us-west-2.compute.amazonaws.com) has left #ionic
+2014-10-07 12:45:51	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-10-07 12:45:51	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-10-07 12:45:51	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-10-07 12:45:51	--	Channel #ionic: 80 nicks (1 ops, 0 voices, 79 normals)
+2014-10-07 12:45:52	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-10-07 12:47:22	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 12:47:44	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 12:47:44	--	Mode #ionic [+o perryg] by ChanServ
+2014-10-07 12:48:01	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 12:48:18	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 12:48:18	--	Mode #ionic [+o perryg] by ChanServ
+2014-10-07 12:49:02	ajr62	TimothyKrell: And what is the difference between that and doing a command+shitf+R on a page with a form on it, as far as $scope is concerned?
+2014-10-07 12:50:59	-->	uchuff (~uchuff@82.14.212.45) has joined #ionic
+2014-10-07 12:51:31	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 12:51:51	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 12:51:51	--	Mode #ionic [+o perryg] by ChanServ
+2014-10-07 12:52:19	TimothyKrell	As far as I'm aware, with relation to that specific $scope, it's the same. When refreshing the page, however, you are re initializing the entire angular app, not just that $scope and controller.
+2014-10-07 12:53:46	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 12:54:07	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 12:54:07	--	Mode #ionic [+o perryg] by ChanServ
+2014-10-07 12:54:33	<--	bmcquee (~bmcquee@216.207.42.140) has quit (Ping timeout: 258 seconds)
+2014-10-07 12:54:58	ajr62	So do have any idea why switching tabs would cause a custom directive to “forget” its ability to data-bind?
+2014-10-07 12:55:52	ajr62	The directive is definitely bound the first time a page loads, but after switching tabs, the directive isn’t bound to anything anymore, at least as far as I can tell.
+2014-10-07 12:55:55	-->	stoodder___ (sid28596@gateway/web/irccloud.com/x-yeewahmdyklqoalg) has joined #ionic
+2014-10-07 12:55:55	-->	joshdholtz (sid28594@gateway/web/irccloud.com/x-kvgkcspdfavtcizr) has joined #ionic
+2014-10-07 12:56:40	-->	RodrigoWaters (uid30345@gateway/web/irccloud.com/x-sbbghqoofpjqnivk) has joined #ionic
+2014-10-07 12:59:02	-->	joar (sid36693@gateway/web/irccloud.com/x-vngyosxgnkoewdkm) has joined #ionic
+2014-10-07 13:04:30	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 13:04:48	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 13:04:48	--	Mode #ionic [+o perryg] by ChanServ
+2014-10-07 13:07:06	<--	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-10-07 13:07:24	-->	perryg (~Adium@99-126-182-185.lightspeed.mdsnwi.sbcglobal.net) has joined #ionic
+2014-10-07 13:07:24	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-15 08:16:51	-->	mhartington1 (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-15 08:16:51	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 08:16:51	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 08:16:51	--	Channel #ionic: 78 nicks (1 ops, 0 voices, 77 normals)
+2014-11-15 08:16:53	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 08:52:19	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-15 08:52:19	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 08:52:19	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 08:52:19	--	Channel #ionic: 80 nicks (0 ops, 0 voices, 80 normals)
+2014-11-15 08:52:19	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-15 08:52:22	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 08:59:06	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-15 09:04:43	-->	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has joined #ionic
+2014-11-15 09:04:44	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 265 seconds)
+2014-11-15 09:11:53	<--	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has quit (Quit: Computer has gone to sleep.)
+2014-11-15 09:12:43	-->	Ronyrun (~Ronyrun@78.193.217.64) has joined #ionic
+2014-11-15 09:13:08	Ronyrun	i
+2014-11-15 09:13:14	Ronyrun	Hi
+2014-11-15 09:14:17	<--	jbenfreenode (~jon@90.199.14.168) has quit (Ping timeout: 240 seconds)
+2014-11-15 09:23:09	-->	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has joined #ionic
+2014-11-15 09:32:03	<--	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has quit (Quit: Computer has gone to sleep.)
+2014-11-15 09:37:31	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-15 09:38:15	-->	danecando (~danecando@c-71-57-164-138.hsd1.fl.comcast.net) has joined #ionic
+2014-11-15 09:40:51	<--	tgrk (~tgrk@ip-2-202-165-245.web.vodafone.de) has quit (Ping timeout: 255 seconds)
+2014-11-15 09:42:34	<--	luisgrin (b5a56906@gateway/web/freenode/ip.181.165.105.6) has quit (Ping timeout: 246 seconds)
+2014-11-15 09:48:43	-->	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has joined #ionic
+2014-11-15 09:56:19	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-15 09:56:19	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 09:56:19	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 09:56:19	--	Channel #ionic: 81 nicks (0 ops, 0 voices, 81 normals)
+2014-11-15 09:56:19	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-15 09:56:21	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 09:58:46	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-15 10:09:21	@mhartington	morning ionic devs
+2014-11-15 10:10:51	Foxandxss	hello mhartington
+2014-11-15 10:10:55	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-15 10:15:27	@mhartington	hows it going @Foxandxss
+2014-11-15 10:18:25	Foxandxss	right now brilliant, but my GF wants go to shopping, so I will tell you later
+2014-11-15 10:18:43	Foxandxss	If I survive
+2014-11-15 10:18:45	@mhartington	hah, oh boy
+2014-11-15 10:18:53	@mhartington	best of luck to you
+2014-11-15 10:20:05	Foxandxss	later then, thank you
+2014-11-15 10:20:19	<--	Foxandxss (~textual@unaffiliated/foxandxss) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-15 10:20:31	Megalepozy	anyone here successfully used ionic with cca?
+2014-11-15 10:21:07	Megalepozy	I get error at app.js:14, window.cordova.plugins is undefined when loading the base project of Ionic
+2014-11-15 10:21:44	@mhartington	Megalepozy: havent mess too much with cca, but let me take a shot at it
+2014-11-15 10:22:00	BahamutWC|Work	Megalepozy: we are
+2014-11-15 10:22:02	Megalepozy	I will let u to take even 2 if u want :)
+2014-11-15 10:23:26	Megalepozy	BahamutWC|Work: I set the latest cca and replace its www folder content with the content of Ionic www folder (I left the 2 manifest files and background.js which cca created)
+2014-11-15 10:24:24	Megalepozy	when loading I got an error which I solved by commenting out <script src="cordova.js"></script> @ index.html
+2014-11-15 10:24:37	BahamutWC|Work	Chrome automatically injects cordova, you don’t need that script tag
+2014-11-15 10:24:48	BahamutWC|Work	cca*
+2014-11-15 10:25:02	Megalepozy	then I got to my current problem, error occur @ app.js:14 cause window.cordova.plugins is undefined
+2014-11-15 10:25:09	Megalepozy	yeah I know cause of that I commented it out
+2014-11-15 10:25:21	BahamutWC|Work	plugins folder is present in your project root right?
+2014-11-15 15:30:33	-->	mhartington (~mhartingt@ip68-9-73-243.ri.ri.cox.net) has joined #ionic
+2014-11-15 15:30:33	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 15:30:34	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 15:30:34	--	Channel #ionic: 77 nicks (0 ops, 0 voices, 77 normals)
+2014-11-15 15:30:35	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 15:30:44	--	You are now known as 6A4AAGYIW
+2014-11-15 15:30:50	--	Mode #ionic [+o 6A4AAGYIW] by ChanServ
+2014-11-15 15:35:00	-->	mhartington (~mhartingt@ip68-9-73-243.ri.ri.cox.net) has joined #ionic
+2014-11-15 15:35:00	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 15:35:00	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 15:35:00	--	Channel #ionic: 77 nicks (0 ops, 0 voices, 77 normals)
+2014-11-15 15:35:00	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-15 15:35:02	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 15:46:38	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-15 15:49:50	<--	Benstr (~Ben@173-9-219-197-Illinois.hfc.comcastbusiness.net) has quit (Ping timeout: 255 seconds)
+2014-11-15 15:51:42	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 258 seconds)
+2014-11-15 15:54:27	-->	blackjid_ (blackjid@open.source.supporter.firrre.com) has joined #ionic
+2014-11-15 16:01:46	-->	intellix (~intellix@c101-252.i07-26.onvol.net) has joined #ionic
+2014-11-15 16:02:56	-->	tgrk (~tgrk@ip-109-45-225-236.web.vodafone.de) has joined #ionic
+2014-11-15 16:10:22	<--	intellix (~intellix@c101-252.i07-26.onvol.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-15 16:13:21	-->	intellix (~intellix@c101-252.i07-26.onvol.net) has joined #ionic
+2014-11-15 16:58:42	-->	mhartington (~mhartingt@ip68-9-73-243.ri.ri.cox.net) has joined #ionic
+2014-11-15 16:58:42	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-15 16:58:42	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-15 16:58:42	--	Channel #ionic: 82 nicks (0 ops, 0 voices, 82 normals)
+2014-11-15 16:58:42	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-15 16:58:44	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-15 16:58:54	hairyjewbear	http://pastie.org/9721827
+2014-11-15 16:59:19	hairyjewbear	when i call Database.checkEmpty in the controller
+2014-11-15 16:59:21	hairyjewbear	it returns a function
+2014-11-15 16:59:23	hairyjewbear	instead of a boolen
+2014-11-15 17:05:59	-->	[OES] (~textual@mail.abilityresourcing.co.uk) has joined #ionic
+2014-11-15 17:06:32	-->	xaq (~xaq@cpe-69-203-118-159.nyc.res.rr.com) has joined #ionic
+2014-11-15 17:07:20	-->	edrocks (~edrocks@pool-108-9-173-223.tampfl.fios.verizon.net) has joined #ionic
+2014-11-15 17:07:20	<--	xaq (~xaq@cpe-69-203-118-159.nyc.res.rr.com) has quit (Read error: Connection reset by peer)
+2014-11-15 17:07:24	-->	xaq_ (~xaq@cpe-69-203-118-159.nyc.res.rr.com) has joined #ionic
+2014-11-15 17:11:23	<--	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-15 17:14:00	<--	[OES] (~textual@mail.abilityresourcing.co.uk) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-16 12:12:23	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-16 12:12:23	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-16 12:12:23	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-16 12:12:23	--	Channel #ionic: 86 nicks (0 ops, 0 voices, 86 normals)
+2014-11-16 12:12:23	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-16 12:12:25	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-16 12:18:10	<--	mitchellhenke (~mitchellh@cpe-184-59-5-116.wi.res.rr.com) has quit (Quit: Computer has gone to sleep.)
+2014-11-16 12:19:47	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-16 12:25:13	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 272 seconds)
+2014-11-16 12:28:08	-->	Bodin- (~bodinaren@c83-249-26-160.bredband.comhem.se) has joined #ionic
+2014-11-16 12:28:12	<--	Bodin- (~bodinaren@c83-249-26-160.bredband.comhem.se) has quit (Client Quit)
+2014-11-16 12:41:45	<--	cads (~max@2601:0:9300:e86:21be:19d3:6dba:5af9) has quit (Ping timeout: 258 seconds)
+2014-11-16 12:45:05	<--	zabojnar (~feiichi@88.103.59.166) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-16 12:47:47	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-16 12:48:08	<--	Evanion (~mikael@h234n9-aars-gr100.ias.bredband.telia.com) has quit (Ping timeout: 250 seconds)
+2014-11-16 12:48:13	-->	Evanion_ (~mikael@h234n9-aars-gr100.ias.bredband.telia.com) has joined #ionic
+2014-11-16 12:59:22	-->	Foxandxss (~textual@unaffiliated/foxandxss) has joined #ionic
+2014-11-16 13:00:59	<--	bayousoft (~textual@66-190-200-150.dhcp.thbd.la.charter.com) has quit
+2014-11-16 13:04:57	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-16 13:51:06	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-16 13:51:06	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-16 13:51:06	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-16 13:51:06	--	Channel #ionic: 83 nicks (0 ops, 0 voices, 83 normals)
+2014-11-16 13:51:06	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-16 13:51:08	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-16 14:03:02	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-16 14:03:02	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-16 14:03:02	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-16 14:03:02	--	Channel #ionic: 82 nicks (0 ops, 0 voices, 82 normals)
+2014-11-16 14:03:02	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-16 14:03:04	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-16 14:05:13	-->	kirfu (~kirill@pool-108-6-40-67.nycmny.fios.verizon.net) has joined #ionic
+2014-11-16 14:07:32	-->	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-16 14:12:18	<--	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-11-16 14:12:58	-->	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-16 14:19:32	<--	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-11-16 14:20:13	-->	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-16 14:25:50	-->	cads (~max@c-50-155-110-104.hsd1.ga.comcast.net) has joined #ionic
+2014-11-16 14:28:38	<--	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-11-16 14:29:20	-->	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-16 14:31:19	<--	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-11-16 14:31:58	-->	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-16 14:35:43	<--	mitchellhenke (~mitchellh@162-237-56-125.lightspeed.milwwi.sbcglobal.net) has quit (Read error: Connection reset by peer)
+2014-11-16 14:41:29	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-16 14:48:54	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-16 14:52:14	<--	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has quit (Ping timeout: 256 seconds)
+2014-11-16 15:02:54	<--	cads (~max@c-50-155-110-104.hsd1.ga.comcast.net) has quit (Ping timeout: 264 seconds)
+2014-11-16 15:04:12	-->	rhp (~rhp@82-171-113-86.ip.telfort.nl) has joined #ionic
+2014-11-16 15:08:15	-->	bayousoft (~textual@68-117-207-208.dhcp.opls.la.charter.com) has joined #ionic
+2014-11-16 15:22:05	<--	bayousoft (~textual@68-117-207-208.dhcp.opls.la.charter.com) has quit
+2014-11-16 15:33:43	-->	bayousoft (~textual@68-117-207-208.dhcp.opls.la.charter.com) has joined #ionic
+2014-11-16 15:42:07	<--	zwacky (~zwacky@2a02:8109:a640:1828:4d46:f46c:c316:af5) has quit (Ping timeout: 272 seconds)
+2014-11-16 15:43:46	<--	[OES] (~textual@mail.abilityresourcing.co.uk) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-16 15:44:11	-->	[OES] (~textual@mail.abilityresourcing.co.uk) has joined #ionic
+2014-11-16 15:47:30	<--	liberatus (~winfred@2601:9:4f00:ee8:9073:2599:c3f1:9f52) has quit (Remote host closed the connection)
+2014-11-16 15:47:46	<--	rendar (~I@host50-119-dynamic.57-82-r.retail.telecomitalia.it) has quit (Ping timeout: 256 seconds)
+2014-11-16 15:47:57	-->	liberatus (~winfred@c-50-168-8-22.hsd1.ca.comcast.net) has joined #ionic
+2014-11-16 15:50:58	<--	Megalepozy (~Megalepoz@212.179.226.86) has quit (Quit: Leaving)
+2014-11-16 15:53:57	-->	rendar (~I@host50-119-dynamic.57-82-r.retail.telecomitalia.it) has joined #ionic
+2014-11-17 09:36:48	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-17 09:36:48	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-17 09:36:48	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-17 09:36:48	--	Channel #ionic: 86 nicks (0 ops, 0 voices, 86 normals)
+2014-11-17 09:36:49	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-17 09:36:50	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-17 09:37:39	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 09:38:30	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 09:39:27	mYd1	Foxandxss  u are the best u rescued me again :D big thx
+2014-11-17 09:40:41	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 09:41:23	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 09:46:43	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 09:47:29	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 09:48:03	-->	arkin (~arkin@unaffiliated/arkin) has joined #ionic
+2014-11-17 09:48:46	arkin	ioudas: did you get it sorted?
+2014-11-17 09:48:53	ioudas	nah
+2014-11-17 09:49:04	ioudas	ive tried a few different ways to inject
+2014-11-17 09:49:07	ioudas	or get this to work
+2014-11-17 09:49:34	ioudas	now i just have a shared function im trying to call between the controlelrs
+2014-11-17 09:49:36	ioudas	controllers*
+2014-11-17 09:49:45	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 09:49:55	ioudas	I cant really get the checkbox data to stay across controllers/state changes
+2014-11-17 09:50:00	ioudas	no matter what i am doing
+2014-11-17 09:50:24	ioudas	not sure if its a model problem, dependency problem or what.
+2014-11-17 09:50:30	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 09:50:37	arkin	ioudas: your controller is broken? .. l([ ??
+2014-11-17 09:50:44	ioudas	yeah in that example
+2014-11-17 09:50:53	ioudas	i was trying to do depency injection
+2014-11-17 09:51:05	arkin	which you've done ?
+2014-11-17 09:51:07	ioudas	i think thats what i need, but i cant get it, even after looking up docu/examples
+2014-11-17 09:51:10	ioudas	no
+2014-11-17 09:51:12	ioudas	i havnt
+2014-11-17 09:51:26	ioudas	right now im just gonna break down and try to use root scope
+2014-11-17 09:51:29	ioudas	i think
+2014-11-17 09:51:43	ioudas	i cant get it to go.... im open to suggestions
+2014-11-17 09:51:54	arkin	ioudas: well i suggested sitting a controller above it the other day
+2014-11-17 09:52:08	ioudas	hmm must of missed that
+2014-11-17 09:52:15	ioudas	you mean parent wise
+2014-11-17 09:52:24	arkin	yea, ill cut up your example to show you, and ill give you a service example too
+2014-11-17 09:52:28	ioudas	ok
+2014-11-17 09:52:34	ioudas	any help would be appreciated
+2014-11-17 09:52:50	ioudas	as long as the checkboxes save between state changes... initally they all need to be checked...
+2014-11-17 09:56:30	arkin	ok
+2014-11-17 09:59:20	arkin	ioudas: how do i add a new file :o
+2014-11-17 09:59:25	ioudas	on plunker?
+2014-11-17 09:59:32	ioudas	click new file on the left side
+2014-11-17 09:59:55	ioudas	ideally id like to communicate between controllers as I have this as a goal to learn. But the examples/documentation dont explain it well at all..
+2014-11-17 10:00:04	ioudas	and I cant figure it out
+2014-11-17 10:00:15	arkin	yea ill try give you 2 ways, theres probably many more
+2014-11-17 10:02:53	arkin	ioudas: http://plnkr.co/edit/exql2y0Xw5Qu18FU8XJy?p=preview
+2014-11-17 10:02:55	arkin	kept it simple
+2014-11-17 10:03:23	-->	frankblizzar (~frankbliz@f053065018.adsl.alicedsl.de) has joined #ionic
+2014-11-17 10:04:42	arkin	ioudas: http://plnkr.co/edit/exql2y0Xw5Qu18FU8XJy?p=preview -- using a service
+2014-11-17 10:06:49	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 10:07:51	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 10:09:04	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2014-11-17 10:10:04	ioudas	ah that gives me some stuff to go on, ill try that out.
+2014-11-17 10:10:28	arkin	:)
+2014-11-17 10:10:32	arkin	I'd opt for service looks bit better
+2014-11-17 10:15:42	ioudas	yeah i got a service, however i cant get it to "inject" or the models dont update
+2014-11-17 10:15:44	ioudas	properly
+2014-11-17 10:16:49	-->	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 10:19:19	arkin	ioudas: well you are injecting it with the delaration at the top
+2014-11-17 10:19:57	-->	Vypah (508886b2@gateway/web/freenode/ip.80.136.134.178) has joined #ionic
+2014-11-17 10:21:03	ioudas	im about to have some questions for you
+2014-11-17 10:21:13	ioudas	got most of your logic
+2014-11-17 10:21:21	ioudas	i think I have a couple things im doing wrong as well
+2014-11-17 10:21:39	<--	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 258 seconds)
+2014-11-17 10:22:35	arkin	ok well there are many ways of doing things so maybe not
+2014-11-17 10:26:12	ioudas	Lemme repaste here in a min
+2014-11-17 10:29:44	arkin	where is the best place to show a ionicLoading or alert, from the controller or service?
+2014-11-17 10:29:52	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 10:30:20	ioudas	i show mine in the controller
+2014-11-17 10:30:26	ioudas	then when the promise is back
+2014-11-17 10:30:39	ioudas	i hide it
+2014-11-17 10:30:40	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 10:30:45	-->	qwebirc92804 (5c6739f2@gateway/web/freenode/ip.92.103.57.242) has joined #ionic
+2014-11-17 10:30:45	<--	qwebirc92804 (5c6739f2@gateway/web/freenode/ip.92.103.57.242) has quit (Client Quit)
+2014-11-17 10:30:56	ioudas	http://pastebin.com/mq9ZWrea
+2014-11-17 10:32:32	ioudas	arkin, got your code working
+2014-11-17 10:32:33	ioudas	;-)
+2014-11-17 10:32:36	arkin	:D
+2014-11-17 10:32:43	ioudas	thank you for being super helpful.
+2014-11-17 10:32:45	arkin	I'm doing a bit of both
+2014-11-17 10:32:47	-->	IanOlson (~IanOlson@50-196-217-206-static.hfc.comcastbusiness.net) has joined #ionic
+2014-11-17 10:32:51	arkin	no worries im sure I owed you from a few days back
+2014-11-17 10:33:08	ioudas	Eh, good to help instead of just say: read the documention or some other such nonsense
+2014-11-17 10:33:15	ioudas	its appreciated
+2014-11-17 10:33:27	ioudas	i am going to try to remove the parent controller
+2014-11-17 10:33:30	ioudas	right now
+2014-11-17 10:33:41	arkin	yea, it should work fine with service just thought that was important to know
+2014-11-17 10:34:01	jpstone	anyone here use the sqlite plugin with ionic?
+2014-11-17 10:34:04	arkin	also, if you need it to persist on page reload or even after browsing around consider using localStorage
+2014-11-17 10:34:13	arkin	jpstone: will be soon, just using native websql atm
+2014-11-17 10:34:31	jpstone	when I open a database and create a table...where is the SQL file actually located on the tablet?
+2014-11-17 10:35:20	ioudas	yep arkin got it workin without the parent controller
+2014-11-17 10:35:36	ioudas	i have been trying to make the object inherited from the first controller
+2014-11-17 10:35:47	ioudas	instead of just defining it in the factory
+2014-11-17 10:35:50	ioudas	that was my issue
+2014-11-17 10:36:02	ioudas	thanks for helpin me find that ;-)
+2014-11-17 10:36:04	arkin	np
+2014-11-17 10:36:21	arkin	jpstone: according to the plugin docs, a location in the app that will be backed up to the cloud
+2014-11-17 10:36:35	arkin	if you use native outside of the plugin, i think its wherever safari/etc stores it
+2014-11-17 10:36:45	jpstone	arkin: which doc are you looking at?
+2014-11-17 10:37:07	arkin	jpstone: https://github.com/brodysoft/Cordova-SQLitePlugin
+2014-11-17 10:37:29	arkin	"Keeps sqlite database in a user data location that is known, can be reconfigured, and iOS will be backed up by iCloud."
+2014-11-17 10:37:50	jpstone	right, just saw that
+2014-11-17 10:38:06	jpstone	so the question is...if it's "known", who knows it? :D and how can it be reconfigured?
+2014-11-17 10:38:11	jpstone	i'm probably just missing it in the docs
+2014-11-17 10:38:14	ioudas	now i gotta use ionic loading and pass a controller to cancel the promise/loader ;-P
+2014-11-17 10:38:20	ioudas	gotta wrap my head around that
+2014-11-17 10:38:56	jpstone	I'd like to save it in my apps sandbox
+2014-11-17 10:39:02	arkin	not sure
+2014-11-17 10:39:12	arkin	ioudas: pass a controller, whut?
+2014-11-17 10:40:47	jpstone	if I can't find the actual file, it makes me scared to trust it :D
+2014-11-17 10:41:12	ioudas	well
+2014-11-17 10:41:20	ioudas	ionic loading has a custom loading template
+2014-11-17 10:41:30	ioudas	i gotta figure out how to call a controller on a click button
+2014-11-17 10:41:32	ioudas	in that
+2014-11-17 10:41:43	ioudas	and pass a promise to the loader to cancel that
+2014-11-17 10:42:02	ioudas	but i wanna keep the default loading icon
+2014-11-17 10:42:08	ioudas	havnt seen it much anywhere.....
+2014-11-17 10:42:15	ioudas	in terms of how to accomplish that.
+2014-11-17 10:44:35	arkin	ioudas: http://pastie.org/9725373 ?
+2014-11-17 10:44:50	ioudas	nah, more like
+2014-11-17 10:46:29	<--	intellix (~intellix@static.c146-88.i01-5.onvol.net) has quit (Quit: My iMac has gone to sleep. ZZZzzz…)
+2014-11-17 10:47:28	<--	Vypah (508886b2@gateway/web/freenode/ip.80.136.134.178) has quit (Ping timeout: 246 seconds)
+2014-11-17 10:48:14	ioudas	http://pastebin.com/CH5nfLvS
+2014-11-17 10:48:31	<--	BahamutWC|Work (~wesleycho@c-98-207-206-170.hsd1.ca.comcast.net) has quit (Quit: BahamutWC|Work)
+2014-11-17 10:48:34	ioudas	gotta figure the template side
+2014-11-17 10:49:31	ioudas	and how to cancel it properly
+2014-11-17 10:49:34	-->	intellix (~intellix@static.c146-88.i01-5.onvol.net) has joined #ionic
+2014-11-17 10:52:01	ioudas	if that makes sense
+2014-11-17 10:53:02	arkin	erm sure
+2014-11-17 10:55:48	-->	chalettu (~textual@nat/cisco/x-bddcbriqjslmpipv) has joined #ionic
+2014-11-17 10:58:48	-->	[OES]_ (~textual@mail.abilityresourcing.co.uk) has joined #ionic
+2014-11-17 10:58:52	<--	Evanion (~mikael@89-253-123-115.customers.ownit.se) has quit (Quit: Evanion)
+2014-11-17 10:58:57	<--	[OES] (~textual@mail.abilityresourcing.co.uk) has quit (Ping timeout: 240 seconds)
+2014-11-17 11:00:24	-->	Vypah (508886b2@gateway/web/freenode/ip.80.136.134.178) has joined #ionic
+2014-11-17 11:01:10	Vypah	guys any recommendation for the ionic angular internationlization and localization
+2014-11-17 11:01:13	Vypah	?
+2014-11-17 11:01:41	@mhartington	angular translate seems to be the way to go
+2014-11-17 11:01:41	@mhartington	https://github.com/angular-translate/angular-translate
+2014-11-17 11:03:06	Vypah	Yea I read about it. Just wanted to be sure if this was best way out there or ionic has something special :D
+2014-11-17 11:06:08	-->	frem (~james@65.50.128.13) has joined #ionic
+2014-11-17 11:09:46	-->	okdamn (~Adium@host68-94-static.104-82-b.business.telecomitalia.it) has joined #ionic
+2014-11-17 11:09:48	okdamn	hi there
+2014-11-17 11:09:55	okdamn	is $ionicPlatform.ready() available in config() ?
+2014-11-17 11:11:30	okdamn	if not which the alternative to run only at ionicPlatofrm.rady() ?
+2014-11-17 11:17:36	-->	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 11:22:18	<--	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 250 seconds)
+2014-11-17 11:25:50	<--	TommyO (~toreilly@pool-74-101-66-99.nycmny.east.verizon.net) has quit (Ping timeout: 272 seconds)
+2014-11-17 11:27:23	-->	arabot1 (~nodebot@ec2-54-187-190-224.us-west-2.compute.amazonaws.com) has joined #ionic
+2014-11-17 11:27:26	<--	arabot1 (~nodebot@ec2-54-187-190-224.us-west-2.compute.amazonaws.com) has quit (Remote host closed the connection)
+2014-11-17 11:31:59	-->	neuronal (~neuronal@unaffiliated/neuronal) has joined #ionic
+2014-11-17 11:34:16	<--	liberatus (~winfred@2601:9:4f00:ee8:9073:2599:c3f1:9f52) has quit (Remote host closed the connection)
+2014-11-17 11:34:23	-->	liberatus (~winfred@c-50-168-8-22.hsd1.ca.comcast.net) has joined #ionic
+2014-11-17 11:38:31	-->	BahamutWC|Work (~wesleycho@198.0.222.60) has joined #ionic
+2014-11-17 11:40:30	<--	tgrk (~tgrk@213.61.153.26) has quit (Remote host closed the connection)
+2014-11-17 11:41:27	-->	jerryitt (uid17132@gateway/web/irccloud.com/x-rsaxfixlsmewgwoe) has joined #ionic
+2014-11-17 11:45:17	@mhartington	okdamn: nope, $ionicPlatform.ready is available everywhere
+2014-11-17 11:45:24	@mhartington	even in a controller 
+2014-11-17 11:45:35	-->	beckyconning_ (uid31604@gateway/web/irccloud.com/x-jkjuwqmgjetvevtf) has joined #ionic
+2014-11-17 11:45:45	okdamn	mhartington:  i tryed $ionicPlatform in config() is not available :(
+2014-11-17 11:46:10	@mhartington	did you inject into the config?
+2014-11-17 11:46:35	okdamn	yes
+2014-11-17 11:46:47	@mhartington	okay, let me check it out, one sec
+2014-11-17 11:46:50	okdamn	tryed but is not available at config()
+2014-11-17 11:46:51	beckyconning_	hi! the splashscreen plugin installs into the browser platform but i haven't managed to get it to display a splashscreen yet. does anyone know if this plugin works on the browser platform (we use it to demo the app to clients during development).
+2014-11-17 11:49:11	@mhartington	okdamn: okay, yea it looks like its only available in .run and .controllers 
+2014-11-17 11:49:51	okdamn	ah ok :)
+2014-11-17 11:49:55	okdamn	thank you
+2014-11-17 11:50:44	@mhartington	beckyconning_: I don't think the splashscreen plugin works for the browser platform
+2014-11-17 11:50:46	@mhartington	okdamn: np
+2014-11-17 11:51:09	beckyconning_	intereesting
+2014-11-17 11:51:11	beckyconning_	thanks
+2014-11-17 11:51:14	@mhartington	np
+2014-11-17 11:51:50	@mhartington	yeah not all the cordova core plugins work for the browser
+2014-11-17 11:51:57	@mhartington	unfortunately
+2014-11-17 11:53:38	okdamn	are websocket supported on all the ios verisons?
+2014-11-17 11:53:46	okdamn	native window.WebSocket() i ean
+2014-11-17 11:53:49	okdamn	*i mean
+2014-11-17 11:54:03	okdamn	afaik they not available (need plugin) for only Android < 4.3
+2014-11-17 11:54:06	okdamn	is this correct?
+2014-11-17 11:54:15	-->	Pinako (~inportb@inportb/member/pinako) has joined #ionic
+2014-11-17 11:54:27	@mhartington	okdamn: http://caniuse.com/#feat=websockets
+2014-11-17 11:54:50	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-17 11:54:57	okdamn	mhartington:  yeah i was looking at that, so android doesnt uses chrome webview but android browser webview?
+2014-11-17 11:55:14	okdamn	so that websockets are available on android > 4.4
+2014-11-17 11:55:16	okdamn	correct?
+2014-11-17 11:55:22	@mhartington	okdamn: yeah for 4.3 and below, its the default android webview
+2014-11-17 11:55:27	@mhartington	so no websockets :(
+2014-11-17 11:55:35	@mhartington	but you could look at crosswalk 
+2014-11-17 11:55:37	okdamn	damn google who doesnt uses chrome
+2014-11-17 11:55:40	okdamn	unreal :D
+2014-11-17 11:56:10	@mhartington	right? go figure 
+2014-11-17 11:56:17	@mhartington	but check out crosswalk for cordova
+2014-11-17 11:56:18	@mhartington	https://github.com/crosswalk-project/crosswalk-cordova-android
+2014-11-17 11:56:27	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2014-11-17 11:56:29	@mhartington	chrome 38 on 4.1 and up
+2014-11-17 11:56:59	-->	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has joined #ionic
+2014-11-17 11:57:24	okdamn	mhartington:  what is that in few words?
+2014-11-17 11:57:28	okdamn	benefits ...
+2014-11-17 11:57:45	@mhartington	performance, better webview, cool factor
+2014-11-17 11:58:13	@mhartington	honestly, its a win for android all around since its chrome based
+2014-11-17 11:58:22	okdamn	mhartington:  awesome thanks
+2014-11-17 11:58:24	@mhartington	plus its fast as hell
+2014-11-17 11:58:32	okdamn	and this supports websockets also on 4.1 ?
+2014-11-17 11:58:34	@mhartington	heres a nice post on how to intergrate into an app
+2014-11-17 11:58:35	@mhartington	http://blog.nraboy.com/2014/10/use-crosswalk-ionic-framework-android-apps/
+2014-11-17 11:58:45	okdamn	oh coool
+2014-11-17 12:03:28	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-17 12:08:07	<--	neuronal (~neuronal@unaffiliated/neuronal) has quit (Read error: Connection reset by peer)
+2014-11-17 12:08:23	-->	neuronal (~neuronal@unaffiliated/neuronal) has joined #ionic
+2014-11-17 12:08:43	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-17 12:09:54	-->	tgrk (~tgrk@ip-2-207-43-214.web.vodafone.de) has joined #ionic
+2014-11-17 12:10:24	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-17 12:13:15	<--	okdamn (~Adium@host68-94-static.104-82-b.business.telecomitalia.it) has quit (Quit: Leaving.)
+2014-11-17 12:18:18	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 12:18:59	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 12:19:28	<--	m8 (~m8@unaffiliated/m8) has quit (Quit: Sto andando via)
+2014-11-17 12:19:45	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 12:23:06	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 256 seconds)
+2014-11-17 12:24:04	-->	SidFerreira (~sidferrei@189.101.194.1) has joined #ionic
+2014-11-17 12:24:08	-->	TommyO (~toreilly@38.100.172.130) has joined #ionic
+2014-11-17 12:24:37	<--	arkin (~arkin@unaffiliated/arkin) has quit (Remote host closed the connection)
+2014-11-17 12:25:13	-->	patrickarlt (~patrickar@cpe-75-84-68-25.socal.res.rr.com) has joined #ionic
+2014-11-17 12:25:31	<--	liberatus (~winfred@c-50-168-8-22.hsd1.ca.comcast.net) has quit (Remote host closed the connection)
+2014-11-17 12:26:05	-->	liberatus (~winfred@2601:9:4f00:ee8:d473:ec1c:d472:e96d) has joined #ionic
+2014-11-17 12:26:18	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 12:27:48	--	abram_ is now known as abram
+2014-11-17 12:30:27	<--	liberatus (~winfred@2601:9:4f00:ee8:d473:ec1c:d472:e96d) has quit (Ping timeout: 258 seconds)
+2014-11-17 12:30:57	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 255 seconds)
+2014-11-17 12:34:22	-->	artisangoose (~artisango@66.119.2.181) has joined #ionic
+2014-11-17 12:35:08	-->	arkin (~arkin@unaffiliated/arkin) has joined #ionic
+2014-11-17 12:37:30	-->	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has joined #ionic
+2014-11-17 12:37:48	<--	SidFerreira (~sidferrei@189.101.194.1) has quit (Remote host closed the connection)
+2014-11-17 12:44:21	<--	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has quit (Ping timeout: 264 seconds)
+2014-11-17 12:45:13	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 12:46:17	-->	qwebirc48791 (43d294ec@gateway/web/freenode/ip.67.210.148.236) has joined #ionic
+2014-11-17 12:48:11	qwebirc48791	anyone know how to set the title on the new nightlies?  `view-title` does not work if the view is navigated to.  `$ionicNavBarDelegate.title('Hello')` does not work either
+2014-11-17 12:48:27	Foxandxss	title IIRC
+2014-11-17 12:48:50	@mhartington	http://ionicframework.com/docs/nightly/api/service/$ionicNavBarDelegate/
+2014-11-17 12:49:04	@mhartington	$ionicNavBarDelegate.title("cool");
+2014-11-17 12:51:19	qwebirc48791	@mhartington doesn't work
+2014-11-17 12:51:27	qwebirc48791	Nightly # 742
+2014-11-17 12:51:41	@mhartington	checking it out
+2014-11-17 12:51:56	qwebirc48791	works if the view is loaded directly.
+2014-11-17 12:52:04	qwebirc48791	however, if view is navigated to, it does not work
+2014-11-17 12:52:33	qwebirc48791	see : http://forum.ionicframework.com/t/please-help-test-angular-1-3-improved-transitions-cached-views-etc/12528/141?u=calendee
+2014-11-17 12:52:47	qwebirc48791	FYI : This is Justin.  IRC didn't accept my name
+2014-11-17 12:53:21	qwebirc48791	So, `view-title="cool"` does not work if the view is navigated to.  Nor can you set it in controller if the view is navigated to
+2014-11-17 12:53:28	@mhartington	oh hey Justin!
+2014-11-17 12:54:29	<--	DaKaZ (uid10771@gateway/web/irccloud.com/x-ujkmryufcldsprki) has quit (Quit: Connection closed for inactivity)
+2014-11-17 12:55:02	@mhartington	qwebirc48791: yeahh seeing the issue too
+2014-11-17 12:56:04	@mhartington	alright, adam's been going through each post, fixing stuff left and right
+2014-11-17 12:56:18	@mhartington	He'll be able to fix that
+2014-11-17 12:56:29	qwebirc48791	seen that.  it's killing discourse though - lol.  it can't handle so much content
+2014-11-17 12:56:32	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 256 seconds)
+2014-11-17 12:59:36	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 13:00:00	qwebirc48791	another concern mike - how long do views stay cached?  Example : Load app on main page, open side menu, navigate to Contacts.  Pick something in list of contacts.  Navigate to contact detail page.  Go Back to Contacts List.  Open side menu.  Go to main page.  Open side menu.  Select "Contacts" again.  It's still cached
+2014-11-17 13:00:30	qwebirc48791	Kiind of feel like once the history chain has been killed with nav-clear, the previously cached pages should be clobbered
+2014-11-17 13:04:08	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 250 seconds)
+2014-11-17 13:04:20	@mhartington	right, so views will be cached forever
+2014-11-17 13:04:45	@mhartington	but on a view-per-view instance, AFAIK
+2014-11-17 13:06:32	qwebirc48791	i think nav-clear should mean kill all caches, don't you?  it clears histroy - so it clearly means I'm not going back there.  If I do, it's probably been a while and i need a refresh
+2014-11-17 13:07:59	qwebirc48791	worried about caching forever too - need some means to clear that stuff.  Like if someone gets back to the "main page", should be able to use a single command to bust all those caches.
+2014-11-17 13:09:09	@mhartington	ahh, missed this one
+2014-11-17 13:09:10	@mhartington	http://ionicframework.com/docs/nightly/api/service/$ionicHistory/
+2014-11-17 13:09:30	@mhartington	so this is essentially ionic.viewService
+2014-11-17 13:09:48	@mhartington	so you would do $ionicHistory.clearHistory();
+2014-11-17 13:10:13	qwebirc48791	but it doesn't say what impact that has on cachees
+2014-11-17 13:10:51	<--	mYd1 (~mY@b2b-92-50-75-250.unitymedia.biz) has quit
+2014-11-17 13:12:01	qwebirc48791	going through source on that and don't see it doing anything in particular with caches
+2014-11-17 13:13:03	qwebirc48791	otherwise, developer has to listen to all the `$ionicView.x` events in EVERY controller to decide if the scope needs to be reloaded or not
+2014-11-17 13:13:09	@mhartington	just talked with adam about clearing caches
+2014-11-17 13:13:11	-->	adamdbradley (~adamdbrad@162.248.233.58) has joined #ionic
+2014-11-17 13:13:11	--	Mode #ionic [+o adamdbradley] by ChanServ
+2014-11-17 13:13:15	<--	frankblizzar (~frankbliz@f053065018.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2014-11-17 13:13:24	@mhartington	on his todo list
+2014-11-17 13:13:24	@adamdbradley	hello ionic friends
+2014-11-17 13:13:51	qwebirc48791	hey @adamdbradley !
+2014-11-17 13:14:34	qwebirc48791	@adamdbradley & @mhartington - cool about the cache on the todo list.  Be nice if nav-clear or $ionicHistory.clearHistory() blew out all the caches
+2014-11-17 13:14:46	@adamdbradley	yeah that's a good idea
+2014-11-17 13:15:15	@adamdbradley	probably end up making a method that just clears out the cache, and also be able to do this: $ionicHistory.clearHistory({ clearCache: true })
+2014-11-17 13:15:24	@mhartington	nav-clear is getting depreciated as well
+2014-11-17 13:15:59	<--	intellix (~intellix@static.c146-88.i01-5.onvol.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-17 13:17:30	qwebirc48791	so, far on a really simple sidemenu app, not seeing any breaking changes except for the title.  So all is pretty good for me.  Nice job Ionic team
+2014-11-17 13:17:35	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-17 13:17:44	qwebirc48791	now, for the swipe to go back ....
+2014-11-17 13:17:48	@adamdbradley	what issue do you have with the title?
+2014-11-17 13:18:12	qwebirc48791	see here : http://forum.ionicframework.com/t/please-help-test-angular-1-3-improved-transitions-cached-views-etc/12528/141?u=calendee
+2014-11-17 13:18:58	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-17 13:19:03	-->	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 13:19:09	<--	Killswitch (~Killswitc@unaffiliated/killswitch) has quit (Ping timeout: 265 seconds)
+2014-11-17 13:19:12	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-17 13:19:52	@adamdbradley	ahh ok, so if the title is interpreted to "", then that doesn't reflect in the header? Right?
+2014-11-17 13:21:13	-->	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 13:21:27	@mhartington	adamdbradley: http://codepen.io/mhartington/pen/raNgEE
+2014-11-17 13:21:37	qwebirc48791	if it's interpreted to anything , it won't reflect
+2014-11-17 13:21:45	-->	Killswitch (~Killswitc@unaffiliated/killswitch) has joined #ionic
+2014-11-17 13:21:50	qwebirc48791	EXCEPT if that view is loaded first
+2014-11-17 13:24:16	<--	drmabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 272 seconds)
+2014-11-17 13:25:17	<--	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 240 seconds)
+2014-11-17 13:25:20	<--	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has quit (Quit: Evanion)
+2014-11-17 13:26:01	<--	Vypah (508886b2@gateway/web/freenode/ip.80.136.134.178) has quit (Ping timeout: 246 seconds)
+2014-11-17 13:31:25	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-17 13:32:42	-->	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has joined #ionic
+2014-11-17 13:45:47	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 13:48:53	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-11-17 13:49:47	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 13:52:41	@adamdbradley	yeah there's an issue with the delegate service and the cached views, i'm looking into it now
+2014-11-17 14:09:58	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-17 14:09:58	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-17 14:09:58	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-17 14:09:58	--	Channel #ionic: 96 nicks (1 ops, 0 voices, 95 normals)
+2014-11-17 14:09:58	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-17 14:10:00	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-17 14:19:06	<--	gunn (~gunn@121-74-37-196.telstraclear.net) has quit (Ping timeout: 264 seconds)
+2014-11-17 14:19:48	-->	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 14:20:06	-->	gunn (~gunn@121-74-37-196.telstraclear.net) has joined #ionic
+2014-11-17 14:20:16	-->	perryg (~Adium@162.248.233.58) has joined #ionic
+2014-11-17 14:20:16	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-17 14:23:49	<--	edrocks (~edrocks@66.55.63.166) has quit (Ping timeout: 255 seconds)
+2014-11-17 14:24:20	<--	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 244 seconds)
+2014-11-17 14:25:30	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-17 14:26:01	-->	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 14:26:25	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Quit: Leaving.)
+2014-11-17 14:27:33	-->	jarr0dsz_ (~textual@s53753c5f.adsl.online.nl) has joined #ionic
+2014-11-17 14:29:58	-->	[OES] (~textual@mail.abilityresourcing.co.uk) has joined #ionic
+2014-11-17 14:30:39	<--	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 255 seconds)
+2014-11-17 14:34:45	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 14:35:27	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 14:46:37	<--	Megalepozy (~Megalepoz@212.179.226.86) has quit (Quit: Leaving)
+2014-11-17 14:47:50	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2014-11-17 14:52:23	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-17 14:52:56	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-17 14:53:28	<--	patrickarlt (~patrickar@Redlands.esri.com) has quit (Quit: Leaving...)
+2014-11-17 14:53:41	-->	patrickarlt (~patrickar@198.102.62.250) has joined #ionic
+2014-11-17 14:56:09	qwebirc48791	FYI: Nightly seems pretty painful on Android.  Really slow performance compared to Beta 13 release.  http://forum.ionicframework.com/t/please-help-test-angular-1-3-improved-transitions-cached-views-etc/12528/145?u=calendee
+2014-11-17 14:57:07	-->	frankblizzar (~frankbliz@f053065018.adsl.alicedsl.de) has joined #ionic
+2014-11-17 14:57:14	<--	liberatus (~winfred@173.205.0.170) has quit (Ping timeout: 250 seconds)
+2014-11-17 14:58:48	@mhartington	qwebirc48791: any example of this? 
+2014-11-17 14:58:56	@mhartington	anything in particular?
+2014-11-17 15:01:58	@adamdbradley	qwebirc48791 we haven't seen a performance drop at all
+2014-11-17 15:02:05	@adamdbradley	could you help us find out what's the issue?
+2014-11-17 15:04:10	qwebirc48791	yep.   i'll put a sample together.  if it doesn't demonstrate it, i'll share the app I'm working on
+2014-11-17 15:04:20	@adamdbradley	qwebirc48791 could you try setting $ionicConfigProvider.templates.maxPrefetch(0) ? http://ionicframework.com/docs/nightly/api/provider/$ionicConfigProvider/
+2014-11-17 15:04:35	@adamdbradley	that might be the startup problem
+2014-11-17 15:05:46	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 15:06:11	qwebirc48791	k, will do.  only 4 views in the whole app though - so not much caching
+2014-11-17 15:07:11	@adamdbradley	what about performance is bad for transitions? Skippy??
+2014-11-17 15:07:24	<--	Pinako (~inportb@inportb/member/pinako) has quit (Remote host closed the connection)
+2014-11-17 15:07:49	@mhartington	even check out the tests-repo
+2014-11-17 15:07:51	@mhartington	https://github.com/driftyco/ionic-starter-tests
+2014-11-17 15:08:26	@mhartington	kind of a worse of the worse for testing
+2014-11-17 15:08:33	@adamdbradley	this is disappointing because all of our tests its faster, and other have commented its faster, so I'd like to see what's the issue
+2014-11-17 15:09:01	qwebirc48791	transition: tap ... wait ... wait.   wait... wait.. wait.. go
+2014-11-17 15:09:23	qwebirc48791	working on the maxprefetch right now, give me a min
+2014-11-17 15:10:40	@adamdbradley	so it's not the transition, but the wait after the tap?
+2014-11-17 15:10:48	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 15:10:59	<--	danecando (~danecando@8.31.240.20) has quit (Quit: Computer has gone to sleep.)
+2014-11-17 15:11:27	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 15:11:38	qwebirc48791	correct adam
+2014-11-17 15:11:51	qwebirc48791	FYI : Can't seem to get maxPrefetch to work
+2014-11-17 15:12:45	qwebirc48791	$ionicConfigProvider.templates.maxCache(0);    Results in this : See this link : https://docs.angularjs.org/error/$injector/modulerr?p0=smartWorx&p1=TypeError:%20undefined%20is%20not%20a%20function%0A%20%20%20%20at%20http:%2F%2Flocalhost:9000%2Fjs%2Fapp.js:19:40%0A%20%20%20%20at%20Object.e%20%5Bas%20invoke%5D%20(http:%2F%2Flocalhost:9000%2Fjs%2Fvendor.js:67:365)%0A%20%20%20%20at%20d%20(http:%2F%2Flocalhost:9000%2Fjs%2Fvendor.js:
+2014-11-17 15:14:03	qwebirc48791	duh.  getting things mixed up here
+2014-11-17 15:14:06	@mhartington	try $ionicConfigProvider.views.maxCache("0");
+2014-11-17 15:14:58	qwebirc48791	its views.maxCache - not templates.maxCache
+2014-11-17 15:17:08	qwebirc48791	k,  $ionicConfigProvider.views.maxCache(0); did not improve load or transitions
+2014-11-17 15:17:49	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 15:18:37	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 15:20:33	-->	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 15:21:54	@mhartington	qwebirc48791: what kind of device are you testing on?
+2014-11-17 15:21:57	qwebirc48791	?? @mhartington  Thought that ionic-starter-tests was an app that could be generated with ionic start,  LOL.  not so much
+2014-11-17 15:22:18	qwebirc48791	Moto E.  It's pretty low end.  However, it was fairly responsive on Beta 13.
+2014-11-17 15:22:45	@adamdbradley	ionic start myapp tests
+2014-11-17 15:22:48	@mhartington	yeah starter tests should be avle to work form the CLI
+2014-11-17 15:24:09	@mhartington	available*
+2014-11-17 15:24:43	-->	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has joined #ionic
+2014-11-17 15:25:09	<--	drmabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 264 seconds)
+2014-11-17 15:26:01	qwebirc48791	if I do ionic serve on that starter tests project, I get black screen : Undefined is not a function , : $ionicConfigProvider.setPlatformConfig('win32', {
+2014-11-17 15:26:33	qwebirc48791	oh - do I need to paste in Nightlies into it?
+2014-11-17 15:26:59	@mhartington	yeah, its purpose is to use the nightlies
+2014-11-17 15:27:51	<--	edrocks (~edrocks@66.55.63.166) has quit (Read error: No route to host)
+2014-11-17 15:28:36	-->	krik (~Lingo@p5DDC3891.dip0.t-ipconnect.de) has joined #ionic
+2014-11-17 15:31:44	qwebirc48791	K - starter tests are pretty slow too.  Startup is around 4 seconds.  Transitions are faster than my app.  Not terrible but not great either
+2014-11-17 15:34:22	<--	arkin (~arkin@unaffiliated/arkin) has quit
+2014-11-17 15:44:19	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-17 15:49:52	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-17 15:50:44	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-17 15:53:38	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-17 15:55:01	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-17 16:00:52	-->	frankbli_ (~frankbliz@g229058094.adsl.alicedsl.de) has joined #ionic
+2014-11-17 16:02:59	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 16:03:21	-->	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 16:03:23	<--	frankblizzar (~frankbliz@f053065018.adsl.alicedsl.de) has quit (Ping timeout: 240 seconds)
+2014-11-17 16:04:39	@adamdbradley	qwebirc48791 when you say startup is around 4 seconds, you are within cordova or just a web browser?
+2014-11-17 16:05:11	@adamdbradley	and what are you considering the end of the startup?
+2014-11-17 16:05:17	<--	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Client Quit)
+2014-11-17 16:05:28	-->	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 16:06:57	qwebirc48791	cordova.  from start of black screen to end of black screen- don't have a splash screen on this
+2014-11-17 16:07:00	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 250 seconds)
+2014-11-17 16:07:10	BahamutWC|Work	is there a restriction of having only 10 tabs with the ion-tab directive, even if they have the ng-hide class on them?
+2014-11-17 16:07:13	<--	DrMabuse_ (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Client Quit)
+2014-11-17 16:07:19	qwebirc48791	sorry - got sidetracked - will get you a sample by end of day
+2014-11-17 16:07:23	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 16:09:08	<--	jarr0dsz_ (~textual@s53753c5f.adsl.online.nl) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2014-11-17 16:09:59	@adamdbradley	what about from just a web browser?
+2014-11-17 16:10:24	<--	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has quit (Quit: (null))
+2014-11-17 16:12:19	<--	after_r (~after_r@c-50-171-144-90.hsd1.mn.comcast.net) has quit (Ping timeout: 244 seconds)
+2014-11-17 16:12:46	@adamdbradley	is this the phone you're testing from? http://www.gsmarena.com/motorola_moto_e_dual_sim-6323.php
+2014-11-17 16:17:12	<--	krik (~Lingo@p5DDC3891.dip0.t-ipconnect.de) has quit (Quit: (null))
+2014-11-17 16:17:51	qwebirc48791	adam - just a web browser - you mean on device or desktop?
+2014-11-17 16:19:30	BahamutWC|Work	nobody?
+2014-11-17 16:19:54	@adamdbradley	web browser on the same device
+2014-11-17 16:20:06	DrMabuse	hey guys you have a time for me whenis wp8 fully implemented ?
+2014-11-17 16:20:28	qwebirc48791	adam - just loaded on Chrome on device.  Wow!  it's much more performant
+2014-11-17 16:21:02	DrMabuse	^^
+2014-11-17 16:21:06	qwebirc48791	scrolling, transistions, everything is faster
+2014-11-17 16:21:09	@adamdbradley	so same device, same app, only difference is one is from the web browser, one is from cordova?
+2014-11-17 16:21:14	qwebirc48791	yep
+2014-11-17 16:21:39	-->	krik (~Lingo@p5DDC3891.dip0.t-ipconnect.de) has joined #ionic
+2014-11-17 16:22:09	qwebirc48791	that GSM link is about right, but mine is not dual sim
+2014-11-17 16:22:34	@adamdbradley	this is the phone i'm testing: http://www.gsmarena.com/motorola_moto_e_dual_sim-6323.php
+2014-11-17 16:22:49	@adamdbradley	oops, no this one: http://www.gsmarena.com/htc_droid_incredible_4g_lte-4744.php
+2014-11-17 16:23:41	BahamutWC|Work	BahamutWC|Work: is there a restriction of having only 10 tabs with the ion-tab directive, even if they have the ng-hide class on them? - anyone have an answer to this?
+2014-11-17 16:23:59	qwebirc48791	@adambradley - mine is defintely newer than yours
+2014-11-17 16:24:13	-->	_axx (~x@46.19.93.206) has joined #ionic
+2014-11-17 16:24:25	@adamdbradley	BahamutWC|Work no restriction, but not sure how the css will handling too much content
+2014-11-17 16:24:44	BahamutWC|Work	well the tabs have the ng-hide class on them, so they’re set to display: none
+2014-11-17 16:25:03	BahamutWC|Work	I’m only seeing 10 rendered in the DOM though, clearly some JS is limiting how many get created
+2014-11-17 16:25:37	@adamdbradley	so that's where I'm confused, trying to figure out why the same app, on the same phone, is so much slower on cordova then the web browser, especially if its android 4.4
+2014-11-17 16:26:03	BahamutWC|Work	nvm, turns out it was malformed DOM…ugh
+2014-11-17 16:29:58	<--	Bennit (~FooBar@servian.eu) has quit (Ping timeout: 250 seconds)
+2014-11-17 16:30:46	-->	rhp (~rhp@82-171-113-86.ip.telfort.nl) has joined #ionic
+2014-11-17 16:34:10	Marble68	Q: in project https://github.com/driftyco/ionic-starter-sidemenu - When viewing the details of a playlist item, there’s a control and then an empty page. From the controller to I return an object? Or .. how do I get the id to show it?
+2014-11-17 16:34:16	@adamdbradley	qwebirc48791 were they both built with the same version of cordova?
+2014-11-17 16:37:22	qwebirc48791	@adambradley - just fired a link off to you via email  Turns out.... maybe my problem was GapDebug - had it connected and didn't realize it.  Really bogs down the app because it's being inspected.  Now, not sure if it's as good as before or not.
+2014-11-17 16:38:16	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Quit: Leaving.)
+2014-11-17 16:38:17	-->	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-17 16:38:40	@adamdbradley	if that's the case, would you be able to post that info in the forum? I'd hate for dev's to think it's much worse on performance.
+2014-11-17 16:39:02	-->	Bennit (~FooBar@servian.eu) has joined #ionic
+2014-11-17 16:39:11	@adamdbradley	we'll never get amazing performance on underpowered devices, but the same can be said about native
+2014-11-17 16:42:03	<--	tgrk (~tgrk@ip-2-207-43-214.web.vodafone.de) has quit (Remote host closed the connection)
+2014-11-17 16:42:37	<--	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 240 seconds)
+2014-11-17 16:44:13	qwebirc48791	already did
+2014-11-17 16:44:43	@adamdbradley	thanks
+2014-11-17 16:45:32	DrMabuse	so any answer about wp8 ?
+2014-11-17 16:45:50	DrMabuse	i try it out for two days works but looks bad
+2014-11-17 16:46:19	DrMabuse	get bugs no font , and css bugs
+2014-11-17 16:48:15	Marble68	with ui-router - do links to items have to point at the same page? (as in the sidemnu starter project)? or - can it link directly to the details template? as in, could the items link directly to playlist.html instead of playlists.html
+2014-11-17 16:48:52	<--	Bennit (~FooBar@servian.eu) has quit (Ping timeout: 256 seconds)
+2014-11-17 16:50:53	<--	adamdbradley (~adamdbrad@162.248.233.58) has quit
+2014-11-17 16:50:59	<--	cleme1mp (~mclement@96-36-24-135.static.aldl.mi.charter.com) has quit (Quit: leaving)
+2014-11-17 16:55:15	-->	Bennit (~FooBar@servian.eu) has joined #ionic
+2014-11-17 17:02:59	<--	qwebirc48791 (43d294ec@gateway/web/freenode/ip.67.210.148.236) has quit (Quit: Page closed)
+2014-11-17 17:03:42	<--	krik (~Lingo@p5DDC3891.dip0.t-ipconnect.de) has quit (Quit: (null))
+2014-11-17 17:04:55	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-17 17:08:27	<--	opus_ (~opus@192.241.222.134) has quit (Ping timeout: 250 seconds)
+2014-11-17 17:08:39	Marble68	Q: Using UI-Router - suppose I have a list of contacts and when tapped, I wish to show details. I have successfully linked them, and via the controller I can output to console via console.log($stateParams.contactId). Where I’m sort of lost is where do I go from here? In my template, do I just simply reference the $scope.contacts? {{$scope.contacts[$stateParams.contactId].fullName}}  - like that?
+2014-11-17 17:10:13	chalettu	i think you are close for the most part
+2014-11-17 17:10:22	chalettu	i always leave off the $scope. part in my templates
+2014-11-17 17:11:27	chalettu	i have a tendency though to take variables like that and create a scope level variables from them to help make sure my templates are easily readable
+2014-11-17 17:11:37	chalettu	but thats just a personal preference
+2014-11-17 17:12:53	Marble68	oh - wow - ok - that illuminates a bit - so the template is “in scope” of the controller - so if the controller knows the variable contactID, the template knows {{contactId}} ?
+2014-11-17 17:14:13	Marble68	nope
+2014-11-17 17:14:17	chalettu	not necesarily , someone can correct me if i am wrong
+2014-11-17 17:14:17	Marble68	that’s not the case.. LOL
+2014-11-17 17:14:38	chalettu	so with state params i usually assign them to a scope variable as well.
+2014-11-17 17:14:47	Marble68	k
+2014-11-17 17:14:48	chalettu	$scope.params=$stateParams
+2014-11-17 17:14:54	Marble68	that makes sense
+2014-11-17 17:15:01	chalettu	so then you can address params.contactId
+2014-11-17 17:15:16	chalettu	but once again, i say that is just how i have done it
+2014-11-17 17:15:26	chalettu	anyone can chime in on best practices
+2014-11-17 17:15:44	Marble68	so I could have $scope.currentContact = $scope.contacts[$stateParams.contactIe]
+2014-11-17 17:15:52	chalettu	yeah
+2014-11-17 17:15:54	Marble68	then - {{could do currentContact.fullName}}
+2014-11-17 17:16:02	chalettu	exactly
+2014-11-17 17:16:06	Marble68	k - that helps me a lot
+2014-11-17 17:16:07	Marble68	thank you
+2014-11-17 17:16:17	chalettu	although you might want to fix your typo on variable name
+2014-11-17 17:16:17	chalettu	hehe
+2014-11-17 17:16:21	chalettu	contact.Id
+2014-11-17 17:16:22	Marble68	I’m now - so it’s sort of the flow / best practice of handing info off and around is alien for me
+2014-11-17 17:16:22	chalettu	hehe
+2014-11-17 17:16:32	<--	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has quit (Quit: Konversation terminated!)
+2014-11-17 17:16:37	Marble68	sure
+2014-11-17 17:16:44	Marble68	th
+2014-11-17 17:16:46	Marble68	er thx
+2014-11-17 17:16:49	chalettu	no worries
+2014-11-17 17:18:29	Marble68	hrm
+2014-11-17 17:18:59	Marble68	but in a template, $scope is not assumed, right?
+2014-11-17 17:19:03	Marble68	or should it be?
+2014-11-17 17:19:16	chalettu	it is assumed
+2014-11-17 17:19:28	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-17 17:19:54	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-17 17:20:13	Marble68	- so in my list, I’m passing ID - it’s showing up when logged to console as a string
+2014-11-17 17:20:26	Marble68	but I need to find it in a json array
+2014-11-17 17:21:01	chalettu	i am not sure you can pass arrays between page states
+2014-11-17 17:21:11	Marble68	but I think this is working - I just have to figure out how to filter the json to show the specific record
+2014-11-17 17:21:23	chalettu	ive never tried
+2014-11-17 17:21:24	Marble68	well, the contact ID is a number in the json array
+2014-11-17 17:23:54	Marble68	I’ll try just the ID
+2014-11-17 17:24:08	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Ping timeout: 250 seconds)
+2014-11-17 17:24:16	chalettu	i usually only pass ids and that type of stuff between states
+2014-11-17 17:24:24	chalettu	i usually never pass complex objects
+2014-11-17 17:24:46	Marble68	I was only passing the ID to the controller
+2014-11-17 17:25:01	Marble68	It just wasn’t clear to me how to view it in the template
+2014-11-17 17:25:02	chalettu	if i do, then i usually use local storage or some sort of root level variable to keep a copy of the complex variable
+2014-11-17 17:30:35	<--	frankbli_ (~frankbliz@g229058094.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2014-11-17 17:30:46	Marble68	root level = $scope, yes?
+2014-11-17 17:30:51	Marble68	synonymous?
+2014-11-17 17:36:02	Marble68	ah… $rootScope
+2014-11-17 17:38:01	<--	beckyconning_ (uid31604@gateway/web/irccloud.com/x-jkjuwqmgjetvevtf) has quit (Quit: Connection closed for inactivity)
+2014-11-17 17:39:37	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-17 17:40:03	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-17 17:42:05	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-17 17:42:38	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-17 17:44:31	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Ping timeout: 255 seconds)
+2014-11-17 17:47:17	<--	liberatus (~winfred@173.205.0.170) has quit (Ping timeout: 264 seconds)
+2014-11-17 17:50:37	-->	dnull (~textual@polisp.lnk.telstra.net) has joined #ionic
+2014-11-17 17:53:47	Marble68	is $scope always local to the current scope?
+2014-11-17 17:54:16	Marble68	so, if in AppCtrl i create $scope.value, then in a controller set $scope.value - I”m not setting the same variab le
+2014-11-17 17:54:19	Marble68	?
+2014-11-17 17:56:53	<--	neuronal (~neuronal@unaffiliated/neuronal) has quit (Ping timeout: 264 seconds)
+2014-11-17 17:56:56	-->	phishy (uid32361@gateway/web/irccloud.com/x-yycgfazeiecmcgnw) has joined #ionic
+2014-11-17 17:56:58	-->	cads (~max@c-50-155-110-104.hsd1.ga.comcast.net) has joined #ionic
+2014-11-17 17:59:12	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit
+2014-11-17 17:59:25	BahamutWC|Work	did how the animations change in Ionic with built master?
+2014-11-17 18:01:08	--	dhcar_AFK is now known as dhcar
+2014-11-17 18:09:25	chalettu	@Marble68, not if the second controller you set it in is not AppCtrl
+2014-11-17 18:11:40	Marble68	Confusing - ok - so $rootScope is what I should use if I’m holding a list of contacts or values
+2014-11-17 18:11:49	Marble68	or should I use local storage?
+2014-11-17 18:12:23	Marble68	the approach is not clear - I know there are multiple ways to do it, but there’s not realy “if you’ve got an array of 100 objects, it’s best to use X"
+2014-11-17 22:06:39	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-17 22:06:39	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-17 22:06:39	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-17 22:06:39	--	Channel #ionic: 79 nicks (1 ops, 0 voices, 78 normals)
+2014-11-17 22:06:39	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-17 22:06:41	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-18 09:45:27	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-18 09:45:27	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-18 09:45:27	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-18 09:45:27	--	Channel #ionic: 84 nicks (0 ops, 0 voices, 84 normals)
+2014-11-18 09:45:27	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-18 09:45:29	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-18 09:47:42	-->	perryg (~Adium@71-86-221-172.dhcp.stpt.wi.charter.com) has joined #ionic
+2014-11-18 09:47:42	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-18 09:49:28	-->	coiner (~linker@113.23.8.112) has joined #ionic
+2014-11-18 09:49:40	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-11-18 09:50:19	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 09:50:21	<--	coiner (~linker@113.23.8.112) has quit (Max SendQ exceeded)
+2014-11-18 09:50:48	-->	coiner (~linker@113.23.8.112) has joined #ionic
+2014-11-18 09:52:26	<--	perryg (~Adium@71-86-221-172.dhcp.stpt.wi.charter.com) has quit (Client Quit)
+2014-11-18 09:54:14	-->	perryg (~Adium@71-86-221-172.dhcp.stpt.wi.charter.com) has joined #ionic
+2014-11-18 09:54:14	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-18 09:58:33	<--	perryg (~Adium@71-86-221-172.dhcp.stpt.wi.charter.com) has quit (Client Quit)
+2014-11-18 10:06:53	-->	rafagomes (~rafagomes@177.133.98.110.dynamic.adsl.gvt.net.br) has joined #ionic
+2014-11-18 10:11:21	-->	m0ltar (~moltar@MTRLPQ3316W-LP130-01-1176487904.dsl.bell.ca) has joined #ionic
+2014-11-18 10:12:38	<--	[OES] (~textual@mail.abilityresourcing.co.uk) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-18 10:14:22	<--	m0ltar (~moltar@MTRLPQ3316W-LP130-01-1176487904.dsl.bell.ca) has quit (Client Quit)
+2014-11-18 10:18:47	--	dhcar_AFK is now known as dhcar
+2014-11-18 10:20:38	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 10:24:42	<--	BahamutWC|Work (~wesleycho@198.0.222.60) has quit (Quit: BahamutWC|Work)
+2014-11-18 10:25:14	-->	[OES] (~textual@mail.abilityresourcing.co.uk) has joined #ionic
+2014-11-18 10:26:11	<--	[OES] (~textual@mail.abilityresourcing.co.uk) has quit (Client Quit)
+2014-11-18 10:26:13	-->	SidFerreira (~sidferrei@189.101.194.1) has joined #ionic
+2014-11-18 10:28:41	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 10:29:25	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 10:29:30	-->	m0ltar (~moltar@MTRLPQ3316W-LP130-01-1176487904.dsl.bell.ca) has joined #ionic
+2014-11-18 10:31:43	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 10:32:23	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 10:36:45	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 10:37:37	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 10:37:44	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-18 10:41:47	-->	chalettu (~textual@nat/cisco/x-fouyvlcddagoheil) has joined #ionic
+2014-11-18 10:42:07	<--	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has quit (Ping timeout: 244 seconds)
+2014-11-18 10:44:27	-->	rafagomes_ (~rafagomes@177.133.98.110.dynamic.adsl.gvt.net.br) has joined #ionic
+2014-11-18 10:44:58	-->	Mael (~Mael@pool-74-101-27-146.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 10:44:58	<--	tgrk (~tgrk@94.18.200.222) has quit (Remote host closed the connection)
+2014-11-18 10:45:48	Mael	is it possible to have something like the Twitter menu ?
+2014-11-18 10:45:51	Mael	like in this picture http://cnet2.cbsistatic.com/hub/i/2014/03/29/cdc69643-fbc2-40bf-863b-8650d1374b13/3268e307a74c8adb3ca5de650ea4cdab/mobile-twitter-menu.jpg
+2014-11-18 10:46:28	<--	rafagomes (~rafagomes@177.133.98.110.dynamic.adsl.gvt.net.br) has quit (Ping timeout: 255 seconds)
+2014-11-18 10:48:39	-->	qwebirc7520 (4a0a73e6@gateway/web/freenode/ip.74.10.115.230) has joined #ionic
+2014-11-18 10:49:02	@mhartington	Mael: check out popover
+2014-11-18 10:49:02	-->	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has joined #ionic
+2014-11-18 10:49:03	@mhartington	http://ionicframework.com/docs/api/service/$ionicPopover/
+2014-11-18 10:49:35	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 265 seconds)
+2014-11-18 10:50:51	-->	patrickarlt (~patrickar@2605:e000:180e:fd:251a:5a7e:78fd:b80c) has joined #ionic
+2014-11-18 10:56:18	-->	artisangoose (~artisango@66.119.2.181) has joined #ionic
+2014-11-18 11:03:12	<--	m0ltar (~moltar@MTRLPQ3316W-LP130-01-1176487904.dsl.bell.ca) has quit (Quit: peace.)
+2014-11-18 11:05:07	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-18 11:07:21	qwebirc7520	hey i'm trying to detect which wifi network my device is connected to with this: https://github.com/HondaDai/PhoneGap-WifiInfoPlugin
+2014-11-18 11:07:49	qwebirc7520	after i add the plugin, how do i include it to the app
+2014-11-18 11:08:23	<--	DrMabuse_ (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Ping timeout: 240 seconds)
+2014-11-18 11:09:07	-->	BahamutWC|Work (~wesleycho@198.0.222.60) has joined #ionic
+2014-11-18 11:12:16	-->	perryg (~Adium@66-188-103-126.static.ftbg.wi.charter.com) has joined #ionic
+2014-11-18 11:12:16	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-18 11:21:51	-->	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has joined #ionic
+2014-11-18 11:27:09	Mael	mhartington, thanks, it's perfect
+2014-11-18 11:32:49	<--	perryg (~Adium@66-188-103-126.static.ftbg.wi.charter.com) has quit (Quit: Leaving.)
+2014-11-18 11:33:58	-->	mikeym (~bob@173.236.23.52) has joined #ionic
+2014-11-18 11:34:22	--	mikeym is now known as Guest20849
+2014-11-18 11:35:25	<--	cleme1mp (~mclement@96-36-24-135.static.aldl.mi.charter.com) has quit (Read error: Connection reset by peer)
+2014-11-18 11:36:27	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Quit: iribarne)
+2014-11-18 11:37:20	<--	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has quit (Ping timeout: 258 seconds)
+2014-11-18 11:38:04	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-18 11:39:54	-->	cleme1mp (~mclement@96-36-24-135.static.aldl.mi.charter.com) has joined #ionic
+2014-11-18 11:40:02	-->	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has joined #ionic
+2014-11-18 11:41:13	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2014-11-18 11:42:21	<--	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has quit (Ping timeout: 255 seconds)
+2014-11-18 11:43:36	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 11:43:37	<--	Guest20849 (~bob@173.236.23.52) has quit (Ping timeout: 240 seconds)
+2014-11-18 11:44:23	<--	mikerrrrrr (~bob@S0106d4ca6dcce092.fm.shawcable.net) has quit (Ping timeout: 240 seconds)
+2014-11-18 11:48:26	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 256 seconds)
+2014-11-18 11:49:10	-->	rafagomes (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-18 11:49:23	<--	rafagomes_ (~rafagomes@177.133.98.110.dynamic.adsl.gvt.net.br) has quit (Ping timeout: 240 seconds)
+2014-11-18 11:51:29	-->	rhp (~rhp@82-171-113-86.ip.telfort.nl) has joined #ionic
+2014-11-18 11:54:48	-->	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has joined #ionic
+2014-11-18 11:55:31	<--	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has quit (Quit: Marble68)
+2014-11-18 11:56:25	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 12:00:41	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Client Quit)
+2014-11-18 12:00:44	-->	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 12:02:24	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-18 12:06:33	-->	rafagomes_ (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-18 12:08:24	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Ping timeout: 244 seconds)
+2014-11-18 12:08:57	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Quit: iribarne)
+2014-11-18 12:09:46	<--	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Quit: Leaving.)
+2014-11-18 12:09:52	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 12:09:59	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2014-11-18 12:10:14	-->	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has joined #ionic
+2014-11-18 12:10:19	<--	qwebirc7520 (4a0a73e6@gateway/web/freenode/ip.74.10.115.230) has quit (Quit: Page closed)
+2014-11-18 12:11:59	-->	Foxandxss (~textual@unaffiliated/foxandxss) has joined #ionic
+2014-11-18 12:14:54	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 264 seconds)
+2014-11-18 12:15:31	<--	arkin (~arkin@unaffiliated/arkin) has quit
+2014-11-18 12:22:01	Foxandxss	You know what people says, you won't appreciate angular until you stop using it
+2014-11-18 12:22:09	<--	m8 (~m8@unaffiliated/m8) has quit (Quit: Sto andando via)
+2014-11-18 12:22:18	Foxandxss	I am reading this phonegap bookie using yasmf and for god sake, it is horrible (the framework)
+2014-11-18 12:23:57	<--	danecando (~danecando@8.31.240.20) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-18 12:25:35	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 12:26:29	<--	rhp (~rhp@82-171-113-86.ip.telfort.nl) has quit (Ping timeout: 244 seconds)
+2014-11-18 12:29:28	<--	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has quit (Quit: Konversation terminated!)
+2014-11-18 12:29:57	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Client Quit)
+2014-11-18 12:30:01	-->	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 12:34:57	<--	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 265 seconds)
+2014-11-18 12:36:57	-->	perryg (~Adium@173.150.124.45) has joined #ionic
+2014-11-18 12:36:57	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-18 12:42:41	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 12:42:47	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 12:43:00	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 12:59:11	<--	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has quit (Remote host closed the connection)
+2014-11-18 12:59:57	-->	danecando (~danecando@8.31.240.20) has joined #ionic
+2014-11-18 13:00:29	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-18 13:01:09	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 13:01:43	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 13:05:04	frankblizzar	so I am trying hard to improve performance on my (first) ionic app. it's like a time line with cards, each card has like a h1, an image and some text. infinite scroll, around 20 items each time. what I did already: use ionic nightly and angular 1.3 bind-once everywhere, disable animations, no filters in html.
+2014-11-18 13:05:11	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-18 13:05:45	frankblizzar	I tried to use collection repeat but that was even worse (my items have different heights and I had to calcuate the height for each one)
+2014-11-18 13:06:25	<--	liberatus (~winfred@173.205.0.170) has quit (Ping timeout: 255 seconds)
+2014-11-18 13:06:35	frankblizzar	anything else I could try to gain performance? currently the changes between views are ok, but somehow flickering, it seems things get rendered 2-3 times.
+2014-11-18 13:06:47	frankblizzar	especially when going back from detail view to stream
+2014-11-18 13:07:23	frankblizzar	I tried als ng-cloak but that did not really make any difference
+2014-11-18 13:07:39	-->	beckyconning_ (uid31604@gateway/web/irccloud.com/x-ezepdwevyhpoqinb) has joined #ionic
+2014-11-18 13:08:56	<--	perryg (~Adium@173.150.124.45) has quit (Quit: Leaving.)
+2014-11-18 13:09:15	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Quit: iribarne)
+2014-11-18 13:09:30	-->	qwebirc22507 (a3960ff5@gateway/web/freenode/ip.163.150.15.245) has joined #ionic
+2014-11-18 13:10:27	<--	qwebirc22507 (a3960ff5@gateway/web/freenode/ip.163.150.15.245) has quit (Client Quit)
+2014-11-18 13:12:09	@mhartington	frankblizzar: is this in beta 13 or the nightly?
+2014-11-18 13:12:19	frankblizzar	nightly
+2014-11-18 13:12:31	frankblizzar	754
+2014-11-18 13:13:33	@mhartington	mind giving build 758 a try? 
+2014-11-18 13:13:56	@mhartington	we've done a lot of testing to make sure we've covered everything
+2014-11-18 13:14:05	@mhartington	didn't see any flickers 
+2014-11-18 13:14:37	frankblizzar	sure will try right away
+2014-11-18 13:15:12	frankblizzar	760 already available
+2014-11-18 13:15:27	@mhartington	yeahh andrew just push a new update hah
+2014-11-18 13:15:42	@mhartington	also check to see if its anything to do with the update to angular 1.3
+2014-11-18 13:19:27	<--	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has quit (Quit: Leaving.)
+2014-11-18 13:22:04	--	dhcar is now known as dhcar_AFK
+2014-11-18 13:25:42	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 13:25:44	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-18 13:33:56	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-11-18 13:35:02	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 13:39:46	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 13:40:17	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 13:44:53	<--	liberatus (~winfred@173.205.0.170) has quit (Ping timeout: 264 seconds)
+2014-11-18 13:59:35	-->	abram_ (~abram@12.170.31.71) has joined #ionic
+2014-11-18 14:02:58	<--	abram (~abram@50.250.182.225) has quit (Ping timeout: 264 seconds)
+2014-11-18 14:05:33	<--	pipoo (~pipoo@dslb-146-060-067-088.146.060.pools.vodafone-ip.de) has quit (Read error: No route to host)
+2014-11-18 14:07:37	-->	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has joined #ionic
+2014-11-18 14:17:02	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Quit: iribarne)
+2014-11-18 14:17:38	-->	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has joined #ionic
+2014-11-18 14:18:40	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 14:22:39	-->	justinN_ (43d294ec@gateway/web/freenode/ip.67.210.148.236) has joined #ionic
+2014-11-18 14:23:01	justinN_	FYI Ionic Team : Ionic site is down.  This page has been temporarily disabled due to a misconfigured custom domain.
+2014-11-18 14:23:16	justinN_	actually the nightlies docs are down : http://ionicframework.com/docs/nightly/api/
+2014-11-18 14:23:50	-->	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has joined #ionic
+2014-11-18 14:27:32	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 14:29:37	-->	perryg (~Adium@162.248.233.58) has joined #ionic
+2014-11-18 14:29:37	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-18 14:30:12	justinN_	Hey @perryg : The Ionic nightlies doc site is down
+2014-11-18 14:30:36	beckyconning_	if i want to change the anchor tags that get generated by ion-tabs where can i do that? i need to add an ng-class pair to it for this application.
+2014-11-18 14:31:17	beckyconning_	its kinda hard to find where it is in the tab related directives in the ionic repo
+2014-11-18 14:31:45	beckyconning_	oh i just found it lol
+2014-11-18 14:31:49	beckyconning_	https://github.com/driftyco/ionic/blob/master/js/angular/directive/tabNav.js
+2014-11-18 14:32:26	@perryg	yeah, the whole site's down. flipped a wrong switch while working on the services site
+2014-11-18 14:32:48	@perryg	should be back up quickly
+2014-11-18 14:39:57	@perryg	and we're back
+2014-11-18 14:42:58	-->	krik (~Lingo@p5DDC399A.dip0.t-ipconnect.de) has joined #ionic
+2014-11-18 14:45:34	beckyconning_	oh! you know how both class and ng-click are passed down to be compiled into the ion-tab-nav template? do you think it would be sensible to also pass down ng-class? this would let users implement all sorts of custom tab states using css classes such as disabled using the pointer-events property?
+2014-11-18 14:45:34	beckyconning_	https://github.com/driftyco/ionic/blob/master/js/angular/directive/tab.js#L58
+2014-11-18 14:45:59	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 14:46:39	beckyconning_	oh okay actually thats a bad idea
+2014-11-18 14:46:40	beckyconning_	but
+2014-11-18 14:46:42	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 14:48:29	beckyconning_	these tab directives are very good as long as you don't have to do non-standard things with them : P i'm gonna make a branch with disableable tabs in it.
+2014-11-18 14:50:49	beckyconning_	which release relates to 1.2.8 in npm? https://github.com/driftyco/ionic/releases
+2014-11-18 14:52:30	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 272 seconds)
+2014-11-18 14:54:11	<--	rafagomes_ (~rafagomes@177.17.118.5) has quit (Remote host closed the connection)
+2014-11-18 14:58:02	<--	SidFerreira (~sidferrei@189.101.194.1) has quit (Remote host closed the connection)
+2014-11-18 15:01:10	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-18 15:12:19	-->	rafagomes (~rafagomes@177.19.57.114) has joined #ionic
+2014-11-18 15:16:15	<--	rafagomes (~rafagomes@177.19.57.114) has quit (Read error: Connection reset by peer)
+2014-11-18 15:16:28	-->	rafagomes (~rafagomes@177.19.57.114) has joined #ionic
+2014-11-18 15:18:53	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-18 15:19:28	-->	raibutera (~raibutera@cpc22-finc13-2-0-cust984.4-2.cable.virginm.net) has joined #ionic
+2014-11-18 15:19:40	raibutera	anyone here used ionic with compass?
+2014-11-18 15:19:57	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-18 15:31:27	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-18 15:32:56	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-18 15:50:04	--	dhcar_AFK is now known as dhcar
+2014-11-18 15:52:09	Marble68	Noob Q: In my app - I have a list of shows “trade shows” - I’m storing them using angular-local-storage.  I would like to show them as a list. Is this posible? ng-repeat="item in localStorageService.listofShows"
+2014-11-18 15:52:33	Marble68	Or- should I, in the controller do something like $scope. listOfShows then do ng-repeat="item in listofShows"
+2014-11-18 15:52:34	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-18 15:52:37	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-18 15:52:43	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-18 15:53:43	-->	tskaggs (~tskaggs@174.51.84.143) has joined #ionic
+2014-11-18 15:54:32	tskaggs	hey all! New at Ionic. How would I run Ionic on a server for my web view? ionic server --forever or something like that?
+2014-11-18 15:55:26	@mhartington	Marble68: take a look at  this post
+2014-11-18 15:55:28	@mhartington	https://groups.google.com/forum/#!topic/angular/YbjxtsMnsns
+2014-11-18 15:56:47	@mhartington	raibutera: Ionic comes with it's own built compass varient
+2014-11-18 15:56:58	@mhartington	about 80 mixins that you can use
+2014-11-18 15:57:19	raibutera	I want to port over some mixins and styles from another project htat uses compass
+2014-11-18 15:57:29	raibutera	i'm currently wrestling with gulp for the first time
+2014-11-18 15:59:18	tskaggs	Is there anyway run 'ionic serve' forever on port 80?
+2014-11-18 15:59:31	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-18 16:01:22	-->	frankbli_ (~frankbliz@e177082207.adsl.alicedsl.de) has joined #ionic
+2014-11-18 16:02:18	Marble68	mhartington: Thank you
+2014-11-18 16:02:31	@mhartington	tskaggs: not really the point of ionic serve
+2014-11-18 16:02:40	@mhartington	tskaggs: more just for local testing only
+2014-11-18 16:02:50	@mhartington	Marble68: np
+2014-11-18 16:03:07	tskaggs	should I just throw the www/ into a static server?
+2014-11-18 16:03:17	<--	frankblizzar (~frankbliz@g229058094.adsl.alicedsl.de) has quit (Ping timeout: 240 seconds)
+2014-11-18 16:04:32	@mhartington	you can, but its not really the point of cordova
+2014-11-18 16:04:51	@mhartington	you'd really use www/ as a base for build for ios and android
+2014-11-18 16:05:59	tskaggs	right on
+2014-11-18 16:06:19	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 16:06:52	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 16:07:33	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 16:07:47	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 16:08:03	-->	mocx (~mocx@unaffiliated/mocx) has joined #ionic
+2014-11-18 16:10:55	<--	tskaggs (~tskaggs@174.51.84.143) has quit
+2014-11-18 16:25:41	-->	Fishy__ (~fishy@c-73-163-160-178.hsd1.md.comcast.net) has joined #ionic
+2014-11-18 16:27:56	<--	danecando (~danecando@8.31.240.20) has quit (Quit: Computer has gone to sleep.)
+2014-11-18 16:30:10	-->	jesusprubio (~quassel@47.61.247.64) has joined #ionic
+2014-11-18 16:33:30	-->	maxlynch (~maxlynch@208.66.131.130) has joined #ionic
+2014-11-18 16:44:37	<--	maxlynch (~maxlynch@208.66.131.130) has quit
+2014-11-18 16:44:48	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-18 16:44:59	<--	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has quit (Quit: Konversation terminated!)
+2014-11-18 16:45:07	-->	Fishy_ (~fishy@2601:a:6500:e000:74aa:68:ec5a:9714) has joined #ionic
+2014-11-18 16:47:55	<--	Fishy__ (~fishy@c-73-163-160-178.hsd1.md.comcast.net) has quit (Ping timeout: 244 seconds)
+2014-11-18 16:48:44	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Quit: iribarne)
+2014-11-18 16:48:48	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-18 16:48:55	<--	justinN_ (43d294ec@gateway/web/freenode/ip.67.210.148.236) has quit (Ping timeout: 246 seconds)
+2014-11-18 16:52:08	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 16:52:37	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 16:57:02	-->	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has joined #ionic
+2014-11-18 16:57:39	<--	iribarne (~hector@adsl-108-132-180-10.mia.bellsouth.net) has quit (Client Quit)
+2014-11-18 17:02:48	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-18 17:03:44	<--	jesusprubio (~quassel@47.61.247.64) has quit (Ping timeout: 250 seconds)
+2014-11-18 17:05:10	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 17:06:10	DrMabuse	sorry guys iam looking for a ngdoc event $rootScope.$on example
+2014-11-18 17:06:16	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 17:06:28	DrMabuse	i dont check how to use ist maybe anyone can help me out ?
+2014-11-18 17:06:31	DrMabuse	plz
+2014-11-18 17:19:13	--	dhcar is now known as dhcar_AFK
+2014-11-18 17:21:05	--	abram_ is now known as abram
+2014-11-18 17:24:36	-->	jesusprubio (~quassel@47.61.247.64) has joined #ionic
+2014-11-18 17:24:58	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-18 17:30:15	-->	robdubya (~textual@198.0.222.60) has joined #ionic
+2014-11-18 17:31:15	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 17:32:21	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 17:34:17	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 17:34:51	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 17:36:43	--	dhcar_AFK is now known as dhcar
+2014-11-18 17:37:33	<--	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has quit (Quit: (null))
+2014-11-18 17:38:40	<--	jesusprubio (~quassel@47.61.247.64) has quit (Ping timeout: 255 seconds)
+2014-11-18 17:38:48	<--	raibutera (~raibutera@cpc22-finc13-2-0-cust984.4-2.cable.virginm.net) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-18 17:41:39	-->	jesusprubio (~quassel@47.61.247.64) has joined #ionic
+2014-11-18 17:42:15	-->	raibutera (~raibutera@cpc22-finc13-2-0-cust984.4-2.cable.virginm.net) has joined #ionic
+2014-11-18 17:45:15	<--	Fishy_ (~fishy@2601:a:6500:e000:74aa:68:ec5a:9714) has quit (Remote host closed the connection)
+2014-11-18 17:48:39	BahamutWC|Work	seeing some slide box issues on the latest master
+2014-11-18 17:49:57	<--	krik (~Lingo@p5DDC399A.dip0.t-ipconnect.de) has quit (Quit: (null))
+2014-11-18 17:50:58	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 264 seconds)
+2014-11-18 17:52:38	<--	raibutera (~raibutera@cpc22-finc13-2-0-cust984.4-2.cable.virginm.net) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-18 18:01:19	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 18:02:02	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 18:04:23	<--	chalettu (~textual@nat/cisco/x-fouyvlcddagoheil) has quit (Ping timeout: 244 seconds)
+2014-11-18 18:04:44	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-18 18:07:23	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 18:08:45	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 18:11:10	-->	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has joined #ionic
+2014-11-18 18:19:32	Marble68	if I have a JSON object that has escaped HTML within it; is there a way to unescape it within the template? or must I do that in a controller?
+2014-11-18 18:20:55	jon_a	Marble68: you can use a filter to do stuff in the template
+2014-11-18 18:22:25	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 18:23:13	Marble68	jon_a:  - is that an AngularJS thing (not sure what to search for)
+2014-11-18 18:23:32	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 18:23:37	Marble68	nevermind - yes
+2014-11-18 18:24:49	<--	liberatus (~winfred@173.205.0.170) has quit (Remote host closed the connection)
+2014-11-18 18:25:02	robdubya	Marble68 you can ng-bind-html it
+2014-11-18 18:25:16	robdubya	but you'll probably need angular-sanitize included
+2014-11-18 18:25:27	-->	liberatus (~winfred@173.205.0.170) has joined #ionic
+2014-11-18 18:25:55	beckyconning_	 is there a way to override just a specific part of a directive's options? for example say i wanted to just swap out the scope or template?
+2014-11-18 18:25:58	Marble68	maybe I can figure out how to make text be rendered as html
+2014-11-18 18:26:01	Marble68	using a filter
+2014-11-18 18:26:23	robdubya	ng-bind-html="yourThing.theHtml"
+2014-11-18 18:26:34	Marble68	would it be {{html|obj.htmlDesc
+2014-11-18 18:26:40	Marble68	I’ll try that
+2014-11-18 18:29:18	Marble68	robdubya: would that appear in the controller?
+2014-11-18 18:29:54	<--	liberatus (~winfred@173.205.0.170) has quit (Ping timeout: 264 seconds)
+2014-11-18 18:29:58	robdubya	<span ng-bind-html="whatever.foo"></span>
+2014-11-18 18:30:24	Marble68	I’ll read up on it - thanks
+2014-11-18 18:31:32	Marble68	Well, it didn’t throw an error - but it’s still escaped
+2014-11-18 18:32:27	Marble68	ok - now it is unescape - but not rendering as HTML lol
+2014-11-18 18:32:39	Marble68	but ng-bind-html seems to have gotten me part of the way there
+2014-11-18 18:33:00	-->	kay-z (~kpoorman@cpe-075-177-186-021.nc.res.rr.com) has joined #ionic
+2014-11-18 18:34:37	<--	jesusprubio (~quassel@47.61.247.64) has quit (Ping timeout: 240 seconds)
+2014-11-18 18:37:28	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 18:38:41	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 18:47:00	--	dhcar is now known as dhcar_AFK
+2014-11-18 18:52:05	-->	Fishy (~fishy@pool-108-3-182-143.bltmmd.fios.verizon.net) has joined #ionic
+2014-11-18 18:52:30	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-18 18:53:02	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-18 18:53:34	Marble68	ok - to just output raw HTML - I need a directive to compile the template - then I have to use sanitize, etc. ?
+2014-11-18 18:54:09	<--	shennyg____ (sid4021@gateway/web/irccloud.com/x-spdjbdzhtasbajtt) has quit
+2014-11-18 18:54:14	Marble68	Maybe I should not do this.
+2014-11-18 18:54:22	-->	shennyg (sid4021@gateway/web/irccloud.com/x-mdvgixybqujtqgvh) has joined #ionic
+2014-11-18 18:56:43	-->	jesusprubio (~quassel@47.61.247.64) has joined #ionic
+2014-11-18 18:57:03	<--	jesusprubio (~quassel@47.61.247.64) has quit (Remote host closed the connection)
+2014-11-18 19:10:36	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-18 19:10:36	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-18 19:10:36	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-18 19:10:36	--	Channel #ionic: 86 nicks (1 ops, 0 voices, 85 normals)
+2014-11-18 19:10:38	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-19 09:24:34	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-19 09:24:34	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-19 09:24:34	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-19 09:24:34	--	Channel #ionic: 89 nicks (0 ops, 0 voices, 89 normals)
+2014-11-19 09:24:34	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-19 09:24:36	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-19 09:28:29	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 09:29:27	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 09:31:52	--	__emps is now known as _emps
+2014-11-19 09:32:10	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Remote host closed the connection)
+2014-11-19 09:32:43	-->	rafagomes (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-19 09:36:39	<--	elxa (~quassel@p5DC1FC45.dip0.t-ipconnect.de) has quit (Ping timeout: 272 seconds)
+2014-11-19 09:37:22	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Ping timeout: 250 seconds)
+2014-11-19 09:43:25	-->	neuronal (~neuronal@81.203.63.41.dyn.user.ono.com) has joined #ionic
+2014-11-19 09:43:25	<--	neuronal (~neuronal@81.203.63.41.dyn.user.ono.com) has quit (Changing host)
+2014-11-19 09:43:25	-->	neuronal (~neuronal@unaffiliated/neuronal) has joined #ionic
+2014-11-19 09:46:32	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 09:47:07	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 09:52:36	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-11-19 09:53:13	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 09:55:38	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 09:56:28	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 09:59:35	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-19 10:00:46	<--	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has quit (Ping timeout: 250 seconds)
+2014-11-19 10:01:00	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-19 10:01:01	-->	rafagomes (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-19 10:01:38	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 10:02:20	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 10:03:38	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-19 10:04:42	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Read error: Connection reset by peer)
+2014-11-19 10:05:19	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 10:05:52	@mhartington	morning ionic devs
+2014-11-19 10:09:08	-->	coiner (~linker@113.23.8.112) has joined #ionic
+2014-11-19 10:09:10	-->	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has joined #ionic
+2014-11-19 10:10:16	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-19 10:10:18	<--	coiner (~linker@113.23.8.112) has quit (Max SendQ exceeded)
+2014-11-19 10:10:39	-->	coiner (~linker@113.23.8.112) has joined #ionic
+2014-11-19 10:10:53	BahamutWC	g'morning
+2014-11-19 10:11:41	BahamutWC	mhartington: so I encountered a bug with the slide box in the latest master, not sure if it's known - the watcher doesn't seem to work for the active slide, even when switched to what appears to be the new selected attribute (as opposed to active-slide)
+2014-11-19 10:12:21	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Remote host closed the connection)
+2014-11-19 10:12:42	@mhartington	any chance you could put together a codepen?
+2014-11-19 10:12:43	@mhartington	http://codepen.io/ionic/pen/AjgEB
+2014-11-19 10:13:39	BahamutWC	mhartington: oh, we have to use the slideBoxDelegate now?
+2014-11-19 10:13:59	@mhartington	for getting the active slide?
+2014-11-19 10:14:01	BahamutWC	well, even that codepen seems broken
+2014-11-19 10:14:08	BahamutWC	clicking next doesn't do anything
+2014-11-19 10:14:18	BahamutWC	or previous
+2014-11-19 10:14:20	@mhartington	yeah the next/previous stuff is broken right now
+2014-11-19 10:14:31	@mhartington	andrews working on it atm
+2014-11-19 10:14:44	BahamutWC	alright cool - hoping it would be fixed sometime this week
+2014-11-19 10:15:16	@mhartington	so what was the issue you saw?
+2014-11-19 10:15:21	BahamutWC	made the mistake of upgrading it for using angular 1.3 since there were some pre-existing bugs I hoped were fixed by the refactor present in master, but I encountered some nasty new ones heh
+2014-11-19 10:15:47	BahamutWC	just that I was using the active-slide attribute on the slide box, and so I created left-right arrows for toggling between slides
+2014-11-19 10:15:57	BahamutWC	they stopped working when I upgraded though
+2014-11-19 10:16:20	@mhartington	ah the next/previous functionality? 
+2014-11-19 10:16:25	BahamutWC	yeah
+2014-11-19 10:16:44	@mhartington	alright, thought it was something to do with getting the active slide
+2014-11-19 10:17:22	-->	rafagomes (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-19 10:18:16	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Remote host closed the connection)
+2014-11-19 10:19:58	-->	perryg (~Adium@162.248.233.58) has joined #ionic
+2014-11-19 10:19:58	--	Mode #ionic [+o perryg] by ChanServ
+2014-11-19 10:26:59	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-19 10:27:42	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 10:28:09	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-19 10:28:49	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 10:33:59	-->	JimTheDev (~dk01@unaffiliated/dk01) has joined #ionic
+2014-11-19 10:36:33	-->	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has joined #ionic
+2014-11-19 10:56:27	-->	unmgmt (~unmgmt@static-193-12-106-226.cust.tele2.se) has joined #ionic
+2014-11-19 10:56:50	unmgmt	I have a strange problem with a google places autocomplete directive.
+2014-11-19 10:57:23	unmgmt	On first load everything works. Then I navigate away and then come back to the screen. It stops working. No errors or anything.
+2014-11-19 10:57:43	unmgmt	Does ionic remove things from the DOM when I navigate away?
+2014-11-19 10:58:40	<--	jerryitt (uid17132@gateway/web/irccloud.com/x-eijqhcnnxcagkgft) has quit (Quit: Connection closed for inactivity)
+2014-11-19 10:59:27	-->	artisangoose (~artisango@66.119.2.181) has joined #ionic
+2014-11-19 10:59:49	@mhartington	unmgmt: are you using the nightly builds?
+2014-11-19 11:01:22	-->	chalettu (~textual@nat/cisco/x-uecbxjitkvmgmkul) has joined #ionic
+2014-11-19 11:05:05	unmgmt	no
+2014-11-19 11:05:40	unmgmt	i'm using beta 12
+2014-11-19 11:06:20	@mhartington	any chance you could put a codepen together?
+2014-11-19 11:06:42	unmgmt	I've never done it. I'll try and ping back here
+2014-11-19 11:13:16	unmgmt	I'm a little in over me head with angular. It seems that the directive is not re-initializing or re-drawing after I navigate back to that page
+2014-11-19 11:13:34	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-19 11:17:50	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2014-11-19 11:21:40	unmgmt	OK, I solved it. https://github.com/jozzhart/angular-google-places-autocomplete/commit/4afb2c878ba015b0f3fd833788b06282d952c769
+2014-11-19 11:22:50	@mhartington	ahh, good to hear
+2014-11-19 11:23:14	@mhartington	unmgmt: if your using google-autocomplete, you may want to check out this
+2014-11-19 11:23:14	@mhartington	https://github.com/israelidanny/ion-google-place
+2014-11-19 11:23:25	-->	jackdpeterson (~jackdpete@50.245.138.241) has joined #ionic
+2014-11-19 11:24:04	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-19 11:24:32	unmgmt	Saw that one, too :-) But I chose the other one because it had a little better documentation
+2014-11-19 11:29:04	<--	artisangoose (~artisango@66.119.2.181) has quit (Read error: Connection reset by peer)
+2014-11-19 11:29:36	-->	artisangoose (~artisango@66.119.2.181) has joined #ionic
+2014-11-19 11:34:01	-->	SidFerreira (~sidferrei@186.222.38.81) has joined #ionic
+2014-11-19 11:35:01	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-19 11:43:33	SidFerreira	Hello Ionic People!
+2014-11-19 11:43:45	@mhartington	hey there
+2014-11-19 11:45:07	SidFerreira	WP8 is giving me some hard time :s
+2014-11-19 11:45:37	@mhartington	hehe, yeah it does that
+2014-11-19 11:45:40	@mhartington	whats the issue?
+2014-11-19 11:48:48	<--	tgrk (~tgrk@94.18.200.222) has quit (Remote host closed the connection)
+2014-11-19 11:51:56	SidFerreira	Not Ionic right now, but trying to find a good SQLite replacement
+2014-11-19 11:52:08	-->	rhp (~rhp@82-171-113-86.ip.telfort.nl) has joined #ionic
+2014-11-19 11:56:36	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-19 12:08:36	<--	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has quit (Ping timeout: 250 seconds)
+2014-11-19 12:12:42	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-19 12:16:30	-->	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has joined #ionic
+2014-11-19 12:17:29	frankblizzar	SidFerreira: people say good things about indexed-db
+2014-11-19 12:17:45	frankblizzar	haven't used it though
+2014-11-19 12:22:18	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-19 12:22:38	_emps	mongodb
+2014-11-19 12:22:58	SidFerreira	does it run in app?
+2014-11-19 12:23:27	_emps	hmm dont think
+2014-11-19 12:23:34	_emps	google it
+2014-11-19 12:33:00	frankblizzar	it doesn't
+2014-11-19 12:33:59	<--	arkin (~arkin@unaffiliated/arkin) has quit
+2014-11-19 12:38:43	<--	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has quit (Remote host closed the connection)
+2014-11-19 12:41:34	<--	m8 (~m8@unaffiliated/m8) has quit (Ping timeout: 265 seconds)
+2014-11-19 12:43:36	-->	rafagomes (~rafagomes@177.17.118.5) has joined #ionic
+2014-11-19 12:51:35	<--	mocx (~mocx@unaffiliated/mocx) has left #ionic
+2014-11-19 12:52:32	<--	rafagomes (~rafagomes@177.17.118.5) has quit (Read error: Connection reset by peer)
+2014-11-19 12:53:08	-->	rafagomes (~rafagomes@186.228.96.18) has joined #ionic
+2014-11-19 12:54:51	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 12:54:53	-->	IanOlson (~IanOlson@50-196-217-206-static.hfc.comcastbusiness.net) has joined #ionic
+2014-11-19 12:56:14	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 12:59:26	-->	Foxandxss (~textual@unaffiliated/foxandxss) has joined #ionic
+2014-11-19 12:59:27	<--	SidFerreira (~sidferrei@186.222.38.81) has quit (Read error: Connection reset by peer)
+2014-11-19 13:07:57	<--	IanOlson (~IanOlson@50-196-217-206-static.hfc.comcastbusiness.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-19 13:10:24	ioudas	i hear mongodb is webscale
+2014-11-19 13:22:52	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Ping timeout: 240 seconds)
+2014-11-19 13:25:29	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 13:28:22	jpstone	Has anyone had an issue with ionic complaining "WARNING : No started emulators found, starting an emulator." seemingly randomly when using "ionic run android"? Sometimes reseating the USB cable works, sometimes it doesn't. My PC can always see it as a media device, though.
+2014-11-19 13:29:00	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-19 13:30:27	<--	DrMabuse_ (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-19 13:31:34	-->	krik (~Lingo@p5DDC2839.dip0.t-ipconnect.de) has joined #ionic
+2014-11-19 13:31:47	<--	Mael_ (~Mael@pool-74-101-27-146.nycmny.fios.verizon.net) has quit (Read error: Connection reset by peer)
+2014-11-19 13:32:02	-->	Mael_ (~Mael@pool-74-101-27-146.nycmny.fios.verizon.net) has joined #ionic
+2014-11-19 13:32:17	ioudas	yes
+2014-11-19 13:32:26	ioudas	all depends on android settings
+2014-11-19 13:32:31	ioudas	of the device
+2014-11-19 13:33:15	ioudas	you need to set allow usb debugging and allow installation from untrusted sources
+2014-11-19 13:33:18	ioudas	thats it
+2014-11-19 13:33:27	ioudas	if those arent set it will play games like that
+2014-11-19 13:36:00	ioudas	has anyone passted a controller via the ionic loading template/content? id like to make it so ng-click is run when a person clicks a button in the loader
+2014-11-19 13:36:05	ioudas	would be curious to see how that looks
+2014-11-19 13:36:05	jpstone	Thanks for the response. I do have USB debugging enabled. Not sure about the installation from untrusted sources. Will check into that, thanks!
+2014-11-19 13:36:12	ioudas	yeah
+2014-11-19 13:36:18	ioudas	i have to reset my s4 today
+2014-11-19 13:36:23	ioudas	ill let you know what it takes
+2014-11-19 13:36:27	ioudas	if i find any otherwise
+2014-11-19 13:38:28	jpstone	Yeah, I have it checked :(
+2014-11-19 13:38:52	jpstone	Maybe unchecking 'Verify apps'
+2014-11-19 13:39:16	-->	patricka_ (~patrickar@Redlands.esri.com) has joined #ionic
+2014-11-19 13:40:07	jpstone	Yep, that did the trick.
+2014-11-19 13:40:57	<--	patrickarlt (~patrickar@2605:e000:180e:fd:251a:5a7e:78fd:b80c) has quit (Read error: Connection reset by peer)
+2014-11-19 13:42:36	ioudas	:-)
+2014-11-19 13:42:50	ioudas	glad it did
+2014-11-19 13:45:10	-->	mocx (~mocx@unaffiliated/mocx) has joined #ionic
+2014-11-19 13:45:49	mocx	i have a child view that isn't respecting the html of the parent view
+2014-11-19 13:46:19	mocx	it's layering itself against the header and underneath the parent view elements
+2014-11-19 13:48:03	mocx	here's a pastie with my stuff: http://pastie.org/pastes/9730660/text?key=bztgjdroe22gms6py8ua
+2014-11-19 13:48:39	mocx	the child view isn't respecting the <label>...</label> html, it's appending beneath it
+2014-11-19 13:48:57	mocx	do i need to fix this with css or there another way through html?
+2014-11-19 13:49:18	ioudas	how are you moving to the other view
+2014-11-19 13:49:23	ioudas	i dont see that code
+2014-11-19 13:49:38	mocx	there are two child views underneath the parent view
+2014-11-19 13:49:42	ioudas	just using ahrefs?
+2014-11-19 13:49:52	mocx	they're switched using the ion-nav-buttons
+2014-11-19 13:49:59	ioudas	ah
+2014-11-19 13:50:21	mocx	so yeah, an anchor with a href
+2014-11-19 13:50:43	ioudas	can you create a plunker?
+2014-11-19 13:50:45	ioudas	for me
+2014-11-19 13:50:49	ioudas	i have tabs working
+2014-11-19 13:50:53	ioudas	but i dont rely on href
+2014-11-19 13:51:00	ioudas	sounds like how youve setup the views
+2014-11-19 13:51:02	ioudas	or something
+2014-11-19 13:51:23	mocx	is there a plunker quick start for ionic?
+2014-11-19 13:52:06	mocx	that pastie is all the code
+2014-11-19 13:52:30	ioudas	thats all of it?
+2014-11-19 13:52:34	ioudas	youre missing stuff
+2014-11-19 13:52:45	ioudas	yeah there is tho
+2014-11-19 13:52:46	ioudas	1 sec
+2014-11-19 13:53:06	mocx	i guess i'm missing the parent tabs view also
+2014-11-19 13:53:14	mocx	but i don't think that pertains to the problem
+2014-11-19 13:53:22	ioudas	http://plnkr.co/edit/BZrnKPlCJt93orQp58H3
+2014-11-19 13:53:47	ioudas	i dont really see whats your index...
+2014-11-19 13:53:57	mocx	my otherwise?
+2014-11-19 13:54:17	ioudas	i dont see an otherwise statement
+2014-11-19 13:54:21	mocx	i have one
+2014-11-19 13:54:28	mocx	that shouldn't matter
+2014-11-19 13:54:34	-->	mylord (~rover@bzq-109-66-133-102.red.bezeqint.net) has joined #ionic
+2014-11-19 13:54:39	ioudas	put it all in a plunker
+2014-11-19 13:54:42	ioudas	and ill get it working for you
+2014-11-19 13:55:28	mylord	anyone know haxe or this? https://github.com/haxejs/haxejs-ionic-cordova
+2014-11-19 14:01:01	ioudas	for some reason with ng-hide and ionic slide boxes I cant get the slide box to have the correct amount of slides. even after running update(); anyone experience this yet?
+2014-11-19 14:03:07	<--	unmgmt (~unmgmt@static-193-12-106-226.cust.tele2.se) has quit (Remote host closed the connection)
+2014-11-19 14:05:42	-->	IanOlson (~IanOlson@50-196-217-206-static.hfc.comcastbusiness.net) has joined #ionic
+2014-11-19 14:07:36	frankblizzar	ioudas: in nightly?
+2014-11-19 14:07:42	ioudas	beta 13
+2014-11-19 14:07:47	ioudas	appears its still an issue
+2014-11-19 14:07:49	ioudas	on the forums
+2014-11-19 14:07:55	ioudas	not seeing a real solution yet
+2014-11-19 14:08:52	frankblizzar	i just remember they said something about ion-slide is currently broken in nightly
+2014-11-19 14:10:07	mocx	ioudas: i can't seem to get this plunker to work
+2014-11-19 14:10:16	ioudas	ah
+2014-11-19 14:10:22	ioudas	mocx plunker what you can
+2014-11-19 14:10:25	mocx	want my repo?
+2014-11-19 14:10:26	ioudas	ill try and do the rest
+2014-11-19 14:10:29	ioudas	sure
+2014-11-19 14:10:33	ioudas	what ever you can do
+2014-11-19 14:12:24	mocx	ioudas: git remote add origin https://github.com/alexkavon/niteowl.git
+2014-11-19 14:12:27	mocx	oops
+2014-11-19 14:12:35	mocx	ioudas: https://github.com/alexkavon/niteowl
+2014-11-19 14:13:28	ioudas	sure 1 sec
+2014-11-19 14:15:33	ioudas	well
+2014-11-19 14:15:37	ioudas	8 errors on load....
+2014-11-19 14:15:52	-->	Benstr (~Ben@173-9-219-197-Illinois.hfc.comcastbusiness.net) has joined #ionic
+2014-11-19 14:16:27	mocx	ignore the icon errors
+2014-11-19 14:16:43	ioudas	youre missing leaflet js
+2014-11-19 14:16:49	ioudas	ng-cordova
+2014-11-19 14:16:53	ioudas	a bunch of stuff
+2014-11-19 14:16:58	ioudas	this repo isnt usable
+2014-11-19 14:17:17	mocx	what?
+2014-11-19 14:17:24	mocx	bower install
+2014-11-19 14:19:18	ioudas	ah, of course.  I dont use bower
+2014-11-19 14:19:19	ioudas	blah
+2014-11-19 14:21:30	-->	ehalas2 (~Eihab@176.44.56.18) has joined #ionic
+2014-11-19 14:21:53	mocx	ioudas: let me know when you have it up and running
+2014-11-19 14:22:01	ioudas	ill be honest
+2014-11-19 14:22:05	ioudas	im not going to install bower
+2014-11-19 14:22:08	ioudas	just plunker it
+2014-11-19 14:22:18	mocx	isn't bower required for ionic?
+2014-11-19 14:23:00	ioudas	no
+2014-11-19 14:23:23	mocx	ah
+2014-11-19 14:23:29	mocx	ill be honest
+2014-11-19 14:23:34	mocx	im not going to plunker it
+2014-11-19 14:23:41	ioudas	have fun then ;-)
+2014-11-19 14:23:51	mocx	thanks
+2014-11-19 14:24:36	mocx	i don't think providing the whole repo, plunkering it, would help. this seems like a css issue or an issue with how ion-nav-view and ion-view function together
+2014-11-19 14:25:02	ioudas	well, then i am not sure what to tell you.
+2014-11-19 14:25:07	ioudas	i have this working in my own code
+2014-11-19 14:25:15	ioudas	what youre looking for
+2014-11-19 14:25:49	ioudas	check forums if you think its a bug
+2014-11-19 14:26:33	mocx	really? i'm looking to fix this: http://prntscr.com/581ier
+2014-11-19 14:26:58	mocx	it should look like this: http://prntscr.com/581iqy
+2014-11-19 14:27:32	mocx	with the code from http://pastie.org/pastes/9730660/text?key=bztgjdroe22gms6py8ua or that repo
+2014-11-19 14:39:32	-->	mitchellhenke (~mitchellh@108-231-125-143.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2014-11-19 14:40:39	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-19 14:46:16	<--	ehalas2 (~Eihab@176.44.56.18) has quit (Ping timeout: 265 seconds)
+2014-11-19 15:06:37	ioudas	perryg, you around?
+2014-11-19 15:06:45	@perryg	i am
+2014-11-19 15:07:06	ioudas	I was wondering if you had any insight to http://forum.ionicframework.com/t/slides-generated-with-ng-repeat-causing-issues-slide-box/394/40
+2014-11-19 15:07:17	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-19 15:07:20	ioudas	Does ng-show work at all with ionic slide boxes?
+2014-11-19 15:07:22	ioudas	or should it?
+2014-11-19 15:07:37	ioudas	with beta 13...... i cant get them to properly poplulate with ng-show or hide
+2014-11-19 15:11:12	ioudas	cant get any of the ideas on that link to work either...
+2014-11-19 15:12:22	@perryg	check the nightlies, andrew was working on those yesterday
+2014-11-19 15:12:37	@perryg	a pretty big refactor actually
+2014-11-19 15:13:05	ioudas	is it just a css nightly issue or should i grab a nightly of the ionic bundle as well
+2014-11-19 15:13:08	ioudas	seems to be just css?
+2014-11-19 15:14:19	@perryg	both
+2014-11-19 15:14:40	ioudas	rgr
+2014-11-19 15:14:43	ioudas	ill try that
+2014-11-19 15:15:08	Marble68	In the left menu responsive demo project - how can I hide the menu button if the UI is on a table?
+2014-11-19 15:15:41	Marble68	ng-show=“IsTable()” and then return true or false there?
+2014-11-19 15:15:43	Marble68	or - ?
+2014-11-19 15:15:50	Marble68	maybe I do that in a controller first?
+2014-11-19 15:18:13	ioudas	heh nightly broke a working slide box
+2014-11-19 15:18:14	ioudas	blah
+2014-11-19 15:20:09	<--	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has quit (Quit: Konversation terminated!)
+2014-11-19 15:21:22	ioudas	heh css is all over the place with the new stuff
+2014-11-19 15:21:28	ioudas	from beta 13
+2014-11-19 15:21:32	ioudas	guess i will wait
+2014-11-19 15:28:12	<--	dynacker (~daniell@c211-30-195-162.artrmn3.nsw.optusnet.com.au) has quit (Ping timeout: 245 seconds)
+2014-11-19 15:28:31	<--	JimTheDev (~dk01@unaffiliated/dk01) has quit (Quit: JimTheDev)
+2014-11-19 15:29:04	-->	dynacker (~daniell@c211-30-195-162.artrmn3.nsw.optusnet.com.au) has joined #ionic
+2014-11-19 15:35:22	<--	krik (~Lingo@p5DDC2839.dip0.t-ipconnect.de) has quit (Quit: (null))
+2014-11-19 15:43:52	<--	gunn (~gunn@121-74-37-196.telstraclear.net) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-19 15:49:56	<--	danecando (~danecando@8.31.240.20) has quit (Quit: Computer has gone to sleep.)
+2014-11-19 15:53:23	<--	TommyO (~toreilly@38.100.172.130) has quit (Ping timeout: 240 seconds)
+2014-11-19 15:53:40	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-19 15:57:10	-->	TommyO (~toreilly@38.100.172.130) has joined #ionic
+2014-11-19 15:59:02	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 15:59:44	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 16:02:35	-->	frankbli_ (~frankbliz@e178053072.adsl.alicedsl.de) has joined #ionic
+2014-11-19 16:03:54	<--	frankblizzar (~frankbliz@e177082207.adsl.alicedsl.de) has quit (Ping timeout: 250 seconds)
+2014-11-19 16:04:18	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-19 16:04:42	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-19 16:05:17	<--	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-19 16:05:26	-->	DrMabuse (~drmabuse@HSI-KBW-046-005-216-170.hsi8.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-19 16:27:55	<--	rafagomes (~rafagomes@186.228.96.18) has quit (Remote host closed the connection)
+2014-11-19 16:29:38	-->	keturn (~acapnotic@199.195.140.73) has joined #ionic
+2014-11-19 16:38:06	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-19 16:38:42	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-19 16:42:28	<--	frankbli_ (~frankbliz@e178053072.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2014-11-20 09:20:44	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-20 09:20:44	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-20 09:20:44	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-20 09:20:44	--	Channel #ionic: 88 nicks (0 ops, 0 voices, 88 normals)
+2014-11-20 09:20:44	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-20 09:20:46	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-20 09:24:28	<--	kas84 (~pablo@185.Red-83-56-4.staticIP.rima-tde.net) has quit (Quit: kas84)
+2014-11-20 09:28:09	<--	mocx (~mocx@unaffiliated/mocx) has quit (Ping timeout: 265 seconds)
+2014-11-20 09:29:57	-->	mocx (~mocx@mailstache.io) has joined #ionic
+2014-11-20 09:36:31	<--	siovene (uid16530@gateway/web/irccloud.com/x-faaimzvwstrsqygp) has quit (Quit: Connection closed for inactivity)
+2014-11-20 09:43:52	-->	arkin_ (arkin@2a01:7e00::f03c:91ff:fe73:2e54) has joined #ionic
+2014-11-20 09:45:15	<--	arkin_ (arkin@2a01:7e00::f03c:91ff:fe73:2e54) has quit (Client Quit)
+2014-11-20 09:45:52	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-20 09:46:18	-->	arkin (~arkin@unaffiliated/arkin) has joined #ionic
+2014-11-20 09:46:22	-->	arkin_ (arkin@2a01:7e00::f03c:91ff:fe73:2e54) has joined #ionic
+2014-11-20 09:47:11	<--	arkin (~arkin@unaffiliated/arkin) has quit
+2014-11-20 09:47:16	--	arkin_ is now known as arkin
+2014-11-20 09:47:20	<--	arkin (arkin@2a01:7e00::f03c:91ff:fe73:2e54) has quit (Changing host)
+2014-11-20 09:47:20	-->	arkin (arkin@unaffiliated/arkin) has joined #ionic
+2014-11-20 09:47:36	 *	ioudas pokes arkin 
+2014-11-20 09:47:48	arkin	hello
+2014-11-20 09:48:13	-->	jpstone (~justin@108.48.195.68) has joined #ionic
+2014-11-20 09:48:18	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-20 09:49:02	ioudas	how goes
+2014-11-20 09:49:15	ioudas	another fine day in ionic land?
+2014-11-20 09:50:20	arkin	indeed
+2014-11-20 09:50:25	arkin	background syncing today, doing some testing
+2014-11-20 09:51:21	arkin	you sorted now with your shared checkboxes?
+2014-11-20 09:52:56	ioudas	def
+2014-11-20 09:52:57	ioudas	;-)
+2014-11-20 09:53:03	ioudas	fixing a hyperv problem this am
+2014-11-20 09:53:15	arkin	oh?
+2014-11-20 09:53:44	ioudas	Yeah, frigging thing has a bunch of dcom errors and the hyperv server had a vm go on walk about (our domain controller)
+2014-11-20 09:53:52	ioudas	lost heart beat to management client
+2014-11-20 09:54:45	arkin	eee sounds like a really annoying issue
+2014-11-20 09:55:41	<--	m8 (~m8@unaffiliated/m8) has quit (Read error: Connection reset by peer)
+2014-11-20 09:56:56	-->	IanOlson (~IanOlson@50-196-217-206-static.hfc.comcastbusiness.net) has joined #ionic
+2014-11-20 10:08:07	ioudas	yea, sure is.
+2014-11-20 10:08:09	-->	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has joined #ionic
+2014-11-20 10:11:02	-->	m8 (~m8@unaffiliated/m8) has joined #ionic
+2014-11-20 10:11:06	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-20 10:11:54	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit
+2014-11-20 10:16:29	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-20 10:20:12	-->	coiner (~linker@113.23.8.112) has joined #ionic
+2014-11-20 10:36:43	--	irc: disconnected from server
+2014-11-20 10:37:05	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2014-11-20 10:37:05	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-20 10:37:05	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-20 10:37:05	--	Channel #ionic: 91 nicks (1 ops, 0 voices, 90 normals)
+2014-11-20 10:37:05	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-20 10:37:53	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-20 10:38:43	-->	qwebirc76840 (54c61780@gateway/web/freenode/ip.84.198.23.128) has joined #ionic
+2014-11-20 10:42:54	-->	rafagomes (~rafagomes@177.157.193.57) has joined #ionic
+2014-11-20 10:45:42	<--	krik (~Lingo@91.213.91.40) has quit (Ping timeout: 245 seconds)
+2014-11-20 10:46:10	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-20 10:46:16	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-20 10:47:47	<--	rafagomes (~rafagomes@177.157.193.57) has quit (Ping timeout: 272 seconds)
+2014-11-20 10:51:08	-->	afuggini (~afuggini@24.232.255.165) has joined #ionic
+2014-11-20 10:53:33	<--	joar (sid36693@gateway/web/irccloud.com/x-miifjxdpiktpfhgp) has quit (Changing host)
+2014-11-20 10:53:33	-->	joar (sid36693@fsf/member/jwandborg) has joined #ionic
+2014-11-20 10:55:12	<--	qwebirc76840 (54c61780@gateway/web/freenode/ip.84.198.23.128) has quit (Quit: Page closed)
+2014-11-20 10:56:45	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Remote host closed the connection)
+2014-11-20 10:56:54	--	Mael_ is now known as arcanin
+2014-11-20 10:57:04	-->	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has joined #ionic
+2014-11-20 10:57:09	<--	thomastuts (~thomastut@dD5E0145A.access.telenet.be) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-20 10:57:25	-->	chalettu (~textual@nat/cisco/x-giqihwmcatlbkise) has joined #ionic
+2014-11-20 10:59:57	<--	mocx (~mocx@mailstache.io) has quit (Changing host)
+2014-11-20 10:59:57	-->	mocx (~mocx@unaffiliated/mocx) has joined #ionic
+2014-11-20 11:08:09	-->	andredublin (~andredubl@173-165-158-89-charleston.hfc.comcastbusiness.net) has joined #ionic
+2014-11-20 11:08:12	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2014-11-20 11:13:35	<--	andredublin (~andredubl@173-165-158-89-charleston.hfc.comcastbusiness.net) has quit
+2014-11-20 11:20:40	-->	DaGardner (uid23095@gateway/web/irccloud.com/x-czgaigrvwvefbeqm) has joined #ionic
+2014-11-20 11:28:50	<--	m8 (~m8@unaffiliated/m8) has quit (Quit: Sto andando via)
+2014-11-20 11:29:42	-->	kulhas (~fsvieira@2001:690:2006:4200:5404:c569:a593:c37) has joined #ionic
+2014-11-20 11:39:10	kulhas	hi, the ionic scroll with mouse wheel doesnt seems to work on firefox, how can I fix this?
+2014-11-20 11:40:37	<--	jpstone (~justin@108.48.195.68) has quit (Quit: Konversation terminated!)
+2014-11-20 11:44:49	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2014-11-20 11:45:23	-->	m8 (~m8@unaffiliated/m8) has joined #ionic
+2014-11-20 11:48:29	<--	unmgmt (~unmgmt@static-193-12-106-226.cust.tele2.se) has quit (Remote host closed the connection)
+2014-11-20 11:57:27	<--	chalettu (~textual@nat/cisco/x-giqihwmcatlbkise) has quit (Ping timeout: 244 seconds)
+2014-11-20 12:00:47	<--	krik (~Lingo@91.213.91.40) has quit (Ping timeout: 255 seconds)
+2014-11-20 12:01:24	-->	krik (~Lingo@91.213.91.40) has joined #ionic
+2014-11-20 12:05:46	<--	kulhas (~fsvieira@2001:690:2006:4200:5404:c569:a593:c37) has left #ionic
+2014-11-20 12:06:30	-->	jarr0dsz (~textual@s53753c5f.adsl.online.nl) has joined #ionic
+2014-11-20 12:06:36	<--	afuggini (~afuggini@24.232.255.165) has quit (Quit: (null))
+2014-11-20 12:16:37	-->	Foxandxss (~textual@unaffiliated/foxandxss) has joined #ionic
+2014-11-20 12:17:53	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 12:19:37	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-20 12:20:20	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 12:21:13	<--	tgrk (~tgrk@213.61.153.26) has quit (Remote host closed the connection)
+2014-11-20 12:21:20	<--	krik (~Lingo@91.213.91.40) has quit (Quit: (null))
+2014-11-20 12:27:40	<--	jarr0dsz (~textual@s53753c5f.adsl.online.nl) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2014-11-20 12:28:48	--	abram is now known as abram_shamed
+2014-11-20 12:29:54	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-20 12:29:55	--	abram_shamed is now known as abram
+2014-11-20 12:30:21	<--	m8 (~m8@unaffiliated/m8) has quit (Read error: Connection reset by peer)
+2014-11-20 12:31:44	-->	rafagomes (~rafagomes@177.157.193.57) has joined #ionic
+2014-11-20 12:32:01	-->	rajatarora (~rajat@182.64.179.57) has joined #ionic
+2014-11-20 12:32:13	<--	rajatarora (~rajat@182.64.179.57) has quit (Quit: Leaving)
+2014-11-20 12:32:30	-->	rajatarora (~rajat@182.64.179.57) has joined #ionic
+2014-11-20 12:33:06	-->	afuggini (~afuggini@150-134-126-200.fibertel.com.ar) has joined #ionic
+2014-11-20 12:36:36	<--	rafagomes (~rafagomes@177.157.193.57) has quit (Ping timeout: 264 seconds)
+2014-11-20 12:36:42	<--	frankblizzar (~frankbliz@ip5b4062d0.dynamic.kabel-deutschland.de) has quit (Remote host closed the connection)
+2014-11-20 12:38:26	-->	jarr0dsz (~textual@s53753c5f.adsl.online.nl) has joined #ionic
+2014-11-20 12:39:04	-->	kay-z (~kpoorman@cpe-075-177-186-021.nc.res.rr.com) has joined #ionic
+2014-11-20 12:39:32	rajatarora	Hi, I am facing issues with input type in ionic, wheneve i am tapping on input it is not showing up keyboard or even if it shows keyboard it doesn't take input
+2014-11-20 12:39:45	rajatarora	Is it known bug or i am doing something wrong?
+2014-11-20 12:40:08	<--	jesusprubio (~quassel@136.Red-81-39-109.dynamicIP.rima-tde.net) has quit (Remote host closed the connection)
+2014-11-20 12:40:30	<--	rajatarora (~rajat@182.64.179.57) has quit (Quit: Leaving)
+2014-11-20 12:40:51	-->	rajatarora (~rajat@182.64.179.57) has joined #ionic
+2014-11-20 12:42:31	<--	rajatarora (~rajat@182.64.179.57) has left #ionic
+2014-11-20 12:42:38	-->	rajatarora (~rajat@182.64.179.57) has joined #ionic
+2014-11-20 12:46:38	ioudas	perryg, you got a second to chat? Wanted to bounce a question off you.
+2014-11-20 12:46:54	ioudas	rajatarora, youre doing something worng
+2014-11-20 12:47:20	rajatarora	Ok but I am just using plain input type ="text" tag
+2014-11-20 12:47:45	rajatarora	So I am not able to figure it out,
+2014-11-20 12:47:57	ioudas	plunker your code...
+2014-11-20 12:47:59	ioudas	ill fix it
+2014-11-20 12:48:03	<--	kay-z (~kpoorman@cpe-075-177-186-021.nc.res.rr.com) has quit (Quit: Leaving...)
+2014-11-20 12:49:28	rajatarora	ok
+2014-11-20 12:50:34	ioudas	you on beta 13?
+2014-11-20 12:51:00	rajatarora	http://plnkr.co/edit/N9x7Fzel5Ke4qdDLo2p2?p=catalogue
+2014-11-20 12:51:04	rajatarora	yes on beta 13
+2014-11-20 12:51:13	@perryg	ioudas: what's up?
+2014-11-20 12:51:37	@perryg	oh, btw, we're on the hacker news front page!
+2014-11-20 12:51:43	@perryg	#2
+2014-11-20 12:52:00	-->	delight (~quassel@bchm-4db662c3.pool.mediaWays.net) has joined #ionic
+2014-11-20 12:52:37	ioudas	Question for you... I am using ionic loading's template. I would like to fire a ng-click to cancel a promise, but cant get it to work. I can get it to associate to a controller. As i show the loading when doing remote calls. the goal is to cancel the promise/remote call
+2014-11-20 12:52:40	ioudas	how possible is that?
+2014-11-20 12:55:41	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-20 12:55:45	-->	rafagomes (~rafagomes@177.157.193.57) has joined #ionic
+2014-11-20 12:56:05	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 12:58:05	ioudas	rajatarora, http://plnkr.co/edit/OAeDYNQXKs4w60quEAhT?p=preview
+2014-11-20 12:58:12	ioudas	can you load that in an emulator/phone
+2014-11-20 12:58:15	ioudas	that should work for you
+2014-11-20 12:58:25	ioudas	wont work on desktop ofcourse
+2014-11-20 12:58:50	-->	tgrk (~tgrk@ip-2-202-92-178.web.vodafone.de) has joined #ionic
+2014-11-20 12:59:31	rajatarora	yeah i can copy it to my project and run it on my phone
+2014-11-20 12:59:55	ioudas	try that
+2014-11-20 13:00:01	ioudas	those work in ios/android
+2014-11-20 13:00:03	ioudas	for me
+2014-11-20 13:00:10	rajatarora	android 4.1
+2014-11-20 13:00:20	ioudas	eh i havnt tried 4.1 i dont see why not
+2014-11-20 13:00:23	ioudas	run on my s4 fine
+2014-11-20 13:00:32	-->	jon_a (~Adium@d154-20-122-179.bchsia.telus.net) has joined #ionic
+2014-11-20 13:00:36	<--	rafagomes (~rafagomes@177.157.193.57) has quit (Ping timeout: 264 seconds)
+2014-11-20 13:00:45	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-20 13:00:54	rajatarora	so acording to you was that span tags which were causing the problem??
+2014-11-20 13:01:10	ioudas	there was more than just span tags
+2014-11-20 13:01:11	ioudas	;-)
+2014-11-20 13:02:31	<--	jarr0dsz (~textual@s53753c5f.adsl.online.nl) has quit (Read error: Connection reset by peer)
+2014-11-20 13:03:15	rajatarora	its working awesome
+2014-11-20 13:03:41	rajatarora	But i didn't get what was the problem with that code, i thought those were just extra styling
+2014-11-20 13:07:00	ioudas	the formatting of the blocks/buttons
+2014-11-20 13:07:01	ioudas	spans
+2014-11-20 13:07:06	ioudas	take that and work from it
+2014-11-20 13:07:15	ioudas	they were in odd places...
+2014-11-20 13:07:40	-->	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has joined #ionic
+2014-11-20 13:07:52	rajatarora	yeah got it, thanks ioudas
+2014-11-20 13:08:15	-->	soren_engel (~Palaver@94.191.188.25.bredband.3.dk) has joined #ionic
+2014-11-20 13:11:27	<--	soren_engel (~Palaver@94.191.188.25.bredband.3.dk) has quit (Remote host closed the connection)
+2014-11-20 13:11:37	ioudas	np
+2014-11-20 13:13:03	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Remote host closed the connection)
+2014-11-20 13:15:13	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit
+2014-11-20 13:16:33	-->	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has joined #ionic
+2014-11-20 13:18:33	-->	chalettu (~textual@nat/cisco/x-ojpjuozhokcfkqxm) has joined #ionic
+2014-11-20 13:20:15	-->	jerryitt (uid17132@gateway/web/irccloud.com/x-fxfygkygaomlkvsa) has joined #ionic
+2014-11-20 13:21:33	-->	qwebirc41052 (d871a047@gateway/web/freenode/ip.216.113.160.71) has joined #ionic
+2014-11-20 13:27:06	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Remote host closed the connection)
+2014-11-20 13:32:44	-->	frem_ (uid16862@gateway/web/irccloud.com/x-yrfcgxhzflbyasuz) has joined #ionic
+2014-11-20 13:34:21	<--	ioudas (~gregc2@66.186.175.48) has quit (Read error: Connection reset by peer)
+2014-11-20 13:37:28	--	frem_ is now known as frem
+2014-11-20 13:39:38	<--	chalettu (~textual@nat/cisco/x-ojpjuozhokcfkqxm) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-20 13:47:23	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-20 13:50:30	-->	qwebirc53724 (6c168e2f@gateway/web/freenode/ip.108.22.142.47) has joined #ionic
+2014-11-20 13:50:38	<--	qwebirc53724 (6c168e2f@gateway/web/freenode/ip.108.22.142.47) has quit (Client Quit)
+2014-11-20 13:51:36	-->	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has joined #ionic
+2014-11-20 13:52:21	-->	elxa (~quassel@p2003006B0520E6000224D7FFFEBAB474.dip0.t-ipconnect.de) has joined #ionic
+2014-11-20 13:53:25	--	qwebirc41052 is now known as gnomeontherun
+2014-11-20 13:54:50	-->	rhp (~rhp@82-171-113-86.ip.telfort.nl) has joined #ionic
+2014-11-20 13:55:21	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 13:58:17	Marble68	in ionic / angular - can I not use .push to add values to JSON objects?
+2014-11-20 13:59:43	Marble68	never mind - .push is for arrays . DOH!
+2014-11-20 14:00:16	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Remote host closed the connection)
+2014-11-20 14:01:44	@perryg	ioudas, sorry for the delay, got pulled in to something. let me put together an example quikc
+2014-11-20 14:02:54	-->	FIFOd[a] (~FIFOda]@198.85.229.3) has joined #ionic
+2014-11-20 14:04:08	-->	phishy (uid32361@gateway/web/irccloud.com/x-uahlpfmvaqvburgm) has joined #ionic
+2014-11-20 14:04:53	<--	blixt (~blixt@2600:c0e:3002:120:4864:6b1a:2c8d:a5ae) has quit (Quit: Leaving...)
+2014-11-20 14:10:15	-->	blixt (~blixt@74.201.131.167) has joined #ionic
+2014-11-20 14:13:47	BahamutWC|Work	hey, is there any update when slide box will be fixed in master for using an active slide model?
+2014-11-20 14:15:52	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-20 14:16:01	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-20 14:16:16	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-20 14:17:36	<--	arcanin (~Mael@pool-74-101-27-146.nycmny.fios.verizon.net) has quit (Ping timeout: 265 seconds)
+2014-11-20 14:20:55	<--	elxa (~quassel@p2003006B0520E6000224D7FFFEBAB474.dip0.t-ipconnect.de) has quit (Read error: Connection reset by peer)
+2014-11-20 14:21:17	-->	elxa (~quassel@p2003006B0520E6000224D7FFFEBAB474.dip0.t-ipconnect.de) has joined #ionic
+2014-11-20 14:26:37	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2014-11-20 14:27:35	-->	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has joined #ionic
+2014-11-20 14:30:40	-->	gregc2 (~gregc2@66.186.175.48) has joined #ionic
+2014-11-20 14:30:40	--	gregc2 is now known as ioudas
+2014-11-20 14:30:43	-->	chalettu (~textual@cpe-72-182-59-185.austin.res.rr.com) has joined #ionic
+2014-11-20 14:31:59	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Ping timeout: 255 seconds)
+2014-11-20 14:35:29	<--	chalettu (~textual@cpe-72-182-59-185.austin.res.rr.com) has quit (Ping timeout: 265 seconds)
+2014-11-20 14:36:46	@perryg	hmm, ioudas, kinda tricky. you may want to copy loading and make a new directive
+2014-11-20 14:37:51	@perryg	the backdrop blocks other interaction while loading's up. you can get around it, but it breaks other things.
+2014-11-20 14:38:44	<--	rajatarora (~rajat@182.64.179.57) has quit (Ping timeout: 255 seconds)
+2014-11-20 14:40:07	ioudas	gotcha
+2014-11-20 14:40:26	ioudas	im new to directives.
+2014-11-20 14:40:29	ioudas	ill have to read up
+2014-11-20 14:42:07	@perryg	i misspoke, really it's a service https://github.com/driftyco/ionic/blob/master/js/angular/service/loading.js
+2014-11-20 14:44:02	@perryg	just gutting the backdrop from that should be what you need
+2014-11-20 14:54:28	ioudas	well id like to keep the grayed out screen
+2014-11-20 14:54:37	ioudas	and the origional ionic loading animation
+2014-11-20 14:56:54	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 15:02:44	opus_	Yay Ionic Creator
+2014-11-20 15:03:07	opus_	When I grab a component, and drag it over, what does it mean when it disappears?
+2014-11-20 15:03:56	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 258 seconds)
+2014-11-20 15:04:49	-->	thomastuts (~thomastut@178-119-42-254.access.telenet.be) has joined #ionic
+2014-11-20 15:10:37	<--	DaGardner (uid23095@gateway/web/irccloud.com/x-czgaigrvwvefbeqm) has quit (Quit: Connection closed for inactivity)
+2014-11-20 15:10:44	<--	xdissent (~xdissent@108-197-65-103.lightspeed.nsvltn.sbcglobal.net) has quit (Quit: Leaving...)
+2014-11-20 15:11:25	-->	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has joined #ionic
+2014-11-20 15:16:41	@perryg	perhaps something broke
+2014-11-20 15:25:42	Marble68	can ng-repeat be used with ion-list  if the the scope variable is an array? as in $scope.myArr = [“111”,”222”,”333”] then  ng-repeat=“item in myArr” ?
+2014-11-20 15:27:11	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2014-11-20 15:30:05	<--	TommyO (~toreilly@38.100.172.130) has quit (Quit: Konversation terminated!)
+2014-11-20 15:30:55	-->	edrocks_ (~edrocks@pool-108-9-173-223.tampfl.fios.verizon.net) has joined #ionic
+2014-11-20 15:31:56	-->	TommyO (~toreilly@38.100.172.130) has joined #ionic
+2014-11-20 15:32:09	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Ping timeout: 272 seconds)
+2014-11-20 15:32:51	-->	SidFerreira (~sidferrei@191.191.18.102) has joined #ionic
+2014-11-20 15:33:59	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-20 15:34:50	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 15:36:10	<--	danecando (~danecando@8.31.240.20) has quit (Quit: Computer has gone to sleep.)
+2014-11-20 15:39:39	Marble68	aha - figured it out - sorry
+2014-11-20 15:40:01	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-20 15:40:51	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-20 15:41:59	<--	jpstone (~justin@pool-108-48-195-68.washdc.fios.verizon.net) has quit (Quit: Konversation terminated!)
+2014-11-20 15:45:04	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 15:45:46	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2014-11-20 15:59:10	<--	thread (~thread@2604:9a00:2010:a00f:2::) has quit (Ping timeout: 265 seconds)
+2014-11-20 16:00:01	<--	dhcar_AFK (~dhcar@ape.xen.prgmr.com) has quit (Ping timeout: 272 seconds)
+2014-11-20 16:00:39	-->	thread (~thread@2604:9a00:2010:a00f:2::) has joined #ionic
+2014-11-20 16:00:56	Marble68	Can I just say, although I’m new to angular and ionic, it’s wicked cool
+2014-11-20 16:00:57	-->	dhcar_AFK (~dhcar@ape.xen.prgmr.com) has joined #ionic
+2014-11-20 16:01:42	@perryg	:)
+2014-11-20 16:01:48	<--	gunn (~gunn@121-74-37-196.telstraclear.net) has quit (Ping timeout: 264 seconds)
+2014-11-20 16:02:15	<--	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has quit (Quit: Evanion)
+2014-11-20 16:03:20	-->	gunn (~gunn@121-74-37-196.telstraclear.net) has joined #ionic
+2014-11-20 16:03:23	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Remote host closed the connection)
+2014-11-20 16:03:26	<--	gunn (~gunn@121-74-37-196.telstraclear.net) has quit (Max SendQ exceeded)
+2014-11-20 16:04:03	-->	gunn (~gunn@121-74-37-196.telstraclear.net) has joined #ionic
+2014-11-20 16:04:05	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 264 seconds)
+2014-11-20 16:05:32	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 16:06:30	-->	DaGardner (uid23095@gateway/web/irccloud.com/x-fkfamjjuegakpozu) has joined #ionic
+2014-11-20 16:09:52	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 245 seconds)
+2014-11-20 16:10:28	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 16:11:49	-->	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has joined #ionic
+2014-11-20 16:13:40	<--	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Client Quit)
+2014-11-20 16:13:45	-->	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 16:18:01	<--	beckyconning_ (uid31604@gateway/web/irccloud.com/x-miebugtjbhojesgo) has quit (Quit: Connection closed for inactivity)
+2014-11-20 16:18:06	-->	Evanion (~mikael@h97n10-aars-gr100.ias.bredband.telia.com) has joined #ionic
+2014-11-20 16:18:40	<--	jerryitt (uid17132@gateway/web/irccloud.com/x-fxfygkygaomlkvsa) has quit (Quit: Connection closed for inactivity)
+2014-11-20 16:19:28	<--	tgrk (~tgrk@ip-2-202-92-178.web.vodafone.de) has quit (Ping timeout: 255 seconds)
+2014-11-20 16:20:22	<--	kirfu1 (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has quit (Ping timeout: 240 seconds)
+2014-11-20 16:21:33	<--	Froelund (~froelund@0x3ec65a0a.inet.dsl.telianet.dk) has quit (Ping timeout: 272 seconds)
+2014-11-20 16:22:21	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit
+2014-11-20 16:26:03	<--	SidFerreira (~sidferrei@191.191.18.102) has quit (Remote host closed the connection)
+2014-11-20 16:26:16	-->	tgrk (~tgrk@ip-2-202-162-63.web.vodafone.de) has joined #ionic
+2014-11-20 16:27:00	--	dhcar_AFK is now known as dhcar
+2014-11-20 16:36:35	<--	gunn (~gunn@121-74-37-196.telstraclear.net) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2014-11-20 16:40:55	-->	kirfu (~kirill@static-71-167-19-20.nycmny.fios.verizon.net) has joined #ionic
+2014-11-20 16:43:37	<--	edrocks_ (~edrocks@pool-108-9-173-223.tampfl.fios.verizon.net) has quit (Ping timeout: 240 seconds)
+2014-11-21 10:26:00	-->	mhartington (~mhartingt@ip68-9-73-243.ri.ri.cox.net) has joined #ionic
+2014-11-21 10:26:00	--	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2014-11-21 10:26:00	--	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2014-11-21 10:26:00	--	Channel #ionic: 86 nicks (0 ops, 0 voices, 86 normals)
+2014-11-21 10:26:00	--	Mode #ionic [+o mhartington] by ChanServ
+2014-11-21 10:26:02	--	Channel created on Fri, 19 Jun 2009 23:09:18
+2014-11-21 10:30:54	<--	bayousoft (~textual@arubacs1.louisiana.edu) has quit (Remote host closed the connection)
+2014-11-21 10:31:20	-->	bayousoft (~textual@arubacs1.louisiana.edu) has joined #ionic
+2014-11-21 10:36:56	@mhartington	morning devs
+2014-11-21 10:46:47	<--	thomastuts (~thomastut@dD5E0145A.access.telenet.be) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)

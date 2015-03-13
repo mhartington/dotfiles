@@ -1,0 +1,32 @@
+[2015-03-05 15:41:34] WeeChat 1.1.1 (compiled on Jan 26 2015 18:41:58)
+[2015-03-05 15:41:34] Reading configuration file sec.conf
+[2015-03-05 15:41:37] Reading configuration file weechat.conf
+[2015-03-05 15:41:37] Reading configuration file plugins.conf
+[2015-03-05 15:41:37] Reading configuration file alias.conf
+[2015-03-05 15:41:37] Reading configuration file charset.conf
+[2015-03-05 15:41:37] Reading configuration file exec.conf
+[2015-03-05 15:41:37] Reading configuration file irc.conf
+[2015-03-05 15:41:37] Reading configuration file logger.conf
+[2015-03-05 15:41:38] Reading configuration file buffers.conf
+[2015-03-05 15:41:38] Reading configuration file iset.conf
+[2015-03-05 15:41:38] Reading configuration file colorize_nicks.conf
+[2015-03-05 15:41:38] Reading configuration file relay.conf
+[2015-03-05 15:41:38] Reading configuration file script.conf
+[2015-03-05 15:41:38] Reading configuration file trigger.conf
+[2015-03-05 15:41:38] Reading configuration file xfer.conf
+[2015-03-05 15:41:42] irc: connecting to server chat.freenode.net/6667...
+[2015-03-05 16:01:44] Writing configuration file plugins.conf
+[2015-03-05 16:01:44] Writing configuration file xfer.conf
+[2015-03-05 16:01:44] Writing configuration file trigger.conf
+[2015-03-05 16:01:44] Writing configuration file script.conf
+[2015-03-05 16:01:44] Writing configuration file relay.conf
+[2015-03-05 16:01:44] Writing configuration file colorize_nicks.conf
+[2015-03-05 16:01:44] Writing configuration file buffers.conf
+[2015-03-05 16:01:44] Writing configuration file iset.conf
+[2015-03-05 16:01:44] Writing configuration file logger.conf
+[2015-03-05 16:01:44] Writing configuration file irc.conf
+[2015-03-05 16:01:44] Writing configuration file exec.conf
+[2015-03-05 16:01:44] Writing configuration file charset.conf
+[2015-03-05 16:01:44] Writing configuration file alias.conf
+[2015-03-05 16:01:44] Writing configuration file weechat.conf
+[2015-03-05 16:01:44] Writing configuration file sec.conf
