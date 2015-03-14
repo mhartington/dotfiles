@@ -2011,3 +2011,15 @@
 2015-03-05 15:41:38		Plugins loaded: alias, charset, exec, fifo, irc, logger, lua, perl, python, relay, ruby, script, tcl, trigger, xfer
 2015-03-05 16:01:44		python: scripts unloaded
 2015-03-05 16:01:44		perl: scripts unloaded
+2015-03-13 16:40:40		perl scripts loaded: buffers, iset
+2015-03-13 16:40:40		python: stdout/stderr: Traceback (most recent call last):
+2015-03-13 16:40:40		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-13 16:40:40		python: stdout/stderr:     from pync import Notifier
+2015-03-13 16:40:40		python: stdout/stderr: ImportError: No module named pync
+2015-03-13 16:40:40	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-13 16:40:40		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-13 16:40:40		script: 279 scripts for WeeChat 1.1.1
+2015-03-13 16:40:40		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-13 16:40:44	=!=	You can not write text in this buffer
+2015-03-13 16:40:46		python: scripts unloaded
+2015-03-13 16:40:46		perl: scripts unloaded

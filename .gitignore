@@ -1,3 +1,5 @@
 vim/bundle/*
 .DS_Store
 keys
+weechat/logs/*
+weechat/*.log
