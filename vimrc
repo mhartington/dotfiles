@@ -12,7 +12,7 @@
 " required!
   filetype off
 
-  set rtp+=~/.vim/bundle/vundle/
+ set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
 " let Vundle manage Vundle
@@ -27,9 +27,11 @@
   Bundle 'tmux-plugins/vim-tmux'
   Bundle 'digitaltoad/vim-jade'
   Bundle 'leafgarland/typescript-vim'
+  Bundle 'othree/yajs.vim'
 
 " colorscheme & syntax highlighting
   Bundle 'altercation/vim-colors-solarized'
+  "Bundle 'chriskempson/base16-vim'
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'chrisbra/color_highlight'
   Bundle 'vim-scripts/SyntaxRange'
@@ -65,6 +67,11 @@
     :BundleInstall
     echo "Things may not work properly until you restart vim"
   endif
+
+  " filetype plugin on
+  " au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+  " set rtp+=/usr/local/lib/node_modules/typescript-tools
+
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
@@ -84,14 +91,25 @@
 " enable mouse
   set mouse=a
 
-" Solarized is good
-
-  syntax enable
+" Theme
+ syntax enable
   colorscheme solarized
 " other highlighting
   set background=dark
   let g:solarized_visibility = "high"
   let g:solarized_contrast = "high"
+
+" COLOR
+""  set t_Co=256
+""  colorscheme solarized
+""  if ($TERMINAL_DARK == '1')
+""    set background=dark
+""  let g:solarized_visibility = "low"
+""  let g:solarized_contrast = "low"
+""  else
+""    set background=light
+""  endif      
+" ENDCOLOR
 
   highlight clear SignColumn
   call gitgutter#highlight#define_highlights()
@@ -119,11 +137,15 @@
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
 
+" Typescript
+  autocmd QuickFixCmdPost [^l]* nested cwindow
+  autocmd QuickFixCmdPost    l* nested lwindow
 
-  set columns=120
-  set winwidth=120
-  set wrap linebreak  
 
+  set columns=100
+  set showbreak=+++
+  set colorcolumn=100
+  " set textwidth=100
   set wrap linebreak nolist
   set virtualedit=
   set display+=lastline
@@ -225,6 +247,7 @@
 
 
 " sections (a, b, c, x, y, z, warn) are optional
+let g:promptline_theme = 'airline'
  let g:promptline_preset = {
  \'a' : [ promptline#slices#cwd()  ],
  \'b' : [ promptline#slices#vcs_branch()  ],
@@ -244,6 +267,71 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" TypeScript
+" echo symbol/type of item under cursor
+"   command! TSSsymbol
+"   command! TSStype
+"
+" " browse url for ES5 global property/method under cursor
+"   command! TSSbrowse
+"
+" " jump to definition of item under cursor
+"   command! TSSdef
+"   command! TSSdefpreview
+"   command! TSSdefsplit
+"   command! TSSdeftab
+"
+" " create location list for references
+"   command! TSSreferences
+"
+" " navigation menu for current file structure
+"   command! TSSstructure
+"
+" " update TSS with current file source
+"   command! TSSupdate
+"
+" " show TSS errors, with updated current file
+"   command! TSSshowErrors
+"
+" " for use as balloonexpr, symbol under mouse pointer
+" " set balloonexpr=TSSballoon()
+" " set ballooneval
+"   function! TSSballoon()
+"
+" " completions
+"   function! TSScompleteFunc(findstart,base)
+"
+" " open project file, with filename completion
+"   command! -complete=customlist,TSSfile -nargs=1 TSSfile
+"
+" " show project file list in preview window
+"   command! TSSfiles
+"
+" navigate to project file via popup menu
+  " command! TSSfilesMenu echo TSSfilesMenu('show')
+
+" reload project sources - will ask you to save modified buffers first
+  " command! TSSreload
+
+" start typescript service process (asynchronously, via python)
+  " command! -nargs=1 TSSstart
+  " command! TSSstarthere
+
+" pass a command to typescript service, get answer
+  " command! -nargs=1 TSScmd call TSScmd(<f-args>,{})
+
+" check typescript service
+" (None: still running; <num>: exit status)
+  " command! TSSstatus
+
+" stop typescript service
+  " command! TSSend
+
+" sample keymap
+" (highjacking some keys otherwise used for tags,
+" since we support jump to definition directly)
+  " function! TSSkeymap()
 
 " Source the vimrc file after saving it
  if has("autocmd")

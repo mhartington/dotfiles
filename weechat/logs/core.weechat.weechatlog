@@ -2023,3 +2023,52 @@
 2015-03-13 16:40:44	=!=	You can not write text in this buffer
 2015-03-13 16:40:46		python: scripts unloaded
 2015-03-13 16:40:46		perl: scripts unloaded
+2015-03-16 13:33:50		perl scripts loaded: buffers, iset
+2015-03-16 13:33:50		python: stdout/stderr: Traceback (most recent call last):
+2015-03-16 13:33:50		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-16 13:33:50		python: stdout/stderr:     from pync import Notifier
+2015-03-16 13:33:50		python: stdout/stderr: ImportError: No module named pync
+2015-03-16 13:33:50	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-16 13:33:50		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-16 13:33:50		script: downloading list of scripts...
+2015-03-16 13:33:50		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-16 13:33:51		script: 279 scripts for WeeChat 1.1.1
+2015-03-16 13:55:42		python: scripts unloaded
+2015-03-16 13:55:42		perl: scripts unloaded
+2015-03-17 11:55:55		perl scripts loaded: buffers, iset
+2015-03-17 11:55:55		python: stdout/stderr: Traceback (most recent call last):
+2015-03-17 11:55:55		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-17 11:55:55		python: stdout/stderr:     from pync import Notifier
+2015-03-17 11:55:55		python: stdout/stderr: ImportError: No module named pync
+2015-03-17 11:55:55	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-17 11:55:55		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-17 11:55:55		script: 279 scripts for WeeChat 1.1.1
+2015-03-17 11:55:55		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-17 11:55:59	=!=	irc: command "join" must be executed on irc buffer (server or channel)
+2015-03-17 16:05:04		python: scripts unloaded
+2015-03-17 16:05:04		perl: scripts unloaded
+2015-03-18 13:44:36		perl scripts loaded: buffers, iset
+2015-03-18 13:44:36		python: stdout/stderr: Traceback (most recent call last):
+2015-03-18 13:44:36		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-18 13:44:36		python: stdout/stderr:     from pync import Notifier
+2015-03-18 13:44:36		python: stdout/stderr: ImportError: No module named pync
+2015-03-18 13:44:36	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-18 13:44:36		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-18 13:44:37		script: downloading list of scripts...
+2015-03-18 13:44:37		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-18 13:44:38		script: 279 scripts for WeeChat 1.1.1
+2015-03-18 16:27:21		python: scripts unloaded
+2015-03-18 16:27:21		perl: scripts unloaded
+2015-03-20 10:33:58		perl scripts loaded: buffers, iset
+2015-03-20 10:33:58		python: stdout/stderr: Traceback (most recent call last):
+2015-03-20 10:33:58		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-20 10:33:58		python: stdout/stderr:     from pync import Notifier
+2015-03-20 10:33:58		python: stdout/stderr: ImportError: No module named pync
+2015-03-20 10:33:58	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-20 10:33:58		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-20 10:33:58		script: downloading list of scripts...
+2015-03-20 10:33:58		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-20 10:33:59		script: 279 scripts for WeeChat 1.1.1
+2015-03-20 10:34:26	=!=	Error: unknown command "/joing" (type /help for help)
+2015-03-20 15:03:37		python: scripts unloaded
+2015-03-20 15:03:37		perl: scripts unloaded

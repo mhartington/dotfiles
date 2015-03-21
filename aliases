@@ -40,7 +40,7 @@
   alias hideall='defaults write com.apple.finder AppleShowAllFiles NO && killall Finder'
 
 # cat is good. cat with colors is better
-  alias cat='pygmentize -O style=solarizeddark -f console256 -g'
+  alias ca='pygmentize -O style=solarizeddark -f console256 -g'
 
 # Get rid of those pesky .DS_Store files recursively
   alias dsclean='find . -type f -name .DS_Store -print0 | xargs -0 rm'

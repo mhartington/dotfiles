@@ -1,10 +1,13 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-for file in ~/.{aliases,functions,prompt,keys}; do
+  for file in ~/.{aliases,functions,prompt,keys}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
-
+  export TERMINAL_DARK=1
+  export TERM="xterm-256color"
+  # BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
+  # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
   export EDITOR=vi
   sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished

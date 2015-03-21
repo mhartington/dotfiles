@@ -11639,3 +11639,518 @@
 2015-03-05 15:52:56	RangerRick	oh, heh, I was scrolled way back  :D
 2015-03-05 15:58:36	<--	bayousof_ (~textual@rails-nat.louisiana.edu) has quit
 2015-03-05 15:59:15	-->	Schalla (~Schalla@unaffiliated/schalla) has joined #ionic
+2015-03-16 13:34:14	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2015-03-16 13:34:14	ℹ 	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2015-03-16 13:34:14	ℹ 	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2015-03-16 13:34:14	ℹ 	Channel #ionic: 116 nicks (0 ops, 0 voices, 116 normals)
+2015-03-16 13:34:14	ℹ 	Mode #ionic [+o mhartington] by ChanServ
+2015-03-16 13:34:16	ℹ 	Channel created on Fri, 19 Jun 2009 23:09:18
+2015-03-16 13:36:45	<--	intellix (~intellix@212.56.146.82) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-03-16 13:38:06	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2015-03-16 13:39:48	<--	JFlash (~JFlash@189.40.54.46) has quit (Quit: Leaving)
+2015-03-16 13:39:49	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-16 13:40:21	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-16 13:40:46	<--	loz-- (~quassel@203-219-102-250.static.tpgi.com.au) has quit (Ping timeout: 255 seconds)
+2015-03-16 13:40:46	<--	JoshBurgess (~joshburge@213.249.190.130) has quit
+2015-03-16 13:44:00	-->	bayousoft (~textual@rails-nat.louisiana.edu) has joined #ionic
+2015-03-16 13:44:19	<--	F1LT3R (~F1LT3R@204.11.151.134) has quit
+2015-03-16 13:45:27	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Ping timeout: 256 seconds)
+2015-03-16 13:47:46	-->	loz-- (~quassel@203-219-102-250.static.tpgi.com.au) has joined #ionic
+2015-03-16 13:55:36	-->	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has joined #ionic
+2015-03-17 11:56:25	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2015-03-17 11:56:25	ℹ 	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2015-03-17 11:56:25	ℹ 	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2015-03-17 11:56:25	ℹ 	Channel #ionic: 114 nicks (0 ops, 0 voices, 114 normals)
+2015-03-17 11:56:26	ℹ 	Mode #ionic [+o mhartington] by ChanServ
+2015-03-17 11:56:27	ℹ 	Channel created on Fri, 19 Jun 2009 23:09:18
+2015-03-17 11:57:43	-->	coiner (~linker@58.186.96.216) has joined #ionic
+2015-03-17 11:58:06	-->	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has joined #ionic
+2015-03-17 12:04:33	-->	qwebirc41971 (69ed4a9c@gateway/web/freenode/ip.105.237.74.156) has joined #ionic
+2015-03-17 12:04:44	-->	dmackerman (~dmackerma@pool-96-241-178-146.washdc.fios.verizon.net) has joined #ionic
+2015-03-17 12:04:56	<--	qwebirc41971 (69ed4a9c@gateway/web/freenode/ip.105.237.74.156) has quit (Client Quit)
+2015-03-17 12:08:08	<--	Ronrun (~ronyrun@80.12.55.185) has quit (Read error: Connection reset by peer)
+2015-03-17 12:08:28	-->	Ronrun (~ronyrun@80.12.55.185) has joined #ionic
+2015-03-17 12:09:16	-->	maestrojed (~maestroje@173-8-213-38-Oregon.hfc.comcastbusiness.net) has joined #ionic
+2015-03-17 12:10:06	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2015-03-17 12:10:32	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-17 12:10:33	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2015-03-17 12:16:25	<--	qwebirc19173 (050aa43a@gateway/web/freenode/ip.5.10.164.58) has quit (Ping timeout: 246 seconds)
+2015-03-17 12:19:02	-->	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-17 12:19:10	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2015-03-17 12:19:45	<--	Ronrun (~ronyrun@80.12.55.185) has quit (Ping timeout: 244 seconds)
+2015-03-17 12:21:48	-->	teufelChiCoder (~teufelchi@207.181.193.226) has joined #ionic
+2015-03-17 12:24:11	-->	cbeams (~cbeams@173-13-168-195-sfba.hfc.comcastbusiness.net) has joined #ionic
+2015-03-17 12:24:11	<--	cbeams (~cbeams@173-13-168-195-sfba.hfc.comcastbusiness.net) has quit (Changing host)
+2015-03-17 12:24:11	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 12:36:24	-->	Ronyrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has joined #ionic
+2015-03-17 12:37:40	<--	intellix (~intellix@mail2.cherrygroup.com) has quit (Quit: My iMac has gone to sleep. ZZZzzz…)
+2015-03-17 12:41:03	<--	lenny-ioFR (~lenny@91.199.234.214) has quit (Quit: Ex-Chat)
+2015-03-17 12:41:06	-->	jigax (~jigax@ool-6bbc166b.dyn.optonline.net) has joined #ionic
+2015-03-17 12:47:32	-->	dhcar (~Adium@c-98-248-118-39.hsd1.ca.comcast.net) has joined #ionic
+2015-03-17 12:53:12	-->	nathank000 (~Adium@189d2902.cst.lightpath.net) has joined #ionic
+2015-03-17 13:05:30	-->	cbeams_ (~cbeams@173-13-168-195-sfba.hfc.comcastbusiness.net) has joined #ionic
+2015-03-17 13:05:32	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Read error: Connection reset by peer)
+2015-03-17 13:12:13	<--	cbeams_ (~cbeams@173-13-168-195-sfba.hfc.comcastbusiness.net) has quit (Remote host closed the connection)
+2015-03-17 13:14:14	-->	gladely (~gladely@building.564market.monkeybrains.net) has joined #ionic
+2015-03-17 13:16:21	<--	robdubya (~textual@108-248-236-66.lightspeed.sntcca.sbcglobal.net) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2015-03-17 13:21:46	-->	LoveAndHappiness (~LoveAndHa@2a02:908:f824:5900:75a2:2075:793d:7c16) has joined #ionic
+2015-03-17 13:21:57	<--	Leon (~Leon@81-94-171-47.customer.itmastaren.net) has quit (Quit: Time to sleep)
+2015-03-17 13:25:09	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 13:25:37	<--	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has quit (Ping timeout: 264 seconds)
+2015-03-17 13:26:15	-->	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has joined #ionic
+2015-03-17 13:26:38	-->	intellix (~intellix@mail2.cherrygroup.com) has joined #ionic
+2015-03-17 13:29:34	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Remote host closed the connection)
+2015-03-17 13:29:42	-->	Ronrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has joined #ionic
+2015-03-17 13:31:14	<--	LoveAndHappiness (~LoveAndHa@2a02:908:f824:5900:75a2:2075:793d:7c16) has quit (Ping timeout: 252 seconds)
+2015-03-17 13:31:43	<--	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has quit (Quit: Be back later ...)
+2015-03-17 13:32:19	<--	krik (~Lingo@178.19.209.42) has quit (Ping timeout: 245 seconds)
+2015-03-17 13:32:27	<--	m8 (~m8@unaffiliated/m8) has quit (Read error: Connection reset by peer)
+2015-03-17 13:32:30	<--	Ronyrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has quit (Ping timeout: 246 seconds)
+2015-03-17 13:32:55	-->	FIFOd (~FIFOd@cpe-071-070-255-201.nc.res.rr.com) has joined #ionic
+2015-03-17 13:36:00	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2015-03-17 13:37:01	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2015-03-17 13:37:39	<--	JoshBurgess (~joshburge@213.249.190.130) has quit
+2015-03-17 13:40:13	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2015-03-17 13:48:03	-->	iribarne (~hector@216.242.199.229) has joined #ionic
+2015-03-17 13:49:28	<--	iribarne (~hector@216.242.199.229) has quit (Client Quit)
+2015-03-17 13:51:28	<--	intellix (~intellix@mail2.cherrygroup.com) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-03-17 13:54:01	-->	Celrenheit (~celrenhei@vol75-7-82-230-94-78.fbx.proxad.net) has joined #ionic
+2015-03-17 13:54:19	maestrojed	I need some specific abilities in the app I am going to start building. I was hoping someone could chat with me about wether ionic is capable. My app is to substitute an existing web site. This web site requires user authentication and allows users to request equipment repair services. I won't have access to authentication APIs or the database. I am investigating wether I can make this work by just submitting http
+2015-03-17 13:54:19	maestrojed	 requests like the site's forms currently do.
+2015-03-17 13:55:19	-->	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 13:55:20	<--	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Changing host)
+2015-03-17 13:55:20	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 13:55:34	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Remote host closed the connection)
+2015-03-17 13:55:49	christo_m	How would you guys do Coach marks in ionic, just use overlays?
+2015-03-17 13:55:56	maestrojed	I think I can. However on successful authentication I imagine the web site sets a cookie or session cookie to track the user sessions. Not sure how I can do this with ionic. I think I may have cross domain issues and from what I read, cordova won't save the cookies.
+2015-03-17 13:56:05	christo_m	$ionicLoading or whatever
+2015-03-17 13:56:45	christo_m	maestrojed: i'd recommend having an API
+2015-03-17 13:57:05	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 13:57:13	breakingthings	maestrojed: submitting http requests won't really work because they will be ajax'd
+2015-03-17 13:57:54	breakingthings	you could obviously still post things and whatnot but then the return gets to be a little sketchier
+2015-03-17 13:58:11	maestrojed	breakingthings ok, I am not a pro for sure. But I could hand the async response, right?
+2015-03-17 13:58:44	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Remote host closed the connection)
+2015-03-17 13:58:49	maestrojed	I have experience with with async requests and returns a little bit. I find them hard. But doable. I didn't think that would be the reason this couldn't work. But I am listening :)
+2015-03-17 13:58:55	Marble68	Noob question - when hitting menu options on side slide out menu, I get  “back” button. However, I don’t want the user to navigate back when changing areas of the app. Is there a way to do this?
+2015-03-17 13:59:05	maestrojed	christo_m that is not within the project scope.
+2015-03-17 13:59:10	-->	DrMabuse (~drmabuse@94.186.181.178) has joined #ionic
+2015-03-17 13:59:20	-->	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 13:59:20	<--	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Changing host)
+2015-03-17 13:59:20	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 13:59:42	christo_m	sounds like a nightmare client then
+2015-03-17 13:59:43	Marble68	I’m doing state.go
+2015-03-17 13:59:56	christo_m	Marble68: you can disable it, here sec
+2015-03-17 14:00:13	christo_m	Marble68: $ionicHistory.nextViewOptions({ disableBack: true,
+2015-03-17 14:00:19	breakingthings	maestrojed: It's possible to work with but if you're expecting them to work with the exact same requests as a standard client would then you would have some problems
+2015-03-17 14:00:23	christo_m	something like that, with the ionicHistory service
+2015-03-17 14:00:27	Marble68	Thanks christo_m: will investigate
+2015-03-17 14:00:38	breakingthings	maestrojed: they likely return html which is not exactly practical to work with on the clientside
+2015-03-17 14:00:42	christo_m	there might be a better way, thats a little old now
+2015-03-17 14:01:02	breakingthings	maestrojed: Honestly without an API you're really in a pickle. You need an API of some sort to work with a mobile app.
+2015-03-17 14:01:07	-->	dumpsys (~quassel@dsl-espbrasgw1-54f9cd-61.dhcp.inet.fi) has joined #ionic
+2015-03-17 14:01:29	christo_m	^
+2015-03-17 14:01:38	breakingthings	I'd really draw the line there and say either you get an API or you don't do it because it will only give you nightmares
+2015-03-17 14:01:40	christo_m	the amount of work you'll do scraping things etc
+2015-03-17 14:01:50	christo_m	eclipses writing an API
+2015-03-17 14:01:58	christo_m	or having them invest in having one
+2015-03-17 14:02:18	christo_m	breakingthings: have you ever done coachmarks in an ionic app by any chance?
+2015-03-17 14:02:42	breakingthings	christo_m: no idea what that is and also I have been working on backend pieces for my ionic stuff so I don't actually have all that much experience with it yet
+2015-03-17 14:02:43	maestrojed	breakingthings right, I figured it would be on my app to interpret the http response and determine if it was successful or not. Going to be a pain, I know. I don't expect it work like the exact same requests. But after a successful authentication I will need to make further http requests as an authenticated user. Its maintaining that user session I am worried about. Not async or parsing http responses.
+2015-03-17 14:04:51	breakingthings	maestrojed: You're most likely going to have to roll your own management of the cookie; you'll have to pick apart the response headers to get the cookie information, and build it into your subsequent requests.
+2015-03-17 14:05:04	maestrojed	christo_m there is no API and there will not be. Not every project is out of a text book. That is a parameter of the job. Sans that, its a great client and willing to pay for the madness. I find solutions. Its what I do and why I get hired.  Just trying to see if ionic can be a solution for me.
+2015-03-17 14:05:07	breakingthings	Again, let me emphasize, this is a terrible idea :d
+2015-03-17 14:05:19	maestrojed	breakingthings ok, good to know. Probably using local storage in the interim
+2015-03-17 14:06:03	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Read error: Connection reset by peer)
+2015-03-17 14:06:32	-->	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 14:06:32	<--	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Changing host)
+2015-03-17 14:06:33	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 14:06:45	maestrojed	breakingthings thanks for the chat. I better understand what would have to be undertook to do this project
+2015-03-17 14:07:23	breakingthings	If shipping technical debt is a suitable solution in place of the actual solution because of arbitrary constraints, it sounds like you have a client nightmare :D
+2015-03-17 14:07:51	ioudas^work	is it possible to setup a default object that is defaulted only once when the app starts using local storage. when the app is intalled? then i can push onto it say later?
+2015-03-17 14:07:56	maestrojed	You only have limit knowledge of the project and politics. Those are big assumptions and kinda of offensive
+2015-03-17 14:08:31	breakingthings	I might be making an ass outta me, but I would have to say I don't trust the premise whatsoever.
+2015-03-17 14:08:47	breakingthings	It seems like there must be a naive reasoning to deny the best solution.
+2015-03-17 14:09:01	breakingthings	I don't mean to belittle or berate you, I surely hope the best for you
+2015-03-17 14:09:29	breakingthings	but it sounds like a very scary situation and I would hazard on exploring this in lieu of clearly better options :)
+2015-03-17 14:09:43	<--	FIFOd (~FIFOd@cpe-071-070-255-201.nc.res.rr.com) has quit (Ping timeout: 256 seconds)
+2015-03-17 14:10:08	ioudas^work	maestrojed, if you want i have completed that issue and you can ask me in PM./
+2015-03-17 14:10:59	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Ping timeout: 246 seconds)
+2015-03-17 14:11:08	ioudas^work	actually have a project out there using an http login interface.
+2015-03-17 14:11:13	ioudas^work	in the stores.
+2015-03-17 14:12:03	<--	dirkraster (~dirkraste@odcvpn.csgsupport.com) has quit (Read error: Connection reset by peer)
+2015-03-17 14:12:12	-->	krik (~Lingo@p5DDC1094.dip0.t-ipconnect.de) has joined #ionic
+2015-03-17 14:12:18	-->	dirkraster (~dirkraste@ip72-196-9-121.om.om.cox.net) has joined #ionic
+2015-03-17 14:12:42	christo_m	breakingthings: its like the tutorial on a first run with overlays that point at certain buttons etc
+2015-03-17 14:12:50	<--	DrMabuse (~drmabuse@94.186.181.178) has quit (Remote host closed the connection)
+2015-03-17 14:12:56	christo_m	maestrojed: okay well, if you think working with an API is out of a text book, i dunno what to tell you
+2015-03-17 14:13:05	christo_m	i believe in doing the job correctly, you seem to believe in just doing the job, good luck with that
+2015-03-17 14:13:43	breakingthings	christo_m: Ah, no, that's not really something I've needed to research
+2015-03-17 14:13:48	christo_m	ioudas^work: haha you sound like one of those indian freelancers. "i have completed the needful please advice"
+2015-03-17 14:14:12	-->	ortmank (~dirkraste@odcvpn.csgsupport.com) has joined #ionic
+2015-03-17 14:14:17	christo_m	breakingthings: ya im almost done my app, its just the icing on the cake stuff now.. which always seems to take the longest :S
+2015-03-17 14:14:22	ioudas^work	christo_m, hey, what ever floats your boat pal.
+2015-03-17 14:14:25	christo_m	4 months of rewriting this thing.
+2015-03-17 14:14:51	christo_m	ioudas^work: i was just teasing, dont take it personally in case you actually are indian XD
+2015-03-17 14:15:30	ioudas^work	Trust me man, nothing you can do would make me take it personally ;-P
+2015-03-17 14:17:07	christo_m	ioudas^work: what if i personally hunted you down
+2015-03-17 14:17:10	christo_m	would you take it personally?
+2015-03-17 14:17:19	ioudas^work	nah, you cant hunt me down.
+2015-03-17 14:17:31	ioudas^work	i got plenty of guns!
+2015-03-17 14:18:16	<--	dirkraster (~dirkraste@ip72-196-9-121.om.om.cox.net) has quit (Ping timeout: 264 seconds)
+2015-03-17 14:18:17	ioudas^work	and live in the middle of no where
+2015-03-17 14:18:29	christo_m	ioudas^work: wisconsin?
+2015-03-17 14:18:39	christo_m	doesnt that have the highest rate of murderers per capita?
+2015-03-17 14:18:50	ioudas^work	maestrojed, we use a form of token and ip tracking with chained promises and http calls.
+2015-03-17 14:18:57	ioudas^work	very doable without an api.....
+2015-03-17 14:19:16	maestrojed	breakingthings You helped me so I don't feel like arguing any more. I appreciate it. christo_m  I do think an API is the proper way. Just because it doesn't and can't exist doesn't mean there is no way forward. You look for idea situations, I look to get shit done within given parameters.
+2015-03-17 14:19:31	maestrojed	ioudas^work I will hit you up. I am curious.
+2015-03-17 14:19:37	ioudas^work	sounds good.
+2015-03-17 14:19:53	breakingthings	maestrojed: I understand, I definitely don't want to stomp on toes, like I said I do wish you the best of luck regardless :)
+2015-03-17 14:20:10	-->	robdubya (~textual@198.0.222.60) has joined #ionic
+2015-03-17 14:20:19	christo_m	breakingthings: i think ill try using $ionicLoading.. seems to do the same thing
+2015-03-17 14:20:28	christo_m	just have a custom template with positioned hints over top.
+2015-03-17 14:21:39	maestrojed	breakingthings :) Thanks, Projects like this always have an exploratory budget clause that I can bail and take. I know its unorthodox and not ideal
+2015-03-17 14:22:05	maestrojed	Just hoping I can continue to use Ionic and I have enjoyed it on my other projects.
+2015-03-17 14:22:24	maestrojed	I have many examples of how to do this if I was writing native.
+2015-03-17 14:22:27	maestrojed	Thanks again everyone.
+2015-03-17 14:22:45	dhcar	is anyone else seeing a dark spot appear when they hit a button on the 1.0.0rc1?
+2015-03-17 14:23:29	-->	DrMabuse (~drmabuse@94.186.181.178) has joined #ionic
+2015-03-17 14:24:12	Marble68	christo_m: Thank you; that was the answer.
+2015-03-17 14:27:37	christo_m	Marble68: :D
+2015-03-17 14:29:48	leyluj	Guys, I hate how I write js...
+2015-03-17 14:29:55	corioliss	robdubya: thanks for the tip on CrossWalk yesterday, it's pretty great
+2015-03-17 14:30:10	leyluj	Spaghetti code everywhere :'(
+2015-03-17 14:30:18	corioliss	one thing though: do you get the "SSL Certificate Error" popup?
+2015-03-17 14:30:32	corioliss	cc: everyone else
+2015-03-17 14:31:25	breakingthings	leyluj: add some sauce
+2015-03-17 14:31:56	leyluj	😂  nice one
+2015-03-17 14:32:17	leyluj	I'm here for inspiration
+2015-03-17 14:32:34	-->	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has joined #ionic
+2015-03-17 14:32:51	breakingthings	leyluj: well for one, you probably want to ask the javascript channels more specifically but who can tell you anything without some examples of what you don't like about your code? :D
+2015-03-17 14:33:34	corioliss	JS kinda grows on you in my experience.  I also recommend the Airbnb JS style guide for readability: https://github.com/airbnb/javascript
+2015-03-17 14:33:47	-->	SidFerreira (~sidferrei@189.101.194.174) has joined #ionic
+2015-03-17 14:34:41	robdubya	corioliss you're welcome
+2015-03-17 14:35:51	christo_m	leyluj: also because you're probably writing in angular: https://github.com/johnpapa/angular-styleguide
+2015-03-17 14:36:19	christo_m	i was confused for a while myself, theres a lot of conflicting styles because there are so many ways to do things
+2015-03-17 14:36:23	christo_m	but this one made the most sense to me personally i dunno.
+2015-03-17 14:37:38	leyluj	Thanks guys..
+2015-03-17 14:37:56	<--	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has quit (Ping timeout: 272 seconds)
+2015-03-17 14:38:06	BahamutWC|Work	the Google JS style guide is mostly followed that I’ve seen
+2015-03-17 14:38:18	leyluj	I've been stuck on uploading a file to a serve for 2 days it's working but I just don't like my code..
+2015-03-17 14:39:05	christo_m	BahamutWC|Work: ya i dont like it.
+2015-03-17 14:39:20	christo_m	< picky life
+2015-03-17 14:40:15	-->	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 14:40:15	<--	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Changing host)
+2015-03-17 14:40:15	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 14:40:33	<--	dumpsys (~quassel@dsl-espbrasgw1-54f9cd-61.dhcp.inet.fi) has quit (Remote host closed the connection)
+2015-03-17 14:40:50	-->	dumpsys (~quassel@dsl-espbrasgw1-54f9cd-61.dhcp.inet.fi) has joined #ionic
+2015-03-17 14:41:03	<--	DrMabuse (~drmabuse@94.186.181.178) has quit (Remote host closed the connection)
+2015-03-17 14:41:20	<--	[OES] (~textual@81.136.244.168) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2015-03-17 14:42:06	-->	jigax_ (~jigax@ool-6bbc166b.dyn.optonline.net) has joined #ionic
+2015-03-17 14:42:29	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Remote host closed the connection)
+2015-03-17 14:42:31	<--	dumpsys (~quassel@dsl-espbrasgw1-54f9cd-61.dhcp.inet.fi) has quit (Remote host closed the connection)
+2015-03-17 14:44:25	<--	jigax (~jigax@ool-6bbc166b.dyn.optonline.net) has quit (Ping timeout: 244 seconds)
+2015-03-17 14:44:40	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 14:47:48	<--	ortmank (~dirkraste@odcvpn.csgsupport.com) has quit (Read error: Connection reset by peer)
+2015-03-17 14:48:38	-->	dirkraster (~dirkraste@odcvpn.csgsupport.com) has joined #ionic
+2015-03-17 14:49:55	-->	cbeams_ (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 14:50:11	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Read error: Connection reset by peer)
+2015-03-17 14:50:32	-->	raymondcamden (uid26343@gateway/web/irccloud.com/x-dixftolgzfncnabt) has joined #ionic
+2015-03-17 14:51:38	<--	dhcar (~Adium@c-98-248-118-39.hsd1.ca.comcast.net) has quit (Quit: Leaving.)
+2015-03-17 14:54:21	-->	marshall (~marshall@bas11-montrealak-1096611673.dsl.bell.ca) has joined #ionic
+2015-03-17 14:54:50	<--	tmaximini (~tmaximini@e181046021.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2015-03-17 14:55:28	<--	cbeams_ (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Ping timeout: 255 seconds)
+2015-03-17 14:56:26	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 14:58:00	<--	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has left #ionic ("Leaving")
+2015-03-17 14:59:48	-->	IraHerman (~ira@static-71-177-221-212.lsanca.fios.verizon.net) has joined #ionic
+2015-03-17 15:02:47	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Ping timeout: 245 seconds)
+2015-03-17 15:03:14	-->	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 15:03:37	<--	cbeams (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Changing host)
+2015-03-17 15:03:37	-->	cbeams (~cbeams@unaffiliated/cbeams) has joined #ionic
+2015-03-17 15:04:26	-->	cbeams_ (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has joined #ionic
+2015-03-17 15:04:26	<--	cbeams (~cbeams@unaffiliated/cbeams) has quit (Read error: Connection reset by peer)
+2015-03-17 15:04:32	<--	IraHerman (~ira@static-71-177-221-212.lsanca.fios.verizon.net) has quit (Ping timeout: 272 seconds)
+2015-03-17 15:04:41	<--	cbeams_ (~cbeams@99-127-225-184.lightspeed.sntcca.sbcglobal.net) has quit (Client Quit)
+2015-03-17 15:05:24	-->	zwacky (~zwacky@ip5b4061f6.dynamic.kabel-deutschland.de) has joined #ionic
+2015-03-17 15:12:35	<--	Ronrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has quit (Ping timeout: 246 seconds)
+2015-03-17 15:16:43	<--	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has quit (Quit: I'm outta here!)
+2015-03-17 15:19:34	-->	[OES] (~textual@81.136.244.168) has joined #ionic
+2015-03-17 15:23:25	-->	qwebirc42048 (18adab5e@gateway/web/freenode/ip.24.173.171.94) has joined #ionic
+2015-03-17 15:23:40	<--	qwebirc42048 (18adab5e@gateway/web/freenode/ip.24.173.171.94) has quit (Client Quit)
+2015-03-17 15:31:56	<--	Celrenheit (~celrenhei@vol75-7-82-230-94-78.fbx.proxad.net) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2015-03-17 15:33:09	<--	[OES] (~textual@81.136.244.168) has quit (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+2015-03-17 15:37:02	-->	qwebirc43093 (29d7aa41@gateway/web/freenode/ip.41.215.170.65) has joined #ionic
+2015-03-17 15:42:23	<--	zwacky (~zwacky@ip5b4061f6.dynamic.kabel-deutschland.de) has quit (Ping timeout: 246 seconds)
+2015-03-17 15:45:26	<--	krik (~Lingo@p5DDC1094.dip0.t-ipconnect.de) has quit (Ping timeout: 252 seconds)
+2015-03-17 15:45:55	-->	krik (~Lingo@p5DDC1094.dip0.t-ipconnect.de) has joined #ionic
+2015-03-17 15:51:40	<--	qwebirc43093 (29d7aa41@gateway/web/freenode/ip.41.215.170.65) has quit (Ping timeout: 246 seconds)
+2015-03-17 15:52:00	-->	DrMabuse (~drmabuse@94.186.181.178) has joined #ionic
+2015-03-17 15:56:03	<--	DrMabuse (~drmabuse@94.186.181.178) has quit (Ping timeout: 246 seconds)
+2015-03-17 15:58:06	-->	frem (uid16862@gateway/web/irccloud.com/x-mczgyvqqijswpwkj) has joined #ionic
+2015-03-17 16:01:13	<--	marthinal (~chatzilla@70.Red-88-26-157.staticIP.rima-tde.net) has quit (Remote host closed the connection)
+2015-03-18 13:45:02	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2015-03-18 13:45:02	ℹ 	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2015-03-18 13:45:02	ℹ 	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2015-03-18 13:45:02	ℹ 	Channel #ionic: 120 nicks (0 ops, 0 voices, 120 normals)
+2015-03-18 13:45:02	ℹ 	Mode #ionic [+o mhartington] by ChanServ
+2015-03-18 13:45:04	ℹ 	Channel created on Fri, 19 Jun 2009 23:09:18
+2015-03-18 13:46:12	-->	tmaximini (~tmaximini@e180165233.adsl.alicedsl.de) has joined #ionic
+2015-03-18 13:52:42	-->	bayousoft (~textual@rails-nat.louisiana.edu) has joined #ionic
+2015-03-18 13:54:36	<--	JFlash (~JFlash@177.148.168.152) has quit (Ping timeout: 252 seconds)
+2015-03-18 13:59:40	<--	koleto (~koleto@95.90.212.141) has quit (Quit: koleto)
+2015-03-18 14:01:34	-->	julee (~textual@c-50-184-87-81.hsd1.ca.comcast.net) has joined #ionic
+2015-03-18 14:03:49	<--	bayousoft (~textual@rails-nat.louisiana.edu) has quit
+2015-03-18 14:04:57	-->	drmabuse (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-18 14:08:11	dhcar	is there a way to calculate the scroll distance from the bottom with $ionicScrollDelegate?
+2015-03-18 14:09:14	drmabuse	dhcar: maybe ionicPosition
+2015-03-18 14:11:10	dhcar	thanks drmabuse, I'll look into it
+2015-03-18 14:12:35	-->	iribarne (~hector@adsl-108-132-196-86.mia.bellsouth.net) has joined #ionic
+2015-03-18 14:13:41	<--	SidFerreira (~sidferrei@189.101.194.174) has quit (Remote host closed the connection)
+2015-03-18 14:19:34	<--	Psychiatrist (~FrontierP@wifi.ttu.ee) has quit (Ping timeout: 244 seconds)
+2015-03-18 14:21:10	<--	jaydubya (~jaydubya@174.46.113.162) has quit
+2015-03-18 14:41:50	<--	yandos (~yandos@cpc5-seve19-2-0-cust497.13-3.cable.virginm.net) has quit (Read error: Connection reset by peer)
+2015-03-18 14:41:55	-->	yandos_ (~yandos@cpc5-seve19-2-0-cust497.13-3.cable.virginm.net) has joined #ionic
+2015-03-18 14:44:53	-->	bayousoft (~textual@rails-nat.louisiana.edu) has joined #ionic
+2015-03-18 14:45:50	<--	drmabuse (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has quit (Remote host closed the connection)
+2015-03-18 14:46:44	-->	JFlash (~JFlash@201.54.224.238) has joined #ionic
+2015-03-18 14:46:45	<--	dhcar (~Adium@c-98-248-118-39.hsd1.ca.comcast.net) has quit (Quit: Leaving.)
+2015-03-18 14:47:54	<--	iribarne (~hector@adsl-108-132-196-86.mia.bellsouth.net) has quit (Quit: iribarne)
+2015-03-18 14:49:03	-->	iribarne (~hector@adsl-108-132-196-86.mia.bellsouth.net) has joined #ionic
+2015-03-18 14:49:52	-->	dw73 (~dw73@host86-190-247-221.range86-190.btcentralplus.com) has joined #ionic
+2015-03-18 14:54:06	-->	qwebirc69062 (2ef8ccab@gateway/web/freenode/ip.46.248.204.171) has joined #ionic
+2015-03-18 14:54:20	<--	dw73 (~dw73@host86-190-247-221.range86-190.btcentralplus.com) has quit (Ping timeout: 246 seconds)
+2015-03-18 14:55:24	<--	qwebirc69062 (2ef8ccab@gateway/web/freenode/ip.46.248.204.171) has quit (Client Quit)
+2015-03-18 14:56:19	<--	julee (~textual@c-50-184-87-81.hsd1.ca.comcast.net) has quit (Quit: Two cats do not make a dog. Signing off for now.)
+2015-03-18 14:56:52	<--	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has quit (Quit: Leaving)
+2015-03-18 14:57:11	<--	JFlash (~JFlash@201.54.224.238) has quit (Quit: Leaving)
+2015-03-18 14:57:57	-->	Celrenheit (~Celrenhei@vol75-7-82-230-94-78.fbx.proxad.net) has joined #ionic
+2015-03-18 14:58:47	<--	IanOlson (~IanOlson@64.132.201.98) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2015-03-18 14:59:04	-->	qwebirc7861 (bebe8723@gateway/web/freenode/ip.190.190.135.35) has joined #ionic
+2015-03-18 14:59:18	<--	qwebirc7861 (bebe8723@gateway/web/freenode/ip.190.190.135.35) has quit (Client Quit)
+2015-03-18 15:00:51	-->	IanOlson (~IanOlson@64.132.201.98) has joined #ionic
+2015-03-18 15:03:51	-->	frem (uid16862@gateway/web/irccloud.com/x-umtgwwggeryiaoyz) has joined #ionic
+2015-03-18 15:04:13	<--	coiner (~linker@42.115.149.186) has quit (Read error: Connection reset by peer)
+2015-03-18 15:04:31	-->	coiner (~linker@42.115.149.186) has joined #ionic
+2015-03-18 15:06:24	-->	drmabuse (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-18 15:07:48	<--	nathank000 (~Adium@189d2902.cst.lightpath.net) has quit (Quit: Leaving.)
+2015-03-18 15:11:20	<--	IanOlson (~IanOlson@64.132.201.98) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2015-03-18 15:11:20	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2015-03-18 15:12:12	<--	danecando (~danecando@108-231-156-74.lightspeed.miamfl.sbcglobal.net) has quit (Quit: Computer has gone to sleep.)
+2015-03-18 15:12:59	-->	DrMabuse_ (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-18 15:13:32	ℹ 	Zren_ is now known as Zren
+2015-03-18 15:17:31	<--	DrMabuse_ (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Ping timeout: 255 seconds)
+2015-03-18 15:22:31	-->	felipefdl (~felipefdl@177.156.120.139) has joined #ionic
+2015-03-18 15:29:45	<--	edrocks (~edrocks@66.55.63.166) has quit (Remote host closed the connection)
+2015-03-18 15:32:34	<--	tmaximini (~tmaximini@e180165233.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2015-03-18 15:38:36	-->	leolrrj (~leolrrj@177.206.165.126.dynamic.adsl.gvt.net.br) has joined #ionic
+2015-03-18 15:39:19	<--	blackjid (blackjid@open.source.supporter.firrre.com) has quit (Ping timeout: 265 seconds)
+2015-03-18 15:40:10	<--	yandos_ (~yandos@cpc5-seve19-2-0-cust497.13-3.cable.virginm.net) has quit (Quit: yandos_)
+2015-03-18 15:40:56	<--	leolrrj (~leolrrj@177.206.165.126.dynamic.adsl.gvt.net.br) has quit (Client Quit)
+2015-03-18 15:41:48	-->	blackjid (blackjid@open.source.supporter.firrre.com) has joined #ionic
+2015-03-18 15:43:13	-->	yandos (~yandos@cpc5-seve19-2-0-cust497.13-3.cable.virginm.net) has joined #ionic
+2015-03-18 15:46:12	-->	robdubya (~textual@198.0.222.60) has joined #ionic
+2015-03-18 15:47:38	-->	tmaximini (~tmaximini@e180165233.adsl.alicedsl.de) has joined #ionic
+2015-03-18 15:48:03	-->	IanOlson (~IanOlson@64.132.201.98) has joined #ionic
+2015-03-18 15:50:37	-->	Psychiatrist (~FrontierP@yhikas4.ttu.ee) has joined #ionic
+2015-03-18 15:50:56	-->	dhcar (~Adium@c-98-248-118-39.hsd1.ca.comcast.net) has joined #ionic
+2015-03-18 15:51:02	-->	jaydubya (~jaydubya@2601:2:9180:648:110e:a652:1f67:d26c) has joined #ionic
+2015-03-18 15:52:41	-->	ehalas2 (~Eihab@90.148.86.122) has joined #ionic
+2015-03-18 15:55:53	-->	danecando (~danecando@50.153.107.1) has joined #ionic
+2015-03-18 15:58:26	<--	iribarne (~hector@adsl-108-132-196-86.mia.bellsouth.net) has quit (Quit: iribarne)
+2015-03-18 16:01:37	<--	marthinal (~chatzilla@123.Red-88-23-190.staticIP.rima-tde.net) has quit (Remote host closed the connection)
+2015-03-18 16:05:25	-->	koleto (~koleto@95.90.212.141) has joined #ionic
+2015-03-18 16:06:17	-->	jackhanford (~textual@50.254.139.53) has joined #ionic
+2015-03-18 16:06:53	<--	robdubya (~textual@198.0.222.60) has quit (Quit: My Mac has gone to sleep. ZZZzzz…)
+2015-03-18 16:10:26	-->	jolg42 (~textual@102.109.148.77.rev.sfr.net) has joined #ionic
+2015-03-18 16:18:41	-->	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has joined #ionic
+2015-03-18 16:26:04	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2015-03-18 16:27:00	<--	Psychiatrist (~FrontierP@yhikas4.ttu.ee) has quit (Read error: Connection reset by peer)
+2015-03-20 10:34:30	-->	mhartington (~mhartingt@ip68-230-135-54.ri.ri.cox.net) has joined #ionic
+2015-03-20 10:34:30	ℹ 	Topic for #ionic is "Ionic Framework | http://ionicframework.com/ | Paste code here: http://plnkr.co/edit/?p=catalogue"
+2015-03-20 10:34:30	ℹ 	Topic set by maxlynch (~maxlynch@208.66.131.170) on Thu, 15 May 2014 14:27:17
+2015-03-20 10:34:30	ℹ 	Channel #ionic: 120 nicks (0 ops, 0 voices, 120 normals)
+2015-03-20 10:34:31	ℹ 	Mode #ionic [+o mhartington] by ChanServ
+2015-03-20 10:34:32	ℹ 	Channel created on Fri, 19 Jun 2009 23:09:18
+2015-03-20 10:37:17	<--	Psychiatrist (~FrontierP@yhikas4.ttu.ee) has quit (Ping timeout: 244 seconds)
+2015-03-20 10:41:57	-->	fgielow (textual@2a01:7e00::f03c:91ff:fe73:3b64) has joined #ionic
+2015-03-20 10:48:46	<--	koleto (~koleto@95.90.212.141) has quit (Quit: koleto)
+2015-03-20 10:52:50	-->	Psychiatrist (~FrontierP@yhikas4.ttu.ee) has joined #ionic
+2015-03-20 10:52:59	<--	qwebirc21245 (505cf840@gateway/web/freenode/ip.80.92.248.64) has quit (Quit: Page closed)
+2015-03-20 10:53:01	ksee	how can I get ion-header-bar height dynamically ?
+2015-03-20 10:53:37	<--	qwebirc51335 (56228ab2@gateway/web/freenode/ip.86.34.138.178) has quit (Quit: Page closed)
+2015-03-20 10:57:11	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2015-03-20 11:00:00	-->	koleto (~koleto@95.90.212.141) has joined #ionic
+2015-03-20 11:05:49	<--	koleto (~koleto@95.90.212.141) has quit (Quit: koleto)
+2015-03-20 11:07:22	-->	koleto (~koleto@95.90.212.141) has joined #ionic
+2015-03-20 11:08:40	<--	tmaximini (~tmaximini@f048218214.adsl.alicedsl.de) has quit (Remote host closed the connection)
+2015-03-20 11:13:12	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2015-03-20 11:20:56	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:22:32	-->	nathank000 (~Adium@189d2902.cst.lightpath.net) has joined #ionic
+2015-03-20 11:24:22	<--	ibra2 (~androirc@c83-250-138-180.bredband.comhem.se) has quit (Quit: AndroIRC - Android IRC Client ( http://www.androirc.com ))
+2015-03-20 11:24:45	@mhartington	ksee: at the moment, its a fixed height 
+2015-03-20 11:24:53	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-20 11:25:29	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:25:41	<--	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has quit (Quit: I'm outta here!)
+2015-03-20 11:25:42	ksee	@mhartington Hey Mike, on some screens the header height is modified for me
+2015-03-20 11:25:57	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-20 11:26:10	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:27:03	@mhartington	hmm, it shouldn't get modified by default, do you have an example?
+2015-03-20 11:27:50	<--	Ronyrun (~ronyrun@5-49-27-30.hfc.dyn.abo.bbox.fr) has quit (Quit: Leaving)
+2015-03-20 11:27:54	christo_m	mhartington: i think he means he wants to modify it dynamically
+2015-03-20 11:28:29	ksee	christo_m, nope
+2015-03-20 11:28:37	christo_m	oh.
+2015-03-20 11:28:38	christo_m	gg then
+2015-03-20 11:29:37	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-20 11:30:09	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:32:18	<--	new0 (~s@46.116.201.110) has quit (Quit: Leaving)
+2015-03-20 11:34:00	-->	renklaf_ (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:35:02	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-20 11:36:46	-->	Fingel (~Fingel@c-98-248-118-192.hsd1.ca.comcast.net) has joined #ionic
+2015-03-20 11:43:02	<--	intellix (~intellix@mail1.cherrygroup.com) has quit (Ping timeout: 246 seconds)
+2015-03-20 11:43:40	<--	ibuziuk (~ibuziuk@93.85.92.98) has quit (Read error: Connection reset by peer)
+2015-03-20 11:45:39	-->	fairuz (~fairuz@unaffiliated/fairuz) has joined #ionic
+2015-03-20 11:46:15	-->	drmaboos (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-20 11:48:16	<--	fairuz (~fairuz@unaffiliated/fairuz) has quit (Client Quit)
+2015-03-20 11:50:39	<--	drmaboos (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has quit (Ping timeout: 244 seconds)
+2015-03-20 11:50:52	-->	maestrojed (~maestroje@173-8-213-38-Oregon.hfc.comcastbusiness.net) has joined #ionic
+2015-03-20 11:53:07	-->	tmaximini (~tmaximini@f048218214.adsl.alicedsl.de) has joined #ionic
+2015-03-20 11:53:17	<--	renklaf_ (~renklaf@0155500701.0.fullrate.dk) has quit (Remote host closed the connection)
+2015-03-20 11:53:59	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 11:56:44	-->	FIFOd[a][a] (~FIFOda]@198.85.229.3) has joined #ionic
+2015-03-20 11:56:44	<--	FIFOd[a][a] (~FIFOda]@198.85.229.3) has quit (Read error: Connection reset by peer)
+2015-03-20 11:57:12	<--	FIFOd[a] (~FIFOda]@198.85.229.3) has quit (Read error: Connection reset by peer)
+2015-03-20 11:57:33	-->	FIFOd[a][a] (~FIFOda]@198.85.229.3) has joined #ionic
+2015-03-20 11:58:31	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Ping timeout: 256 seconds)
+2015-03-20 12:01:20	<--	m0ltar (~moltar@96.127.238.41) has quit (Quit: peace.)
+2015-03-20 12:06:20	-->	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has joined #ionic
+2015-03-20 12:06:48	-->	ehynds (~ehynds@146-115-145-170.c3-0.nwt-ubr1.sbo-nwt.ma.cable.rcn.com) has joined #ionic
+2015-03-20 12:09:52	<--	ksee (259dd122@gateway/web/freenode/ip.37.157.209.34) has quit (Quit: Page closed)
+2015-03-20 12:15:24	-->	m0ltar (~moltar@96.127.238.41) has joined #ionic
+2015-03-20 12:17:05	<--	DrMabuse (~drmabuse@HSI-KBW-46-237-201-105.hsi.kabel-badenwuerttemberg.de) has quit (Ping timeout: 252 seconds)
+2015-03-20 12:19:11	<--	m0ltar (~moltar@96.127.238.41) has quit (Client Quit)
+2015-03-20 12:24:11	<--	jgravois (~jaydubya@2601:2:9180:648:a534:3c8d:47a7:d6eb) has quit
+2015-03-20 12:29:41	-->	LoveAndHappiness (~LoveAndHa@2a02:908:f824:5900:2c4c:8ad9:77d8:c6c1) has joined #ionic
+2015-03-20 12:29:53	<--	Fingel (~Fingel@c-98-248-118-192.hsd1.ca.comcast.net) has quit (Ping timeout: 246 seconds)
+2015-03-20 12:31:11	-->	coiner (~linker@1.54.73.130) has joined #ionic
+2015-03-20 12:31:45	<--	LoveAndHappiness (~LoveAndHa@2a02:908:f824:5900:2c4c:8ad9:77d8:c6c1) has quit (Read error: Connection reset by peer)
+2015-03-20 12:49:52	-->	mylord (~mylord@bzq-79-179-96-40.red.bezeqint.net) has joined #ionic
+2015-03-20 12:51:57	<--	dmackerman (~dmackerma@pool-96-241-178-146.washdc.fios.verizon.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-03-20 12:52:22	-->	markholmes_ (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has joined #ionic
+2015-03-20 12:53:02	<--	markholmes (~markholme@rrcs-173-198-17-194.west.biz.rr.com) has quit (Ping timeout: 246 seconds)
+2015-03-20 12:53:50	<--	lenny-ioFR (~lenny@91.199.234.214) has quit (Quit: Ex-Chat)
+2015-03-20 12:54:10	ℹ 	markholmes_ is now known as markholmes
+2015-03-20 12:54:57	-->	m0ltar (~moltar@207.253.217.246) has joined #ionic
+2015-03-20 12:56:54	-->	disusered (~carlos@187-254-28-166-cable.cybercable.net.mx) has joined #ionic
+2015-03-20 12:56:54	<--	disusered (~carlos@187-254-28-166-cable.cybercable.net.mx) has quit (Changing host)
+2015-03-20 12:56:54	-->	disusered (~carlos@unaffiliated/disusered) has joined #ionic
+2015-03-20 12:58:19	-->	juliofreitas (~juliofrei@2.125.207.72) has joined #ionic
+2015-03-20 13:01:59	-->	drmabuse (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has joined #ionic
+2015-03-20 13:03:34	-->	fairuz (~fairuz@14.192.209.95) has joined #ionic
+2015-03-20 13:03:37	<--	fairuz (~fairuz@14.192.209.95) has quit (Changing host)
+2015-03-20 13:03:37	-->	fairuz (~fairuz@unaffiliated/fairuz) has joined #ionic
+2015-03-20 13:05:19	<--	jerryitt (uid17132@gateway/web/irccloud.com/x-ybehyoziowfpguce) has quit (Quit: Connection closed for inactivity)
+2015-03-20 13:06:44	<--	drmabuse (~drmabuse@HSI-KBW-149-172-17-92.hsi13.kabel-badenwuerttemberg.de) has quit (Ping timeout: 252 seconds)
+2015-03-20 13:08:28	<--	m0ltar (~moltar@207.253.217.246) has quit (Quit: peace.)
+2015-03-20 13:13:03	-->	m0ltar (~moltar@207.253.217.246) has joined #ionic
+2015-03-20 13:15:52	-->	bkboggy (~bkboggy@cpe-172-250-167-24.socal.res.rr.com) has joined #ionic
+2015-03-20 13:16:34	-->	renklaf (~renklaf@0155500701.0.fullrate.dk) has joined #ionic
+2015-03-20 13:16:57	-->	Bhaskar (~Bhaskar@lawn-128-61-115-224.lawn.gatech.edu) has joined #ionic
+2015-03-20 13:20:57	<--	renklaf (~renklaf@0155500701.0.fullrate.dk) has quit (Ping timeout: 250 seconds)
+2015-03-20 13:26:25	<--	styles (~styles@unaffiliated/styles) has quit (Remote host closed the connection)
+2015-03-20 13:27:50	<--	m8 (~m8@unaffiliated/m8) has quit (Read error: Connection reset by peer)
+2015-03-20 13:31:56	<--	JoshBurgess (~joshburge@213.249.190.130) has quit
+2015-03-20 13:33:57	<--	bayousoft (~textual@rails-nat.louisiana.edu) has quit
+2015-03-20 13:35:41	<--	koleto (~koleto@95.90.212.141) has quit (Quit: koleto)
+2015-03-20 13:37:22	<--	Bhaskar (~Bhaskar@lawn-128-61-115-224.lawn.gatech.edu) has quit (Ping timeout: 252 seconds)
+2015-03-20 13:39:38	-->	koleto (~koleto@95.90.212.141) has joined #ionic
+2015-03-20 13:39:53	<--	koleto (~koleto@95.90.212.141) has left #ionic
+2015-03-20 13:49:51	<--	fgielow (textual@2a01:7e00::f03c:91ff:fe73:3b64) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-03-20 13:53:03	-->	Marble68 (~Marble68@68-113-213-86.static.ftwo.tx.charter.com) has joined #ionic
+2015-03-20 13:53:42	-->	Ronyrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has joined #ionic
+2015-03-20 13:54:10	ioudas	 Does any one have a good quick and dirty way of finishing a promise within a controller and it only firing once and not having it continually fire. Without using a service/resolve in ui router?
+2015-03-20 13:57:29	<--	edrocks (~edrocks@66.55.63.166) has quit (Read error: Connection reset by peer)
+2015-03-20 13:58:08	-->	edrocks (~edrocks@66.55.63.166) has joined #ionic
+2015-03-20 14:02:05	<--	edrocks (~edrocks@66.55.63.166) has quit (Remote host closed the connection)
+2015-03-20 14:03:42	-->	dmackerman (~dmackerma@pool-96-241-178-146.washdc.fios.verizon.net) has joined #ionic
+2015-03-20 14:03:53	<--	dmackerman (~dmackerma@pool-96-241-178-146.washdc.fios.verizon.net) has quit (Client Quit)
+2015-03-20 14:09:32	ℹ 	Killswitch is now known as Paul`Revere
+2015-03-20 14:09:49	ℹ 	Paul`Revere is now known as Killswitch
+2015-03-20 14:13:42	-->	julee (~julee@c-50-184-87-81.hsd1.ca.comcast.net) has joined #ionic
+2015-03-20 14:15:47	<--	maestrojed (~maestroje@173-8-213-38-Oregon.hfc.comcastbusiness.net) has quit (Quit: Textual IRC Client: www.textualapp.com)
+2015-03-20 14:17:17	christo_m	ioudas: waiting for review
+2015-03-20 14:17:20	christo_m	itunes connect tho..
+2015-03-20 14:17:26	ioudas	hah
+2015-03-20 14:17:29	ioudas	its such a wait
+2015-03-20 14:17:36	ioudas	i got negged at first
+2015-03-20 14:17:48	ioudas	christo_m, got an odd question
+2015-03-20 14:17:56	ioudas	can you be my rubber duck for a sec
+2015-03-20 14:18:39	christo_m	ioudas: no im not getting in the bathtub with you
+2015-03-20 14:18:47	christo_m	whatsup
+2015-03-20 14:18:55	ioudas	You know you want to.
+2015-03-20 14:19:06	ioudas	So know how we were talking about local storage
+2015-03-20 14:19:28	-->	maestrojed (~maestroje@173-8-213-38-Oregon.hfc.comcastbusiness.net) has joined #ionic
+2015-03-20 14:19:30	-->	Bhaskar (~Bhaskar@lawn-128-61-115-224.lawn.gatech.edu) has joined #ionic
+2015-03-20 14:19:32	<--	Ronyrun (~ronyrun@89-92-46-250.hfc.dyn.abo.bbox.fr) has quit (Ping timeout: 272 seconds)
+2015-03-20 14:19:45	christo_m	yes
+2015-03-20 14:19:56	ioudas	you had an type of window.localstorage == undefined. That tests for the device HAS the ability? If that is the case. How do you initalize a sub set variable inside of it
+2015-03-20 14:20:06	ioudas	like if you wanted to initalize it once for use.
+2015-03-20 14:20:15	ioudas	i imagine you cant stick it in .ready/.run
+2015-03-20 14:20:52	ioudas	so do you just always detect the variables existance at every run? or is there some other place.
+2015-03-20 14:21:19	<--	mitchellhenke (~mitchellh@104-181-212-118.lightspeed.milwwi.sbcglobal.net) has quit (Quit: Computer has gone to sleep.)
+2015-03-20 14:21:42	christo_m	i took out the check
+2015-03-20 14:21:49	christo_m	i just do window.localStorage.firstRun = true, or whatever
+2015-03-20 14:22:11	ioudas	gotcha. so you gotta detect if youve ever stored it.
+2015-03-20 14:22:16	christo_m	thats right.
+2015-03-20 14:22:17	ioudas	makes more sense now
+2015-03-20 14:22:22	-->	koleto (~koleto@95.90.212.141) has joined #ionic
+2015-03-20 14:22:32	ioudas	was hoping for something like my.settings in .net
+2015-03-20 14:22:50	christo_m	for example heres something i do in my settings controller: var mouseSpeed = (window.localStorage.mouseSpeed ? window.localStorage.mouseSpeed : '1');
+2015-03-20 14:22:53	christo_m	just right up top.
+2015-03-20 14:23:01	ioudas	ill give that a try. im not sure window.localstorage is best for arrays. but ill give it a try
+2015-03-20 14:23:24	christo_m	depends how complicated you're doing things.
+2015-03-20 14:23:31	christo_m	i just store simple app key value things.
+2015-03-20 14:23:36	ioudas	im looking for an array of order numbers and their order date.
+2015-03-20 14:23:41	ioudas	but id like them associated
+2015-03-20 14:23:55	christo_m	i think you could alwasy hack it by saving a json string
+2015-03-20 14:24:00	ioudas	as i might not know what order is going to be saved/queried. Orders can be deleted.
+2015-03-20 14:24:01	christo_m	and then parsing out when reading it
+2015-03-20 14:24:09	ioudas	yeah i saw some of that
+2015-03-20 14:24:10	christo_m	probably make a service to deal with that.
+2015-03-20 14:24:48	ioudas	hmm. ill give that a try. see if i could write a push function or something.
+2015-03-20 14:24:58	ioudas	I only need to push orders if they are selected to be saved.
+2015-03-20 14:25:23	christo_m	ioudas: or just use sqlite or something
+2015-03-20 14:25:30	ioudas	have you messed with sqlite?
+2015-03-20 14:25:32	christo_m	your use case maybe a bit too complicated for this
+2015-03-20 14:25:34	christo_m	nah..
+2015-03-20 14:25:42	ioudas	yeah havnt heard much on it
+2015-03-20 14:25:42	christo_m	is it bad?
+2015-03-20 14:25:56	ioudas	nah, not sure. i hear its more to setup.
+2015-03-20 14:26:02	ioudas	havnt messed with cordova plugins...
+2015-03-20 14:26:29	christo_m	hmm maybe you can get a document based thing like mongo setup haha
+2015-03-20 14:26:31	christo_m	that'd be great.
+2015-03-20 14:26:41	ioudas	well mongo db is web scale
+2015-03-20 14:26:43	christo_m	i think most people just hook into API services
+2015-03-20 14:26:55	christo_m	i know i just meant something like document store, not necessarily that much bloat
+2015-03-20 14:27:00	ioudas	yeah, i was wondering if there was a better way.
+2015-03-20 14:27:03	christo_m	because you're basically hacking your own document store with local storage
+2015-03-20 14:27:04	christo_m	i think..
+2015-03-20 14:27:51	<--	BahamutWC|Work (~wesleycho@198.0.222.60) has quit (Quit: BahamutWC|Work)
+2015-03-20 14:28:27	ioudas	so youre submitted eh?
+2015-03-20 14:28:48	ioudas	i got negged cause in xcode i selected a main controller.. and i left 6.0... my app totally worked from the start
+2015-03-20 14:28:53	ioudas	took two submits to figure it out lol
+2015-03-20 14:34:24	-->	jaydubya (~jaydubya@2601:2:9180:648:91ce:4172:63f0:8dad) has joined #ionic
+2015-03-20 14:38:44	christo_m	ioudas: oh you cant build against 6.0?
+2015-03-20 14:38:49	christo_m	my xcode is set to that too
+2015-03-20 14:38:50	christo_m	better change it.
+2015-03-20 14:38:55	-->	mitchellhenke (~mitchellh@104-181-212-118.lightspeed.milwwi.sbcglobal.net) has joined #ionic
+2015-03-20 14:38:58	<--	fairuz (~fairuz@unaffiliated/fairuz) has quit (Quit: Leaving.)
+2015-03-20 14:39:02	christo_m	what do they want, build against 8.0?
+2015-03-20 14:40:19	<--	juliofreitas (~juliofrei@2.125.207.72) has quit (Quit: Ex-Chat)
+2015-03-20 14:44:05	<--	beckyconning_ (uid31604@gateway/web/irccloud.com/x-eobicarxgiluwtda) has quit (Quit: Connection closed for inactivity)
+2015-03-20 14:44:22	-->	andrehs (~andrehs@187.36.15.126) has joined #ionic
+2015-03-20 14:44:54	christo_m	ioudas: ??
+2015-03-20 14:44:58	christo_m	i need to know because im about to resubmit.
+2015-03-20 14:45:08	christo_m	I actually screwed up what i submitted, it was pointing at a local ip in the config src
+2015-03-20 14:53:23	<--	Bhaskar (~Bhaskar@lawn-128-61-115-224.lawn.gatech.edu) has quit (Remote host closed the connection)
+2015-03-20 14:56:51	-->	frem (uid16862@gateway/web/irccloud.com/x-ermmgavnlnmisoco) has joined #ionic
+2015-03-20 14:57:44	<--	mylord (~mylord@bzq-79-179-96-40.red.bezeqint.net) has quit (Ping timeout: 265 seconds)
