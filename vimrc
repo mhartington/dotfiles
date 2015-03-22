@@ -30,8 +30,8 @@
   Bundle 'othree/yajs.vim'
 
 " colorscheme & syntax highlighting
-  Bundle 'altercation/vim-colors-solarized'
-  "Bundle 'chriskempson/base16-vim'
+" Bundle 'altercation/vim-colors-solarized'
+  Bundle 'chriskempson/base16-vim'
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'chrisbra/color_highlight'
   Bundle 'vim-scripts/SyntaxRange'
@@ -92,24 +92,11 @@
   set mouse=a
 
 " Theme
- syntax enable
-  colorscheme solarized
-" other highlighting
+  syntax enable
+  let base16colorspace=256 
+  colorscheme base16-ocean
   set background=dark
-  let g:solarized_visibility = "high"
-  let g:solarized_contrast = "high"
-
-" COLOR
-""  set t_Co=256
-""  colorscheme solarized
-""  if ($TERMINAL_DARK == '1')
-""    set background=dark
-""  let g:solarized_visibility = "low"
-""  let g:solarized_contrast = "low"
-""  else
-""    set background=light
-""  endif      
-" ENDCOLOR
+  
 
   highlight clear SignColumn
   call gitgutter#highlight#define_highlights()
@@ -158,8 +145,6 @@
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
 
- 
-
 " Emmet customization
 " Enable Emmet in all modes
   let g:user_emmet_mode='a'
@@ -199,7 +184,7 @@
   set tabstop=2
   set shiftwidth=2
   set expandtab
-
+  
  let g:tmux_navigator_no_mappings = 1
  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
@@ -210,10 +195,14 @@
  set wildmenu
  set laststatus=2
 
+
 " Powerline
  let g:airline#extensions#tabline#enabled = 1
  let g:airline#extensions#tabline#fnamemod = ':t'
  let g:airline#extensions#tabline#show_tab_nr = 1
+ let g:airline_powerline_fonts = 1
+ let g:airline_theme='base16'
+ set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -234,10 +223,6 @@
  nmap <leader>7 <Plug>AirlineSelectTab7
  nmap <leader>8 <Plug>AirlineSelectTab8
  nmap <leader>9 <Plug>AirlineSelectTab9
-
- let g:airline_powerline_fonts = 1
- let g:airline_theme='solarized'
- set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 " Syntastic
   let g:syntastic_javascript_checkers = ['jshint']

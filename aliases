@@ -180,8 +180,6 @@ function extract() {
     echo
     echo Options:
     echo "    -r, --remove    Remove archive."
-    echo
-    echo "Report bugs to <sorin.ionescu@gmail.com>."
   fi
 
   remove_archive=1

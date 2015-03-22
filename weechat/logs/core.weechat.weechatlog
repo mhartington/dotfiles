@@ -2072,3 +2072,26 @@
 2015-03-20 10:34:26	=!=	Error: unknown command "/joing" (type /help for help)
 2015-03-20 15:03:37		python: scripts unloaded
 2015-03-20 15:03:37		perl: scripts unloaded
+2015-03-22 10:21:47		perl scripts loaded: buffers, iset
+2015-03-22 10:21:47		python: stdout/stderr: Traceback (most recent call last):
+2015-03-22 10:21:47		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-22 10:21:47		python: stdout/stderr:     from pync import Notifier
+2015-03-22 10:21:47		python: stdout/stderr: ImportError: No module named pync
+2015-03-22 10:21:47	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-22 10:21:47		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-22 10:21:47		script: downloading list of scripts...
+2015-03-22 10:21:47		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-22 10:21:48		script: 279 scripts for WeeChat 1.1.1
+2015-03-22 10:59:24		python: scripts unloaded
+2015-03-22 10:59:24		perl: scripts unloaded
+2015-03-22 15:51:01		perl scripts loaded: buffers, iset
+2015-03-22 15:51:01		python: stdout/stderr: Traceback (most recent call last):
+2015-03-22 15:51:01		python: stdout/stderr:   File "/Users/mhartington/.weechat/python/autoload/notification_center.py", line 7, in <module>
+2015-03-22 15:51:01		python: stdout/stderr:     from pync import Notifier
+2015-03-22 15:51:01		python: stdout/stderr: ImportError: No module named pync
+2015-03-22 15:51:01	=!=	python: unable to parse file "/Users/mhartington/.weechat/python/autoload/notification_center.py"
+2015-03-22 15:51:01		python scripts loaded: apply_corrections, buffer_autoclose, colorize_nicks, go, snotify
+2015-03-22 15:51:01		script: 279 scripts for WeeChat 1.1.1
+2015-03-22 15:51:01		Plugins loaded: alias, charset, exec, fifo, irc, logger, perl, python, relay, ruby, script, tcl, trigger, xfer
+2015-03-22 16:14:05		python: scripts unloaded
+2015-03-22 16:14:05		perl: scripts unloaded

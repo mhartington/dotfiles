@@ -6,8 +6,9 @@
   unset file
   export TERMINAL_DARK=1
   export TERM="xterm-256color"
-  # BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
-  # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+  export CLICOLOR=1
+  BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+  [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
   export EDITOR=vi
   sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
@@ -26,8 +27,9 @@
   export PATH=/usr/local/bin:$PATH
 
 # Disable zsh autocorrect
+  zstyle ':completion:*' menu select
   zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
-#  fpath=(~/.zsh/functions $fpath)
+# fpath=(~/.zsh/functions $fpath)
   fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
