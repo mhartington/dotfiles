@@ -94,7 +94,7 @@
 " Theme
   syntax enable
   let base16colorspace=256 
-  colorscheme base16-ocean
+  colorscheme base16-flat
   set background=dark
   
 
