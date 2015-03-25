@@ -1,5 +1,6 @@
 vim/bundle/*
 .DS_Store
 keys
+tmux/plugins/tmux-*
 weechat/logs/*
 weechat/*.log
