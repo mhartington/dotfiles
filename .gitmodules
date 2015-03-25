@@ -2,8 +2,8 @@
   path = tmux/plugins/tmp
   url = https://github.com/tmux-plugins/tpm
 [submodule "z"]
-  path = z
-  url = https://github.com/rupa/z
+	path = z
+	url = https://github.com/rupa/z.git
 [submodule "config/base16-shell"]
 	path = config/base16-shell
 	url = https://github.com/chriskempson/base16-shell
