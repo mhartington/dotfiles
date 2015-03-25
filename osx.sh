@@ -524,7 +524,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 #defaults write org.x.X11 wm_ffm -bool true
 
 # Install the Solarized Dark theme for iTerm
-open "${HOME}/.dotfiles/config/themes/solarized/iterm/solarized-dark.itermcolors"
+#open "${HOME}/.dotfiles/config/themes/solarized/iterm/solarized-dark.itermcolors"
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false

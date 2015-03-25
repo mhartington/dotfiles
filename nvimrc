@@ -72,19 +72,8 @@
   " au BufRead,BufNewFile *.ts        setlocal filetype=typescript
   " set rtp+=/usr/local/lib/node_modules/typescript-tools
 
-  " use an orange cursor in insert mode
-  let &t_SI = "\<Esc>]12;orange\x7"
-
-  " use a red cursor otherwise
-  let &t_EI = "\<Esc>]12;yellow\x7"
-  
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
 
   set syntax=whitespace
   set noswapfile
@@ -94,7 +83,6 @@ endif
   filetype on
   " Code Folding
   syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
   setlocal foldmethod=syntax
   setlocal foldlevel=99
   nnoremap <space> za

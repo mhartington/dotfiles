@@ -1,32 +1,33 @@
-[2015-03-22 15:50:58] WeeChat 1.1.1 (compiled on Mar 13 2015 14:40:28)
-[2015-03-22 15:50:58] Reading configuration file sec.conf
-[2015-03-22 15:51:01] Reading configuration file weechat.conf
-[2015-03-22 15:51:01] Reading configuration file plugins.conf
-[2015-03-22 15:51:01] Reading configuration file alias.conf
-[2015-03-22 15:51:01] Reading configuration file charset.conf
-[2015-03-22 15:51:01] Reading configuration file exec.conf
-[2015-03-22 15:51:01] Reading configuration file irc.conf
-[2015-03-22 15:51:01] Reading configuration file logger.conf
-[2015-03-22 15:51:01] Reading configuration file buffers.conf
-[2015-03-22 15:51:01] Reading configuration file iset.conf
-[2015-03-22 15:51:01] Reading configuration file colorize_nicks.conf
-[2015-03-22 15:51:01] Reading configuration file relay.conf
-[2015-03-22 15:51:01] Reading configuration file script.conf
-[2015-03-22 15:51:01] Reading configuration file trigger.conf
-[2015-03-22 15:51:01] Reading configuration file xfer.conf
-[2015-03-22 15:51:06] irc: connecting to server chat.freenode.net/6667...
-[2015-03-22 16:14:05] Writing configuration file plugins.conf
-[2015-03-22 16:14:05] Writing configuration file xfer.conf
-[2015-03-22 16:14:05] Writing configuration file trigger.conf
-[2015-03-22 16:14:05] Writing configuration file script.conf
-[2015-03-22 16:14:05] Writing configuration file relay.conf
-[2015-03-22 16:14:05] Writing configuration file colorize_nicks.conf
-[2015-03-22 16:14:05] Writing configuration file buffers.conf
-[2015-03-22 16:14:05] Writing configuration file iset.conf
-[2015-03-22 16:14:05] Writing configuration file logger.conf
-[2015-03-22 16:14:05] Writing configuration file irc.conf
-[2015-03-22 16:14:05] Writing configuration file exec.conf
-[2015-03-22 16:14:05] Writing configuration file charset.conf
-[2015-03-22 16:14:05] Writing configuration file alias.conf
-[2015-03-22 16:14:05] Writing configuration file weechat.conf
-[2015-03-22 16:14:05] Writing configuration file sec.conf
+[2015-03-24 09:14:09] WeeChat 1.1.1 (compiled on Mar 13 2015 14:40:28)
+[2015-03-24 09:14:09] Reading configuration file sec.conf
+[2015-03-24 09:14:12] Reading configuration file weechat.conf
+[2015-03-24 09:14:12] Reading configuration file plugins.conf
+[2015-03-24 09:14:12] Reading configuration file alias.conf
+[2015-03-24 09:14:12] Reading configuration file charset.conf
+[2015-03-24 09:14:12] Reading configuration file exec.conf
+[2015-03-24 09:14:12] Reading configuration file irc.conf
+[2015-03-24 09:14:12] Reading configuration file logger.conf
+[2015-03-24 09:14:12] Reading configuration file buffers.conf
+[2015-03-24 09:14:12] Reading configuration file iset.conf
+[2015-03-24 09:14:12] Reading configuration file colorize_nicks.conf
+[2015-03-24 09:14:12] Reading configuration file relay.conf
+[2015-03-24 09:14:12] Reading configuration file script.conf
+[2015-03-24 09:14:12] Reading configuration file trigger.conf
+[2015-03-24 09:14:13] Reading configuration file xfer.conf
+[2015-03-24 09:14:15] irc: connecting to server chat.freenode.net/6667...
+[2015-03-24 13:13:53] irc: connecting to server chat.freenode.net/6667...
+[2015-03-24 16:17:18] Writing configuration file plugins.conf
+[2015-03-24 16:17:18] Writing configuration file xfer.conf
+[2015-03-24 16:17:18] Writing configuration file trigger.conf
+[2015-03-24 16:17:18] Writing configuration file script.conf
+[2015-03-24 16:17:18] Writing configuration file relay.conf
+[2015-03-24 16:17:18] Writing configuration file colorize_nicks.conf
+[2015-03-24 16:17:18] Writing configuration file buffers.conf
+[2015-03-24 16:17:18] Writing configuration file iset.conf
+[2015-03-24 16:17:18] Writing configuration file logger.conf
+[2015-03-24 16:17:18] Writing configuration file irc.conf
+[2015-03-24 16:17:18] Writing configuration file exec.conf
+[2015-03-24 16:17:18] Writing configuration file charset.conf
+[2015-03-24 16:17:18] Writing configuration file alias.conf
+[2015-03-24 16:17:18] Writing configuration file weechat.conf
+[2015-03-24 16:17:19] Writing configuration file sec.conf

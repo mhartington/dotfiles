@@ -63,7 +63,7 @@
   }
 
 function run(){
-  ionic build "$1" && ionic run "$1"
+  ionic build "$1" && ionic run "$1" --device
 }
 function sim(){
   ionic build "$1" && ionic emulate "$1"
