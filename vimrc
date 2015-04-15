@@ -231,7 +231,7 @@
   nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Syntastic
-  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_javascript_checkers = ['eshint']
   let g:syntastic_html_checkers = []
   let g:syntastic_check_on_open = 1
   let g:syntastic_always_populate_loc_list = 1
