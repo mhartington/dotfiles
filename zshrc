@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-  for file in ~/.{aliases,functions,prompt,keys}; do
+  for file in ~/.{aliases,functions,keys,prompt}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -10,12 +10,11 @@
   BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
   [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
   export EDITOR=vi
-  sudo -v
+# sudo -V
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh  
-  
 
   alias journal=~/.journal.sh
   export JOURNAL_DIR="/Users/mhartington/Journal"  

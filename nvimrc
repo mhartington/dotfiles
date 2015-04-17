@@ -12,7 +12,7 @@
 " required!
   filetype off
 
- set rtp+=~/.vim/bundle/vundle/
+  set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
 " let Vundle manage Vundle
@@ -30,7 +30,6 @@
   Bundle 'othree/yajs.vim'
 
 " colorscheme & syntax highlighting
-" Bundle 'altercation/vim-colors-solarized'
   Bundle 'chriskempson/base16-vim'
   Bundle 'kien/rainbow_parentheses.vim'
   Bundle 'chrisbra/color_highlight'
@@ -72,8 +71,12 @@
   " au BufRead,BufNewFile *.ts        setlocal filetype=typescript
   " set rtp+=/usr/local/lib/node_modules/typescript-tools
 
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  " use an orange cursor in insert mode
+"  let &t_SI = "\<Esc>]12;orange\x7"
+
+  " use a red cursor otherwise
+"  let &t_EI = "\<Esc>]12;red\x7"
+  
 
   set syntax=whitespace
   set noswapfile
@@ -81,13 +84,7 @@
   set nopaste
   set backspace=indent,eol,start
   filetype on
-  " Code Folding
-  syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-  setlocal foldmethod=syntax
-  setlocal foldlevel=99
-  nnoremap <space> za
-  vnoremap <space> zf
-
+ 
 " Turn Line Numbers on
   set number
 
@@ -122,10 +119,9 @@
 " JSBeautify
   autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
-  autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+  autocmd FileType html,xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
-  autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-  autocmd FileType scss noremap <buffer> <c-f> :call CSSBeautify()<cr>
+  autocmd FileType css,scss,sass noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
@@ -135,10 +131,7 @@
   autocmd QuickFixCmdPost    l* nested lwindow
 
 
-  set columns=100
-  set showbreak=+++
-  set colorcolumn=100
-  " set textwidth=100
+" set colorcolumn=100
   set wrap linebreak nolist
   set virtualedit=
   set display+=lastline
@@ -191,24 +184,24 @@
   set shiftwidth=2
   set expandtab
   
- let g:tmux_navigator_no_mappings = 1
- nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
- nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
- nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
- nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
- nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+  let g:tmux_navigator_no_mappings = 1
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 
- set wildmenu
- set laststatus=2
+  set wildmenu
+  set laststatus=2
 
 
 " Powerline
- let g:airline#extensions#tabline#enabled = 1
- let g:airline#extensions#tabline#fnamemod = ':t'
- let g:airline#extensions#tabline#show_tab_nr = 1
- let g:airline_powerline_fonts = 1
- let g:airline_theme='base16'
- set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+  let g:airline#extensions#tabline#show_tab_nr = 1
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme='base16'
+  set guifont=Source\ Code\ Pro\ for\ Powerline "make sure to escape the spaces in the name properly
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -218,31 +211,31 @@
 " Move to the next buffer
  nmap <leader>, :bnext<CR>
 " Move to the previous buffer
- nmap <leader>. :bprevious<CR>
- let g:airline#extensions#tabline#buffer_idx_mode = 1
- nmap <leader>1 <Plug>AirlineSelectTab1
- nmap <leader>2 <Plug>AirlineSelectTab2
- nmap <leader>3 <Plug>AirlineSelectTab3
- nmap <leader>4 <Plug>AirlineSelectTab4
- nmap <leader>5 <Plug>AirlineSelectTab5
- nmap <leader>6 <Plug>AirlineSelectTab6
- nmap <leader>7 <Plug>AirlineSelectTab7
- nmap <leader>8 <Plug>AirlineSelectTab8
- nmap <leader>9 <Plug>AirlineSelectTab9
+  nmap <leader>. :bprevious<CR>
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
 
 " Syntastic
-  let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_javascript_checkers = ['eshint']
   let g:syntastic_html_checkers = []
   let g:syntastic_check_on_open = 1
   let g:syntastic_always_populate_loc_list = 1
-
+  let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss'] }
 
 " sections (a, b, c, x, y, z, warn) are optional
-let g:promptline_theme = 'airline'
- let g:promptline_preset = {
- \'a' : [ promptline#slices#cwd()  ],
- \'b' : [ promptline#slices#vcs_branch()  ],
- \'c' : [promptline#slices#git_status()]}
+  let g:promptline_theme = 'airline'
+  let g:promptline_preset = {
+  \'a' : [ promptline#slices#cwd()  ],
+  \'b' : [ promptline#slices#vcs_branch()  ],
+  \'c' : [promptline#slices#git_status()]}
 
 " autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
@@ -253,11 +246,11 @@ let g:promptline_theme = 'airline'
             call mkdir(dir, 'p')
         endif
     endif
-endfunction
-augroup BWCCreateDir
+  endfunction
+  augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
+  augroup END
 
 " TypeScript
 " echo symbol/type of item under cursor
