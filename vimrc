@@ -27,6 +27,7 @@
   Bundle 'tmux-plugins/vim-tmux'
   Bundle 'digitaltoad/vim-jade'
   Bundle 'leafgarland/typescript-vim'
+  Bundle 'kchmck/vim-coffee-script'
   Bundle 'othree/yajs.vim'
 
 " colorscheme & syntax highlighting
@@ -71,12 +72,22 @@
   " au BufRead,BufNewFile *.ts        setlocal filetype=typescript
   " set rtp+=/usr/local/lib/node_modules/typescript-tools
 
-  " use an orange cursor in insert mode
-"  let &t_SI = "\<Esc>]12;orange\x7"
-
-  " use a red cursor otherwise
-"  let &t_EI = "\<Esc>]12;red\x7"
-  
+"   " use an orange cursor in insert mode
+" "  let &t_SI = "\<Esc>]12;orange\x7"
+"
+"   " use a red cursor otherwise
+" "  let &t_EI = "\<Esc>]12;red\x7"
+"     if exists('$TMUX')
+"         let &t_EI = "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+"         let &t_SI = "\<Esc>Ptmux;\<Esc>\033]PlFBA922\033\\"
+"         silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+"         autocmd VimLeave * silent !echo -ne "\<Esc>Ptmux;\<Esc>\033]Pl3971ED\033\\"
+"     else
+"         let &t_EI = "\033]Pl3971ED\033\\"
+"         let &t_SI = "\033]PlFBA922\033\\"
+"         silent !echo -ne "\033]Pl3971ED\033\\"
+"         autocmd VimLeave * silent !echo -ne "\033]Pl3971ED\033\\"
+"     endif  
 
   set syntax=whitespace
   set noswapfile
@@ -84,7 +95,7 @@
   set nopaste
   set backspace=indent,eol,start
   filetype on
- 
+  set autoindent
 " Turn Line Numbers on
   set number
 
@@ -127,6 +138,7 @@
   vnoremap <C-c> "*y<CR>
 
 " Typescript
+  let g:typescript_compiler_options = '-sourcemap'
   autocmd QuickFixCmdPost [^l]* nested cwindow
   autocmd QuickFixCmdPost    l* nested lwindow
 
@@ -137,10 +149,15 @@
   set display+=lastline
   noremap  <silent> <Up>   gk
   noremap  <silent> <Down> gj
+  noremap  <silent> k   gk
+  noremap  <silent> j gj
+
   noremap  <silent> <Home> g<Home>
   noremap  <silent> <End>  g<End>
+
   inoremap <silent> <Up>   <C-o>gk
   inoremap <silent> <Down> <C-o>gj
+
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
 
