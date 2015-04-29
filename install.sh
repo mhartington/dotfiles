@@ -61,6 +61,10 @@ echo "---------------------------------------------------------"
 
 echo "Cloning Mike's dotfiles insto .dotfiles"
 git clone https://github.com/mhartington/dotfiles.git ~/.dotfiles
+
+cd .dotfiles
+git submodule update --init --recursive
+
 cd $HOME
 echo "running RCM's rcup command"
 echo "This is symlink the rc files in .dofiles"

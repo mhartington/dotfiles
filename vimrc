@@ -29,6 +29,7 @@
   Bundle 'leafgarland/typescript-vim'
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'othree/yajs.vim'
+  Bundle 'nikvdp/ejs-syntax'
 
 " colorscheme & syntax highlighting
   Bundle 'chriskempson/base16-vim'
@@ -129,6 +130,7 @@
 
 " JSBeautify
   autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+  autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 " for html
   autocmd FileType html,xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
@@ -188,11 +190,11 @@
 " return a regular tab character
    return "\<tab>"
    endfunction
-   autocmd FileType html imap <buffer><expr><tab> <sid>expand_html_tab()
+   autocmd FileType html,ejs imap <buffer><expr><tab> <sid>expand_html_tab()
 
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0
-   autocmd FileType html,css EmmetInstall
+   autocmd FileType html,css,ejs EmmetInstall
 
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
