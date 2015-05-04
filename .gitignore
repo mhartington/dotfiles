@@ -4,4 +4,4 @@ keys
 tmux/plugins/tmux-*
 weechat/logs/*
 weechat/*.log
-weechat/script/*
+weechat/script/plugin.xml.gz
