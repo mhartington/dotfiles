@@ -96,7 +96,6 @@
   set nopaste
   set backspace=indent,eol,start
   filetype on
-  set autoindent
 " Turn Line Numbers on
   set number
 
@@ -112,7 +111,7 @@
   colorscheme base16-flat
   set background=dark
   
-
+  highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
   highlight clear SignColumn
   call gitgutter#highlight#define_highlights()
 
