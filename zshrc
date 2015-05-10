@@ -11,9 +11,9 @@
   [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
   export EDITOR=vi
 
-# sudo -V
+  sudo -V
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
 

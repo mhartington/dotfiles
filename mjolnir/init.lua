@@ -34,6 +34,7 @@ local focusKeys = {
   i='iOS Simulator',
   t='Messages',
   y='Screenhero',
+  a="Atom"
 }
 for key in pairs(focusKeys) do
   hotkey.bind(modalKey, key, function()

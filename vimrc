@@ -40,6 +40,7 @@
   Bundle 'kchmck/vim-coffee-script'
   Bundle 'othree/yajs.vim'
   Bundle 'nikvdp/ejs-syntax'
+  Bundle 'elzr/vim-json'
 
 " colorscheme & syntax highlighting
   Bundle 'chriskempson/base16-vim'
@@ -49,7 +50,6 @@
   Bundle 'Yggdroot/indentLine'
   Bundle 'Raimondi/delimitMate'
   Bundle 'valloric/MatchTagAlways'
-
 " Git helpers
   Bundle 'tpope/vim-fugitive'
   Bundle 'airblade/vim-gitgutter'
@@ -70,6 +70,7 @@
   Bundle 'mattn/emmet-vim'
   Bundle 'maksimr/vim-jsbeautify'
   Bundle 'einars/js-beautify'
+  Bundle "Valloric/YouCompleteMe"
   Bundle 'marijnh/tern_for_vim'
 
 
@@ -91,9 +92,10 @@
   set tabstop=2
   set shiftwidth=2
   set expandtab
-
+  set conceallevel=0
 " tmux mouse support
   set ttymouse=xterm2
+  let g:vim_json_syntax_conceal = 0
 
 " enable mouse
   set mouse=a
@@ -113,7 +115,7 @@
 
 " This is the best
   nnoremap ; :
-
+  let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -140,7 +142,7 @@
 " Navigate between display lines
   noremap  <silent> <Up>   gk
   noremap  <silent> <Down> gj
-  noremap  <silent> k   gk
+  noremap  <silent> k gk
   noremap  <silent> j gj
   noremap  <silent> <Home> g<Home>
   noremap  <silent> <End>  g<End>
@@ -202,6 +204,17 @@
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0
    autocmd FileType html,css,ejs EmmetInstall
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CTRLP 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -244,11 +257,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:syntastic_javascript_checkers = ['eshint']
-  let g:syntastic_html_checkers = []
-  let g:syntastic_check_on_open = 1
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_check_on_open = 0
   let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss'] }
+  let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
+  map <Leader>e :lnext<CR>
+  map <Leader>E :lprev<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " promptline config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
