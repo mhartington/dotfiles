@@ -27,7 +27,6 @@
 
 " let Vundle manage Vundle
   Bundle 'gmarik/vundle'
-
 " github repos
 " syntax
   Bundle 'wavded/vim-stylus'
@@ -60,7 +59,7 @@
   Bundle 'scrooloose/nerdtree'
   Bundle 'terryma/vim-multiple-cursors'
   Bundle 'sjl/clam.vim'
-  Bundle 'kien/ctrlp.vim'
+  Bundle 'ctrlpvim/ctrlp.vim'
   Bundle 'christoomey/vim-tmux-navigator'
   Bundle 'edkolev/promptline.vim'
   Bundle 'bling/vim-airline'
@@ -72,8 +71,10 @@
   Bundle 'einars/js-beautify'
   Bundle "Valloric/YouCompleteMe"
   Bundle 'marijnh/tern_for_vim'
-
-
+  Bundle 'rking/ag.vim'
+  Bundle 'mileszs/ack.vim'
+  Bundle 'JazzCore/ctrlp-cmatcher'
+  
   if vundleExists == 0
     echo "Installing Bundles, ignore errors"
     :BundleInstall
@@ -82,6 +83,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix Cursor in TMUX
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+
+  set lazyredraw    
   set syntax=whitespace
   set noswapfile
   set showcmd
@@ -205,16 +216,23 @@
    let g:user_emmet_install_global = 0
    autocmd FileType html,css,ejs EmmetInstall
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRLP 
+" CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
-
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_switch_buffer = 0
+  let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+  set grepprg=ag\ --nogroup\ --nocolor
+  nnoremap <leader>a :Ag<space>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
