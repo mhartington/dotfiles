@@ -3,5 +3,5 @@ vim/bundle/*
 keys
 tmux/plugins/tmux-*
 weechat/logs/*
-weechat/*.log
+weechat/weechat.log
 weechat/script/plugin.xml.gz
