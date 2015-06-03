@@ -82,7 +82,7 @@
 
   if vundleExists == 0
     echo "Installing Bundles, ignore errors"
-    :BundleInstall
+e   :BundleInstall
     echo "Things may not work properly until you restart vim"
   endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,7 +97,7 @@
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 
-  set lazyredraw    
+  " set lazyredraw    
   set syntax=whitespace
   set noswapfile
   set showcmd
@@ -189,12 +189,8 @@
   call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
   call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
   call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
   call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
   call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JSBeautify
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -299,9 +295,39 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:syntastic_javascript_checkers = ['eslint']
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_javascript_checkers = ['jscs', 'eslint']
   let g:syntastic_check_on_open = 0
-  let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+
+  let g:syntastic_aggregate_errors = 1 
+  let g:syntastic_error_symbol = '✗'
+  let g:syntastic_warning_symbol = '!'
+  let g:syntastic_style_error_symbol = '✗'
+  let g:syntastic_style_warning_symbol = '!'
+
+  noremap <leader>t :SyntasticToggleMode<CR>
+
+  function! JscsFix()
+      "Save current cursor position"
+      let l:winview = winsaveview()
+      "Pipe the current buffer (%) through the jscs -x command"
+      % ! jscs -x
+      "Restore cursor position - this is needed as piping the file"
+      "through jscs jumps the cursor to the top"
+      call winrestview(l:winview)
+  endfunction
+  command JscsFix :call JscsFix()
+
+  " \f to run JscsFix
+  noremap <leader>f :JscsFix<CR>
+
+  "Run the JscsFix command just before the buffer is written for *.js files"
+  " autocmd BufWritePre *.js,*.jsx JscsFix
+
   let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
   map <Leader>e :lnext<CR>
   map <Leader>E :lprev<CR>
