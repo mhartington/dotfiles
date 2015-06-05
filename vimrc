@@ -119,7 +119,7 @@ e   :BundleInstall
 " Theme
   syntax enable
   let base16colorspace=256
-  colorscheme base16-flat
+  colorscheme base16-ocean
   set background=dark
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
@@ -271,7 +271,7 @@ e   :BundleInstall
   let g:airline_powerline_fonts = 1
   let g:airline_theme='base16'
 " make sure to escape the spaces in the name properly
-  set guifont=Source\ Code\ Pro\ for\ Powerline
+  set guifont=Source\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -326,7 +326,7 @@ e   :BundleInstall
   noremap <leader>f :JscsFix<CR>
 
   "Run the JscsFix command just before the buffer is written for *.js files"
-  " autocmd BufWritePre *.js,*.jsx JscsFix
+   " autocmd BufWritePre *.js,*.jsx JscsFix
 
   let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
   map <Leader>e :lnext<CR>
