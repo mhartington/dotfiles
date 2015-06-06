@@ -271,8 +271,7 @@
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
-  let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
   let g:ackprg = 'ag --nogroup --nocolor --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
