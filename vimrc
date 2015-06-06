@@ -9,82 +9,105 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " If vundle is not installed, do it first
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let vundleExists = 1
-  if (!isdirectory(expand("$HOME/.vim/bundle/vundle")))
-     call system(expand("mkdir -p $HOME/.vim/bundle"))
-     call system(expand("git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle"))
-     let vundleExists = 0
+" Note: Skip initialization for vim-tiny or vim-small.
+  if 0 | endif
+
+  if has('vim_starting')
+    if &compatible
+      set nocompatible               " Be iMproved
+    endif
+
+" Required:
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
   endif
 
-" be iMproved
-  set nocompatible
-  let mapleader = ','
-" required!
-  filetype off
+" Required:
+  call neobundle#begin(expand('~/.vim/bundle/'))
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
-
-" let Vundle manage Vundle
-  Bundle 'gmarik/vundle'
-" github repos
+" Let NeoBundle manage NeoBundle
+" Required:
+  NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  Bundle 'wavded/vim-stylus'
-  Bundle 'pangloss/vim-javascript'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'scrooloose/syntastic'
-  Bundle 'tmux-plugins/vim-tmux'
-  Bundle 'digitaltoad/vim-jade'
-  Bundle 'leafgarland/typescript-vim'
-  Bundle 'kchmck/vim-coffee-script'
-  Bundle 'othree/yajs.vim'
-  Bundle 'nikvdp/ejs-syntax'
-  Bundle 'elzr/vim-json'
+  NeoBundle 'wavded/vim-stylus'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'tpope/vim-markdown'
+  NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'tmux-plugins/vim-tmux'
+  NeoBundle 'digitaltoad/vim-jade'
+  NeoBundle 'clausreinke/typescript-tools.vim'
+  NeoBundle 'leafgarland/typescript-vim'
+  NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'othree/yajs.vim'
+  NeoBundle 'nikvdp/ejs-syntax'
+  NeoBundle 'elzr/vim-json'
+
 
 " colorscheme & syntax highlighting
-  Bundle 'chriskempson/base16-vim'
-  Bundle 'kien/rainbow_parentheses.vim'
-  Bundle 'chrisbra/color_highlight'
-  Bundle 'vim-scripts/SyntaxRange'
-  Bundle 'Yggdroot/indentLine'
-  Bundle 'Raimondi/delimitMate'
-  Bundle 'valloric/MatchTagAlways'
-" Git helpers
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'airblade/vim-gitgutter'
-  Bundle 'Xuyuanp/nerdtree-git-plugin'
+  NeoBundle 'yosiat/oceanic-next-vim'
+  NeoBundle 'chriskempson/base16-vim'
+  NeoBundle 'kien/rainbow_parentheses.vim'
+  NeoBundle 'chrisbra/color_highlight'
+  NeoBundle 'vim-scripts/SyntaxRange'
+  NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'Raimondi/delimitMate'
+  NeoBundle 'valloric/MatchTagAlways'
+ " Git helpers
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " untils
-  Bundle 'editorconfig/editorconfig-vim'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'terryma/vim-multiple-cursors'
-  Bundle 'sjl/clam.vim'
-  Bundle 'ctrlpvim/ctrlp.vim'
-  Bundle 'christoomey/vim-tmux-navigator'
-  Bundle 'edkolev/promptline.vim'
-  Bundle 'bling/vim-airline'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tomtom/tcomment_vim'
-  Bundle 'tpope/vim-unimpaired'
-  Bundle 'mattn/emmet-vim'
-  Bundle 'maksimr/vim-jsbeautify'
-  Bundle 'einars/js-beautify'
-  Bundle "Valloric/YouCompleteMe"
-  Bundle 'marijnh/tern_for_vim'
-  Bundle 'rking/ag.vim'
-  Bundle 'mileszs/ack.vim'
-  Bundle 'JazzCore/ctrlp-cmatcher'
-  Bundle 'pelodelfuego/vim-swoop'  
+  NeoBundle 'editorconfig/editorconfig-vim'
+  NeoBundle 'scrooloose/nerdtree'
+  NeoBundle 'terryma/vim-multiple-cursors'
+  NeoBundle 'sjl/clam.vim'
+  NeoBundle 'ctrlpvim/ctrlp.vim'
+  NeoBundle 'christoomey/vim-tmux-navigator'
+  NeoBundle 'edkolev/promptline.vim'
+  NeoBundle 'bling/vim-airline'
+  NeoBundle 'tpope/vim-surround'
+  NeoBundle 'tomtom/tcomment_vim'
+  NeoBundle 'tpope/vim-unimpaired'
+  NeoBundle 'mattn/emmet-vim'
+  NeoBundle 'maksimr/vim-jsbeautify'
+  NeoBundle 'einars/js-beautify'
+  NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build' : {
+     \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+     \    }
+     \ }
+
+  NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build' : {
+  \     'windows' : 'tools\\update-dll-mingw',
+  \     'cygwin' : 'make -f make_cygwin.mak',
+  \     'mac' : 'make -f make_mac.mak',
+  \     'linux' : 'make',
+  \     'unix' : 'gmake',
+  \    },
+  \ }
+
+  NeoBundle 'Quramy/tsuquyomi'
+  NeoBundle 'marijnh/tern_for_vim'
+  NeoBundle 'rking/ag.vim'
+  NeoBundle 'mileszs/ack.vim'
+  NeoBundle 'JazzCore/ctrlp-cmatcher'
+  NeoBundle 'pelodelfuego/vim-swoop'
 
 " because fuck it, Icons are awesome
-  Bundle 'ryanoasis/vim-webdevicons'
+  NeoBundle 'ryanoasis/vim-webdevicons'
 
-  if vundleExists == 0
-    echo "Installing Bundles, ignore errors"
-e   :BundleInstall
-    echo "Things may not work properly until you restart vim"
-  endif
+  call neobundle#end()
+
+" Required:
+  filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+  NeoBundleCheck
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -97,7 +120,7 @@ e   :BundleInstall
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 
-  " set lazyredraw    
+  " set lazyredraw
   set syntax=whitespace
   set noswapfile
   set showcmd
@@ -169,7 +192,7 @@ e   :BundleInstall
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree 
+" NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   map <C-\> :NERDTreeToggle<CR>
   autocmd StdinReadPre * let s:std_in=1
@@ -303,7 +326,7 @@ e   :BundleInstall
   " let g:syntastic_always_populate_loc_list = 1
   " let g:syntastic_auto_loc_list = 1
 
-  let g:syntastic_aggregate_errors = 1 
+  let g:syntastic_aggregate_errors = 1
   let g:syntastic_error_symbol = '✗'
   let g:syntastic_warning_symbol = '!'
   let g:syntastic_style_error_symbol = '✗'
@@ -345,3 +368,18 @@ e   :BundleInstall
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+filetype plugin on
+au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+set rtp+=/usr/local/lib/node_modules/typescript-tools/
+
+if !exists("g:ycm_semantic_triggers")
+   let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+autocmd FileType typescript setlocal completeopt+=menu,preview
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
