@@ -10,6 +10,6 @@
 [submodule "tmux/plugins/tmux-cpu"]
 	path = tmux/plugins/tmux-cpu
 	url = https://github.com/tmux-plugins/tmux-cpu
-[submodule "base16-shell"]
+[submodule "config/base16-shell"]
 	path = config/base16-shell
 	url = https://github.com/mhartington/base16-shell
