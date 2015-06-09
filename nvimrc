@@ -31,6 +31,7 @@
 " syntax
   NeoBundle 'wavded/vim-stylus'
   NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'isRuslan/vim-es6'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'tmux-plugins/vim-tmux'
@@ -45,14 +46,14 @@
 
 " colorscheme & syntax highlighting
   NeoBundle 'yosiat/oceanic-next-vim'
-  NeoBundle 'chriskempson/base16-vim'
+  NeoBundle 'mhartington/base16-vim'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'chrisbra/color_highlight'
   NeoBundle 'vim-scripts/SyntaxRange'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
-" Git helpers
+ " Git helpers
   NeoBundle 'tpope/vim-fugitive'
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
@@ -111,6 +112,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let mapleader = ','
 " Fix Cursor in TMUX
   if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -133,7 +135,7 @@
   set expandtab
   set conceallevel=0
 " tmux mouse support
-  set ttymouse=xterm2
+  " set ttymouse=xterm2
   let g:vim_json_syntax_conceal = 0
 
 " enable mouse
@@ -142,7 +144,7 @@
 " Theme
   syntax enable
   let base16colorspace=256
-  colorscheme base16-ocean
+  colorscheme base16-oceanicnext
   set background=dark
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
@@ -198,6 +200,7 @@
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
+  
 " NERDTress File highlighting
   function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -212,8 +215,11 @@
   call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
   call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
   call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
   call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
   call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JSBeautify
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -271,20 +277,19 @@
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
-  let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
   let g:ackprg = 'ag --nogroup --nocolor --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+  " let g:tmux_navigator_no_mappings = 1
+  " nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+  " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  " nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  " nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -294,7 +299,7 @@
   let g:airline_powerline_fonts = 1
   let g:airline_theme='base16'
 " make sure to escape the spaces in the name properly
-  set guifont=Source\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
+  set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Monddo
 " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab

@@ -20,6 +20,7 @@
 
 # because I'm to lazy to write vim
   alias v='vim'
+  alias n="nvim"
   alias s="sudo"
 # Desktop Programs
   alias xcode="open -a '/Applications/XCode.app'"
