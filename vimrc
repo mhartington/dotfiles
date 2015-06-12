@@ -1,4 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "___  ____ _               _   _ _
 "|  \/  (_) |             | | | (_)
 "| .  . |_| | _____  ___  | | | |_ _ __ ___  _ __ ___
@@ -62,7 +61,18 @@
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'sjl/clam.vim'
-  NeoBundle 'ctrlpvim/ctrlp.vim'
+  "NeoBundle 'ctrlpvim/ctrlp.vim'
+   NeoBundle 'Shougo/unite.vim'
+   NeoBundle 'Shougo/vimproc.vim', {
+         \ 'build' : {
+         \     'windows' : 'tools\\update-dll-mingw',
+         \     'cygwin' : 'make -f make_cygwin.mak',
+         \     'mac' : 'make -f make_mac.mak',
+         \     'linux' : 'make',
+         \     'unix' : 'gmake',
+         \    },
+         \ }
+  NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -77,17 +87,6 @@
      \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
      \    }
      \ }
-
-  NeoBundle 'Shougo/vimproc.vim', {
-  \ 'build' : {
-  \     'windows' : 'tools\\update-dll-mingw',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'linux' : 'make',
-  \     'unix' : 'gmake',
-  \    },
-  \ }
-
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
@@ -196,11 +195,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
   map <C-\> :NERDTreeToggle<CR>
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
-  
+
 " NERDTress File highlighting
   function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -267,20 +267,43 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_switch_buffer = 0
-  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-  let g:ackprg = 'ag --nogroup --nocolor --column'
-  set grepprg=ag\ --nogroup\ --nocolor
-  nnoremap <leader>a :Ag<space>
+"--nocolor"
+  "let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
+  ""   \ --ignore .git
+  ""   \ --ignore .svn
+  ""   \ --ignore .hg
+  ""   \ --ignore .DS_Store
+  ""   \ --ignore "**/*.pyc"
+  ""   \ --ignore lib
+  ""   \ -g ""'
+  "let g:ctrlp_regexp = 1
+  "let g:ctrlp_use_caching = 0
+  "let g:ctrlp_working_path_mode = 0
+  "let g:ctrlp_switch_buffer = 0
+  "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  "let g:ackprg = 'ag --nogroup --column'
+  "set grepprg=ag\ --nogroup\ --nocolor
+  "nnoremap <leader>a :Ag<space>
+
+  "nnoremap <C-p> :Unite file_rec/async<cr>
+  "nnoremap <leader><space> :Unite grep:.<cr>
+
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+"call unite#custom#source('file_rec/async','sorters','sorter_rank', )
+" replacing unite with ctrl-p
+let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_prompt='» '
+let g:unite_split_rule = 'botright'
+if executable('ag')
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+let g:unite_source_grep_recursive_opt=''
+endif
+nnoremap <silent> <c-p> :Unite -auto-resize file file_rec<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

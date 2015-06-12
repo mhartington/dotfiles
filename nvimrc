@@ -64,6 +64,16 @@
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'sjl/clam.vim'
   NeoBundle 'ctrlpvim/ctrlp.vim'
+  " NeoBundle 'Shougo/unite.vim'
+  " NeoBundle 'Shougo/vimproc.vim', {
+  "       \ 'build' : {
+  "       \     'windows' : 'tools\\update-dll-mingw',
+  "       \     'cygwin' : 'make -f make_cygwin.mak',
+  "       \     'mac' : 'make -f make_mac.mak',
+  "       \     'linux' : 'make',
+  "       \     'unix' : 'gmake',
+  "       \    },
+  "       \ }
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -78,22 +88,10 @@
      \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
      \    }
      \ }
-
-  NeoBundle 'Shougo/vimproc.vim', {
-  \ 'build' : {
-  \     'windows' : 'tools\\update-dll-mingw',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'linux' : 'make',
-  \     'unix' : 'gmake',
-  \    },
-  \ }
-
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'marijnh/tern_for_vim'
-  NeoBundle 'rking/ag.vim'
+  NeoBundle 'Numkil/ag.nvim'
   NeoBundle 'mileszs/ack.vim'
-  NeoBundle 'JazzCore/ctrlp-cmatcher'
   NeoBundle 'pelodelfuego/vim-swoop'
 
 " because fuck it, Icons are awesome
@@ -112,6 +110,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  set paste
   let mapleader = ','
 " Fix Cursor in TMUX
   if exists('$TMUX')
@@ -126,7 +125,6 @@
   set syntax=whitespace
   set noswapfile
   set showcmd
-  set nopaste
   set backspace=indent,eol,start
   filetype on
   set number
@@ -192,7 +190,7 @@
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
 " no need to fold things in markdown all the time
-  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_folding_disabled = 1 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -267,6 +265,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""
+  " nnoremap <Leader>f :Unite grep:.<cr>
+  " " CtrlP search
+  " call unite#filters#matcher_default#use(['matcher_fuzzy'])
+  " call unite#filters#sorter_default#use(['sorter_rank'])
+  " call unite#custom#source('file_rec/async','sorters','sorter_rank')
+  " " replacing unite with ctrl-p
+  " nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
+  let g:ctrlp_regexp = 1 
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
@@ -279,17 +285,18 @@
   let g:ctrlp_switch_buffer = 0
   " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
   let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:ag_working_path_mode="r"
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " let g:tmux_navigator_no_mappings = 1
-  " nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-  " nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  " nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  " nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  " nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+  let g:tmux_navigator_no_mappings = 1
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -337,7 +344,7 @@
   let g:syntastic_style_error_symbol = '✗'
   let g:syntastic_style_warning_symbol = '!'
 
-  noremap <leader>t :SyntasticToggleMode<CR>
+  " noremap <leader>t :SyntasticToggleMode<CR>
 
   function! JscsFix()
       "Save current cursor position"
