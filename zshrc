@@ -36,3 +36,4 @@
   fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

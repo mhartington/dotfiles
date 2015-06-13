@@ -35,12 +35,23 @@
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'tmux-plugins/vim-tmux'
   NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'clausreinke/typescript-tools.vim'
-  NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'othree/yajs.vim'
   NeoBundle 'nikvdp/ejs-syntax'
   NeoBundle 'elzr/vim-json'
+
+" Typescript
+  " NeoBundle 'clausreinke/typescript-tools.vim'
+  NeoBundle 'leafgarland/typescript-vim'
+  NeoBundle 'Shougo/vimproc.vim', {
+       \ 'build' : {
+       \     'windows' : 'tools\\update-dll-mingw',
+       \     'cygwin' : 'make -f make_cygwin.mak',
+       \     'mac' : 'make -f make_mac.mak',
+       \     'linux' : 'make',
+       \     'unix' : 'gmake',
+       \    },
+       \ }
 
 " colorscheme & syntax highlighting
   NeoBundle 'yosiat/oceanic-next-vim'
@@ -61,18 +72,9 @@
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'sjl/clam.vim'
-  "NeoBundle 'ctrlpvim/ctrlp.vim'
-   NeoBundle 'Shougo/unite.vim'
-   NeoBundle 'Shougo/vimproc.vim', {
-         \ 'build' : {
-         \     'windows' : 'tools\\update-dll-mingw',
-         \     'cygwin' : 'make -f make_cygwin.mak',
-         \     'mac' : 'make -f make_mac.mak',
-         \     'linux' : 'make',
-         \     'unix' : 'gmake',
-         \    },
-         \ }
-  NeoBundle 'Shougo/vimfiler.vim'
+  NeoBundle 'ctrlpvim/ctrlp.vim'
+  " NeoBundle 'Shougo/unite.vim'
+  " NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -144,6 +146,7 @@
   let base16colorspace=256
   colorscheme base16-oceanicnext
   set background=dark
+
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
   highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
@@ -223,7 +226,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JSBeautify
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+  autocmd FileType javascript,typescript noremap <buffer>  <c-f> :call JsBeautify()<cr>
   autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
 " for html
   autocmd FileType html,xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -231,11 +234,21 @@
   autocmd FileType css,scss,sass noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Typescript
+" Typescript & Javscript omni complete 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
   let g:typescript_compiler_options = '-sourcemap'
-  autocmd QuickFixCmdPost [^l]* nested cwindow
-  autocmd QuickFixCmdPost    l* nested lwindow
+  let g:typescript_indent_disable = 1
+
+  if !exists("g:ycm_semantic_triggers")
+     let g:ycm_semantic_triggers = {}
+  endif
+  let g:ycm_semantic_triggers['typescript'] = ['.']
+
+  autocmd FileType typescript setlocal completeopt+=menu,preview
+  let g:ycm_add_preview_to_completeopt=0
+  let g:ycm_confirm_extra_conf=0
+  set completeopt-=preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet customization
 " Enable Emmet in all modes
@@ -268,42 +281,39 @@
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 "--nocolor"
-  "let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
-  ""   \ --ignore .git
-  ""   \ --ignore .svn
-  ""   \ --ignore .hg
-  ""   \ --ignore .DS_Store
-  ""   \ --ignore "**/*.pyc"
-  ""   \ --ignore lib
-  ""   \ -g ""'
-  "let g:ctrlp_regexp = 1
-  "let g:ctrlp_use_caching = 0
-  "let g:ctrlp_working_path_mode = 0
-  "let g:ctrlp_switch_buffer = 0
-  "let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-  "let g:ackprg = 'ag --nogroup --column'
-  "set grepprg=ag\ --nogroup\ --nocolor
-  "nnoremap <leader>a :Ag<space>
+  let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore "**/*.pyc"
+    \ --ignore lib
+    \ -g ""'
+  let g:ctrlp_regexp = 1
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_switch_buffer = 0
+  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  let g:ackprg = 'ag --nogroup --column'
+  set grepprg=ag\ --nogroup\ --nocolor
+  nnoremap <leader>a :Ag<space>
 
-  "nnoremap <C-p> :Unite file_rec/async<cr>
-  "nnoremap <leader><space> :Unite grep:.<cr>
-
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-"call unite#custom#source('file_rec/async','sorters','sorter_rank', )
-" replacing unite with ctrl-p
-let g:unite_data_directory='~/.vim/.cache/unite'
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_prompt='» '
-let g:unite_split_rule = 'botright'
-if executable('ag')
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-let g:unite_source_grep_recursive_opt=''
-endif
-nnoremap <silent> <c-p> :Unite -auto-resize file file_rec<cr>
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
+" "call unite#custom#source('file_rec/async','sorters','sorter_rank', )
+" " replacing unite with ctrl-p
+" let g:unite_data_directory='~/.vim/.cache/unite'
+" let g:unite_enable_start_insert=1
+" let g:unite_source_history_yank_enable=1
+" let g:unite_prompt='» '
+" let g:unite_split_rule = 'botright'
+" if executable('ag')
+" let g:unite_source_grep_command='ag'
+" let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+" let g:unite_source_grep_recursive_opt=''
+" endif
+" nnoremap <silent> <c-p> :Unite -auto-resize file file_rec<cr>
+" nnoremap <leader><space> :Unite grep:.<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -396,18 +406,3 @@ nnoremap <silent> <c-p> :Unite -auto-resize file file_rec<cr>
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-filetype plugin on
-au BufRead,BufNewFile *.ts        setlocal filetype=typescript
-set rtp+=/usr/local/lib/node_modules/typescript-tools/
-
-if !exists("g:ycm_semantic_triggers")
-   let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers['typescript'] = ['.']
-
-autocmd FileType typescript setlocal completeopt+=menu,preview
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
