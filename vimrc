@@ -41,7 +41,7 @@
   NeoBundle 'elzr/vim-json'
 
 " Typescript
-  " NeoBundle 'clausreinke/typescript-tools.vim'
+  NeoBundle 'clausreinke/typescript-tools.vim'
   NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
@@ -84,11 +84,12 @@
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'maksimr/vim-jsbeautify'
   NeoBundle 'einars/js-beautify'
-  NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build' : {
-     \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-     \    }
-     \ }
+  NeoBundle 'Shougo/neocomplete.vim'
+  " NeoBundle 'Valloric/YouCompleteMe', {
+  "    \ 'build' : {
+  "    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "    \    }
+  "    \ }
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
@@ -194,7 +195,7 @@
   inoremap <silent> <End>  <C-o>g<End>
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
-  " let g:used_javascript_libs = 'angularjs'
+  let g:used_javascript_libs = 'angularjs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -236,14 +237,27 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  let g:neocomplete#enable_at_startup = 1
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType typescript setlocal omnifunc=TSScompleteFunc
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  let g:neocomplete#sources#omni#input_patterns.typescript = '.*'
+  let g:neocomplete#sources#omni#input_patterns.javascript = '[^. *\t]\.\w*\|\h\w*::'
+
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  
   let g:typescript_compiler_options = '-sourcemap'
   let g:typescript_indent_disable = 1
-
-  if !exists("g:ycm_semantic_triggers")
-     let g:ycm_semantic_triggers = {}
-  endif
-  let g:ycm_semantic_triggers['typescript'] = ['.']
+  au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+  set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
+  " if !exists("g:ycm_semantic_triggers")
+  "    let g:ycm_semantic_triggers = {}
+  " endif
+  " let g:ycm_semantic_triggers['typescript'] = ['.']
 
   autocmd FileType typescript setlocal completeopt+=menu,preview
   let g:ycm_add_preview_to_completeopt=0
@@ -298,22 +312,6 @@
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
 
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
-" "call unite#custom#source('file_rec/async','sorters','sorter_rank', )
-" " replacing unite with ctrl-p
-" let g:unite_data_directory='~/.vim/.cache/unite'
-" let g:unite_enable_start_insert=1
-" let g:unite_source_history_yank_enable=1
-" let g:unite_prompt='» '
-" let g:unite_split_rule = 'botright'
-" if executable('ag')
-" let g:unite_source_grep_command='ag'
-" let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-" let g:unite_source_grep_recursive_opt=''
-" endif
-" nnoremap <silent> <c-p> :Unite -auto-resize file file_rec<cr>
-" nnoremap <leader><space> :Unite grep:.<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
