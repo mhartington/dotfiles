@@ -1,4 +1,3 @@
-"___  ____ _               _   _ _
 "|  \/  (_) |             | | | (_)
 "| .  . |_| | _____  ___  | | | |_ _ __ ___  _ __ ___
 "| |\/| | | |/ / _ \/ __| | | | | | '_ ` _ \| '__/ __|
@@ -8,7 +7,13 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " If vundle is not installed, do it first
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Note: Skip initialization for vim-tiny or vim-small.
+   let bundleExists = 1
+  if (!isdirectory(expand("$HOME/.vim/bundle/neobundle.vim")))
+     call system(expand("mkdir -p $HOME/.vim/bundle"))
+     call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"))
+     let bundleExists = 0
+  endif 
+
   if 0 | endif
 
   if has('vim_starting')
@@ -35,13 +40,12 @@
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'tmux-plugins/vim-tmux'
   NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'othree/yajs.vim'
   NeoBundle 'nikvdp/ejs-syntax'
   NeoBundle 'elzr/vim-json'
-
+  "NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
 " Typescript
-  NeoBundle 'clausreinke/typescript-tools.vim'
+  "NeoBundle 'clausreinke/typescript-tools.vim'
   NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
@@ -54,11 +58,9 @@
        \ }
 
 " colorscheme & syntax highlighting
-  NeoBundle 'yosiat/oceanic-next-vim'
   NeoBundle 'mhartington/base16-vim'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'chrisbra/color_highlight'
-  NeoBundle 'vim-scripts/SyntaxRange'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
@@ -71,31 +73,19 @@
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'terryma/vim-multiple-cursors'
-  NeoBundle 'sjl/clam.vim'
   NeoBundle 'ctrlpvim/ctrlp.vim'
-  " NeoBundle 'Shougo/unite.vim'
-  " NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
-  NeoBundle 'tpope/vim-unimpaired'
   NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'maksimr/vim-jsbeautify'
-  NeoBundle 'einars/js-beautify'
+  NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'Shougo/neocomplete.vim'
-  " NeoBundle 'Valloric/YouCompleteMe', {
-  "    \ 'build' : {
-  "    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \    }
-  "    \ }
-  NeoBundle 'Quramy/tsuquyomi'
+  NeoBundle 'Quramy/tsuquyomi', {'build': 'sudo npm install -g typescript'}
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'mileszs/ack.vim'
-  NeoBundle 'JazzCore/ctrlp-cmatcher'
-  NeoBundle 'pelodelfuego/vim-swoop'
 
 " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-webdevicons'
@@ -104,12 +94,10 @@
 
 " Required:
   filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
   NeoBundleCheck
-
-
+  if bundleExists == 0
+    echo "Installing Bundles, ignore errors"
+  endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -127,7 +115,6 @@
   set syntax=whitespace
   set noswapfile
   set showcmd
-  set nopaste
   set backspace=indent,eol,start
   filetype on
   set number
@@ -195,7 +182,7 @@
   inoremap <silent> <End>  <C-o>g<End>
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
-  let g:used_javascript_libs = 'angularjs'
+  "let g:used_javascript_libs = 'angularjs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,44 +212,35 @@
   call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
   call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" JSBeautify
+" Make files look nice
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  autocmd FileType javascript,typescript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-  autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
-" for html
-  autocmd FileType html,xml noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-  autocmd FileType css,scss,sass noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
+  autocmd FileType css,scss,sass :ColorHighlight
+  noremap <c-f> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  " let g:typescript_compiler_options = '-sourcemap'
+  let g:typescript_indent_disable = 1
+  "au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+  "set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
+
   let g:neocomplete#enable_at_startup = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType typescript setlocal omnifunc=TSScompleteFunc
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  let g:neocomplete#sources#omni#input_patterns.typescript = '.*'
-  let g:neocomplete#sources#omni#input_patterns.javascript = '[^. *\t]\.\w*\|\h\w*::'
-
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  "autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
   
-  let g:typescript_compiler_options = '-sourcemap'
-  let g:typescript_indent_disable = 1
-  au BufRead,BufNewFile *.ts        setlocal filetype=typescript
-  set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
-  " if !exists("g:ycm_semantic_triggers")
-  "    let g:ycm_semantic_triggers = {}
-  " endif
-  " let g:ycm_semantic_triggers['typescript'] = ['.']
+  " if !exists('g:neocomplete#sources#omni#input_patterns')
+  "   let g:neocomplete#sources#omni#input_patterns = {}
+  " endif  
+  " let g:neocomplete#sources#omni#input_patterns.javascript = '[^. *\t]\.\w*\|\h\w*::'
+  if !exists('g:neocomplete#force_omni_input_patterns')
+      let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 
-  autocmd FileType typescript setlocal completeopt+=menu,preview
-  let g:ycm_add_preview_to_completeopt=0
-  let g:ycm_confirm_extra_conf=0
-  set completeopt-=preview
+  autocmd FileType typescript setlocal completeopt-=preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet customization
 " Enable Emmet in all modes
@@ -291,9 +269,9 @@
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0
    autocmd FileType html,css,ejs EmmetInstall
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--nocolor"
   let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
     \ --ignore .git
@@ -307,7 +285,7 @@
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
-  let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
   let g:ackprg = 'ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
@@ -371,20 +349,13 @@
   noremap <leader>t :SyntasticToggleMode<CR>
 
   function! JscsFix()
-      "Save current cursor position"
       let l:winview = winsaveview()
-      "Pipe the current buffer (%) through the jscs -x command"
       % ! jscs -x
-      "Restore cursor position - this is needed as piping the file"
-      "through jscs jumps the cursor to the top"
       call winrestview(l:winview)
   endfunction
   command JscsFix :call JscsFix()
 
-  " \f to run JscsFix
   noremap <leader>f :JscsFix<CR>
-
-  "Run the JscsFix command just before the buffer is written for *.js files"
    " autocmd BufWritePre *.js,*.jsx JscsFix
 
   let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
@@ -404,3 +375,4 @@
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
+

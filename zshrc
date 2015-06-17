@@ -37,3 +37,7 @@
   autoload -U compinit && compinit
   zmodload -i zsh/complist
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+code () {
+    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+  }
