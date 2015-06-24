@@ -31,17 +31,15 @@
 " Let NeoBundle manage NeoBundle
 " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
-
 " syntax
   NeoBundle 'wavded/vim-stylus'
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'isRuslan/vim-es6'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'tmux-plugins/vim-tmux'
   NeoBundle 'digitaltoad/vim-jade'
   NeoBundle 'othree/yajs.vim'
-  NeoBundle 'nikvdp/ejs-syntax'
+  NeoBundle '1995eaton/vim-better-javascript-completion'
+  " NeoBundle 'nikvdp/ejs-syntax'
   NeoBundle 'elzr/vim-json'
   "NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
 " Typescript
@@ -70,10 +68,12 @@
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " untils
+  NeoBundle 'matze/vim-move'
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
+  " NeoBundle 'Shougo/unite.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -86,7 +86,7 @@
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'mileszs/ack.vim'
-
+  NeoBundle 'ashisha/image.vim'
 " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-webdevicons'
 
@@ -123,19 +123,21 @@
   set expandtab
   set conceallevel=0
 " tmux mouse support
-  set ttymouse=xterm2
+  " set ttymouse=xterm2
   let g:vim_json_syntax_conceal = 0
 
 " enable mouse
   set mouse=a
 
 " Theme
+  " set t_Co=256
   syntax enable
   let base16colorspace=256
   colorscheme base16-oceanicnext
   set background=dark
 
 " Copy to osx clipboard
+  set pastetoggle=<leader>p
   vnoremap <C-c> "*y<CR>
   highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
   highlight clear SignColumn
@@ -182,7 +184,9 @@
   inoremap <silent> <End>  <C-o>g<End>
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
-  "let g:used_javascript_libs = 'angularjs'
+  autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  let g:move_key_modifier = 'S'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -219,8 +223,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:vimjs#casesensistive = 1
+" Enabled by default. flip the value to make completion matches case insensitive
+
+  let g:vimjs#smartcomplete = 0
+" Disabled by default. Enabling this will let vim complete matches at any location
+" e.g. typing 'ocument' will suggest 'document' if enabled.
+
+  let g:vimjs#chromeapis = 0
+" Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs  
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  " let g:typescript_compiler_options = '-sourcemap'
+  " inoremap <expr><TAB>  pumvisible()
   let g:typescript_indent_disable = 1
   "au BufRead,BufNewFile *.ts        setlocal filetype=typescript
   "set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
@@ -254,7 +267,8 @@
    if col('.') < len(line)
      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
      if len(line) >= 2
-       return "\<C-y>n"
+        return "\<C-n>"
+
      endif
    endif
 " expand anything emmet thinks is expandable.
@@ -273,7 +287,25 @@
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--nocolor"
-  let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
+"  call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"  call unite#filters#sorter_default#use(['sorter_rank'])
+"  call unite#custom#source('file_rec/async','sorters','sorter_rank', )
+"  " replacing unite with ctrl-p
+"  let g:unite_data_directory='~/.vim/.cache/unite'
+"  let g:unite_enable_start_insert=1
+"  let g:unite_source_history_yank_enable=1
+" "  let g:unite_prompt='» '
+"  let g:unite_split_rule = 'botright'
+" "  if executable('ag')
+"   let g:unite_source_rec_async_command ='ag %s -i --nogroup --hidden  --ignore .git  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc" --ignore lib -g ""' 
+"   let g:unite_source_grep_command='ag'
+"    let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+"    let g:unite_source_grep_recursive_opt=''
+" "  endif
+"  nnoremap <silent> <c-p> :Unite file_rec/async<cr>
+"  nnoremap <leader><space> :Unite grep:.<cr>
+
+let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
     \ --ignore .hg
