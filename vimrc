@@ -31,7 +31,7 @@
 " Let NeoBundle manage NeoBundle
 " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
-" syntax
+ " syntax
   NeoBundle 'wavded/vim-stylus'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
@@ -39,11 +39,9 @@
   NeoBundle 'digitaltoad/vim-jade'
   NeoBundle 'othree/yajs.vim'
   NeoBundle '1995eaton/vim-better-javascript-completion'
-  " NeoBundle 'nikvdp/ejs-syntax'
+  NeoBundle 'nikvdp/ejs-syntax',{'autoload':{'filetypes':['ejs']}}
   NeoBundle 'elzr/vim-json'
-  "NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
 " Typescript
-  "NeoBundle 'clausreinke/typescript-tools.vim'
   NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
@@ -58,7 +56,7 @@
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/base16-vim'
   NeoBundle 'kien/rainbow_parentheses.vim'
-  NeoBundle 'chrisbra/color_highlight'
+  NeoBundle 'chrisbra/Colorizer'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
@@ -73,7 +71,6 @@
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
-  " NeoBundle 'Shougo/unite.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -82,11 +79,14 @@
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'Shougo/neocomplete.vim'
-  NeoBundle 'Quramy/tsuquyomi', {'build': 'sudo npm install -g typescript'}
+  NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'mileszs/ack.vim'
   NeoBundle 'ashisha/image.vim'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets' 
+  NeoBundle 'matthewsimo/angular-vim-snippets'
 " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-webdevicons'
 
@@ -147,7 +147,6 @@
 
 " This is the best
   nnoremap ; :
-  let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -187,13 +186,30 @@
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
   let g:move_key_modifier = 'S'
 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Snipppets
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable snipMate compatibility feature.
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  imap <C-s>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-s>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-s>     <Plug>(neosnippet_expand_target) 
+" Tell Neosnippet about the other snippets
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+
+" SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   map <C-\> :NERDTreeToggle<CR>
   autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
@@ -232,8 +248,7 @@
 
   let g:vimjs#chromeapis = 0
 " Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs  
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  " inoremap <expr><TAB>  pumvisible()
+  autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
   let g:typescript_indent_disable = 1
   "au BufRead,BufNewFile *.ts        setlocal filetype=typescript
   "set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
@@ -268,7 +283,6 @@
      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
      if len(line) >= 2
         return "\<C-n>"
-
      endif
    endif
 " expand anything emmet thinks is expandable.
@@ -278,7 +292,7 @@
 " return a regular tab character
    return "\<tab>"
    endfunction
-   autocmd FileType html,ejs imap <buffer><expr><tab> <sid>expand_html_tab()
+   autocmd FileType html imap <buffer><expr><tab> <sid>expand_html_tab()
 
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0
@@ -286,25 +300,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--nocolor"
-"  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"  call unite#filters#sorter_default#use(['sorter_rank'])
-"  call unite#custom#source('file_rec/async','sorters','sorter_rank', )
-"  " replacing unite with ctrl-p
-"  let g:unite_data_directory='~/.vim/.cache/unite'
-"  let g:unite_enable_start_insert=1
-"  let g:unite_source_history_yank_enable=1
-" "  let g:unite_prompt='» '
-"  let g:unite_split_rule = 'botright'
-" "  if executable('ag')
-"   let g:unite_source_rec_async_command ='ag %s -i --nogroup --hidden  --ignore .git  --ignore .svn  --ignore .hg  --ignore .DS_Store  --ignore "**/*.pyc" --ignore lib -g ""' 
-"   let g:unite_source_grep_command='ag'
-"    let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-"    let g:unite_source_grep_recursive_opt=''
-" "  endif
-"  nnoremap <silent> <c-p> :Unite file_rec/async<cr>
-"  nnoremap <leader><space> :Unite grep:.<cr>
-
 let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
     \ --ignore .git
     \ --ignore .svn
