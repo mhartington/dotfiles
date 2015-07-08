@@ -37,7 +37,9 @@
   NeoBundle 'scrooloose/syntastic'
   NeoBundle 'tmux-plugins/vim-tmux'
   NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'othree/yajs.vim'
+  " NeoBundle 'othree/yajs.vim'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'mxw/vim-jsx'
   NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundle 'nikvdp/ejs-syntax',{'autoload':{'filetypes':['ejs']}}
   NeoBundle 'elzr/vim-json'
@@ -83,7 +85,7 @@
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
   NeoBundle 'mileszs/ack.vim'
-  NeoBundle 'ashisha/image.vim'
+  " NeoBundle 'ashisha/image.vim'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets' 
   NeoBundle 'matthewsimo/angular-vim-snippets'
@@ -153,18 +155,18 @@
   set wildmenu
   set laststatus=2
 " if dir doesn't exsist, make it
-  function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-  endfunction
-  augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-  augroup END
+  " function s:MkNonExDir(file, buf)
+  "   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+  "       let dir=fnamemodify(a:file, ':h')
+  "       if !isdirectory(dir)
+  "           call mkdir(dir, 'p')
+  "       endif
+  "   endif
+  " endfunction
+  " augroup BWCCreateDir
+  "   autocmd!
+  "   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  " augroup END
 " set colorcolumn=100
   set wrap linebreak nolist
   set virtualedit=
@@ -184,9 +186,11 @@
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  autocmd BufRead,BufNewFile *.txt setlocal spell complete+=kspell
   let g:move_key_modifier = 'S'
 
 
+  map <leader>v :source ~/.vimrc<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snipppets
@@ -209,7 +213,7 @@
 
   map <C-\> :NERDTreeToggle<CR>
   autocmd StdinReadPre * let s:std_in=1
-  " autocmd VimEnter * if argc() == 1 && !exists("s:std_in") | NERDTree | endif
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
@@ -257,6 +261,7 @@
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  " autocmd FileType markdown setlocal omnifunc=kspell
   "autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
   
   " if !exists('g:neocomplete#sources#omni#input_patterns')

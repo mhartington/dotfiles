@@ -46,6 +46,13 @@
 # Flush your dns cache
   alias flush='dscacheutil -flushcache'
 
+  function symLink(){
+    echo "Creating symlinks"
+    cp -f dist/js/ionic.bundle.js tmp/www/lib/ionic/js/ionic.bundle.js
+    cp -f dist/css/ionic.css tmp/www/lib/ionic/css/ionic.css
+    echo "done"
+  }
+
 # Because Typing python -m SimpleHTTPServer is too Damn Long
 # Start an HTTP server from a directory, optionally specifying the port
   function server() {
@@ -67,6 +74,8 @@ function sim(){
 function download(){
   curl -O "$1"
 }
+
+alias dl=download
 function ghUpdate() {
     if git remote | grep upstream > /dev/null;
   then

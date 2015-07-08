@@ -12,7 +12,7 @@
      call system(expand("mkdir -p $HOME/.nvim/bundle"))
      call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim"))
      let bundleExists = 0
-  endif 
+  endif
 
   if 0 | endif
 
@@ -81,14 +81,14 @@
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
-  NeoBundle 'Valloric/YouCompleteMe', {
-       \ 'build' : {
-       \     'mac' : './install.sh --clang-completer --system-libclang',
-       \     'unix' : './install.sh --clang-completer --system-libclang',
-       \     'windows' : './install.sh --clang-completer --system-libclang',
-       \     'cygwin' : './install.sh --clang-completer --system-libclang'
-       \    }
-       \ }
+  " NeoBundle 'Valloric/YouCompleteMe', {
+  "      \ 'build' : {
+  "      \     'mac' : './install.sh --clang-completer --system-libclang',
+  "      \     'unix' : './install.sh --clang-completer --system-libclang',
+  "      \     'windows' : './install.sh --clang-completer --system-libclang',
+  "      \     'cygwin' : './install.sh --clang-completer --system-libclang'
+  "      \    }
+  "      \ }
   NeoBundle 'Quramy/tsuquyomi', {'build': 'sudo npm install -g typescript'}
   NeoBundle 'marijnh/tern_for_vim'
   NeoBundle 'rking/ag.vim'
@@ -191,6 +191,8 @@
   let g:vim_markdown_folding_disabled = 1
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 
+  let g:deoplete#enable_at_startup = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,7 +227,7 @@
   autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Typescript & Javscript omni complete 
+" Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
   " let g:typescript_compiler_options = '-sourcemap'
@@ -376,4 +378,3 @@
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
-
