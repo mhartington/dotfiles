@@ -1,8 +1,10 @@
-"|  \/  (_) |             | | | (_)
-"| .  . |_| | _____  ___  | | | |_ _ __ ___  _ __ ___
-"| |\/| | | |/ / _ \/ __| | | | | | '_ ` _ \| '__/ __|
-"| |  | | |   <  __/\__ \ \ \_/ / | | | | | | | | (__
-"\_|  |_/_|_|\_\___||___/  \___/|_|_| |_| |_|_|  \___|
+"|  \/  (_) |                        (_)
+"| .  . |_| | _____  ___   _ ____   ___ _ __ ___  _ __ ___
+"| |\/| | | |/ / _ \/ __| | '_ \ \ / / | '_ ` _ \| '__/ __|
+"| |  | | |   <  __/\__ \ | | | \ V /| | | | | | | | | (__
+"\_|  |_/_|_|\_\___||___/ |_| |_|\_/ |_|_| |_| |_|_|  \___|
+"
+"
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " If vundle is not installed, do it first
@@ -13,6 +15,7 @@
      call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim"))
      let bundleExists = 0
   endif
+
 
   if 0 | endif
 
@@ -33,19 +36,15 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  NeoBundle 'wavded/vim-stylus'
   NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'isRuslan/vim-es6'
+  "NeoBundle 'isRuslan/vim-es6'
+  NeoBundle 'othree/yajs.vim'
+  NeoBundle 'mxw/vim-jsx'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
-  NeoBundle 'tmux-plugins/vim-tmux'
-  NeoBundle 'digitaltoad/vim-jade'
-  NeoBundle 'othree/yajs.vim'
-  NeoBundle 'nikvdp/ejs-syntax'
+  NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundle 'elzr/vim-json'
-  "NeoBundleLazy 'othree/javascript-libraries-syntax.vim', {'autoload':{'filetypes':['javascript']}}
 " Typescript
-  "NeoBundle 'clausreinke/typescript-tools.vim'
   NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
@@ -59,8 +58,6 @@
 
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/base16-vim'
-  NeoBundle 'kien/rainbow_parentheses.vim'
-  NeoBundle 'chrisbra/color_highlight'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
@@ -69,10 +66,10 @@
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
+
 " untils
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
-  NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
@@ -81,21 +78,29 @@
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
-  " NeoBundle 'Valloric/YouCompleteMe', {
-  "      \ 'build' : {
-  "      \     'mac' : './install.sh --clang-completer --system-libclang',
-  "      \     'unix' : './install.sh --clang-completer --system-libclang',
-  "      \     'windows' : './install.sh --clang-completer --system-libclang',
-  "      \     'cygwin' : './install.sh --clang-completer --system-libclang'
-  "      \    }
-  "      \ }
-  NeoBundle 'Quramy/tsuquyomi', {'build': 'sudo npm install -g typescript'}
-  NeoBundle 'marijnh/tern_for_vim'
+  NeoBundle 'ap/vim-css-color'
+  "NeoBundle 'Shougo/deoplete.nvim'
+  NeoBundle 'Valloric/YouCompleteMe', {
+       \ 'build' : {
+       \     'mac' : './install.sh --clang-completer --system-libclang',
+       \     'unix' : './install.sh --clang-completer --system-libclang',
+       \     'windows' : './install.sh --clang-completer --system-libclang',
+       \     'cygwin' : './install.sh --clang-completer --system-libclang'
+       \    }
+       \ }
+  NeoBundle 'Quramy/tsuquyomi'
+  NeoBundle 'SirVer/ultisnips'
+  NeoBundle 'honza/vim-snippets'
+  NeoBundle 'matthewsimo/angular-vim-snippets'
+  NeoBundle 'marijnh/tern_for_vim', {
+        \ 'build' : {
+        \     'mac' : 'npm install',
+        \    }
+        \ }
   NeoBundle 'rking/ag.vim'
-  NeoBundle 'mileszs/ack.vim'
-  NeoBundle 'ashisha/image.vim'
-" because fuck it, Icons are awesome
-  NeoBundle 'ryanoasis/vim-webdevicons'
+  " because fuck it, Icons are awesome
+  NeoBundle 'ryanoasis/vim-devicons'
+
 
   call neobundle#end()
 
@@ -109,15 +114,7 @@
 " Vim untils
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let mapleader = ','
-" Fix Cursor in TMUX
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
-
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   " set lazyredraw
   set syntax=whitespace
   set noswapfile
@@ -138,10 +135,11 @@
 
 " Theme
   syntax enable
+  set t_Co=256
   let base16colorspace=256
   colorscheme base16-oceanicnext
   set background=dark
-
+  set pastetoggle=<leader>p
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
   highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
@@ -192,6 +190,7 @@
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 
   let g:deoplete#enable_at_startup = 1
+  map <leader>v :source ~/.nimrc<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -208,32 +207,55 @@
   exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
   endfunction
 
-  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-  call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-  call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
+  call NERDTreeHighlightFile('ini', 'yellow', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', 'none')
+  call NERDTreeHighlightFile('yml', 'yellow', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('config', 'yellow', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('conf', 'yellow', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('json', 'green', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('html', 'yellow', 'none', '#ffff00', 'none')
+  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', 'none')
+  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', 'none')
+  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', 'none')
+  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', 'none')
+  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', 'none')
+  call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('gitconfig', 'black', 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'none')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Snipppets
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable snipMate compatibility feature.
+  let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make files look nice
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  autocmd FileType css,scss,sass :ColorHighlight
+  " autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  let g:vimjs#casesensistive = 1
+" Enabled by default. flip the value to make completion matches case insensitive
+
+  let g:vimjs#smartcomplete = 0
+" Disabled by default. Enabling this will let vim complete matches at any location
+" e.g. typing 'ocument' will suggest 'document' if enabled.
+
+  let g:vimjs#chromeapis = 0
+" Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs
+  autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
   " let g:typescript_compiler_options = '-sourcemap'
   let g:typescript_indent_disable = 1
-  "au BufRead,BufNewFile *.ts        setlocal filetype=typescript
-  "set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
+
 
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -241,7 +263,8 @@
   if !exists("g:ycm_semantic_triggers")
    let g:ycm_semantic_triggers = {}
   endif
-  let g:ycm_semantic_triggers['typescript'] = ['.']
+  let g:ycm_semantic_triggers['typescript'] = ['re!\w']
+
   " \   'typescript': ['\h\w*\|[^. \t]\.\w*']
   autocmd FileType typescript setlocal completeopt-=preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -257,7 +280,7 @@
    if col('.') < len(line)
      let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
      if len(line) >= 2
-       return "\<C-y>n"
+        return "\<C-n>"
      endif
    endif
 " expand anything emmet thinks is expandable.
@@ -267,7 +290,7 @@
 " return a regular tab character
    return "\<tab>"
    endfunction
-   autocmd FileType html,ejs imap <buffer><expr><tab> <sid>expand_html_tab()
+   autocmd FileType html imap <buffer><expr><tab> <sid>expand_html_tab()
 
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0
@@ -376,5 +399,5 @@
 " Source the vimrc file after saving it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  if has("autocmd")
-   autocmd bufwritepost .vimrc source $MYVIMRC
+   autocmd bufwritepost .nvimrc source $MYVIMRC
  endif

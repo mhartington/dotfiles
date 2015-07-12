@@ -189,9 +189,9 @@
   autocmd BufRead,BufNewFile *.txt setlocal spell complete+=kspell
   let g:move_key_modifier = 'S'
 
-
+  let g:jsx_ext_required = 0
   map <leader>v :source ~/.vimrc<CR>
-
+  map <leader>q :PromptlineSnapshot! ~/.dotfiles/prompt airline<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snipppets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -261,9 +261,9 @@
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  " autocmd FileType markdown setlocal omnifunc=kspell
   "autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
-  
+" Set minimum syntax keyword length.
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
   " if !exists('g:neocomplete#sources#omni#input_patterns')
   "   let g:neocomplete#sources#omni#input_patterns = {}
   " endif  
