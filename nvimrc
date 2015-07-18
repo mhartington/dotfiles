@@ -21,7 +21,8 @@
 
   if has('vim_starting')
     if &compatible
-      set nocompatible               " Be iMproved
+      " Be iMproved
+      set nocompatible
     endif
 
 " Required:
@@ -38,7 +39,7 @@
 " syntax
   NeoBundle 'pangloss/vim-javascript'
   "NeoBundle 'isRuslan/vim-es6'
-  NeoBundle 'othree/yajs.vim'
+  "NeoBundle 'othree/yajs.vim'
   NeoBundle 'mxw/vim-jsx'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
@@ -66,7 +67,6 @@
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
-
 " untils
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
@@ -79,15 +79,15 @@
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'ap/vim-css-color'
-  "NeoBundle 'Shougo/deoplete.nvim'
-  NeoBundle 'Valloric/YouCompleteMe', {
-       \ 'build' : {
-       \     'mac' : './install.sh --clang-completer --system-libclang',
-       \     'unix' : './install.sh --clang-completer --system-libclang',
-       \     'windows' : './install.sh --clang-completer --system-libclang',
-       \     'cygwin' : './install.sh --clang-completer --system-libclang'
-       \    }
-       \ }
+  " NeoBundle 'Shougo/deoplete.nvim'
+ NeoBundle 'Valloric/YouCompleteMe', {
+      \ 'build' : {
+      \     'mac' : './install.sh --clang-completer --system-libclang',
+      \     'unix' : './install.sh --clang-completer --system-libclang',
+      \     'windows' : './install.sh --clang-completer --system-libclang',
+      \     'cygwin' : './install.sh --clang-completer --system-libclang'
+      \    }
+      \ }
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
@@ -98,6 +98,8 @@
         \    }
         \ }
   NeoBundle 'rking/ag.vim'
+  NeoBundle 'wincent/terminus'
+  NeoBundle 'pelodelfuego/vim-swoop'
   " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-devicons'
 
@@ -127,7 +129,6 @@
   set expandtab
   set conceallevel=0
 " tmux mouse support
-  " set ttymouse=xterm2
   let g:vim_json_syntax_conceal = 0
 
 " enable mouse
@@ -135,10 +136,11 @@
 
 " Theme
   syntax enable
-  set t_Co=256
+  " set t_Co=256
   let base16colorspace=256
   colorscheme base16-oceanicnext
   set background=dark
+  map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
   set pastetoggle=<leader>p
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
@@ -157,19 +159,19 @@
   set wildmenu
   set laststatus=2
 " if dir doesn't exsist, make it
-  function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-  endfunction
-  augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-  augroup END
-" set colorcolumn=100
+  " function s:MkNonExDir(file, buf)
+  "   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+  "       let dir=fnamemodify(a:file, ':h')
+  "       if !isdirectory(dir)
+  "           call mkdir(dir, 'p')
+  "       endif
+  "   endif
+  " endfunction
+  " augroup BWCCreateDir
+  "   autocmd!
+  "   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  " augroup END
+  set colorcolumn=100
   set wrap linebreak nolist
   set virtualedit=
   set display+=lastline
@@ -181,8 +183,6 @@
   noremap  <silent> j gj
   noremap  <silent> <Home> g<Home>
   noremap  <silent> <End>  g<End>
-  inoremap <silent> <Up>   <C-o>gk
-  inoremap <silent> <Down> <C-o>gj
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
 " no need to fold things in markdown all the time
@@ -190,7 +190,7 @@
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 
   let g:deoplete#enable_at_startup = 1
-  map <leader>v :source ~/.nimrc<CR>
+  map <leader>v :source ~/.dotfiles/nvimrc<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -208,36 +208,38 @@
   endfunction
 
   call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
-  call NERDTreeHighlightFile('ini', 'yellow', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', 'none')
-  call NERDTreeHighlightFile('yml', 'yellow', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('config', 'yellow', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('conf', 'yellow', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('json', 'green', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('html', 'yellow', 'none', '#ffff00', 'none')
-  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', 'none')
-  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', 'none')
+  call NERDTreeHighlightFile('ini', 'yellow', 'none', '#d8a235', 'none')
+  call NERDTreeHighlightFile('md', 'blue', 'none', '#6699CC', 'none')
+  call NERDTreeHighlightFile('yml', 'yellow', 'none', '#d8a235', 'none')
+  call NERDTreeHighlightFile('config', 'yellow', 'none', '#d8a235', 'none')
+  call NERDTreeHighlightFile('conf', 'yellow', 'none', '#d8a235', 'none')
+  call NERDTreeHighlightFile('json', 'green', 'none', '#d8a235', 'none')
+  call NERDTreeHighlightFile('html', 'yellow', 'none', '#d8a235', 'none')
+  " call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', 'none')
+  " call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', 'none')
   call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', 'none')
   call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', 'none')
   call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', 'none')
   call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', 'none')
   call NERDTreeHighlightFile('gitconfig', 'black', 'none', '#686868', 'none')
-  call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', 'none')
+  call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#7F7F7F', 'none')
   call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', 'none')
   call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'none')
+
+  let g:webdevicons_enable_ctrlp = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snipppets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable snipMate compatibility feature.
   let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make files look nice
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " autocmd FileType css,scss,sass :ColorHighlight
+" autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete
@@ -248,24 +250,19 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   let g:vimjs#smartcomplete = 0
 " Disabled by default. Enabling this will let vim complete matches at any location
 " e.g. typing 'ocument' will suggest 'document' if enabled.
-
-  let g:vimjs#chromeapis = 0
-" Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
   autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
   " let g:typescript_compiler_options = '-sourcemap'
   let g:typescript_indent_disable = 1
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#omni_patterns = {}
+  let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 
-
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  if !exists("g:ycm_semantic_triggers")
-   let g:ycm_semantic_triggers = {}
-  endif
-  let g:ycm_semantic_triggers['typescript'] = ['re!\w']
-
-  " \   'typescript': ['\h\w*\|[^. \t]\.\w*']
+"\h\w*\|[^. \t]\.\w*"
   autocmd FileType typescript setlocal completeopt-=preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet customization
@@ -320,11 +317,12 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Navigate between vim buffers and tmux panels
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
   nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
   nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
   nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+  nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -382,7 +380,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
   command JscsFix :call JscsFix()
 
   noremap <leader>f :JscsFix<CR>
-   " autocmd BufWritePre *.js,*.jsx JscsFix
+" autocmd BufWritePre *.js,*.jsx JscsFix
 
   let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
   map <Leader>e :lnext<CR>

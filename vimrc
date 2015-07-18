@@ -12,7 +12,7 @@
      call system(expand("mkdir -p $HOME/.vim/bundle"))
      call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"))
      let bundleExists = 0
-  endif 
+  endif
 
   if 0 | endif
 
@@ -87,7 +87,7 @@
   NeoBundle 'mileszs/ack.vim'
   " NeoBundle 'ashisha/image.vim'
   NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets' 
+  NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
 " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-webdevicons'
@@ -199,13 +199,13 @@
   let g:neosnippet#enable_snipmate_compatibility = 1
   imap <C-s>     <Plug>(neosnippet_expand_or_jump)
   smap <C-s>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-s>     <Plug>(neosnippet_expand_target) 
+  xmap <C-s>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
   let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
   imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>" 
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -241,33 +241,22 @@
   autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Typescript & Javscript omni complete 
+" Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:vimjs#casesensistive = 1
-" Enabled by default. flip the value to make completion matches case insensitive
 
   let g:vimjs#smartcomplete = 0
-" Disabled by default. Enabling this will let vim complete matches at any location
-" e.g. typing 'ocument' will suggest 'document' if enabled.
-
   let g:vimjs#chromeapis = 0
-" Disabled by default. Toggling this will enable completion for a number of Chrome's JavaScript extension APIs  
   autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
   let g:typescript_indent_disable = 1
-  "au BufRead,BufNewFile *.ts        setlocal filetype=typescript
-  "set rtp+=/usr/local/lib/node_modules/typescript-tools.vim/
 
-  let g:neocomplete#enable_at_startup = 1
+"  let g:neocomplete#enable_at_startup = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  "autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
-" Set minimum syntax keyword length.
+  autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
   let g:neocomplete#sources#syntax#min_keyword_length = 3
-  " if !exists('g:neocomplete#sources#omni#input_patterns')
-  "   let g:neocomplete#sources#omni#input_patterns = {}
-  " endif  
-  " let g:neocomplete#sources#omni#input_patterns.javascript = '[^. *\t]\.\w*\|\h\w*::'
+
   if !exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
   endif
@@ -407,4 +396,3 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
-

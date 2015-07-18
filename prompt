@@ -172,7 +172,7 @@ function __promptline {
   local reset="${wrap}0${end_wrap}"
   local reset_bg="${wrap}49${end_wrap}"
 
-  local a_fg="${wrap}38;5;18${end_wrap}"
+  local a_fg="${wrap}38;5;232${end_wrap}"
   local a_bg="${wrap}48;5;4${end_wrap}"
   local a_sep_fg="${wrap}38;5;4${end_wrap}"
 

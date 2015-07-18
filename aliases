@@ -19,7 +19,7 @@
   alias l1='ls -1'
 
 # because I'm to lazy to write vim
-  alias v='vim'
+  alias v='nvim'
   alias n="nvim"
   alias s="sudo"
 # Desktop Programs
