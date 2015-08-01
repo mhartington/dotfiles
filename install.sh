@@ -17,9 +17,8 @@ packages=(
 "node"
 "tmux"
 "lua"
-"luarocks"
 "ant"
-"macvim --override-system-vim"
+"neovim"
 "weechat --with-lua --with-perl --with-python --with-ruby"
 )
 
@@ -35,7 +34,6 @@ brew install rcm
 echo "---------------------------------------------------------"
 
 localGit="/usr/local/bin/git"
-
 if [ -f "$localGit" ]
 then 
   echo "git is all good"
@@ -46,12 +44,23 @@ echo "---------------------------------------------------------"
 
 
 echo "Making backups of vim, tmux conf files"
-cp ~/.vimrc ~/.vimrc.bak
-echo "Old vimrc is now saved as vimrc.bak"
-cp ~/.tmux.conf ~/.tmux.conf.bak
-echo "Old tmux.conf is now saved as tmux.conf.bak"
-cp ~/.zshrc ~/.zshrc.back
-echo "Old zshrc is now saved as zshrc.bak"
+if [ -e ~/.vimrc ]
+  then
+    cp ~/.vimrc ~/.vimrc.bak
+    echo "Old vimrc is now saved as vimrc.bak"
+fi
+
+if [ -e ~/.tmux.conf ]
+  then
+    cp ~/.tmux.conf ~/.tmux.conf.bak
+    echo "Old tmux.conf is now saved as tmux.conf.bak"
+fi
+
+if [ -e ~/.zshrc ]
+  then
+    cp ~/.zshrc ~/.zshrc.back
+    echo "Old zshrc is now saved as zshrc.bak"
+fi
 echo "---------------------------------------------------------"
 
 # Okay so everything should be good
@@ -84,9 +93,25 @@ echo "---------------------------------------------------------"
 echo "running oxs defaults"
 ~./osx.sh
 
+
+
+echo "---------------------------------------------------------"
+echo "Installing Mjolnir"
+rock=(
+"mjolnir.application"
+"mjolnir.fnutils"
+"mjolnir.geometry"
+"mjolnir.hotkey"
+"mjolnir.screen"
+"mjolnir.keycodes"
+)
+for r in "${rocks[@]}"
+do
+  luarocks install $r
+
+echo "---------------------------------------------------------"
 echo "All done!"
-echo "Now your part, change iterms settings to use xterm256color"
-echo "and change your terminal font to one of the powerline fonts"
+echo "and change your terminal font to source code pro"
 echo "Cheers"
 -echo "---------------------------------------------------------"
 

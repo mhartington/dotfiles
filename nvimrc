@@ -9,7 +9,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " If vundle is not installed, do it first
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-   let bundleExists = 1
+  let bundleExists = 1
   if (!isdirectory(expand("$HOME/.nvim/bundle/neobundle.vim")))
      call system(expand("mkdir -p $HOME/.nvim/bundle"))
      call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim"))
@@ -38,8 +38,6 @@
 
 " syntax
   NeoBundle 'pangloss/vim-javascript'
-  "NeoBundle 'isRuslan/vim-es6'
-  "NeoBundle 'othree/yajs.vim'
   NeoBundle 'mxw/vim-jsx'
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'scrooloose/syntastic'
@@ -70,7 +68,9 @@
 " untils
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
+
   NeoBundle 'ctrlpvim/ctrlp.vim'
+  
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -79,15 +79,7 @@
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'ap/vim-css-color'
-  " NeoBundle 'Shougo/deoplete.nvim'
- NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'build' : {
-      \     'mac' : './install.sh --clang-completer --system-libclang',
-      \     'unix' : './install.sh --clang-completer --system-libclang',
-      \     'windows' : './install.sh --clang-completer --system-libclang',
-      \     'cygwin' : './install.sh --clang-completer --system-libclang'
-      \    }
-      \ }
+  NeoBundle 'Shougo/deoplete.nvim'
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
@@ -97,11 +89,12 @@
         \     'mac' : 'npm install',
         \    }
         \ }
-  NeoBundle 'rking/ag.vim'
+  NeoBundle 'Numkil/ag.nvim'
   NeoBundle 'wincent/terminus'
   NeoBundle 'pelodelfuego/vim-swoop'
   " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-devicons'
+  NeoBundle 'matze/vim-move'
 
 
   call neobundle#end()
@@ -158,24 +151,11 @@
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
   set wildmenu
   set laststatus=2
-" if dir doesn't exsist, make it
-  " function s:MkNonExDir(file, buf)
-  "   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-  "       let dir=fnamemodify(a:file, ':h')
-  "       if !isdirectory(dir)
-  "           call mkdir(dir, 'p')
-  "       endif
-  "   endif
-  " endfunction
-  " augroup BWCCreateDir
-  "   autocmd!
-  "   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-  " augroup END
   set colorcolumn=100
   set wrap linebreak nolist
   set virtualedit=
   set display+=lastline
-
+  let g:move_key_modifier = 'S'
 " Navigate between display lines
   noremap  <silent> <Up>   gk
   noremap  <silent> <Down> gj
@@ -188,7 +168,6 @@
 " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-
   let g:deoplete#enable_at_startup = 1
   map <leader>v :source ~/.dotfiles/nvimrc<CR>
 
@@ -226,7 +205,7 @@
   call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', 'none')
   call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', 'none')
 
-  let g:webdevicons_enable_ctrlp = 0
+  " let g:webdevicons_enable_ctrlp = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snipppets
@@ -235,9 +214,6 @@
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<c-b>"
   let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Make files look nice
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
@@ -245,16 +221,12 @@
 " Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:vimjs#casesensistive = 1
-" Enabled by default. flip the value to make completion matches case insensitive
-
-  let g:vimjs#smartcomplete = 0
-" Disabled by default. Enabling this will let vim complete matches at any location
-" e.g. typing 'ocument' will suggest 'document' if enabled.
+  let g:vimjs#smartcomplete = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
-  autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  autocmd FileType typescript,javascript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
   " let g:typescript_compiler_options = '-sourcemap'
   let g:typescript_indent_disable = 1
@@ -262,7 +234,7 @@
   let g:deoplete#omni_patterns = {}
   let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
 
-"\h\w*\|[^. \t]\.\w*"
+  "\h\w*\|[^. \t]\.\w*"
   autocmd FileType typescript setlocal completeopt-=preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet customization
@@ -295,6 +267,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "--nocolor"
   let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
     \ --ignore .git
@@ -308,7 +281,7 @@
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
-  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+
   let g:ackprg = 'ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>

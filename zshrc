@@ -9,8 +9,8 @@
   export CLICOLOR=1
   # BASE16_SHELL="$HOME/.config/base16-shell/base16-oceanicnext.dark.sh"
   # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-  export EDITOR=vi
-
+  export EDITOR=nvim
+  export BREW_PATH="$(brew --prefix)"
   # sudo -V
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
   # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -36,7 +36,8 @@
   fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  . <(npm completion)
+  # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 code () {
     VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*

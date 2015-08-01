@@ -5,14 +5,12 @@
 # done
 # unset file
 
-# git autocomplete
 # This is for android crap
-# export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
-# export JAVA_HOME=$(/usr/libexec/java_home)
-# export PATH=${JAVA_HOME}/bin:$PATH
-# export PATH=/usr/local/bin:$PATH
+export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 
-# Disable zsh autocorrect
-
-
-# source ~/.git-completion.bash
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
