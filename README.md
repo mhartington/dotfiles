@@ -1,17 +1,24 @@
-#Obligatory Dotfile Repo
-###
-Nothing super crazy going on here, but some sensable vim and tmux configs.
+# Obligatory Dotfile Repo
+
+~~Nothing super crazy going on here, but some sensable vim and tmux configs.~~
+
+I lied, this is some crazy stuff...
+So yeah...Here be dragons?
+
+## Note to iterm
+Iterm nightly is a must.
+Or any terminal that supports true colors.
+
+Once installed, click on the iterm color config in `config/colors` to add oceanicNext
 
 
-##Note to iterm
-I use solarized for my color scheme, but iterm is wonky with it.
-Rule of thumb is to set your terminal emulation to `xterm-256`
+## NeoVim
 
-I believe OSX's terminal app should be okay, but will make note of that.
+Yeahh, I've moved over to neovim completely now. It still has it's problems here and there, but its pretty stable for the most part.
 
-##Powerline
-I used to use python-powerline, but have switch to using a combination of vim-airline, vim-promptline, and a custum
-tmux.conf for similar results. 
+Anyways, neovim has support for true colors, so that flag is turned on.
+Some key plugins for neovim are:
+
 
 ### Vim-Airline
  [vim-airline](https://github.com/bling/vim-airline) is much lighterweight, intergrates with a bunch of plugins I
@@ -20,21 +27,83 @@ already have, and is eaiser to set up.
 ```
   Bundle 'bling/vim-airline'
 ```
-Then adding these [two lines](https://github.com/mhartington/dotfiles/blob/master/vimrc#L157) is all you need to do.
 
-### Vim-promptline
-[vim-promptline](https://github.com/edkolev/promptline.vim) is a vim plugin to generate a shell theme for bash or zsh.
-It's fairly simple and straight forward. In fact all you need to really add [is listed
-here](https://github.com/mhartington/dotfiles/blob/master/vimrc#L161).
+### Anything by Shougo
+The guy is big in the vim/neovim community and his plugins are top notch.
+Hell, even my plugin manager is made by him. If he ever sees this, thanks Shougo!
+
+### [Quramy/tsuquyomi](https://github.com/Quramy/tsuquyomi)
+Code completion for typescript. This is a must for me, and since I'm in neovim, it's non-block, yay async. A bit difficult to setup but it's pretty well documented.
+
+```bash
+# install typescript
+npm -g install typescript
+```
+
+```viml
+" install vimproc
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+
+NeoBundle 'Quramy/tsuquyomi'
+```
+vimproc is needed since we need to run a TSServer. Sadly, you need both even in neovim
+
+### [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+
+The lengths I'll go for some gui-goodness in my vim.
+This is really optional and over the top, but it adds icons to your file tree (if using nerdTree). So over the top....I need it.
+
+I use Source Code Pro for my fonts, maybe you do too. But we're using powerline here folks, so we need some patched fonts.
+
+https://github.com/ryanoasis/nerd-fonts
+
+Install one of these fonts and you should be good to go. Don't forget to set your terminal font to that font as well.
+
+## Tmux
+
+So if you can tell by now, I'm set on using true colors....everywhere.
+This is possible with tmux as well, though it requires patching.
+
+Not a big deal for most people, but I like it so I do it.
+
+Assuming you're using homebrew, edit tmux
+
+```bash
+brew edit tmux
+```
+
+Then, before `def install`, add this.
+
+```ruby
+  option "with-truecolor", "Build with truecolor patch enabled"
+  patch do
+    url "https://gist.githubusercontent.com/choppsv1/dd00858d4f7f356ce2cf/raw/75b073e85f3d539ed24907f1615d9e0fa3e303f4/tmux-24.diff"
+    sha1 "101aa54529adf8aa22216c3f35d55fc837c246e8"
+  end if build.with? "truecolor"
+```
+
+Now you can run `brew install tmux --with-truecolor` and get all the colors for iterm nightly.
 
 ### Tmux powerline
-For speed reasons, I've removed any plugins and used available features in tmux. The
-[status-bar](https://github.com/mhartington/dotfiles/blob/master/tmux.conf#L77) is setup for solarized, and includes ad
-indicator for when the bind-key is pressed.
+My status bar for tmux is custom, only using a few plugins for battery charge and memory usage. Was a nice experiment with the tmux API. Also it uses powerline symbols, which should be covered.
+
+
+<hr/>
+I think that's it, probably missed a few things here and there or spelled something wrong.
+This is more for my own sake when setting up a new machine so I can figure out what the fuck is actually going on.
+
 
 ## Install
 Note this install is if you have a new machine, and need everything setup.
-For that, I sugguest 
+For that, I sugguest
 
 ```
 curl https://cdn.rawgit.com/mhartington/dotfiles/master/install.sh | sh

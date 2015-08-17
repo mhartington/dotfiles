@@ -42,8 +42,8 @@
   NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
 
-  NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'shime/vim-livedown'
+  NeoBundle 'tpope/vim-markdown',{'autoload':{'filetypes':['markdown']}}
+  NeoBundleLazy 'suan/vim-instant-markdown',{'autoload':{'filetypes':['markdown']}}
   " NeoBundle 'scrooloose/syntastic'
   NeoBundle 'benekastah/neomake'
   NeoBundle '1995eaton/vim-better-javascript-completion'
@@ -120,6 +120,7 @@
   set pastetoggle=<f6>
   " No need for ex mode
   nnoremap Q <nop>
+  set noshowmode
   " recording macros is not my thing
   map q <Nop>
   " set lazyredraw
