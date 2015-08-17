@@ -5,7 +5,7 @@
   done
   unset file
   export TERMINAL_DARK=1
-#  # export TERM="xterm-256color"
+#  #export TERM="xterm-256color"
   export CLICOLOR=1
   # BASE16_SHELL="$HOME/.config/base16-shell/base16-oceanicnext.dark.sh"
   # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
@@ -42,3 +42,5 @@
 code () {
     VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
   }
+
+  # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh

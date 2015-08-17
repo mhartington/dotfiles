@@ -56,7 +56,7 @@
        \ }
 
 " colorscheme & syntax highlighting
-  NeoBundle 'mhartington/base16-vim'
+  NeoBundle 'gosukiwi/vim-atom-dark'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'chrisbra/Colorizer'
   NeoBundle 'Yggdroot/indentLine'
@@ -75,14 +75,15 @@
   NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
-  NeoBundle 'bling/vim-airline'
+  "NeoBundle 'bling/vim-airline'
+  "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'Shougo/neocomplete.vim'
   NeoBundle 'Quramy/tsuquyomi'
-  NeoBundle 'marijnh/tern_for_vim'
+
   NeoBundle 'rking/ag.vim'
   NeoBundle 'mileszs/ack.vim'
   " NeoBundle 'ashisha/image.vim'
@@ -134,8 +135,8 @@
 " Theme
   " set t_Co=256
   syntax enable
-  let base16colorspace=256
-  colorscheme base16-oceanicnext
+  "let base16colorspace=256
+  colorscheme atom-dark
   set background=dark
 
 " Copy to osx clipboard
@@ -396,3 +397,7 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
+
+ python from powerline.vim import setup as powerline_setup
+ python powerline_setup()
+ python del powerline_setup

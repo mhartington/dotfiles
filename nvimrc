@@ -37,14 +37,21 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'mxw/vim-jsx'
+  NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
+
   NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'shime/vim-livedown'
+  " NeoBundle 'scrooloose/syntastic'
+  NeoBundle 'benekastah/neomake'
   NeoBundle '1995eaton/vim-better-javascript-completion'
+  NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundle 'elzr/vim-json'
 " Typescript
-  NeoBundle 'leafgarland/typescript-vim'
+  " NeoBundle 'leafgarland/typescript-vim'
+  NeoBundle 'HerringtonDarkholme/yats.vim'
   NeoBundle 'Shougo/vimproc.vim', {
        \ 'build' : {
        \     'windows' : 'tools\\update-dll-mingw',
@@ -68,9 +75,11 @@
 " untils
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
-
+  NeoBundle 'AndrewRadev/switch.vim'
   NeoBundle 'ctrlpvim/ctrlp.vim'
-  
+  NeoBundle 'mhartington/ctrlp-ag'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'troydm/asyncfinder.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
@@ -80,15 +89,13 @@
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'ap/vim-css-color'
   NeoBundle 'Shougo/deoplete.nvim'
+  NeoBundle 'Shougo/neco-vim'
+  NeoBundle 'Shougo/neoinclude.vim'
   NeoBundle 'Quramy/tsuquyomi'
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
-  NeoBundle 'marijnh/tern_for_vim', {
-        \ 'build' : {
-        \     'mac' : 'npm install',
-        \    }
-        \ }
+
   NeoBundle 'Numkil/ag.nvim'
   NeoBundle 'wincent/terminus'
   NeoBundle 'pelodelfuego/vim-swoop'
@@ -110,6 +117,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let mapleader = ','
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set pastetoggle=<f6>
+  " No need for ex mode
+  nnoremap Q <nop>
+  " recording macros is not my thing
+  map q <Nop>
   " set lazyredraw
   set syntax=whitespace
   set noswapfile
@@ -121,9 +133,9 @@
   set shiftwidth=2
   set expandtab
   set conceallevel=0
-" tmux mouse support
   let g:vim_json_syntax_conceal = 0
-
+" No folds
+  set nofoldenable
 " enable mouse
   set mouse=a
 
@@ -133,6 +145,8 @@
   let base16colorspace=256
   colorscheme base16-oceanicnext
   set background=dark
+
+
   map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
   set pastetoggle=<leader>p
 " Copy to osx clipboard
@@ -144,8 +158,8 @@
   call gitgutter#highlight#define_highlights()
 
 " This is the best
+  inoremap <c-d> <esc>ddi
   nnoremap ; :
-  let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
   let g:indent_guides_auto_colors = 0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -170,6 +184,7 @@
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
   let g:deoplete#enable_at_startup = 1
   map <leader>v :source ~/.dotfiles/nvimrc<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -220,6 +235,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+  setlocal foldmethod=syntax
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -232,7 +249,7 @@
   let g:typescript_indent_disable = 1
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#omni_patterns = {}
-  let g:deoplete#omni_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
+  let g:deoplete#omni_patterns.typescript = '.'
 
   "\h\w*\|[^. \t]\.\w*"
   autocmd FileType typescript setlocal completeopt-=preview
@@ -277,14 +294,19 @@
     \ --ignore "**/*.pyc"
     \ --ignore lib
     \ -g ""'
-  let g:ctrlp_regexp = 1
+  let g:ctrlp_regexp = 0
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
 
+  let g:ctrlp_extensions = ['line', 'ag']
   let g:ackprg = 'ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
+
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --smart-case'
+  let g:unite_source_grep_recursive_opt = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
@@ -329,21 +351,31 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_javascript_checkers = ['jscs', 'eslint']
-  let g:syntastic_check_on_open = 0
-  " let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
+  " let g:syntastic_javascript_checkers = ['jscs', 'eslint']
+  " let g:syntastic_check_on_open = 0
+  " " let g:syntastic_always_populate_loc_list = 1
+  " " let g:syntastic_auto_loc_list = 1
+  "
+  " let g:syntastic_aggregate_errors = 1
+  " let g:syntastic_error_symbol = '✗'
+  " let g:syntastic_warning_symbol = '!'
+  " let g:syntastic_style_error_symbol = '✗'
+  " let g:syntastic_style_warning_symbol = '!'
 
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_error_symbol = '✗'
-  let g:syntastic_warning_symbol = '!'
-  let g:syntastic_style_error_symbol = '✗'
-  let g:syntastic_style_warning_symbol = '!'
-
-  noremap <leader>t :SyntasticToggleMode<CR>
+  " noremap <leader>t :SyntasticToggleMode<CR>
+  " let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
+  "
+  let g:neomake_javascript_jshint_maker = {
+    \ 'args': ['--verbose'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
+  autocmd! BufWritePost * Neomake
+  let g:neomake_javascript_enabled_makers = ['eslint', 'jscs']
+  map <Leader>e :lnext<CR>
+  map <Leader>E :lprev<CR>
 
   function! JscsFix()
       let l:winview = winsaveview()
@@ -355,9 +387,6 @@
   noremap <leader>f :JscsFix<CR>
 " autocmd BufWritePre *.js,*.jsx JscsFix
 
-  let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
-  map <Leader>e :lnext<CR>
-  map <Leader>E :lprev<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " promptline config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

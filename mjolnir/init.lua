@@ -21,13 +21,14 @@ for key in pairs(resizeMappings) do
   end)
 end
 
-hotkey.bind(modalKey, "r", function() 
+hotkey.bind(modalKey, "r", function()
   mjolnir.reload()
 end)
 
 local focusKeys = {
   s='Safari',
   c='Google Chrome',
+  b='Google Chrome Canary',
   d='Slack',
   f='iTerm',
   n='Spotify',
