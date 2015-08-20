@@ -56,7 +56,8 @@
        \ }
 
 " colorscheme & syntax highlighting
-  NeoBundle 'gosukiwi/vim-atom-dark'
+  " NeoBundle 'gosukiwi/vim-atom-dark'
+  NeoBundle 'mhartington/base16-vim'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'chrisbra/Colorizer'
   NeoBundle 'Yggdroot/indentLine'
@@ -135,8 +136,8 @@
 " Theme
   " set t_Co=256
   syntax enable
-  "let base16colorspace=256
-  colorscheme atom-dark
+  let base16colorspace=256
+  colorscheme base16-oceanicnext
   set background=dark
 
 " Copy to osx clipboard

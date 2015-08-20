@@ -39,8 +39,9 @@
   . <(npm completion)
   # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-code () {
-    VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
-  }
+  code () {
+      VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
+    }
+
 
   # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh

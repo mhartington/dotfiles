@@ -40,27 +40,19 @@
   NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
+  " NeoBundleLazy 'isRuslan/vim-es6', {'autoload':{'filetypes':['javascript']}}
+  " NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
 
-  NeoBundle 'tpope/vim-markdown',{'autoload':{'filetypes':['markdown']}}
-  NeoBundleLazy 'suan/vim-instant-markdown',{'autoload':{'filetypes':['markdown']}}
-  " NeoBundle 'scrooloose/syntastic'
-  NeoBundle 'benekastah/neomake'
-  NeoBundle '1995eaton/vim-better-javascript-completion'
-  NeoBundle 'vim-scripts/SyntaxComplete'
-  NeoBundle 'elzr/vim-json'
+  NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy '1995eaton/vim-better-javascript-completion', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'vim-scripts/SyntaxComplete', {'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
+  NeoBundle 'tpope/vim-markdown'
+  " NeoBundle 'suan/vim-instant-markdown'
+
 " Typescript
-  " NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'HerringtonDarkholme/yats.vim'
-  NeoBundle 'Shougo/vimproc.vim', {
-       \ 'build' : {
-       \     'windows' : 'tools\\update-dll-mingw',
-       \     'cygwin' : 'make -f make_cygwin.mak',
-       \     'mac' : 'make -f make_mac.mak',
-       \     'linux' : 'make',
-       \     'unix' : 'gmake',
-       \    },
-       \ }
+  NeoBundleLazy 'Quramy/tsuquyomi', {'autoload':{'filetypes':['typescript']}}
 
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/base16-vim'
@@ -73,25 +65,36 @@
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
 " untils
+  NeoBundle 'benekastah/neomake'
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'AndrewRadev/switch.vim'
   NeoBundle 'ctrlpvim/ctrlp.vim'
-  NeoBundle 'mhartington/ctrlp-ag'
-  NeoBundle 'Shougo/unite.vim'
+  " NeoBundle 'mhartington/ctrlp-ag'
   NeoBundle 'troydm/asyncfinder.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
-  NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'ap/vim-css-color'
+
+" Shougo
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'linux' : 'make',
+        \     'unix' : 'gmake',
+        \    },
+        \ }
   NeoBundle 'Shougo/deoplete.nvim'
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
-  NeoBundle 'Quramy/tsuquyomi'
+
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
@@ -147,12 +150,12 @@
   colorscheme base16-oceanicnext
   set background=dark
 
-
   map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
   set pastetoggle=<leader>p
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
-  highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
+
+  highlight MatchTag ctermfg=black ctermbg=white guifg=#dddddd guibg=#fff000
   highlight clear SignColumn
 
 " Git gitgutter column colors
@@ -185,7 +188,7 @@
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
   let g:deoplete#enable_at_startup = 1
   map <leader>v :source ~/.dotfiles/nvimrc<CR>
-
+  nmap cp :let @+ = expand("%") <cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -300,7 +303,7 @@
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
 
-  let g:ctrlp_extensions = ['line', 'ag']
+  " let g:ctrlp_extensions = ['line', 'ag']
   let g:ackprg = 'ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
   nnoremap <leader>a :Ag<space>
@@ -350,30 +353,13 @@
   nmap <leader>8 <Plug>AirlineSelectTab8
   nmap <leader>9 <Plug>AirlineSelectTab9
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
+" Linting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  " let g:syntastic_javascript_checkers = ['jscs', 'eslint']
-  " let g:syntastic_check_on_open = 0
-  " " let g:syntastic_always_populate_loc_list = 1
-  " " let g:syntastic_auto_loc_list = 1
-  "
-  " let g:syntastic_aggregate_errors = 1
-  " let g:syntastic_error_symbol = '✗'
-  " let g:syntastic_warning_symbol = '!'
-  " let g:syntastic_style_error_symbol = '✗'
-  " let g:syntastic_style_warning_symbol = '!'
-
-  " noremap <leader>t :SyntasticToggleMode<CR>
-  " let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
-  "
   let g:neomake_javascript_jshint_maker = {
     \ 'args': ['--verbose'],
     \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
     \ }
-  autocmd! BufWritePost * Neomake
+  autocmd! BufWritePost *js Neomake
   let g:neomake_javascript_enabled_makers = ['eslint', 'jscs']
   map <Leader>e :lnext<CR>
   map <Leader>E :lprev<CR>
@@ -391,11 +377,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " promptline config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:promptline_theme = 'airline'
-  let g:promptline_preset = {
-  \'a' : [ promptline#slices#cwd()  ],
-  \'b' : [ promptline#slices#vcs_branch()  ],
-  \'c' : [promptline#slices#git_status()]}
+  " let g:promptline_theme = 'airline'
+  " let g:promptline_preset = {
+  " \'a' : [ promptline#slices#cwd()  ],
+  " \'b' : [ promptline#slices#vcs_branch()  ],
+  " \'c' : [promptline#slices#git_status()]}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source the vimrc file after saving it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
