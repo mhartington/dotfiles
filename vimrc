@@ -57,7 +57,7 @@
 
 " colorscheme & syntax highlighting
   " NeoBundle 'gosukiwi/vim-atom-dark'
-  NeoBundle 'mhartington/base16-vim'
+  NeoBundle 'mhartington/oceanic-next'
   NeoBundle 'kien/rainbow_parentheses.vim'
   NeoBundle 'chrisbra/Colorizer'
   NeoBundle 'Yggdroot/indentLine'
@@ -75,8 +75,8 @@
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
-  NeoBundle 'edkolev/promptline.vim'
-  "NeoBundle 'bling/vim-airline'
+  " NeoBundle 'edkolev/promptline.vim'
+  NeoBundle 'bling/vim-airline'
   "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
@@ -134,10 +134,9 @@
   set mouse=a
 
 " Theme
-  " set t_Co=256
+  set t_Co=256
   syntax enable
-  let base16colorspace=256
-  colorscheme base16-oceanicnext
+  colorscheme OceanicNext
   set background=dark
 
 " Copy to osx clipboard

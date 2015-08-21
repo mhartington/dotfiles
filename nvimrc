@@ -40,22 +40,20 @@
   NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
-  " NeoBundleLazy 'isRuslan/vim-es6', {'autoload':{'filetypes':['javascript']}}
-  " NeoBundleLazy 'othree/yajs.vim', {'autoload':{'filetypes':['javascript']}}
 
   NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy '1995eaton/vim-better-javascript-completion', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'vim-scripts/SyntaxComplete', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
-  " NeoBundle 'suan/vim-instant-markdown'
+  NeoBundle 'suan/vim-instant-markdown'
 
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
   NeoBundleLazy 'Quramy/tsuquyomi', {'autoload':{'filetypes':['typescript']}}
 
 " colorscheme & syntax highlighting
-  NeoBundle 'mhartington/base16-vim'
+  NeoBundle 'mhartington/oceanic-next'
   NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
@@ -95,18 +93,19 @@
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
 
-  NeoBundle 'SirVer/ultisnips'
+  " NeoBundle 'SirVer/ultisnips'
+  NeoBundle 'Shougo/neosnippet.vim'
+  NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
-
-  NeoBundle 'Numkil/ag.nvim'
   NeoBundle 'wincent/terminus'
   NeoBundle 'pelodelfuego/vim-swoop'
   " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-devicons'
   NeoBundle 'matze/vim-move'
-
-
+  NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
+  " NeoBundle 'junegunn/fzf.vim'
+  NeoBundle 'guns/xterm-color-table.vim'
   call neobundle#end()
 
 " Required:
@@ -120,6 +119,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let mapleader = ','
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
   set pastetoggle=<f6>
   " No need for ex mode
   nnoremap Q <nop>
@@ -146,8 +146,7 @@
 " Theme
   syntax enable
   " set t_Co=256
-  let base16colorspace=256
-  colorscheme base16-oceanicnext
+  colorscheme OceanicNext
   set background=dark
 
   map <Leader>b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -230,9 +229,21 @@
 " Snipppets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable snipMate compatibility feature.
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Tell Neosnippet about the other snippets
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+
+" SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd FileType css,scss,sass :ColorHighlight
   noremap <c-f> :Autoformat<CR>
@@ -247,7 +258,7 @@
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
-  autocmd FileType typescript,javascript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+  "autocmd FileType typescript,javascript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
   " let g:typescript_compiler_options = '-sourcemap'
   let g:typescript_indent_disable = 1
@@ -302,15 +313,66 @@
   let g:ctrlp_use_caching = 0
   let g:ctrlp_working_path_mode = 0
   let g:ctrlp_switch_buffer = 0
+  " functions {{{
+  function! s:get_cache_dir(suffix) "{{{
+    return resolve(expand(s:cache_dir . '/' . a:suffix))
+  endfunction "}}}
 
-  " let g:ctrlp_extensions = ['line', 'ag']
-  let g:ackprg = 'ag --nogroup --column'
-  set grepprg=ag\ --nogroup\ --nocolor
-  nnoremap <leader>a :Ag<space>
 
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --smart-case'
-  let g:unite_source_grep_recursive_opt = ''
+  function! Source(begin, end) "{{{
+    let lines = getline(a:begin, a:end)
+    for line in lines
+      execute line
+    endfor
+  endfunction "}}}
+
+
+  function! Preserve(command) "{{{
+    " preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    execute a:command
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+  endfunction "}}}
+
+  function! s:ag_handler(lines)
+    if len(a:lines) < 2 | return | endif
+
+    let cmd = get({'ctrl-x': 'split',
+                \ 'ctrl-v': 'vertical split',
+                \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+    let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+    let first = list[0]
+    execute cmd escape(first.filename, ' %#\')
+    execute first.lnum
+    execute 'normal!' first.col.'|zz'
+
+    if len(list) > 1
+      call setqflist(list)
+      copen
+      wincmd p
+    endif
+  endfunction
+  command! -nargs=* Ag call fzf#run({
+  \ 'source':  printf('ag --nogroup --column --nocolor "%s"',
+  \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+  \ 'sink*':    function('<sid>ag_handler'),
+  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+  \            '--multi --bind ctrl-a:select-all,ctrl-d:deselect-all ',
+  \ 'down':    '35%'
+  \ }) "}}}
+"}}}
+"
+  map <leader>a :FZF<CR>
+  map <leader>c :Ag<CR>
+  nmap <leader>ag :Ag<space>
+  vmap <leader>aw y:Ag <C-r>0<CR>
+  nmap <leader>aw :Ag <C-r><C-w>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
