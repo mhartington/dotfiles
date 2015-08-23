@@ -37,9 +37,12 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  NeoBundleLazy 'pangloss/vim-javascript', {'autoload':{'filetypes':['javascript']}}
+  NeoBundle 'pangloss/vim-javascript'
   NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
+  NeoBundle 'isRuslan/vim-es6'
+  NeoBundle 'luishdez/vim-less'
+  NeoBundle 'kchmck/vim-coffee-script'
 
   NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
   NeoBundleLazy '1995eaton/vim-better-javascript-completion', {'autoload':{'filetypes':['javascript']}}
@@ -120,6 +123,7 @@
   let mapleader = ','
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  set clipboard+=unnamedplus
   set pastetoggle=<f6>
   " No need for ex mode
   nnoremap Q <nop>
@@ -188,7 +192,10 @@
   let g:deoplete#enable_at_startup = 1
   map <leader>v :source ~/.dotfiles/nvimrc<CR>
   nmap cp :let @+ = expand("%") <cr>
+  let g:instant_markdown_autostart = 0
 
+  nnoremap <c-m> :InstantMarkdownPreview<cr>
+  hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -370,9 +377,9 @@
 "
   map <leader>a :FZF<CR>
   map <leader>c :Ag<CR>
-  nmap <leader>ag :Ag<space>
-  vmap <leader>aw y:Ag <C-r>0<CR>
-  nmap <leader>aw :Ag <C-r><C-w>
+  " nmap <leader>ag :Ag<space>
+  " vmap <leader>aw y:Ag <C-r>0<CR>
+  " nmap <leader>aw :Ag <C-r><C-w>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
@@ -391,7 +398,7 @@
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#show_tab_nr = 1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='base16'
+  let g:airline_theme='oceanicnext'
 " make sure to escape the spaces in the name properly
   set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h11
 " Tabline part of vim-airline

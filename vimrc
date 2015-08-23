@@ -75,9 +75,7 @@
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
-  " NeoBundle 'edkolev/promptline.vim'
   NeoBundle 'bling/vim-airline'
-  "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
@@ -328,7 +326,7 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#show_tab_nr = 1
   let g:airline_powerline_fonts = 1
-  let g:airline_theme='base16'
+  let g:airline_theme='oceanicnext'
 " make sure to escape the spaces in the name properly
   set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h11
 " Tabline part of vim-airline
@@ -386,18 +384,10 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " promptline config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:promptline_theme = 'airline'
-  let g:promptline_preset = {
-  \'a' : [ promptline#slices#cwd()  ],
-  \'b' : [ promptline#slices#vcs_branch()  ],
-  \'c' : [promptline#slices#git_status()]}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Source the vimrc file after saving it
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  if has("autocmd")
    autocmd bufwritepost .vimrc source $MYVIMRC
  endif
-
- python from powerline.vim import setup as powerline_setup
- python powerline_setup()
- python del powerline_setup
