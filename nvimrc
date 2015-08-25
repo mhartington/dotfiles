@@ -70,9 +70,9 @@
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'AndrewRadev/switch.vim'
-  NeoBundle 'ctrlpvim/ctrlp.vim'
+  " NeoBundle 'ctrlpvim/ctrlp.vim'
   " NeoBundle 'mhartington/ctrlp-ag'
-  NeoBundle 'troydm/asyncfinder.vim'
+  " NeoBundle 'troydm/asyncfinder.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'bling/vim-airline'
   NeoBundle 'tpope/vim-surround'
@@ -80,7 +80,6 @@
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
   NeoBundle 'ap/vim-css-color'
-
 " Shougo
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/vimproc.vim', {
@@ -107,7 +106,7 @@
   NeoBundle 'ryanoasis/vim-devicons'
   NeoBundle 'matze/vim-move'
   NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
-  " NeoBundle 'junegunn/fzf.vim'
+  NeoBundle 'junegunn/fzf.vim'
   NeoBundle 'guns/xterm-color-table.vim'
   call neobundle#end()
 
@@ -306,80 +305,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP & GREP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--nocolor"
-  let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "**/*.pyc"
-    \ --ignore lib
-    \ -g ""'
-  let g:ctrlp_regexp = 0
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_switch_buffer = 0
-  " functions {{{
-  function! s:get_cache_dir(suffix) "{{{
-    return resolve(expand(s:cache_dir . '/' . a:suffix))
-  endfunction "}}}
-
-
-  function! Source(begin, end) "{{{
-    let lines = getline(a:begin, a:end)
-    for line in lines
-      execute line
-    endfor
-  endfunction "}}}
-
-
-  function! Preserve(command) "{{{
-    " preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " do the business:
-    execute a:command
-    " clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-  endfunction "}}}
-
-  function! s:ag_handler(lines)
-    if len(a:lines) < 2 | return | endif
-
-    let cmd = get({'ctrl-x': 'split',
-                \ 'ctrl-v': 'vertical split',
-                \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-    let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
-
-    let first = list[0]
-    execute cmd escape(first.filename, ' %#\')
-    execute first.lnum
-    execute 'normal!' first.col.'|zz'
-
-    if len(list) > 1
-      call setqflist(list)
-      copen
-      wincmd p
-    endif
-  endfunction
-  command! -nargs=* Ag call fzf#run({
-  \ 'source':  printf('ag --nogroup --column --nocolor "%s"',
-  \                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-  \ 'sink*':    function('<sid>ag_handler'),
-  \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-  \            '--multi --bind ctrl-a:select-all,ctrl-d:deselect-all ',
-  \ 'down':    '35%'
-  \ }) "}}}
-"}}}
-"
-  map <leader>a :FZF<CR>
-  map <leader>c :Ag<CR>
-  " nmap <leader>ag :Ag<space>
-  " vmap <leader>aw y:Ag <C-r>0<CR>
-  " nmap <leader>aw :Ag <C-r><C-w>
+  map <c-p> :FZF<CR>
+  map <leader>a :Ag<CR>
+  vmap <leader>aw y:Ag <C-r>0<CR>
+" nmap <leader>aw :Ag <C-r><C-w>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigate between vim buffers and tmux panels
@@ -401,7 +330,8 @@
   let g:airline_theme='oceanicnext'
 " make sure to escape the spaces in the name properly
   set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h11
-" Tabline part of vim-airline
+
+  " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
   nmap <leader>x :bp <BAR> bd #<CR>
@@ -409,6 +339,7 @@
   nmap <leader>n :enew<cr>
 " Move to the next buffer
   nmap <leader>, :bnext<CR>
+  tmap <leader>, <C-\><C-n>:bnext<cr>
 " Move to the previous buffer
   nmap <leader>. :bprevious<CR>
   let g:airline#extensions#tabline#buffer_idx_mode = 1

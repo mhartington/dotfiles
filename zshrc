@@ -37,11 +37,13 @@
   autoload -U compinit && compinit
   zmodload -i zsh/complist
   . <(npm completion)
-  # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+  # Setting ag as the default source for fzf
+  export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   code () {
       VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
     }
 
-
-  # source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+  ZLE_RPROMPT_INDENT=0
