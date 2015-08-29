@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-  for file in ~/.{aliases,functions,keys,prompt}; do
+  for file in ~/.{aliases,functions,keys}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -47,3 +47,10 @@
     }
 
   ZLE_RPROMPT_INDENT=0
+
+  source ~/antigen/antigen.zsh
+  antigen use oh-my-zsh
+  antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+  # Tell antigen that you're done.
+  antigen apply

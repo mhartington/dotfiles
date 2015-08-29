@@ -70,9 +70,6 @@
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'AndrewRadev/switch.vim'
-  " NeoBundle 'ctrlpvim/ctrlp.vim'
-  " NeoBundle 'mhartington/ctrlp-ag'
-  " NeoBundle 'troydm/asyncfinder.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'bling/vim-airline'
   NeoBundle 'tpope/vim-surround'
@@ -175,7 +172,7 @@
   set wrap linebreak nolist
   set virtualedit=
   set display+=lastline
-  let g:move_key_modifier = 'S'
+  " let g:move_key_modifier = 'S'
 " Navigate between display lines
   noremap  <silent> <Up>   gk
   noremap  <silent> <Down> gj
@@ -193,15 +190,18 @@
   nmap cp :let @+ = expand("%") <cr>
   let g:instant_markdown_autostart = 0
 
-  nnoremap <c-m> :InstantMarkdownPreview<cr>
+  " nnoremap <c-m> :InstantMarkdownPreview<cr>
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+  autocmd TermOpen * set bufhidden=hide
+  tmap <esc> <c-\><c-n><cr>
+  set wildmode=full
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
   map <C-\> :NERDTreeToggle<CR>
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " autocmd StdinReadPre * let s:std_in=1
+  " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
@@ -252,7 +252,7 @@
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd FileType css,scss,sass :ColorHighlight
-  noremap <c-f> :Autoformat<CR>
+  noremap <leader>f :Autoformat<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Typescript & Javscript omni complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -274,6 +274,13 @@
 
   "\h\w*\|[^. \t]\.\w*"
   autocmd FileType typescript setlocal completeopt-=preview
+
+" js folding
+  syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+  setlocal foldmethod=syntax
+  setlocal foldlevel=99
+  nnoremap <space> za
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Emmet customization
 " Enable Emmet in all modes
@@ -307,6 +314,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   map <c-p> :FZF<CR>
   map <leader>a :Ag<CR>
+  tmap <leader>a <c-\><c-n>:Ag<CR>
+  tmap <c-p> <c-\><c-n>:FZF<CR>
   vmap <leader>aw y:Ag <C-r>0<CR>
 " nmap <leader>aw :Ag <C-r><C-w>
 
@@ -335,14 +344,28 @@
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
   nmap <leader>x :bp <BAR> bd #<CR>
+  tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
 " This replaes :tabnew which I used to bind to this mapping
+  nmap <leader>t :term<cr>
   nmap <leader>n :enew<cr>
+  tmap <leader>n <C-\><C-n>:enew<cr>
 " Move to the next buffer
   nmap <leader>, :bnext<CR>
   tmap <leader>, <C-\><C-n>:bnext<cr>
 " Move to the previous buffer
   nmap <leader>. :bprevious<CR>
+  tmap <leader>. <C-\><C-n>:bprevious<CR>
   let g:airline#extensions#tabline#buffer_idx_mode = 1
+  tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
+  tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
+  tmap <leader>3  <C-\><C-n><Plug>AirlineSelectTab3
+  tmap <leader>4  <C-\><C-n><Plug>AirlineSelectTab4
+  tmap <leader>5  <C-\><C-n><Plug>AirlineSelectTab5
+  tmap <leader>6  <C-\><C-n><Plug>AirlineSelectTab6
+  tmap <leader>7  <C-\><C-n><Plug>AirlineSelectTab7
+  tmap <leader>8  <C-\><C-n><Plug>AirlineSelectTab8
+  tmap <leader>9  <C-\><C-n><Plug>AirlineSelectTab9
+
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
   nmap <leader>3 <Plug>AirlineSelectTab3
@@ -371,7 +394,7 @@
   endfunction
   command JscsFix :call JscsFix()
 
-  noremap <leader>f :JscsFix<CR>
+  noremap <leader>j :JscsFix<CR>
 " autocmd BufWritePre *.js,*.jsx JscsFix
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
