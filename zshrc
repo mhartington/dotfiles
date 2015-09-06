@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-  for file in ~/.{aliases,functions,keys}; do
+  for file in ~/.{aliases,functions,prompt,keys}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -49,8 +49,16 @@
   ZLE_RPROMPT_INDENT=0
 
   source ~/antigen/antigen.zsh
-  antigen use oh-my-zsh
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+  # antigen use oh-my-zsh
+  # antigen bundle zsh-users/zsh-syntax-highlighting
+  # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
   # Tell antigen that you're done.
   antigen apply
+  # export BULLETTRAIN_TIME_SHOW=false
+  # export BULLETTRAIN_STATUS_SHOW=false
+
+###-tns-completion-start-###
+if [ -f /Users/mhartington/.tnsrc ]; then
+    source /Users/mhartington/.tnsrc
+fi
+###-tns-completion-end-###
