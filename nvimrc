@@ -108,6 +108,7 @@
   NeoBundle 'junegunn/fzf.vim'
   " NeoBundle 'guns/xterm-color-table.vim'
   NeoBundle 'ashisha/image.vim'
+  NeoBundle 'mhinz/vim-sayonara'
   call neobundle#end()
 
 " Required:
@@ -145,6 +146,16 @@
   let mapleader = ','
   set undofile
   set undodir="$HOME/.VIM_UNDO_FILES"
+" Remember cursor position between vim sessions
+  if has("autocmd")
+  autocmd BufReadPost *
+              \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+              \   exe "normal! g'\"" |
+              \ endif
+              " center buffer around cursor when opening files
+  autocmd BufRead * normal zz
+
+  endif
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -228,8 +239,8 @@
   endfunction " }}}
   set foldtext=MyFoldText()
 
-
-  " set foldlevelstart=99
+  set fdc=1
+  set foldlevel=99
 " Space to toggle folds.
   nnoremap <Space> za
   vnoremap <Space> za
@@ -249,6 +260,7 @@
   map <C-\> :NERDTreeToggle<CR>
   " autocmd StdinReadPre * let s:std_in=1
   " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
@@ -371,15 +383,18 @@
 " vim-airline ---------------------------------------------------------------{{{
 
   let g:airline#extensions#tabline#enabled = 1
+  set hidden
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#show_tab_nr = 1
   let g:airline_powerline_fonts = 1
   let g:airline_theme='oceanicnext'
 
-  " Tabline part of vim-airline
+" Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-  nmap <leader>x :bp <BAR> bd #<CR>
+  cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? ':Sayonara' : 'x'
+" cmap x Sayonara
+
   tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
 " This replaes :tabnew which I used to bind to this mapping
   nmap <leader>t :term<cr>
@@ -392,6 +407,7 @@
   nmap <leader>. :bprevious<CR>
   tmap <leader>. <C-\><C-n>:bprevious<CR>
   let g:airline#extensions#tabline#buffer_idx_mode = 1
+
   tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
   tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
   tmap <leader>3  <C-\><C-n><Plug>AirlineSelectTab3
