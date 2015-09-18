@@ -40,19 +40,20 @@
 
 " syntax
   NeoBundle 'pangloss/vim-javascript'
-  NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'mxw/vim-jsx', {'autoload':{'filetypes':['javascript']}}
-  NeoBundle 'isRuslan/vim-es6'
+  " NeoBundle 'jelera/vim-javascript-syntax'
+  NeoBundle 'mxw/vim-jsx'
+  " NeoBundle 'isRuslan/vim-es6'
   NeoBundle 'luishdez/vim-less'
   NeoBundle 'kchmck/vim-coffee-script'
-
-  NeoBundleLazy 'moll/vim-node', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy '1995eaton/vim-better-javascript-completion', {'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'vim-scripts/SyntaxComplete', {'autoload':{'filetypes':['javascript']}}
+  " NeoBundle 'othree/html5.vim'
+  NeoBundle 'xenoterracide/html.vim'
+  NeoBundle 'moll/vim-node'
+  NeoBundle '1995eaton/vim-better-javascript-completion'
+  NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'suan/vim-instant-markdown'
-
+  NeoBundle 'othree/javascript-libraries-syntax.vim'
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
   NeoBundleLazy 'Quramy/tsuquyomi', {'autoload':{'filetypes':['typescript']}}
@@ -60,7 +61,7 @@
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/oceanic-next'
   NeoBundle 'Yggdroot/indentLine'
-  " NeoBundle 'Raimondi/delimitMate'
+  NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
  " Git helpers
   NeoBundle 'tpope/vim-fugitive'
@@ -78,7 +79,7 @@
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
-  NeoBundle 'ap/vim-css-color'
+  NeoBundle 'gorodinskiy/vim-coloresque'
 " Shougo
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'Shougo/vimproc.vim', {
@@ -94,11 +95,11 @@
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
 
-  " NeoBundle 'SirVer/ultisnips'
   NeoBundle 'Shougo/neosnippet.vim'
   NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
+
   NeoBundle 'wincent/terminus'
   " NeoBundle 'pelodelfuego/vim-swoop'
   " because fuck it, Icons are awesome
@@ -109,6 +110,10 @@
   " NeoBundle 'guns/xterm-color-table.vim'
   NeoBundle 'ashisha/image.vim'
   NeoBundle 'mhinz/vim-sayonara'
+  NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+  NeoBundle 'jceb/vim-orgmode', {'depends': [ 'tpope/vim-repeat','tpope/vim-speeddating' ]}
+  NeoBundle 'rstacruz/vim-hyperstyle'
+  " NeoBundle 'terryma/vim-multiple-cursors'
   call neobundle#end()
 
 " Required:
@@ -156,6 +161,7 @@
   autocmd BufRead * normal zz
 
   endif
+  " let g:jsx_ext_required = 0
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -186,6 +192,8 @@
   inoremap <c-d> <esc>ddi
   noremap H ^
   noremap L g_
+  noremap J 5j
+  noremap K 5k
 " this is the best, let me tell you why
 " how annoying is that everytime you want to do something in vim
 " you have to do shift-; to get :, can't we just do ;?
@@ -197,6 +205,16 @@
   inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
+  noremap <leader>ng :let g:used_javascript_libs = 'angularjs, angularuirouter'<CR>
+  " let g:multi_cursor_next_key='<C-n>'
+  " let g:multi_cursor_prev_key='<C-p>'
+  " let g:multi_cursor_skip_key='<C-x>'
+  " let g:multi_cursor_quit_key='<Esc>'
+
+" Align blocks of text and keep them selected
+  vmap < <gv
+  vmap > >gv
+
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
@@ -213,7 +231,7 @@
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " enable deoplete
-  let g:deoplete#enable_at_startup = 1
+  " let g:deoplete#enable_at_startup = 1
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -237,30 +255,30 @@
       let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
       return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
   endfunction " }}}
-  set foldtext=MyFoldText()
 
-  set fdc=1
+  set foldtext=MyFoldText()
+  autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+  autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+  autocmd FileType vim setlocal fdc=1
   set foldlevel=99
 " Space to toggle folds.
   nnoremap <Space> za
   vnoremap <Space> za
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
-  autocmd FileType html setlocal foldmethod=indent
+  " autocmd FileType html setlocal foldmethod=syntax
+  autocmd FileType html setlocal fdl=3
   autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
-  " autocmd FileType javascript,html,css,scss,typescript setlocal foldlevelstart=99
-  autocmd FileType javascript,typescript setlocal foldmethod=marker
-  autocmd FileType javascript,typescript setlocal foldmarker={,}
-  autocmd FileType css,scss setlocal foldmethod=marker
-  autocmd FileType css,scss setlocal foldmarker={,}
+  autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
+  autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
+  au FileType html,jinja,htmldjango nnoremap <buffer> <leader>F zfat
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
 
   map <C-\> :NERDTreeToggle<CR>
-  " autocmd StdinReadPre * let s:std_in=1
-  " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-  " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
@@ -306,19 +324,17 @@
 "}}}
 
 " Typescript & Javscript omni complete --------------------------------------{{{
-
-  syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-  setlocal foldmethod=syntax
+  let g:deoplete#enable_at_startup = 1
+  " autocmd BufRead,BufNewFile *.js setfiletype javascript
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   let g:typescript_indent_disable = 1
-  let g:deoplete#enable_at_startup = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
-
+  let g:jsx_ext_required = 0
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -392,14 +408,14 @@
 " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-  cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? ':Sayonara' : 'x'
+  cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
 " cmap x Sayonara
 
   tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
 " This replaes :tabnew which I used to bind to this mapping
   nmap <leader>t :term<cr>
-  nmap <leader>n :enew<cr>
-  tmap <leader>n <C-\><C-n>:enew<cr>
+  " nmap <leader>n :enew<cr>
+  " tmap <leader>n <C-\><C-n>:enew<cr>
 " Move to the next buffer
   nmap <leader>, :bnext<CR>
   tmap <leader>, <C-\><C-n>:bnext<cr>

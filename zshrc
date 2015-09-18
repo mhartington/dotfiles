@@ -7,8 +7,6 @@
   export TERMINAL_DARK=1
 #  #export TERM="xterm-256color"
   export CLICOLOR=1
-  # BASE16_SHELL="$HOME/.config/base16-shell/base16-oceanicnext.dark.sh"
-  # [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
   export EDITOR=nvim
   export BREW_PATH="$(brew --prefix)"
   # sudo -V
@@ -46,19 +44,4 @@
       VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
     }
 
-  ZLE_RPROMPT_INDENT=0
-
-  source ~/antigen/antigen.zsh
-  # antigen use oh-my-zsh
-  # antigen bundle zsh-users/zsh-syntax-highlighting
-  # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-  # Tell antigen that you're done.
-  antigen apply
-  # export BULLETTRAIN_TIME_SHOW=false
-  # export BULLETTRAIN_STATUS_SHOW=false
-
-###-tns-completion-start-###
-if [ -f /Users/mhartington/.tnsrc ]; then
-    source /Users/mhartington/.tnsrc
-fi
-###-tns-completion-end-###
+  export ZLE_RPROMPT_INDENT=0
