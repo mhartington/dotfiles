@@ -1,9 +1,3 @@
-
-local application = require "mjolnir.application"
-local hotkey = require "mjolnir.hotkey"
-local window = require "mjolnir.window"
-local fnutils = require "mjolnir.fnutils"
-
 local modalKey = {"alt"}
 
 local resizeMappings = {
@@ -17,18 +11,15 @@ local resizeMappings = {
   o={x=0.66, y=0, w=0.33, h=1},
 
 }
-
 for key in pairs(resizeMappings) do
-  hotkey.bind(modalKey, key, function()
-    local win = window.focusedwindow()
-    if win then win:movetounit(resizeMappings[key]) end
+  hs.hotkey.bind(modalKey, key, function()
+    local win = hs.window.focusedWindow()
+    if win then win:moveToUnit(resizeMappings[key]) end
   end)
 end
-
-hotkey.bind(modalKey, "r", function()
-  mjolnir.reload()
+hs.hotkey.bind(modalKey, "r", function()
+  hs.reload()
 end)
-
 local focusKeys = {
   s='Safari',
   c='Google Chrome',
@@ -44,7 +35,7 @@ local focusKeys = {
   -- v="Visual Studio Code"
 }
 for key in pairs(focusKeys) do
-  hotkey.bind(modalKey, key, function()
-    application.launchorfocus(focusKeys[key])
+  hs.hotkey.bind(modalKey, key, function()
+    hs.application.launchOrFocus(focusKeys[key])
   end)
 end
