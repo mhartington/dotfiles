@@ -39,21 +39,23 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  NeoBundle 'pangloss/vim-javascript'
+  " NeoBundle 'pangloss/vim-javascript'
   " NeoBundle 'jelera/vim-javascript-syntax'
-  NeoBundle 'mxw/vim-jsx'
+  " NeoBundle 'mxw/vim-jsx'
   " NeoBundle 'isRuslan/vim-es6'
-  NeoBundle 'luishdez/vim-less'
+  NeoBundle 'othree/yajs.vim'
   NeoBundle 'kchmck/vim-coffee-script'
+  NeoBundle 'hail2u/vim-css3-syntax'
   " NeoBundle 'othree/html5.vim'
-  NeoBundle 'xenoterracide/html.vim'
+  " NeoBundle 'xenoterracide/html.vim'
   NeoBundle 'moll/vim-node'
   NeoBundle '1995eaton/vim-better-javascript-completion'
-  NeoBundle 'vim-scripts/SyntaxComplete'
+  " NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'suan/vim-instant-markdown'
-  NeoBundle 'othree/javascript-libraries-syntax.vim'
+  " NeoBundle 'othree/javascript-libraries-syntax.vim'
+  NeoBundle 'burnettk/vim-angular'
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
   NeoBundleLazy 'Quramy/tsuquyomi', {'autoload':{'filetypes':['typescript']}}
@@ -95,10 +97,10 @@
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
 
-  NeoBundle 'Shougo/neosnippet.vim'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'honza/vim-snippets'
-  NeoBundle 'matthewsimo/angular-vim-snippets'
+  " NeoBundle 'Shougo/neosnippet.vim'
+  " NeoBundle 'Shougo/neosnippet-snippets'
+  " NeoBundle 'honza/vim-snippets'
+  " NeoBundle 'matthewsimo/angular-vim-snippets'
 
   NeoBundle 'wincent/terminus'
   " NeoBundle 'pelodelfuego/vim-swoop'
@@ -112,8 +114,9 @@
   NeoBundle 'mhinz/vim-sayonara'
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'jceb/vim-orgmode', {'depends': [ 'tpope/vim-repeat','tpope/vim-speeddating' ]}
-  NeoBundle 'rstacruz/vim-hyperstyle'
-  " NeoBundle 'terryma/vim-multiple-cursors'
+  NeoBundle 'terryma/vim-multiple-cursors'
+  " NeoBundle 'vim-arduino-ino'
+  " NeoBundle 'vim-arduino-syntax'
   call neobundle#end()
 
 " Required:
@@ -161,7 +164,9 @@
   autocmd BufRead * normal zz
 
   endif
-  " let g:jsx_ext_required = 0
+  let g:jsx_ext_required = 0
+  set complete=.,w,b,u,t,k
+  let g:gitgutter_max_signs = 1000  " default value
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -205,16 +210,27 @@
   inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
-  noremap <leader>ng :let g:used_javascript_libs = 'angularjs, angularuirouter'<CR>
-  " let g:multi_cursor_next_key='<C-n>'
-  " let g:multi_cursor_prev_key='<C-p>'
-  " let g:multi_cursor_skip_key='<C-x>'
-  " let g:multi_cursor_quit_key='<Esc>'
+  let g:used_javascript_libs = 'angularjs'
+  let g:multi_cursor_next_key='<C-n>'
+  let g:multi_cursor_prev_key='<C-p>'
+  let g:multi_cursor_skip_key='<C-x>'
+  let g:multi_cursor_quit_key='<Esc>'
 
 " Align blocks of text and keep them selected
   vmap < <gv
   vmap > >gv
+  nnoremap <leader>d "_d
+  vnoremap <leader>d "_d
+  vnoremap <c-/> :TComment<cr>
+  map <esc> :noh<cr>
 
+  nmap <leader>sf :call <SID>SynStack()<CR>
+  function! <SID>SynStack()
+    if !exists("*synstack")
+      return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  endfunc
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
@@ -231,7 +247,7 @@
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " enable deoplete
-  " let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 0
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -266,12 +282,12 @@
   vnoremap <Space> za
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
-  " autocmd FileType html setlocal foldmethod=syntax
+  autocmd FileType html setlocal foldmethod=marker
   autocmd FileType html setlocal fdl=3
   autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
-  au FileType html,jinja,htmldjango nnoremap <buffer> <leader>F zfat
+  au FileType html nnoremap <buffer> <leader>F zfat
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -306,31 +322,30 @@
 " Snipppets -----------------------------------------------------------------{{{
 
 " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
-" Tell Neosnippet about the other snippets
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+"   let g:neosnippet#enable_snipmate_compatibility = 1
+"   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"   xmap <C-k>     <Plug>(neosnippet_expand_target)
+" " Tell Neosnippet about the other snippets
+"   let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)"
-  \: "\<TAB>"
+  " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  " \ "\<Plug>(neosnippet_expand_or_jump)"
+  " \: "\<TAB>"
 
 "}}}
 
 " Typescript & Javscript omni complete --------------------------------------{{{
-  let g:deoplete#enable_at_startup = 1
-  " autocmd BufRead,BufNewFile *.js setfiletype javascript
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType typescript setlocal completeopt-=preview
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0

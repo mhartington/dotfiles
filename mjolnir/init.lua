@@ -32,16 +32,16 @@ end)
 local focusKeys = {
   s='Safari',
   c='Google Chrome',
-  b='Google Chrome Canary',
+  -- b='Google Chrome Canary',
   d='Slack',
   f='iTerm',
   n='Spotify',
   e='Simulator',
   t='Messages',
-  y='Screenhero',
-  a="Atom",
-  x="Xcode",
-  v="Visual Studio Code"
+  -- y='Screenhero',
+  -- a="Atom",
+  -- x="Xcode",
+  -- v="Visual Studio Code"
 }
 for key in pairs(focusKeys) do
   hotkey.bind(modalKey, key, function()

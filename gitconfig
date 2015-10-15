@@ -15,4 +15,13 @@
 	smudge = git lfs smudge %f
 	required = true
 [github]
-	user = mhartington
+  user = mhartington
+
+[core]
+  pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
+
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"

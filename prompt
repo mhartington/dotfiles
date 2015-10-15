@@ -93,6 +93,7 @@ function __promptline_left_prompt {
   # close sections
   printf "%s" "${reset_bg}${sep}$reset$space"
 }
+
 function __promptline_wrapper {
   # wrap the text in $1 with $2 and $3, only if $1 is not empty
   # $2 and $3 typically contain non-content-text, like color escape codes and separators
@@ -100,6 +101,7 @@ function __promptline_wrapper {
   [[ -n "$1" ]] || return 1
   printf "%s" "${2}${1}${3}"
 }
+
 function __promptline_git_status {
   [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
 

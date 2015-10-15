@@ -14,7 +14,6 @@
   # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
-
   alias journal=~/.journal.sh
   export JOURNAL_DIR="/Users/mhartington/Journal"
 
@@ -23,6 +22,7 @@
   export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=${JAVA_HOME}/bin:$PATH
   export PATH=/usr/local/bin:$PATH
+  export PATH=${PATH}:~/bin
 
 # Disable zsh autocorrect
   zstyle ':completion:*' menu select
@@ -38,10 +38,6 @@
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   # Setting ag as the default source for fzf
   export FZF_DEFAULT_COMMAND='ag -l -g ""'
-
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  code () {
-      VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*
-    }
-
   export ZLE_RPROMPT_INDENT=0
+  # ln -sf "$(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight" ~/bin/diff-highlight

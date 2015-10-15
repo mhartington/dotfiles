@@ -43,6 +43,7 @@
   NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundle 'nikvdp/ejs-syntax',{'autoload':{'filetypes':['ejs']}}
   NeoBundle 'elzr/vim-json'
+  NeoBundle 'othree/javascript-libraries-syntax.vim'
 " Typescript
   NeoBundle 'leafgarland/typescript-vim'
   NeoBundle 'Shougo/vimproc.vim', {
@@ -91,7 +92,8 @@
   NeoBundle 'matthewsimo/angular-vim-snippets'
 " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-webdevicons'
-
+  NeoBundle 'guns/xterm-color-table.vim'
+  NeoBundle 'sjl/clam.vim'
   call neobundle#end()
 
 " Required:
@@ -119,7 +121,7 @@
   set showcmd
   set backspace=indent,eol,start
   filetype on
-  set number
+  set relativenumber number
   set tabstop=2
   set shiftwidth=2
   set expandtab
@@ -135,6 +137,8 @@
   set t_Co=256
   syntax enable
   colorscheme OceanicNext
+" highlightt the current line number
+  highlight CursorLineNR guifg=#ffffff ctermfg=15
   set background=dark
 
 " Copy to osx clipboard
@@ -191,6 +195,8 @@
   let g:jsx_ext_required = 0
   map <leader>v :source ~/.vimrc<CR>
   map <leader>q :PromptlineSnapshot! ~/.dotfiles/prompt airline<CR>
+
+  let g:used_javascript_libs = 'angularjs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Snipppets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
