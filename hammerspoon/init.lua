@@ -11,15 +11,18 @@ local resizeMappings = {
   o={x=0.66, y=0, w=0.33, h=1},
 
 }
+
 for key in pairs(resizeMappings) do
   hs.hotkey.bind(modalKey, key, function()
     local win = hs.window.focusedWindow()
     if win then win:moveToUnit(resizeMappings[key]) end
   end)
 end
+
 hs.hotkey.bind(modalKey, "r", function()
   hs.reload()
 end)
+
 local focusKeys = {
   s='Safari',
   c='Google Chrome',
@@ -34,6 +37,7 @@ local focusKeys = {
   -- x="Xcode",
   -- v="Visual Studio Code"
 }
+
 for key in pairs(focusKeys) do
   hs.hotkey.bind(modalKey, key, function()
     hs.application.launchOrFocus(focusKeys[key])
