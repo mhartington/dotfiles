@@ -1,6 +1,10 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-  for file in ~/.{aliases,functions,prompt,keys}; do
+  # for file in ~/.{aliases,functions,prompt,keys}; do
+  #   [ -r "$file" ] && source "$file"
+  # done
+  # unset file
+  for file in ~/.{aliases,keys}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -29,7 +33,8 @@
   zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
   setopt completeinword
   zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
-
+  set editing-mode vi
+  set blink-matching-paren on
 # fpath=(~/.zsh/functions $fpath)
   fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
@@ -41,3 +46,12 @@
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export ZLE_RPROMPT_INDENT=0
   # ln -sf "$(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight" ~/bin/diff-highlight
+  source ~/antigen/antigen.zsh
+  antigen use oh-my-zsh
+  antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+  # Tell antigen that you're done.
+  antigen apply
+  export BULLETTRAIN_TIME_SHOW=false
+  export BULLETTRAIN_STATUS_SHOW=false
+  export BULLETTRAIN_PROMPT_ADD_NEWLINE=false

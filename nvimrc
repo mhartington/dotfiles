@@ -113,7 +113,6 @@
   NeoBundle 'ashisha/image.vim'
   NeoBundle 'mhinz/vim-sayonara'
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
-  NeoBundle 'jceb/vim-orgmode', {'depends': [ 'tpope/vim-repeat','tpope/vim-speeddating' ]}
   NeoBundle 'terryma/vim-multiple-cursors'
   " NeoBundle 'vim-arduino-ino'
   " NeoBundle 'vim-arduino-syntax'
@@ -154,8 +153,8 @@
   let mapleader = ','
   set undofile
   set undodir="$HOME/.VIM_UNDO_FILES"
+
 " Remember cursor position between vim sessions
-  if has("autocmd")
   autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
               \   exe "normal! g'\"" |
@@ -163,7 +162,6 @@
               " center buffer around cursor when opening files
   autocmd BufRead * normal zz
 
-  endif
   let g:jsx_ext_required = 0
   set complete=.,w,b,u,t,k
   let g:gitgutter_max_signs = 1000  " default value
@@ -210,7 +208,7 @@
   inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
-  let g:used_javascript_libs = 'angularjs'
+  " let g:used_javascript_libs = 'angularjs'
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-x>'
@@ -223,14 +221,7 @@
   vnoremap <leader>d "_d
   vnoremap <c-/> :TComment<cr>
   map <esc> :noh<cr>
-
-  nmap <leader>sf :call <SID>SynStack()<CR>
-  function! <SID>SynStack()
-    if !exists("*synstack")
-      return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-  endfunc
+  autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
@@ -247,7 +238,7 @@
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " enable deoplete
-  let g:deoplete#enable_at_startup = 0
+  let g:deoplete#enable_at_startup = 1
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -350,6 +341,8 @@
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
   let g:jsx_ext_required = 0
+  " let g:deoplete#omni_patterns = {}
+  " let g:deoplete#omni_patterns.typescript = '.'
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -491,7 +484,7 @@
 
 " Linting -------------------------------------------------------------------{{{
 
-  let g:neomake_javascript_enabled_makers = ['eslint', 'jscs']
+  let g:neomake_javascript_enabled_makers = ['eslint']
   autocmd! BufWritePost *js Neomake
   autocmd! BufWritePost *ts Neomake
   function! JscsFix()
