@@ -39,22 +39,15 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  " NeoBundle 'pangloss/vim-javascript'
-  " NeoBundle 'jelera/vim-javascript-syntax'
-  " NeoBundle 'mxw/vim-jsx'
-  " NeoBundle 'isRuslan/vim-es6'
   NeoBundle 'othree/yajs.vim'
   NeoBundle 'kchmck/vim-coffee-script'
   NeoBundle 'hail2u/vim-css3-syntax'
-  " NeoBundle 'othree/html5.vim'
-  " NeoBundle 'xenoterracide/html.vim'
   NeoBundle 'moll/vim-node'
   NeoBundle '1995eaton/vim-better-javascript-completion'
-  " NeoBundle 'vim-scripts/SyntaxComplete'
+  NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'suan/vim-instant-markdown'
-  " NeoBundle 'othree/javascript-libraries-syntax.vim'
   NeoBundle 'burnettk/vim-angular'
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
@@ -97,25 +90,20 @@
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
 
-  " NeoBundle 'Shougo/neosnippet.vim'
-  " NeoBundle 'Shougo/neosnippet-snippets'
-  " NeoBundle 'honza/vim-snippets'
-  " NeoBundle 'matthewsimo/angular-vim-snippets'
+  NeoBundle 'Shougo/neosnippet.vim'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'honza/vim-snippets'
+  NeoBundle 'matthewsimo/angular-vim-snippets'
 
   NeoBundle 'wincent/terminus'
-  " NeoBundle 'pelodelfuego/vim-swoop'
   " because fuck it, Icons are awesome
   NeoBundle 'ryanoasis/vim-devicons'
-  " NeoBundle 'matze/vim-move'
   NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
   NeoBundle 'junegunn/fzf.vim'
-  " NeoBundle 'guns/xterm-color-table.vim'
   NeoBundle 'ashisha/image.vim'
   NeoBundle 'mhinz/vim-sayonara'
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'terryma/vim-multiple-cursors'
-  " NeoBundle 'vim-arduino-ino'
-  " NeoBundle 'vim-arduino-syntax'
   call neobundle#end()
 
 " Required:
@@ -313,20 +301,20 @@
 " Snipppets -----------------------------------------------------------------{{{
 
 " Enable snipMate compatibility feature.
-"   let g:neosnippet#enable_snipmate_compatibility = 1
-"   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"   xmap <C-k>     <Plug>(neosnippet_expand_target)
-" " Tell Neosnippet about the other snippets
-"   let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k>     <Plug>(neosnippet_expand_target)
+" Tell Neosnippet about the other snippets
+  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
-  " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: "\<TAB>"
+  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)"
+  \: "\<TAB>"
 
 "}}}
 
