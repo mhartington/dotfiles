@@ -211,3 +211,8 @@ else
     PROMPT_COMMAND='__promptline;'$'\n'"$PROMPT_COMMAND"
   fi
 fi
+
+prompt_line_sep() {
+    # newline wont print without a non newline character, so add a zero-width space
+    echo -e '\n%{\u200B%}'
+}

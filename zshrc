@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-  for file in ~/.{aliases,functions,prompt,keys}; do
+  for file in ~/.{aliases,functions,keys,prompt}; do
     [ -r "$file" ] && source "$file"
   done
   unset file
@@ -41,15 +41,14 @@
   export FZF_DEFAULT_COMMAND='ag -l -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export ZLE_RPROMPT_INDENT=0
-  # ln -sf "$(brew --prefix)/share/git-core/contrib/diff-highlight/diff-highlight" ~/bin/diff-highlight
+
+  # export BULLETTRAIN_TIME_SHOW=false
+  # export BULLETTRAIN_STATUS_SHOW=false
+  # export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+  # export DISABLE_AUTO_TITLE=true
   source ~/antigen/antigen.zsh
   # antigen use oh-my-zsh
   antigen bundle zsh-users/zsh-syntax-highlighting
   # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
   # Tell antigen that you're done.
   antigen apply
-  # export BULLETTRAIN_TIME_SHOW=false
-  # export BULLETTRAIN_STATUS_SHOW=false
-  # export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-  # export BULLETTRAIN_GIT_ADDED="%F{black}✚%F{black}"
-  # export BULLETTRAIN_GIT_MODIFIED="%F{blue}✹%F{black}"

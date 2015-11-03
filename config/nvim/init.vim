@@ -45,6 +45,7 @@
   NeoBundle 'moll/vim-node'
   NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundle 'vim-scripts/SyntaxComplete'
+  NeoBundle 'othree/javascript-libraries-syntax.vim'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'suan/vim-instant-markdown'
@@ -153,6 +154,7 @@
   let g:jsx_ext_required = 0
   set complete=.,w,b,u,t,k
   let g:gitgutter_max_signs = 1000  " default value
+  let g:used_javascript_libs = 'angularjs, angularuirouter'
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
