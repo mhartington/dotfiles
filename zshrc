@@ -5,13 +5,9 @@
   done
   unset file
   export TERMINAL_DARK=1
-#  #export TERM="xterm-256color"
   export CLICOLOR=1
   export EDITOR=nvim
   export BREW_PATH="$(brew --prefix)"
-  # sudo -V
-# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
-  # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
   alias journal=~/.journal.sh
@@ -23,6 +19,7 @@
   export PATH=${JAVA_HOME}/bin:$PATH
   export PATH=/usr/local/bin:$PATH
   export PATH=${PATH}:~/bin
+  export ANDROID_HOME=~/Library/Android/sdk
 
 # Disable zsh autocorrect
   zstyle ':completion:*' menu select
@@ -41,11 +38,10 @@
   export FZF_DEFAULT_COMMAND='ag -l -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export ZLE_RPROMPT_INDENT=0
-
-  # export BULLETTRAIN_TIME_SHOW=false
-  # export BULLETTRAIN_STATUS_SHOW=false
-  # export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-  # export DISABLE_AUTO_TITLE=true
+  export BULLETTRAIN_TIME_SHOW=false
+  export BULLETTRAIN_STATUS_SHOW=false
+  export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+  export DISABLE_AUTO_TITLE=true
   source ~/antigen/antigen.zsh
   # antigen use oh-my-zsh
   antigen bundle zsh-users/zsh-syntax-highlighting

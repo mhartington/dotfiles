@@ -105,6 +105,7 @@
   NeoBundle 'mhinz/vim-sayonara'
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'terryma/vim-multiple-cursors'
+  NeoBundle 'pelodelfuego/vim-swoop'
   call neobundle#end()
 
 " Required:
