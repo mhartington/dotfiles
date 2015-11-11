@@ -29,6 +29,7 @@
 
 " Required:
     set runtimepath+=~/.nvim/bundle/neobundle.vim/
+    set runtimepath+=~/.nvim/bundle/bolt.vim/
   endif
 
 " Required:
@@ -213,6 +214,14 @@
   vnoremap <c-/> :TComment<cr>
   map <esc> :noh<cr>
   autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
+
+  nnoremap <leader>e :call <SID>SynStack()<CR>
+  function! <SID>SynStack()
+    if !exists("*synstack")
+      return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  endfunc
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
