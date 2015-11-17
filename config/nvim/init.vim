@@ -29,7 +29,7 @@
 
 " Required:
     set runtimepath+=~/.nvim/bundle/neobundle.vim/
-    set runtimepath+=~/.nvim/bundle/bolt.vim/
+    " set runtimepath+=~/.nvim/bundle/bolt.vim/
   endif
 
 " Required:
@@ -40,12 +40,13 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  NeoBundle 'othree/yajs.vim'
-  NeoBundle 'kchmck/vim-coffee-script'
+  " NeoBundle 'othree/yajs.vim'
+  NeoBundle 'pangloss/vim-javascript'
+  NeoBundle 'mxw/vim-jsx'
+  NeoBundle '1995eaton/vim-better-javascript-completion'
+
   NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'moll/vim-node'
-  NeoBundle '1995eaton/vim-better-javascript-completion'
-  NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundle 'othree/javascript-libraries-syntax.vim'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
@@ -62,6 +63,7 @@
   NeoBundle 'valloric/MatchTagAlways'
  " Git helpers
   NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'jreybert/vimagit'
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 
@@ -106,7 +108,8 @@
   NeoBundle 'mhinz/vim-sayonara'
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'terryma/vim-multiple-cursors'
-  NeoBundle 'pelodelfuego/vim-swoop'
+  NeoBundle 'rhysd/github-complete.vim'
+  NeoBundle 'junegunn/limelight.vim'
   call neobundle#end()
 
 " Required:
@@ -156,7 +159,9 @@
   let g:jsx_ext_required = 0
   set complete=.,w,b,u,t,k
   let g:gitgutter_max_signs = 1000  " default value
-  let g:used_javascript_libs = 'angularjs, angularuirouter'
+  " let g:used_javascript_libs = 'angularjs, angularuirouter'
+  autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+  autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -200,7 +205,6 @@
   inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
-  " let g:used_javascript_libs = 'angularjs'
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-x>'
@@ -238,7 +242,7 @@
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " enable deoplete
-  let g:deoplete#enable_at_startup = 1
+  autocmd FileType css, js let b:deoplete#enable_at_startup = 1
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -340,7 +344,6 @@
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
-  let g:jsx_ext_required = 0
   " let g:deoplete#omni_patterns = {}
   " let g:deoplete#omni_patterns.typescript = '.'
 "}}}
