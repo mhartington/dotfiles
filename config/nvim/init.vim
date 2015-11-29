@@ -10,15 +10,12 @@
 
 " Setup NeoBundle  ----------------------------------------------------------{{{
 " If vundle is not installed, do it first
-
   let bundleExists = 1
   if (!isdirectory(expand("$HOME/.nvim/bundle/neobundle.vim")))
      call system(expand("mkdir -p $HOME/.nvim/bundle"))
      call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.nvim/bundle/neobundle.vim"))
      let bundleExists = 0
   endif
-
-
   if 0 | endif
 
   if has('vim_starting')
@@ -29,7 +26,7 @@
 
 " Required:
     set runtimepath+=~/.nvim/bundle/neobundle.vim/
-    " set runtimepath+=~/.nvim/bundle/bolt.vim/
+    " set runtimepath+=~/Github/deoplete-angular/
   endif
 
 " Required:
@@ -40,21 +37,19 @@
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
-  " NeoBundle 'othree/yajs.vim'
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'mxw/vim-jsx'
+  NeoBundle 'othree/yajs.vim'
   NeoBundle '1995eaton/vim-better-javascript-completion'
-
   NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'moll/vim-node'
+  NeoBundle 'https://github.com/burnettk/vim-angular'
+  NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundle 'othree/javascript-libraries-syntax.vim'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
   NeoBundle 'suan/vim-instant-markdown'
-  NeoBundle 'burnettk/vim-angular'
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
-  NeoBundleLazy 'Quramy/tsuquyomi', {'autoload':{'filetypes':['typescript']}}
+  NeoBundle 'Quramy/tsuquyomi'
 
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/oceanic-next'
@@ -81,6 +76,7 @@
   NeoBundle 'gorodinskiy/vim-coloresque'
 " Shougo
   NeoBundle 'Shougo/unite.vim'
+  " NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
         \     'windows' : 'tools\\update-dll-mingw',
@@ -93,7 +89,7 @@
   NeoBundle 'Shougo/deoplete.nvim'
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
-
+  NeoBundle 'https://github.com/ujihisa/neco-look'
   NeoBundle 'Shougo/neosnippet.vim'
   NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'honza/vim-snippets'
@@ -101,7 +97,6 @@
 
   NeoBundle 'wincent/terminus'
   " because fuck it, Icons are awesome
-  NeoBundle 'ryanoasis/vim-devicons'
   NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
   NeoBundle 'junegunn/fzf.vim'
   NeoBundle 'ashisha/image.vim'
@@ -110,15 +105,13 @@
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'rhysd/github-complete.vim'
   NeoBundle 'junegunn/limelight.vim'
+  NeoBundle 'ryanoasis/vim-devicons'
   call neobundle#end()
 
 " Required:
   filetype plugin indent on
+  let pluginsExist=1
   NeoBundleCheck
-  if bundleExists == 0
-    echo "Installing Bundles, ignore errors"
-  endif
-
 " }}}
 
 " System Settings  ----------------------------------------------------------{{{
@@ -159,7 +152,7 @@
   let g:jsx_ext_required = 0
   set complete=.,w,b,u,t,k
   let g:gitgutter_max_signs = 1000  " default value
-  " let g:used_javascript_libs = 'angularjs, angularuirouter'
+  let g:used_javascript_libs = 'angularjs,angularuirouter'
   autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
 " }}}
@@ -242,7 +235,7 @@
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
 " enable deoplete
-  autocmd FileType css, js let b:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -291,7 +284,9 @@
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
-
+   " let g:NERDTreeDirArrows=0
+  let g:NERDTreeWinSize=45
+  let g:NERDTreeAutoDeleteBuffer=1
 " NERDTress File highlighting
   function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
   exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -338,14 +333,15 @@
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  " autocmd FileType javascript setlocal omnifunc=tern#Complete
   autocmd FileType typescript setlocal completeopt-=preview
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
-  " let g:deoplete#omni_patterns = {}
-  " let g:deoplete#omni_patterns.typescript = '.'
+  let g:deoplete#omni_patterns = {}
+  let g:deoplete#omni_patterns.typescript = '.'
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -377,51 +373,56 @@
 "}}}
 
 " FZF -----------------------------------------------------------------------{{{
-" Brew install fzf
-  map <c-p> :FZF<CR>
-  tmap <c-p> <c-\><c-n>:FZF<CR>
-  map <leader>a :Ag<CR>
-  tmap <leader>a <c-\><c-n>:Ag<CR>
+"
+  let g:unite_data_directory='~/.nvim/.cache/unite'
+  let g:unite_enable_start_insert=1
+  let g:unite_source_history_yank_enable=1
+  " let g:unite_prompt='» '
+  let g:unite_prompt='>> '
+  let g:unite_split_rule = 'botright'
+  let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
+  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/neovim<CR>
 
-  vmap <leader>aw y:Ag <C-r>0<CR>
-" nmap <leader>aw :Ag <C-r><C-w>
-  map <leader>h :History<CR>
-  tmap <leader>h <c-\><c-n>:History<CR>
-  map <leader>l :Lines<CR>
+" Custom :FZF function
+
+" Brew install fzf
+"   map <c-p> :FZF<CR>
+"   tmap <c-p> <c-\><c-n>:FZF<CR>
+"   map <leader>a :Ag<CR>
+"   tmap <leader>a <c-\><c-n>:Ag<CR>
+"
+"   vmap <leader>aw y:Ag <C-r>0<CR>
+" " nmap <leader>aw :Ag <C-r><C-w>
+"   map <leader>h :History<CR>
+"   tmap <leader>h <c-\><c-n>:History<CR>
+"   map <leader>l :Lines<CR>
 "}}}
 
 " Navigate between vim buffers and tmux panels ------------------------------{{{
-
   let g:tmux_navigator_no_mappings = 1
   nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
   nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
   nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
   nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
   nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-
   tmap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
   tmap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
   tmap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
   tmap <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
   tmap <C-;> <C-\><C-n>:TmuxNavigatePrevious<cr>
-
 "}}}
 
 " vim-airline ---------------------------------------------------------------{{{
-
   let g:airline#extensions#tabline#enabled = 1
   set hidden
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#show_tab_nr = 1
   let g:airline_powerline_fonts = 1
   let g:airline_theme='oceanicnext'
-
 " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
   cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
-" cmap x Sayonara
-
   tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
 " This replaes :tabnew which I used to bind to this mapping
   nmap <leader>t :term<cr>
@@ -434,7 +435,6 @@
   nmap <leader>. :bprevious<CR>
   tmap <leader>. <C-\><C-n>:bprevious<CR>
   let g:airline#extensions#tabline#buffer_idx_mode = 1
-
   tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
   tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
   tmap <leader>3  <C-\><C-n><Plug>AirlineSelectTab3
@@ -444,7 +444,6 @@
   tmap <leader>7  <C-\><C-n><Plug>AirlineSelectTab7
   tmap <leader>8  <C-\><C-n><Plug>AirlineSelectTab8
   tmap <leader>9  <C-\><C-n><Plug>AirlineSelectTab9
-
   nmap <leader>1 <Plug>AirlineSelectTab1
   nmap <leader>2 <Plug>AirlineSelectTab2
   nmap <leader>3 <Plug>AirlineSelectTab3
@@ -486,16 +485,15 @@
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
-
   let g:neomake_javascript_enabled_makers = ['eslint']
-  autocmd! BufWritePost *js Neomake
-  autocmd! BufWritePost *ts Neomake
+  autocmd! BufWritePost,BufEnter *js Neomake
+  autocmd! BufWritePost,BufEnter *ts Neomake
   function! JscsFix()
       let l:winview = winsaveview()
       % ! jscs -x
       call winrestview(l:winview)
   endfunction
   command JscsFix :call JscsFix()
-
   noremap <leader>j :JscsFix<CR>
 "}}}
+"

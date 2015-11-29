@@ -4,6 +4,8 @@
     [ -r "$file" ] && source "$file"
   done
   unset file
+  bindkey -v
+  export KEYTIMEOUT=1
   export TERMINAL_DARK=1
   export CLICOLOR=1
   export EDITOR=nvim
@@ -12,7 +14,8 @@
   source ~/.z/z.sh
   alias journal=~/.journal.sh
   export JOURNAL_DIR="/Users/mhartington/Journal"
-
+  export NVIM_PYTHON_LOG_FILE=/tmp/log
+  export NVIM_PYTHON_LOG_LEVEL=DEBUG
 # This is for android crap
   export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
   export JAVA_HOME=$(/usr/libexec/java_home)
@@ -35,8 +38,9 @@
   . <(npm completion)
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
   # Setting ag as the default source for fzf
-  export FZF_DEFAULT_COMMAND='ag -l -g ""'
+  export FZF_DEFAULT_COMMAND='ag --nocolor --ignore .git --ignore *.png --ignore lib -l -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
   export ZLE_RPROMPT_INDENT=0
   export BULLETTRAIN_TIME_SHOW=false
   export BULLETTRAIN_STATUS_SHOW=false
