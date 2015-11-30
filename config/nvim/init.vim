@@ -340,8 +340,8 @@
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
-  let g:deoplete#omni_patterns = {}
-  let g:deoplete#omni_patterns.typescript = '.'
+  " let g:deoplete#omni_patterns = {}
+  " let g:deoplete#omni_patterns.typescript = '.'
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -381,7 +381,7 @@
   let g:unite_prompt='>> '
   let g:unite_split_rule = 'botright'
   let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
-  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/neovim<CR>
+  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/async<CR>
 
 " Custom :FZF function
 
