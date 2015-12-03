@@ -141,7 +141,6 @@
   let mapleader = ','
   set undofile
   set undodir="$HOME/.VIM_UNDO_FILES"
-  let g:github_access_token="6345e4cb410069bf88ef117113d79a3ddc178495"
 " Remember cursor position between vim sessions
   autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
