@@ -9,7 +9,7 @@
   export TERMINAL_DARK=1
   export CLICOLOR=1
   export EDITOR=nvim
-  export BREW_PATH="$(brew --prefix)"
+  # export BREW_PATH=$(brew --prefix)
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
   alias journal=~/.journal.sh

@@ -61,7 +61,7 @@
   NeoBundle 'jreybert/vimagit'
   NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-
+  NeoBundle 'https://github.com/jaxbot/github-issues.vim'
 " untils
   NeoBundle 'benekastah/neomake'
   NeoBundle 'editorconfig/editorconfig-vim'
@@ -104,6 +104,7 @@
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'rhysd/github-complete.vim'
+  NeoBundle 'junegunn/goyo.vim'
   NeoBundle 'junegunn/limelight.vim'
   NeoBundle 'ryanoasis/vim-devicons'
   call neobundle#end()
@@ -140,7 +141,7 @@
   let mapleader = ','
   set undofile
   set undodir="$HOME/.VIM_UNDO_FILES"
-
+  let g:github_access_token="6345e4cb410069bf88ef117113d79a3ddc178495"
 " Remember cursor position between vim sessions
   autocmd BufReadPost *
               \ if line("'\"") > 0 && line ("'\"") <= line("$") |
@@ -381,14 +382,21 @@
   let g:unite_prompt='>> '
   let g:unite_split_rule = 'botright'
   let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
-  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/async<CR>
+  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/neovim<CR>
 
+" Custom mappings for the unite buffer
+  autocmd FileType unite call s:unite_settings()
+  function! s:unite_settings()
+    " Enable navigation with control-j and control-k in insert mode
+    imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+    imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  endfunction
 " Custom :FZF function
 
 " Brew install fzf
 "   map <c-p> :FZF<CR>
 "   tmap <c-p> <c-\><c-n>:FZF<CR>
-"   map <leader>a :Ag<CR>
+  map <leader>a :Ag<CR>
 "   tmap <leader>a <c-\><c-n>:Ag<CR>
 "
 "   vmap <leader>aw y:Ag <C-r>0<CR>
@@ -496,4 +504,4 @@
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
 "}}}
-"
+
