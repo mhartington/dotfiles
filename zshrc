@@ -29,14 +29,16 @@
   zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
   setopt completeinword
   zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
+
   set editing-mode vi
   set blink-matching-paren on
-# fpath=(~/.zsh/functions $fpath)
+
   fpath=(/usr/local/share/zsh-completions $fpath)
   autoload -U compinit && compinit
   zmodload -i zsh/complist
   . <(npm completion)
   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
   # Setting ag as the default source for fzf
   export FZF_DEFAULT_COMMAND='ag --nocolor --ignore .git --ignore *.png --ignore lib -l -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

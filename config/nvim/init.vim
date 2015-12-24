@@ -31,18 +31,20 @@
 
 " Required:
   call neobundle#begin(expand('~/.nvim/bundle/'))
-
+  let pluginsExist = 1
 " Let NeoBundle manage NeoBundle
 " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
 
 " syntax
+  " NeoBundle 'pangloss/vim-javascript'
+  " NeoBundle 'mxw/vim-jsx'
   NeoBundle 'othree/yajs.vim'
   NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'moll/vim-node'
-  NeoBundle 'https://github.com/burnettk/vim-angular'
-  NeoBundle 'vim-scripts/SyntaxComplete'
+  NeoBundle 'burnettk/vim-angular'
+  " NeoBundle 'vim-scripts/SyntaxComplete'
   NeoBundle 'othree/javascript-libraries-syntax.vim'
   NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
   NeoBundle 'tpope/vim-markdown'
@@ -50,7 +52,7 @@
 " Typescript
   NeoBundle 'HerringtonDarkholme/yats.vim'
   NeoBundle 'Quramy/tsuquyomi'
-
+  NeoBundle 'vim-scripts/applescript.vim'
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/oceanic-next'
   NeoBundle 'Yggdroot/indentLine'
@@ -76,7 +78,9 @@
   NeoBundle 'gorodinskiy/vim-coloresque'
 " Shougo
   NeoBundle 'Shougo/unite.vim'
-  " NeoBundle 'Shougo/vimfiler.vim'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'ujihisa/unite-colorscheme'
+  NeoBundle 'Shougo/vimfiler.vim'
   NeoBundle 'Shougo/vimproc.vim', {
         \ 'build' : {
         \     'windows' : 'tools\\update-dll-mingw',
@@ -89,23 +93,27 @@
   NeoBundle 'Shougo/deoplete.nvim'
   NeoBundle 'Shougo/neco-vim'
   NeoBundle 'Shougo/neoinclude.vim'
-  NeoBundle 'https://github.com/ujihisa/neco-look'
+  NeoBundleLazy 'ujihisa/neco-look',{'autoload':{'filetypes':['markdown']}}
   NeoBundle 'Shougo/neosnippet.vim'
   NeoBundle 'Shougo/neosnippet-snippets'
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
 
-  NeoBundle 'wincent/terminus'
-  " because fuck it, Icons are awesome
+  NeoBundle 'KabbAmine/gulp-vim'
   NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
   NeoBundle 'junegunn/fzf.vim'
   NeoBundle 'ashisha/image.vim'
   NeoBundle 'mhinz/vim-sayonara'
+  NeoBundle 'vim-lua-ftplugin', {'depends': 'xolox/vim-misc'}
   NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'rhysd/github-complete.vim'
   NeoBundle 'junegunn/goyo.vim'
   NeoBundle 'junegunn/limelight.vim'
+  NeoBundle 'https://github.com/danielmiessler/VimBlog'
+  NeoBundle 'https://github.com/neovim/node-host'
+  " NeoBundle 'Wildog/airline-weather.vim', {'depends': 'mattn/webapi-vim'}
+
   NeoBundle 'ryanoasis/vim-devicons'
   call neobundle#end()
 
@@ -115,11 +123,14 @@
   NeoBundleCheck
 " }}}
 
+if pluginsExist
 " System Settings  ----------------------------------------------------------{{{
 
+  source ~/.local.vim
 " Neovim Settings
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+  let $NEOVIM_JS_DEBUG='~/.nvimjsdebug'
   set clipboard+=unnamedplus
 " Currently needed for neovim paste issue
   set pastetoggle=<f6>
@@ -155,6 +166,13 @@
   let g:used_javascript_libs = 'angularjs,angularuirouter'
   autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
   autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+  let g:lua_complete_omni = 1
+
+  let g:weather#area = 'providence,us'
+  let g:weather#unit = 'imperial'
+  let g:weather#appid = '2c83c228da74ab9a9c7f756b0a7c6aaf'
+  let g:weather#cache_file = '~/.cache/.weather'
+  let g:weather#cache_ttl = '3600'
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -198,6 +216,8 @@
   inoremap <c-f> <c-x><c-f>
 " Copy to osx clipboard
   vnoremap <C-c> "*y<CR>
+  vnoremap y "*y<CR>
+  nnoremap Y "*Y<CR>
   let g:multi_cursor_next_key='<C-n>'
   let g:multi_cursor_prev_key='<C-p>'
   let g:multi_cursor_skip_key='<C-x>'
@@ -219,6 +239,13 @@
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
   endfunc
+
+  function! s:PlaceholderImgTag(size)
+    let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
+    let [width,height] = split(a:size, 'x')
+    execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
+    endfunction
+  command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
@@ -282,9 +309,8 @@
 
   map <C-\> :NERDTreeToggle<CR>
   autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
   let NERDTreeShowHidden=1
-   " let g:NERDTreeDirArrows=0
   let g:NERDTreeWinSize=45
   let g:NERDTreeAutoDeleteBuffer=1
 " NERDTress File highlighting
@@ -332,7 +358,8 @@
 " Typescript & Javscript omni complete --------------------------------------{{{
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  set omnifunc=syntaxcomplete#Complete
+  " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   " autocmd FileType javascript setlocal omnifunc=tern#Complete
@@ -340,8 +367,14 @@
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
-  " let g:deoplete#omni_patterns = {}
-  " let g:deoplete#omni_patterns.typescript = '.'
+  let g:deoplete#omni_patterns = {}
+  let g:deoplete#omni_patterns.typescript=[
+                \'[^. \t0-9]\.\w*',
+                \'[^. \t0-9]\->\w*',
+                \'[^. \t0-9]\::\w*',
+                \'\s[A-Z][a-z]',
+                \'^\s*@[A-Z][a-z]'
+                \]
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -375,13 +408,13 @@
 " FZF -----------------------------------------------------------------------{{{
 "
   let g:unite_data_directory='~/.nvim/.cache/unite'
-  let g:unite_enable_start_insert=1
   let g:unite_source_history_yank_enable=1
-  " let g:unite_prompt='» '
-  let g:unite_prompt='>> '
-  let g:unite_split_rule = 'botright'
+  let g:unite_prompt='» '
   let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
-  nnoremap <silent> <c-p> :Unite -auto-resize file_rec/neovim<CR>
+
+  nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/neovim2<CR>
+  nnoremap <silent> <leader>c :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
+  nnoremap <silent> <leader>u :Unite neobundle/update<CR>
 
 " Custom mappings for the unite buffer
   autocmd FileType unite call s:unite_settings()
@@ -390,10 +423,47 @@
     imap <buffer> <C-j>   <Plug>(unite_select_next_line)
     imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
   endfunction
-" Custom :FZF function
 
+ nnoremap <leader>gt :Unite -buffer-name=gulp gulp<CR>
+
+" Git from unite...ERMERGERD ------------------------------------------------{{{
+let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
+let g:unite_source_menu_menus.git = {
+    \ 'description' : 'Fugitive interface',
+    \}
+  let g:unite_source_menu_menus.git.command_candidates = [
+    \[' git status', 'Gstatus'],
+    \[' git diff', 'Gvdiff'],
+    \[' git commit', 'Gcommit'],
+    \[' git stage/add', 'Gwrite'],
+    \[' git checkout', 'Gread'],
+    \[' git rm', 'Gremove'],
+    \[' git cd', 'Gcd'],
+    \[' git push', 'exe "Git! push " input("remote/branch: ")'],
+    \[' git pull', 'exe "Git! pull " input("remote/branch: ")'],
+    \[' git pull rebase', 'exe "Git! pull --rebase " input("branch: ")'],
+    \[' git fetch', 'Gfetch'],
+    \[' git merge', 'Gmerge'],
+    \[' git browse', 'Gbrowse'],
+    \[' git head', 'Gedit HEAD^'],
+    \[' git parent', 'edit %:h'],
+    \[' git log commit buffers', 'Glog --'],
+    \[' git log current file', 'Glog -- %'],
+    \[' git log last n commits', 'exe "Glog -" input("num: ")'],
+    \[' git log first n commits', 'exe "Glog --reverse -" input("num: ")'],
+    \[' git log until date', 'exe "Glog --until=" input("day: ")'],
+    \[' git log grep commits',  'exe "Glog --grep= " input("string: ")'],
+    \[' git log pickaxe',  'exe "Glog -S" input("string: ")'],
+    \[' git index', 'exe "Gedit " input("branchname\:filename: ")'],
+    \[' git mv', 'exe "Gmove " input("destination: ")'],
+    \[' git grep',  'exe "Ggrep " input("string: ")'],
+    \[' git prompt', 'exe "Git! " input("command: ")'],
+    \] " Append ' --' after log to get commit info commit buffers
+  nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git -start-insert menu:git<CR>
+"}}}
+" Custom :FZF function
 " Brew install fzf
-"   map <c-p> :FZF<CR>
+  " map <c-p> :FZF<CR>
 "   tmap <c-p> <c-\><c-n>:FZF<CR>
   map <leader>a :Ag<CR>
 "   tmap <leader>a <c-\><c-n>:Ag<CR>
@@ -426,19 +496,11 @@
   let g:airline#extensions#tabline#show_tab_nr = 1
   let g:airline_powerline_fonts = 1
   let g:airline_theme='oceanicnext'
-" Tabline part of vim-airline
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
   cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
   tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
-" This replaes :tabnew which I used to bind to this mapping
   nmap <leader>t :term<cr>
-  " nmap <leader>n :enew<cr>
-  " tmap <leader>n <C-\><C-n>:enew<cr>
-" Move to the next buffer
   nmap <leader>, :bnext<CR>
   tmap <leader>, <C-\><C-n>:bnext<cr>
-" Move to the previous buffer
   nmap <leader>. :bprevious<CR>
   tmap <leader>. <C-\><C-n>:bprevious<CR>
   let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -460,41 +522,21 @@
   nmap <leader>7 <Plug>AirlineSelectTab7
   nmap <leader>8 <Plug>AirlineSelectTab8
   nmap <leader>9 <Plug>AirlineSelectTab9
-
-" Get circle status
-"
-  " let g:circle_last_update = localtime()
-  " let g:circle_update_frequencey_in_seconds = 30
-  "
-  " function! UpdateCirlceStatus()
-  "   let output = system('circle status')
-  "   if v:shell_error
-  "     let g:circle_last_status = 'fail'
-  "   else
-  "     let g:circle_last_status = 'pass'
-  "   endif
-  "   return g:circle_last_status
-  " endfunction
-  "
-  " let g:circle_last_status = UpdateCirlceStatus()
-  "
-  " function! CircleStatus()
-  "   let current_time = localtime()
-  "   if current_time - g:circle_last_update > g:circle_update_frequencey_in_seconds
-  "     let g:circle_last_update = current_time
-  "     echo "Checking CI"
-  "     call UpdateCirlceStatus()
-  "   endif
-  "   return g:circle_last_status
-  " endfunction
-  "
-  " let g:airline_section_b = "%{CircleStatus()}"
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
+
   let g:neomake_javascript_enabled_makers = ['eslint']
-  autocmd! BufWritePost,BufEnter *js Neomake
-  autocmd! BufWritePost,BufEnter *ts Neomake
+
+
+  function! neomake#makers#ft#javascript#eslint()
+      return {
+          \ 'args': ['-f', 'compact'],
+          \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+          \ '%W%f: line %l\, col %c\, Warning - %m'
+          \ }
+  endfunction
+  autocmd! BufWritePost * Neomake
   function! JscsFix()
       let l:winview = winsaveview()
       % ! jscs -x
@@ -503,4 +545,4 @@
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
 "}}}
-
+endif
