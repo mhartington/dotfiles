@@ -70,6 +70,8 @@
   NeoBundle 'scrooloose/nerdtree'
   NeoBundle 'AndrewRadev/switch.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
+  NeoBundle 'tmux-plugins/vim-tmux'
+  NeoBundle 'tmux-plugins/vim-tmux-focus-events'
   NeoBundle 'bling/vim-airline'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
