@@ -12,13 +12,13 @@
   # export BREW_PATH=$(brew --prefix)
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
-  alias journal=~/.journal.sh
-  export JOURNAL_DIR="/Users/mhartington/Journal"
+  # alias journal=~/.journal.sh
+  # export JOURNAL_DIR="/Users/mhartington/Journal"
   export NVIM_PYTHON_LOG_FILE=/tmp/log
   export NVIM_PYTHON_LOG_LEVEL=DEBUG
 # This is for android crap
-  export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
-  export JAVA_HOME=$(/usr/libexec/java_home)
+  # export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
+  # export JAVA_HOME=$(/usr/libexec/java_home)
   export PATH=${JAVA_HOME}/bin:$PATH
   export PATH=/usr/local/bin:$PATH
   export PATH=${PATH}:~/bin
@@ -54,3 +54,6 @@
   # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
   # Tell antigen that you're done.
   antigen apply
+  export PATH="$HOME/.linuxbrew/bin:$PATH"
+  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
