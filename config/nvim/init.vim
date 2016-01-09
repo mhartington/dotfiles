@@ -41,6 +41,7 @@
   " NeoBundle 'mxw/vim-jsx'
   NeoBundle 'othree/yajs.vim'
   NeoBundle '1995eaton/vim-better-javascript-completion'
+  NeoBundleLazy 'kchmck/vim-coffee-script',  {'autoload':{'filetypes':['coffee']}}
   NeoBundle 'hail2u/vim-css3-syntax'
   NeoBundle 'moll/vim-node'
   NeoBundle 'burnettk/vim-angular'
@@ -304,6 +305,7 @@ if pluginsExist
   autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
+  autocmd FileType coffee setl foldmethod=indent
   au FileType html nnoremap <buffer> <leader>F zfat
 " }}}
 
@@ -400,7 +402,7 @@ if pluginsExist
 " return a regular tab character
    return "\<tab>"
    endfunction
-   autocmd FileType html imap <buffer><expr><tab> <sid>expand_html_tab()
+   autocmd FileType html,markdown imap <buffer><expr><tab> <sid>expand_html_tab()
 
    let g:use_emmet_complete_tag = 1
    let g:user_emmet_install_global = 0

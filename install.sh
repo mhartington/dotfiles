@@ -39,29 +39,6 @@ then
 else
   echo "git is not installed"
 fi
-echo "---------------------------------------------------------"
-
-
-echo "Making backups of vim, tmux conf files"
-if [ -e ~/.vimrc ]
-then
-  cp ~/.vimrc ~/.vimrc.bak
-  echo "Old vimrc is now saved as vimrc.bak"
-fi
-
-if [ -e ~/.tmux.conf ]
-then
-  cp ~/.tmux.conf ~/.tmux.conf.bak
-  echo "Old tmux.conf is now saved as tmux.conf.bak"
-fi
-
-if [ -e ~/.zshrc ]
-then
-  cp ~/.zshrc ~/.zshrc.back
-  echo "Old zshrc is now saved as zshrc.bak"
-fi
-echo "---------------------------------------------------------"
-
 # Okay so everything should be good
 # Fingers cross at least
 # Now lets clone my dotfiles repo into .dotfiles/
@@ -92,20 +69,13 @@ echo "---------------------------------------------------------"
 echo "running oxs defaults"
 ~./osx.sh
 
-# echo "---------------------------------------------------------"
-# echo "Installing H"
-# rock=(
-# "mjolnir.application"
-# "mjolnir.fnutils"
-# "mjolnir.geometry"
-# "mjolnir.hotkey"
-# "mjolnir.screen"
-# "mjolnir.keycodes"
-# )
-# for r in "${rocks[@]}"
-# do
-#   luarocks install $r
-
+echo "---------------------------------------------------------"
+echo "Downloading Hammerspoon"
+cd ~/Downloads
+curl https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.43/Hammerspoon-0.9.43.zip | unzip
+unzip Hammerspoon-0.9.43.zip
+mv Hammerspoon /Applications/
+echo 'done'
 echo "---------------------------------------------------------"
 echo "All done!"
 echo "and change your terminal font to source code pro"

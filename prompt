@@ -1,6 +1,4 @@
 #
-# This shell prompt config file was created by promptline.vim
-#
 function __promptline_ps1 {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 

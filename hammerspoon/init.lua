@@ -35,7 +35,7 @@ local focusKeys = {
   -- y='Screenhero',
   -- a="Atom",
   -- x="Xcode",
-  -- v="Visual Studio Code"
+  v="Visual Studio Code"
 }
 
 for key in pairs(focusKeys) do
