@@ -76,7 +76,7 @@
   NeoBundle 'terryma/vim-multiple-cursors'
   NeoBundle 'ctrlpvim/ctrlp.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
-  " NeoBundle 'bling/vim-airline'
+  NeoBundle 'vim-airline/vim-airline'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
@@ -94,6 +94,7 @@
   NeoBundle 'ryanoasis/vim-webdevicons'
   NeoBundle 'guns/xterm-color-table.vim'
   NeoBundle 'sjl/clam.vim'
+  NeoBundle 'vim-scripts/CSApprox'
   NeoBundle 'fmoralesc/vim-tutor-mode'
   call neobundle#end()
 
@@ -125,6 +126,7 @@
     set laststatus=0
   set backspace=indent,eol,start
   filetype on
+  let g:CSApprox_loaded = 1
   " set relativenumber number
   set foldlevelstart=1
   set foldenable
@@ -172,7 +174,7 @@
   vnoremap <C-c> "*y<CR>
   highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
   highlight clear SignColumn
-
+  set laststatus=2
 " Git gitgutter column colors
   call gitgutter#highlight#define_highlights()
 
@@ -363,7 +365,7 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
   let g:airline_powerline_fonts = 1
   let g:airline_theme='oceanicnext'
 " make sure to escape the spaces in the name properly
-  set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h11
+  set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
 " Tabline part of vim-airline
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
@@ -416,7 +418,3 @@ let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
   let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
   map <Leader>e :lnext<CR>
   map <Leader>E :lprev<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" promptline config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-

@@ -38,8 +38,11 @@
 
 " syntax
   " NeoBundle 'pangloss/vim-javascript'
+  " NeoBundle 'jelera/vim-javascript-syntax'
   " NeoBundle 'mxw/vim-jsx'
   NeoBundle 'othree/yajs.vim'
+  NeoBundle 'othree/es.next.syntax.vim'
+
   NeoBundle '1995eaton/vim-better-javascript-completion'
   NeoBundleLazy 'kchmck/vim-coffee-script',  {'autoload':{'filetypes':['coffee']}}
   NeoBundle 'hail2u/vim-css3-syntax'
@@ -57,6 +60,7 @@
 " colorscheme & syntax highlighting
   NeoBundle 'mhartington/oceanic-next'
   NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'myhere/vim-nodejs-complete'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
  " Git helpers
@@ -73,7 +77,7 @@
   NeoBundle 'christoomey/vim-tmux-navigator'
   NeoBundle 'tmux-plugins/vim-tmux'
   NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-  NeoBundle 'bling/vim-airline'
+  NeoBundle 'vim-airline/vim-airline'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
@@ -102,7 +106,6 @@
   NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
 
-  NeoBundle 'KabbAmine/gulp-vim'
   NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
   NeoBundle 'junegunn/fzf.vim'
   NeoBundle 'ashisha/image.vim'
@@ -115,7 +118,12 @@
   NeoBundle 'junegunn/limelight.vim'
   NeoBundle 'https://github.com/danielmiessler/VimBlog'
   NeoBundle 'https://github.com/neovim/node-host'
+  NeoBundle 'vim-scripts/SyntaxRange'
+  NeoBundle 'vim-scripts/ingo-library'
+  NeoBundle 'vim-scripts/CSApprox'
+  " NeoBundle 'vim-scripts/XML-Folding'
   " NeoBundle 'Wildog/airline-weather.vim', {'depends': 'mattn/webapi-vim'}
+  NeoBundle 'ruanyl/vim-fixmyjs'
 
   NeoBundle 'ryanoasis/vim-devicons'
   call neobundle#end()
@@ -176,6 +184,10 @@ if pluginsExist
   let g:weather#appid = '2c83c228da74ab9a9c7f756b0a7c6aaf'
   let g:weather#cache_file = '~/.cache/.weather'
   let g:weather#cache_ttl = '3600'
+  let g:indentLine_char='│'
+  " enable deoplete
+  let g:deoplete#enable_at_startup = 1
+
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -264,8 +276,6 @@ if pluginsExist
   autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
 " highlight bad words in red
   hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
-" enable deoplete
-  let g:deoplete#enable_at_startup = 1
 " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
 " Keep my termo window open when I navigate away
@@ -290,9 +300,27 @@ if pluginsExist
       return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
   endfunction " }}}
 
+  function! JavaScriptFold() "{{{
+    " syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+    setlocal foldmethod=syntax
+    setlocal foldlevel=99
+    echo "hello"
+    syn region foldBraces start=/{/ skip=/\(\/\/.*\)\|\(\/.*\/\)/ end=/}/ transparent fold keepend extend
+  endfunction "}}}
+
+  " function! HTMLFold() "{{{
+  "   " syn sync fromstart
+  "   set foldmethod=syntax
+  "   syn region HTMLFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
+  "   syn match HTMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
+  "   syn match HTMLCommentFold "<!--\_.\{-}-->" fold transparent extend
+  " endfunction "}}}
+
   set foldtext=MyFoldText()
+
   autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
   autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
   autocmd FileType vim setlocal fdc=1
   set foldlevel=99
 " Space to toggle folds.
@@ -300,13 +328,17 @@ if pluginsExist
   vnoremap <Space> za
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
-  autocmd FileType html setlocal foldmethod=marker
-  autocmd FileType html setlocal fdl=3
+
+  " au FileType html call HTMLFold()
+  " autocmd FileType html setlocal foldmethod=syntax
+  autocmd FileType html setlocal fdl=99
+
+  " autocmd FileType javascript call JavaScriptFold()
   autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
   autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
   autocmd FileType coffee setl foldmethod=indent
-  au FileType html nnoremap <buffer> <leader>F zfat
+  " au FileType html nnoremap <buffer> <leader>F zfat
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -362,12 +394,8 @@ if pluginsExist
 " Typescript & Javscript omni complete --------------------------------------{{{
   let g:vimjs#casesensistive = 1
   let g:vimjs#smartcomplete = 1
-  set omnifunc=syntaxcomplete#Complete
-  " autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  " autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  " autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  " autocmd FileType javascript setlocal omnifunc=tern#Complete
-  autocmd FileType typescript setlocal completeopt-=preview
+  set completeopt-=preview
+  " autocmd FileType typescript setlocal completeopt+=
   let g:typescript_indent_disable = 1
   let g:tsuquyomi_disable_quickfix = 1
   let g:vim_json_syntax_conceal = 0
@@ -409,7 +437,7 @@ if pluginsExist
    autocmd FileType html,css,ejs EmmetInstall
 "}}}
 
-" FZF -----------------------------------------------------------------------{{{
+" unite ---------------------------------------------------------------------{{{
 "
   let g:unite_data_directory='~/.nvim/.cache/unite'
   let g:unite_source_history_yank_enable=1
@@ -422,13 +450,12 @@ if pluginsExist
 
 " Custom mappings for the unite buffer
   autocmd FileType unite call s:unite_settings()
-  function! s:unite_settings()
+
+  function! s:unite_settings() "{{{
     " Enable navigation with control-j and control-k in insert mode
     imap <buffer> <C-j>   <Plug>(unite_select_next_line)
     imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  endfunction
-
- nnoremap <leader>gt :Unite -buffer-name=gulp gulp<CR>
+  endfunction "}}}
 
 " Git from unite...ERMERGERD ------------------------------------------------{{{
 let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
@@ -446,6 +473,7 @@ let g:unite_source_menu_menus.git = {
     \[' git push', 'exe "Git! push " input("remote/branch: ")'],
     \[' git pull', 'exe "Git! pull " input("remote/branch: ")'],
     \[' git pull rebase', 'exe "Git! pull --rebase " input("branch: ")'],
+    \[' git checkout branch', 'exe "Git! checkout " input("branch: ")'],
     \[' git fetch', 'Gfetch'],
     \[' git merge', 'Gmerge'],
     \[' git browse', 'Gbrowse'],
@@ -530,8 +558,6 @@ let g:unite_source_menu_menus.git = {
 
 " Linting -------------------------------------------------------------------{{{
 
-  let g:neomake_javascript_enabled_makers = ['eslint']
-
 
   function! neomake#makers#ft#javascript#eslint()
       return {
@@ -540,6 +566,7 @@ let g:unite_source_menu_menus.git = {
           \ '%W%f: line %l\, col %c\, Warning - %m'
           \ }
   endfunction
+  let g:neomake_javascript_enabled_makers = ['eslint']
   autocmd! BufWritePost * Neomake
   function! JscsFix()
       let l:winview = winsaveview()
