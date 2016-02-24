@@ -4,208 +4,178 @@
 "| |  | | |   <  __/\__ \ \ \_/ / | | | | | | | | (__
 "\_|  |_/_|_|\_\___||___/  \___/|_|_| |_| |_|_|  \___|
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Author: Mike Hartington
+" repo  : https://github.com/mhartington/dotfiles/
+"
+
+" Setup NeoBundle  ----------------------------------------------------------{{{
 " If vundle is not installed, do it first
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-   let bundleExists = 1
-  if (!isdirectory(expand("$HOME/.vim/bundle/neobundle.vim")))
-     call system(expand("mkdir -p $HOME/.vim/bundle"))
-     call system(expand("git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim"))
-     let bundleExists = 0
+  if (!isdirectory(expand("$HOME/.config/nvim/bundle/neobundle.vim")))
+     call system(expand("mkdir -p $HOME/.confg/nvim/bundle"))
+     call system(expand("git clone https://github.com/Shougo/neobundle.vim $HOME/.config/nvim/bundle/neobundle.vim"))
   endif
 
-  if 0 | endif
-
-  if has('vim_starting')
-    if &compatible
-      set nocompatible               " Be iMproved
-    endif
+  set nocompatible
 
 " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-  endif
+    set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+    " set runtimepath+=~/Github/deoplete-angular/
 
 " Required:
-  call neobundle#begin(expand('~/.vim/bundle/'))
-
+  call neobundle#begin(expand('~/.config/nvim/bundle/'))
+  let pluginsExist = 0
 " Let NeoBundle manage NeoBundle
 " Required:
   NeoBundleFetch 'Shougo/neobundle.vim'
- " syntax
-  NeoBundle 'wavded/vim-stylus'
-  NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'scrooloose/syntastic'
-  NeoBundle 'tmux-plugins/vim-tmux'
-  NeoBundle 'digitaltoad/vim-jade'
-  " NeoBundle 'othree/yajs.vim'
-  NeoBundle 'pangloss/vim-javascript'
-  NeoBundle 'mxw/vim-jsx'
-  NeoBundle '1995eaton/vim-better-javascript-completion'
-  NeoBundle 'nikvdp/ejs-syntax',{'autoload':{'filetypes':['ejs']}}
-  NeoBundle 'elzr/vim-json'
-  NeoBundle 'othree/javascript-libraries-syntax.vim'
-" Typescript
-  NeoBundle 'leafgarland/typescript-vim'
-  NeoBundle 'Shougo/vimproc.vim', {
-       \ 'build' : {
-       \     'windows' : 'tools\\update-dll-mingw',
-       \     'cygwin' : 'make -f make_cygwin.mak',
-       \     'mac' : 'make -f make_mac.mak',
-       \     'linux' : 'make',
-       \     'unix' : 'gmake',
-       \    },
-       \ }
 
+" syntax
+  NeoBundleLazy 'othree/yajs.vim',{'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'othree/es.next.syntax.vim',{'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'othree/jsdoc-syntax.vim', {'autoload':{'filetypes':['javascript','typescript']}}
+  NeoBundleLazy '1995eaton/vim-better-javascript-completion',{'autoload':{'filetypes':['javascript']}}
+  NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload':{'filetypes':['coffee']}}
+  NeoBundleLazy 'hail2u/vim-css3-syntax',{'autoload':{'filetypes':['css','scss']}}
+  " NeoBundle 'vim-scripts/SyntaxComplete'
+  " NeoBundle 'othree/javascript-libraries-syntax.vim'
+  NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
+  NeoBundle 'tpope/vim-markdown'
+  NeoBundle 'dhruvasagar/vim-table-mode'
+  NeoBundle 'suan/vim-instant-markdown'
+  NeoBundle 'tmhedberg/SimpylFold'
+" Typescript
+  NeoBundle 'HerringtonDarkholme/yats.vim'
+  " NeoBundle 'Quramy/tsuquyomi'
 " colorscheme & syntax highlighting
-  " NeoBundle 'gosukiwi/vim-atom-dark'
   NeoBundle 'mhartington/oceanic-next'
-  NeoBundle 'kien/rainbow_parentheses.vim'
-  NeoBundle 'chrisbra/Colorizer'
-  " NeoBundle 'Yggdroot/indentLine'
+  NeoBundle 'nanotech/jellybeans.vim'
+  NeoBundle 'chriskempson/base16-vim'
+  NeoBundle 'Yggdroot/indentLine'
   NeoBundle 'Raimondi/delimitMate'
   NeoBundle 'valloric/MatchTagAlways'
  " Git helpers
   NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'jreybert/vimagit'
+  " NeoBundle 'airblade/vim-gitgutter'
+  NeoBundle 'mhinz/vim-signify'
   NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-
-" untils
-  NeoBundle 'matze/vim-move'
+  NeoBundle 'https://github.com/jaxbot/github-issues.vim'
+  NeoBundle 'LemonBoy/autobahn'
+" utils
+  NeoBundle 'tpope/vim-repeat'
+  NeoBundle 'benekastah/neomake'
   NeoBundle 'editorconfig/editorconfig-vim'
   NeoBundle 'scrooloose/nerdtree'
-  NeoBundle 'terryma/vim-multiple-cursors'
-  NeoBundle 'ctrlpvim/ctrlp.vim'
+  NeoBundle 'AndrewRadev/switch.vim'
   NeoBundle 'christoomey/vim-tmux-navigator'
+  NeoBundle 'tmux-plugins/vim-tmux'
+  NeoBundle 'tmux-plugins/vim-tmux-focus-events'
   NeoBundle 'vim-airline/vim-airline'
+  NeoBundle 'vim-airline/vim-airline-themes'
   NeoBundle 'tpope/vim-surround'
   NeoBundle 'tomtom/tcomment_vim'
   NeoBundle 'mattn/emmet-vim'
   NeoBundle 'Chiel92/vim-autoformat'
+  NeoBundle 'ap/vim-css-color'
+" Shougo
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/unite-outline'
+  NeoBundle 'ujihisa/unite-colorscheme'
+  NeoBundle 'junkblocker/unite-codesearch'
+  NeoBundle 'Shougo/vimfiler.vim'
+  " NeoBundle 'Valloric/YouCompleteMe', {
+  "    \ 'build' : {
+  "    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "    \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "    \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+  "    \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+  "    \    }
+  "    \ }
+  NeoBundle 'Shougo/vimproc.vim', {
+        \ 'build' : {
+        \     'windows' : 'tools\\update-dll-mingw',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'linux' : 'make',
+        \     'unix' : 'gmake',
+        \    },
+        \ }
   NeoBundle 'Shougo/neocomplete.vim'
-  NeoBundle 'Quramy/tsuquyomi'
 
-  NeoBundle 'rking/ag.vim'
-  NeoBundle 'mileszs/ack.vim'
-  " NeoBundle 'ashisha/image.vim'
-  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet.vim'
   NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'honza/vim-snippets'
   NeoBundle 'matthewsimo/angular-vim-snippets'
-" because fuck it, Icons are awesome
-  NeoBundle 'ryanoasis/vim-webdevicons'
-  NeoBundle 'guns/xterm-color-table.vim'
-  NeoBundle 'sjl/clam.vim'
-  NeoBundle 'vim-scripts/CSApprox'
-  NeoBundle 'fmoralesc/vim-tutor-mode'
+
+  NeoBundle 'mhinz/vim-sayonara'
+  NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+  NeoBundle 'terryma/vim-multiple-cursors'
+  NeoBundle 'rhysd/github-complete.vim'
+  NeoBundle 'junegunn/goyo.vim'
+  NeoBundle 'https://github.com/danielmiessler/VimBlog'
+
+  NeoBundle 'vim-scripts/SyntaxRange'
+
+  NeoBundle 'ryanoasis/vim-devicons'
+
   call neobundle#end()
 
 " Required:
   filetype plugin indent on
+  let pluginsExist=1
   NeoBundleCheck
-  if bundleExists == 0
-    echo "Installing Bundles, ignore errors"
-  endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim untils
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let mapleader = ','
-" Fix Cursor in TMUX
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
+" }}}
 
-  " set lazyredraw
-  set syntax=whitespace
+if pluginsExist
+" System Settings  ----------------------------------------------------------{{{
+
+" Let airline tell me my status
+  set noshowmode
   set noswapfile
-  set showcmd
-    " set noshowmode
-    " set noruler
-    set laststatus=0
-  set backspace=indent,eol,start
   filetype on
-  let g:CSApprox_loaded = 1
-  " set relativenumber number
-  set foldlevelstart=1
-  set foldenable
-    function! MyFoldText() " {{{
-      let line = getline(v:foldstart)
-
-      let nucolwidth = &fdc + &number * &numberwidth
-      let windowwidth = winwidth(0) - nucolwidth - 3
-      let foldedlinecount = v:foldend - v:foldstart
-
-      " expand tabs into spaces
-      let onetab = strpart('          ', 0, &tabstop)
-      let line = substitute(line, '\t', onetab, 'g')
-
-      let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-      let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-      return line . '…' . repeat(" ",fillcharcount) .  ' ' . ' '
-  endfunction " }}}
-  set foldtext=MyFoldText()
-
-  autocmd FileType tutor setlocal fdc=0
-  autocmd FileType tutor setlocal foldlevel=0
-
-  set tabstop=2
-  set shiftwidth=2
-  set expandtab
+  set relativenumber number
+  set tabstop=2 shiftwidth=2 expandtab
   set conceallevel=0
-" tmux mouse support
-  " set ttymouse=xterm2
-  let g:vim_json_syntax_conceal = 0
-
-" enable mouse
-  set mouse=a
-
-" Theme
-  set t_Co=256
-  syntax enable
-  colorscheme OceanicNext
-" highlightt the current line number
-  highlight CursorLineNR guifg=#ffffff ctermfg=15
-  set background=dark
-
-" Copy to osx clipboard
-  set pastetoggle=<leader>p
-  vnoremap <C-c> "*y<CR>
-  highlight MatchTag ctermfg=black ctermbg=lightgreen guifg=black guibg=lightgreen
-  highlight clear SignColumn
-  set laststatus=2
-" Git gitgutter column colors
-  call gitgutter#highlight#define_highlights()
-
-" Space to toggle folds.
-  nnoremap <Space> za
-  vnoremap <Space> za
-" This is the best
-  nnoremap ; :
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-  set wildmenu
-  " set laststatus=2
-" if dir doesn't exsist, make it
-  " function s:MkNonExDir(file, buf)
-  "   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-  "       let dir=fnamemodify(a:file, ':h')
-  "       if !isdirectory(dir)
-  "           call mkdir(dir, 'p')
-  "       endif
-  "   endif
-  " endfunction
-  " augroup BWCCreateDir
-  "   autocmd!
-  "   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-  " augroup END
-" set colorcolumn=100
-  set wrap linebreak nolist
+" block select not limited by shortest line
   set virtualedit=
-  set display+=lastline
+  set wildmenu
+  set laststatus=2
+  "set colorcolumn=100
+  set wrap linebreak nolist
+  set wildmode=full
+" leader is ,
+  let mapleader = ','
+  set undofile
+  set undodir="$HOME/.VIM_UNDO_FILES"
+" Remember cursor position between vim sessions
+  autocmd BufReadPost *
+              \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+              \   exe "normal! g'\"" |
+              \ endif
+              " center buffer around cursor when opening files
+  autocmd BufRead * normal zz
+  let g:jsx_ext_required = 0
+  set complete=.,w,b,u,t,k
+  let g:gitgutter_max_signs = 1000  " default value
 
+  autocmd InsertEnter * let save_cwd = getcwd() | set autochdir
+  autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)
+  let g:indentLine_char='│'
+  " enable deoplete
+
+  let g:neocomplete#enable_at_startup = 1
+  let g:unite_source_codesearch_command = '$HOME/bin/csearch'
+  let g:table_mode_corner="|"
+
+" }}}
+
+" System mappings  ----------------------------------------------------------{{{
+
+" No need for ex mode
+  nnoremap Q <nop>
+" recording macros is not my thing
+  map q <Nop>
+" exit insert, dd line, enter insert
+  inoremap <c-d> <esc>ddi
 " Navigate between display lines
   noremap  <silent> <Up>   gk
   noremap  <silent> <Down> gj
@@ -213,97 +183,227 @@
   noremap  <silent> j gj
   noremap  <silent> <Home> g<Home>
   noremap  <silent> <End>  g<End>
-  inoremap <silent> <Up>   <C-o>gk
-  inoremap <silent> <Down> <C-o>gj
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
+" copy current files path to clipboard
+  nmap cp :let @+ = expand("%") <cr>
+
+" ,f to format code, requires formatters: read the docs
+  noremap <leader>f :Autoformat<CR>
+  noremap <leader>TM :TableModeToggle<CR>
+" exit insert, dd line, enter insert
+  inoremap <c-d> <esc>ddi
+  noremap H ^
+  noremap L g_
+  noremap J 5j
+  noremap K 5k
+" this is the best, let me tell you why
+" how annoying is that everytime you want to do something in vim
+" you have to do shift-; to get :, can't we just do ;?
+" Plus what does ; do anyways??
+" if you do have a plugin that needs ;, you can just wap the mapping
+" nnoremap : ;
+" give it a try and you will like it
+  nnoremap ; :
+  inoremap <c-f> <c-x><c-f>
+" Copy to osx clipboard
+  vnoremap <C-c> "*y<CR>
+  vnoremap y "*y<CR>
+  nnoremap Y "*Y<CR>
+  let g:multi_cursor_next_key='<C-n>'
+  let g:multi_cursor_prev_key='<C-p>'
+  let g:multi_cursor_skip_key='<C-x>'
+  let g:multi_cursor_quit_key='<Esc>'
+
+" Align blocks of text and keep them selected
+  vmap < <gv
+  vmap > >gv
+  nnoremap <leader>d "_d
+  vnoremap <leader>d "_d
+  vnoremap <c-/> :TComment<cr>
+  " map <esc> :noh<cr>
+autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
+
+nnoremap <leader>e :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+function! s:PlaceholderImgTag(size)
+  let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
+  let [width,height] = split(a:size, 'x')
+  execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
+  endfunction
+command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
+
+"}}}
+
+" Themes, Commands, etc  ----------------------------------------------------{{{
+" Theme
+syntax enable
+colorscheme OceanicNext
+set background=dark
+" set background=light
 " no need to fold things in markdown all the time
-  let g:vim_markdown_folding_disabled = 1
-  autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-  autocmd BufRead,BufNewFile *.txt setlocal spell complete+=kspell
-  let g:move_key_modifier = 'S'
+let g:vim_markdown_folding_disabled = 1
+" turn on spelling for markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+" highlight bad words in red
+autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+" disable markdown auto-preview. Gets annoying
+let g:instant_markdown_autostart = 0
+"}}}
 
-  let g:jsx_ext_required = 0
-  map <leader>v :source ~/.vimrc<CR>
-  map <leader>q :PromptlineSnapshot! ~/.dotfiles/prompt airline<CR>
+" Fold, gets it's own section  ----------------------------------------------{{{
 
-  let g:used_javascript_libs = 'angularjs'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Snipppets
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+
+function! JavaScriptFold() "{{{
+  " syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+  setlocal foldmethod=syntax
+  setlocal foldlevel=99
+  echo "hello"
+  syn region foldBraces start=/{/ skip=/\(\/\/.*\)\|\(\/.*\/\)/ end=/}/ transparent fold keepend extend
+endfunction "}}}
+
+" function! HTMLFold() "{{{
+"   " syn sync fromstart
+"   set foldmethod=syntax
+"   syn region HTMLFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
+"   syn match HTMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
+"   syn match HTMLCommentFold "<!--\_.\{-}-->" fold transparent extend
+" endfunction "}}}
+
+set foldtext=MyFoldText()
+
+autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+autocmd FileType vim setlocal fdc=1
+set foldlevel=99
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType vim setlocal foldlevel=0
+
+" au FileType html call HTMLFold()
+" autocmd FileType html setlocal foldmethod=syntax
+autocmd FileType html setlocal fdl=99
+
+" autocmd FileType javascript call JavaScriptFold()
+autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
+autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
+autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
+autocmd FileType coffee setl foldmethod=indent
+" au FileType html nnoremap <buffer> <leader>F zfat
+" }}}
+
+" NERDTree ------------------------------------------------------------------{{{
+
+map <C-\> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+let NERDTreeShowHidden=1
+let g:NERDTreeWinSize=45
+let g:NERDTreeAutoDeleteBuffer=1
+
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+
+" call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
+" call NERDTreeHighlightFile('md', 'blue', 'none', '#6699CC', 'none')
+" call NERDTreeHighlightFile('config', 'yellow', 'none', '#d8a235', 'none')
+" call NERDTreeHighlightFile('conf', 'yellow', 'none', '#d8a235', 'none')
+" call NERDTreeHighlightFile('json', 'green', 'none', '#d8a235', 'none')
+" call NERDTreeHighlightFile('html', 'yellow', 'none', '#d8a235', 'none')
+" call NERDTreeHighlightFile('css', 'cyan', 'none', '#5486C0', 'none')
+" call NERDTreeHighlightFile('scss', 'cyan', 'none', '#5486C0', 'none')
+" call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', 'none')
+" call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', 'none')
+" call NERDTreeHighlightFile('ts', 'Blue', 'none', '#6699cc', 'none')
+" call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', 'none')
+" call NERDTreeHighlightFile('gitconfig', 'black', 'none', '#686868', 'none')
+" call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#7F7F7F', 'none')
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#141e23')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#141e23')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#141e23')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#141e23')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#141e23')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#141e23')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#141e23')
+call NERDTreeHighlightFile('ts', 'Blue', 'none', '#6699cc', '#141e23')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#141e23')
+call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#141e23')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#141e23')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#141e23')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#141e23')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#141e23')
+
+"}}}
+
+" Snipppets -----------------------------------------------------------------{{{
+
 " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
-  imap <C-s>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-s>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-s>     <Plug>(neosnippet_expand_target)
+let g:neosnippet#enable_snipmate_compatibility = 1
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
 " Tell Neosnippet about the other snippets
-  let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets, ~/Github/ionic-snippets, ~/.vim/bundle/angular-vim-snippets/snippets'
 
 " SuperTab like snippets behavior.
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"}}}
 
-  map <C-\> :NERDTreeToggle<CR>
-  " autocmd StdinReadPre * let s:std_in=1
-  " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-  " let NERDTreeShowHidden=1
-
-" NERDTress File highlighting
-  function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-  endfunction
-
-  call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-  call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-  call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-  call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-  call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-  call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-  call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Make files look nice
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  autocmd FileType css,scss,sass :ColorHighlight
-  noremap <c-f> :Autoformat<CR>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Typescript & Javscript omni complete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Typescript & Javscript omni complete --------------------------------------{{{
   let g:vimjs#casesensistive = 1
+  let g:vimjs#smartcomplete = 1
+  let g:tsuquyomi_disable_quickfix = 1
+  let g:vim_json_syntax_conceal = 0
+  autocmd FileType setlocal completeopt+=noselect,menu,preview
+  set completeopt+=noselect,menu,preview
+  " if !exists('g:neocomplete#force_omni_input_patterns')
+  "   let g:neocomplete#force_omni_input_patterns = {}
+  " endif
+  " let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
 
-  let g:vimjs#smartcomplete = 0
-  let g:vimjs#chromeapis = 0
-  autocmd FileType typescript inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-  let g:typescript_indent_disable = 1
+"}}}
 
-"  let g:neocomplete#enable_at_startup = 1
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType typescript setlocal omnifunc=tsuquyomi#complete
-  let g:neocomplete#sources#syntax#min_keyword_length = 3
-
-  if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
-  endif
-  let g:neocomplete#force_omni_input_patterns.typescript = '\h\w*\|[^. \t]\.\w*'
-
-  autocmd FileType typescript setlocal completeopt-=preview
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Emmet customization
+" Emmet customization -------------------------------------------------------{{{
 " Enable Emmet in all modes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:user_emmet_mode='a'
 " Remapping <C-y>, just doesn't cut it.
   function! s:expand_html_tab()
 " try to determine if we're within quotes or tags.
@@ -320,101 +420,123 @@
     return "\<C-y>,"
   endif
 " return a regular tab character
-   return "\<tab>"
-   endfunction
-   autocmd FileType html imap <buffer><expr><tab> <sid>expand_html_tab()
+  return "\<tab>"
+  endfunction
+  autocmd FileType html,markdown imap <buffer><expr><tab> <sid>expand_html_tab()
+  let g:user_emmet_mode='a'
+  let g:user_emmet_complete_tag = 1
+  let g:user_emmet_install_global = 0
+  autocmd FileType html,css EmmetInstall
+"}}}
 
-   let g:use_emmet_complete_tag = 1
-   let g:user_emmet_install_global = 0
-   autocmd FileType html,css,ejs EmmetInstall
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CTRLP & GREP
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ctrlp_user_command = 'ag %s -i --nogroup --hidden
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "**/*.pyc"
-    \ --ignore lib
-    \ -g ""'
-  let g:ctrlp_regexp = 1
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_working_path_mode = 0
-  let g:ctrlp_switch_buffer = 0
-  " let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-  let g:ackprg = 'ag --nogroup --column'
-  set grepprg=ag\ --nogroup\ --nocolor
-  nnoremap <leader>a :Ag<space>
+" unite ---------------------------------------------------------------------{{{
+"
+let g:unite_data_directory='~/.nvim/.cache/unite'
+let g:unite_source_history_yank_enable=1
+let g:unite_prompt='» '
+let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Navigate between vim buffers and tmux panels
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:tmux_navigator_no_mappings = 1
-  nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-  nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-  nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-  nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-  nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#tabline#fnamemod = ':t'
-  let g:airline#extensions#tabline#show_tab_nr = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme='oceanicnext'
-" make sure to escape the spaces in the name properly
-  set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
-" Tabline part of vim-airline
-" Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
-  nmap <leader>x :bp <BAR> bd #<CR>
-" This replaes :tabnew which I used to bind to this mapping
-  nmap <leader>n :enew<cr>
-" Move to the next buffer
-  nmap <leader>, :bnext<CR>
-" Move to the previous buffer
-  nmap <leader>. :bprevious<CR>
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_javascript_checkers = ['jscs', 'eslint']
-  let g:syntastic_check_on_open = 0
-  " let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
+nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/async<CR>
+nnoremap <silent> <leader>c :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
+nnoremap <silent> <leader>u :Unite neobundle/update<CR>
 
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_error_symbol = '✗'
-  let g:syntastic_warning_symbol = '!'
-  let g:syntastic_style_error_symbol = '✗'
-  let g:syntastic_style_warning_symbol = '!'
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
 
-  noremap <leader>t :SyntasticToggleMode<CR>
+function! s:unite_settings() "{{{
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction "}}}
 
+" Git from unite...ERMERGERD ------------------------------------------------{{{
+let g:unite_source_menu_menus = {} " Useful when building interfaces at appropriate places
+let g:unite_source_menu_menus.git = {
+  \ 'description' : 'Fugitive interface',
+  \}
+let g:unite_source_menu_menus.git.command_candidates = [
+  \[' git status', 'Gstatus'],
+  \[' git diff', 'Gvdiff'],
+  \[' git commit', 'Gcommit'],
+  \[' git stage/add', 'Gwrite'],
+  \[' git checkout', 'Gread'],
+  \[' git rm', 'Gremove'],
+  \[' git cd', 'Gcd'],
+  \[' git push', 'exe "Git! push " input("remote/branch: ")'],
+  \[' git pull', 'exe "Git! pull " input("remote/branch: ")'],
+  \[' git pull rebase', 'exe "Git! pull --rebase " input("branch: ")'],
+  \[' git checkout branch', 'exe "Git! checkout " input("branch: ")'],
+  \[' git fetch', 'Gfetch'],
+  \[' git merge', 'Gmerge'],
+  \[' git browse', 'Gbrowse'],
+  \[' git head', 'Gedit HEAD^'],
+  \[' git parent', 'edit %:h'],
+  \[' git log commit buffers', 'Glog --'],
+  \[' git log current file', 'Glog -- %'],
+  \[' git log last n commits', 'exe "Glog -" input("num: ")'],
+  \[' git log first n commits', 'exe "Glog --reverse -" input("num: ")'],
+  \[' git log until date', 'exe "Glog --until=" input("day: ")'],
+  \[' git log grep commits',  'exe "Glog --grep= " input("string: ")'],
+  \[' git log pickaxe',  'exe "Glog -S" input("string: ")'],
+  \[' git index', 'exe "Gedit " input("branchname\:filename: ")'],
+  \[' git mv', 'exe "Gmove " input("destination: ")'],
+  \[' git grep',  'exe "Ggrep " input("string: ")'],
+  \[' git prompt', 'exe "Git! " input("command: ")'],
+  \] " Append ' --' after log to get commit info commit buffers
+nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git -start-insert menu:git<CR>
+"}}}
+"}}}
+
+" Navigate between vim buffers and tmux panels ------------------------------{{{
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-;> :TmuxNavigatePrevious<cr>
+"}}}
+
+" vim-airline ---------------------------------------------------------------{{{
+let g:airline#extensions#tabline#enabled = 1
+set hidden
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
+" let g:airline_theme='base16_solarized'
+cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+nmap <leader>t :term<cr>
+nmap <leader>, :bnext<CR>
+nmap <leader>. :bprevious<CR>
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
+"}}}
+
+" Linting -------------------------------------------------------------------{{{
+  function! neomake#makers#ft#javascript#eslint()
+      return {
+          \ 'args': ['-f', 'compact'],
+          \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+          \ '%W%f: line %l\, col %c\, Warning - %m'
+          \ }
+  endfunction
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  autocmd! BufWritePost * Neomake
   function! JscsFix()
       let l:winview = winsaveview()
       % ! jscs -x
       call winrestview(l:winview)
   endfunction
   command JscsFix :call JscsFix()
-
-  noremap <leader>f :JscsFix<CR>
-   " autocmd BufWritePre *.js,*.jsx JscsFix
-
-  let g:syntastic_mode_map = { 'passive_filetypes': ['sass', 'scss','html'] }
-  map <Leader>e :lnext<CR>
-  map <Leader>E :lprev<CR>
+  noremap <leader>j :JscsFix<CR>
+"}}}
+endif

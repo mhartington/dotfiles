@@ -10,6 +10,7 @@
   export CLICOLOR=1
   export EDITOR=nvim
   # export BREW_PATH=$(brew --prefix)
+  export GOPATH=$HOME/go
   export _Z_DATA="$HOME/z-data"
   source ~/.z/z.sh
   alias journal=~/.journal.sh
@@ -23,6 +24,7 @@
   export PATH=/usr/local/bin:$PATH
   export PATH=${PATH}:~/bin
   export ANDROID_HOME=~/Library/Android/sdk
+  export PATH=$PATH:$GOPATH/bin
 
 # Disable zsh autocorrect
   zstyle ':completion:*' menu select
@@ -50,7 +52,9 @@
   export DISABLE_AUTO_TITLE=true
   source ~/antigen/antigen.zsh
   # antigen use oh-my-zsh
+  # antigen theme cloud
   antigen bundle zsh-users/zsh-syntax-highlighting
   # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
   # Tell antigen that you're done.
   antigen apply
+
