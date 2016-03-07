@@ -1,4 +1,4 @@
-#
+#!/bin/sh
 function __promptline_ps1 {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 

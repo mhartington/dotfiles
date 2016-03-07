@@ -9,132 +9,100 @@
 "
 
 " Setup NeoBundle  ----------------------------------------------------------{{{
-" If vundle is not installed, do it first
-  if (!isdirectory(expand("$HOME/.config/nvim/bundle/neobundle.vim")))
-     call system(expand("mkdir -p $HOME/.confg/nvim/bundle"))
-     call system(expand("git clone https://github.com/Shougo/neobundle.vim $HOME/.config/nvim/bundle/neobundle.vim"))
+  if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
+    call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
+    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
   endif
-
-  set nocompatible
-
 " Required:
-    set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
-    " set runtimepath+=~/Github/deoplete-angular/
-
+  if &compatible
+    set nocompatible
+  endif
+  set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
+  call dein#begin(expand('~/.config/nvim'))
 " Required:
-  call neobundle#begin(expand('~/.config/nvim/bundle/'))
-  let pluginsExist = 0
-" Let NeoBundle manage NeoBundle
-" Required:
-  NeoBundleFetch 'Shougo/neobundle.vim'
-
+  call dein#add('Shougo/dein.vim')
 " syntax
-  NeoBundleLazy 'othree/yajs.vim',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'othree/jsdoc-syntax.vim', {'autoload':{'filetypes':['javascript','typescript']}}
-  NeoBundleLazy 'othree/es.next.syntax.vim',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy '1995eaton/vim-better-javascript-completion',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload':{'filetypes':['coffee']}}
-  NeoBundleLazy 'hail2u/vim-css3-syntax',{'autoload':{'filetypes':['css','scss']}}
-  " NeoBundle 'vim-scripts/SyntaxComplete'
-  " NeoBundle 'othree/javascript-libraries-syntax.vim'
-  NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
-  NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'dhruvasagar/vim-table-mode'
-  NeoBundle 'suan/vim-instant-markdown'
-  NeoBundle 'tmhedberg/SimpylFold'
-" Typescript
-  NeoBundle 'HerringtonDarkholme/yats.vim'
-  NeoBundle 'Quramy/tsuquyomi'
-" colorscheme & syntax highlighting
-  NeoBundle 'mhartington/oceanic-next'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'chriskempson/base16-vim'
-  NeoBundle 'Yggdroot/indentLine'
-  NeoBundle 'Raimondi/delimitMate'
-  NeoBundle 'valloric/MatchTagAlways'
- " Git helpers
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'jreybert/vimagit'
-  NeoBundle 'mhinz/vim-signify'
-  NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-  NeoBundle 'https://github.com/jaxbot/github-issues.vim'
-  NeoBundle 'LemonBoy/autobahn'
-" utils
-  NeoBundle 'tpope/vim-repeat'
-  NeoBundle 'benekastah/neomake'
-  NeoBundle 'editorconfig/editorconfig-vim'
-  NeoBundle 'scrooloose/nerdtree'
-  NeoBundle 'AndrewRadev/switch.vim'
-  NeoBundle 'christoomey/vim-tmux-navigator'
-  NeoBundle 'tmux-plugins/vim-tmux'
-  NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-  NeoBundle 'vim-airline/vim-airline'
-  NeoBundle 'vim-airline/vim-airline-themes'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'tomtom/tcomment_vim'
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'Chiel92/vim-autoformat'
-  " NeoBundle 'gorodinskiy/vim-coloresque'
-  NeoBundle 'ap/vim-css-color'
-" Shougo
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'ujihisa/unite-colorscheme'
-  NeoBundle 'junkblocker/unite-codesearch'
-  NeoBundle 'Shougo/vimfiler.vim'
-  " NeoBundle 'Valloric/YouCompleteMe', {
-  "    \ 'build' : {
-  "    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-  "    \    }
-  "    \ }
-  NeoBundle 'Shougo/vimproc.vim', {
-        \ 'build' : {
-        \     'windows' : 'tools\\update-dll-mingw',
-        \     'cygwin' : 'make -f make_cygwin.mak',
-        \     'mac' : 'make -f make_mac.mak',
-        \     'linux' : 'make',
-        \     'unix' : 'gmake',
-        \    },
-        \ }
-  NeoBundle 'Shougo/deoplete.nvim'
-  NeoBundle 'Shougo/neco-vim'
-  NeoBundle 'Shougo/neoinclude.vim'
-  NeoBundleLazy 'ujihisa/neco-look',{'autoload':{'filetypes':['markdown','md']}}
-  " NeoBundle 'mhartington/deoplete-typescript'
-  NeoBundle 'zchee/deoplete-jedi'
+  call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+  call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
+  call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+  call dein#add('othree/javascript-libraries-syntax.vim')
+  call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+  call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
+  call dein#add('elzr/vim-json', {'on_ft': 'json'})
+  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  call dein#add('dhruvasagar/vim-table-mode')
+  call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
+  call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
+  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+  " call dein#add('Quramy/tsuquyomi')
 
-  NeoBundle 'Shougo/neosnippet.vim'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'honza/vim-snippets'
-  NeoBundle 'matthewsimo/angular-vim-snippets'
+  call dein#add('mhartington/oceanic-next')
+  call dein#add('Yggdroot/indentLine')
+  call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+  call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
-  " NeoBundle 'junegunn/fzf', { 'dir': '~/.fzf' }
-  " NeoBundle 'junegunn/fzf.vim'
-  " NeoBundle 'ashisha/image.vim'
-  NeoBundle 'mhinz/vim-sayonara'
-  NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
-  NeoBundle 'terryma/vim-multiple-cursors'
-  NeoBundle 'rhysd/github-complete.vim'
-  NeoBundle 'junegunn/goyo.vim'
-  NeoBundle 'https://github.com/danielmiessler/VimBlog'
-  " NeoBundle 'https://github.com/neovim/node-host'
-  NeoBundle 'vim-scripts/SyntaxRange'
-  NeoBundleLazy 'fatih/vim-go',{'autoload':{'filetypes':['go']}}
-  NeoBundleLazy 'zchee/deoplete-go',{'autoload':{'filetypes':['go']}}
-  NeoBundle 'rhysd/nyaovim-popup-tooltip'
-  NeoBundle 'ryanoasis/vim-devicons'
-  call neobundle#end()
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('jreybert/vimagit')
+  call dein#add('mhinz/vim-signify')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('https://github.com/jaxbot/github-issues.vim')
 
-" Required:
+  call dein#add('tpope/vim-repeat')
+  call dein#add('benekastah/neomake')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('AndrewRadev/switch.vim')
+  call dein#add('christoomey/vim-tmux-navigator')
+  call dein#add('tmux-plugins/vim-tmux')
+  call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tomtom/tcomment_vim')
+  call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
+  call dein#add('Chiel92/vim-autoformat')
+  call dein#add('ap/vim-css-color')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/unite-outline')
+  call dein#add('ujihisa/unite-colorscheme')
+  call dein#add('junkblocker/unite-codesearch')
+  call dein#add('Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \    },
+      \ })
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('carlitux/deoplete-ternjs')
+  call dein#add('mhartington/deoplete-typescript')
+  call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
+  call dein#add('Shougo/neoinclude.vim')
+  call dein#add('ujihisa/neco-look', {'on_ft': 'markdown'})
+  call dein#add('zchee/deoplete-jedi')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('honza/vim-snippets')
+  call dein#add('matthewsimo/angular-vim-snippets')
+  call dein#add('mhinz/vim-sayonara')
+  call dein#add('mattn/webapi-vim')
+  call dein#add('mattn/gist-vim')
+  call dein#add('terryma/vim-multiple-cursors')
+  call dein#add('rhysd/github-complete.vim')
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('vim-scripts/SyntaxRange')
+  call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
+  call dein#add('rhysd/nyaovim-popup-tooltip')
+  call dein#add('ryanoasis/vim-devicons')
+  if dein#check_install()
+    call dein#install()
+  endif
+  call dein#end()
   filetype plugin indent on
-  let pluginsExist=1
-  NeoBundleCheck
 " }}}
 
-if pluginsExist
+" if pluginsExist
 " System Settings  ----------------------------------------------------------{{{
 
   source ~/.local.vim
@@ -184,7 +152,6 @@ if pluginsExist
   let g:deoplete#sources#go = 'vim-go'
   let g:unite_source_codesearch_command = '$HOME/bin/csearch'
   let g:table_mode_corner="|"
-
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -243,42 +210,49 @@ if pluginsExist
   vnoremap <leader>d "_d
   vnoremap <c-/> :TComment<cr>
   map <esc> :noh<cr>
-autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
-nnoremap <leader>e :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+  nnoremap <leader>e :call <SID>SynStack()<CR>
+  function! <SID>SynStack()
+    if !exists("*synstack")
+      return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+  endfunc
 
-function! s:PlaceholderImgTag(size)
-  let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
-  let [width,height] = split(a:size, 'x')
-  execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
-  endfunction
-command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
-nmap <silent>gi <Plug>(nyaovim-popup-tooltip-open)
-vmap <silent>gi <Plug>(nyaovim-popup-tooltip-open)
+  function! s:PlaceholderImgTag(size)
+    let url = 'http://dummyimage.com/' . a:size . '/000000/555555'
+    let [width,height] = split(a:size, 'x')
+    execute "normal a<img src=\"".url."\" width=\"".width."\" height=\"".height."\" />"
+    endfunction
+  command! -nargs=1 PlaceholderImgTag call s:PlaceholderImgTag(<f-args>)
+  nmap <silent>gi <Plug>(nyaovim-popup-tooltip-open)
+  vmap <silent>gi <Plug>(nyaovim-popup-tooltip-open)
+
+  " If you prefer the Omni-Completion tip window to close when a selection is
+  " made, these lines close it on movement in insert mode or when leaving
+  " insert mode
+  autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+  autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 "}}}"
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
 " Theme
-syntax enable
-colorscheme OceanicNext
-set background=dark
-" set background=light
-" no need to fold things in markdown all the time
-let g:vim_markdown_folding_disabled = 1
-" turn on spelling for markdown files
-autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
-" highlight bad words in red
-autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
-" disable markdown auto-preview. Gets annoying
-let g:instant_markdown_autostart = 0
-" Keep my termo window open when I navigate away
-autocmd TermOpen * set bufhidden=hide
+  syntax enable
+  colorscheme OceanicNext
+  set background=dark
+  " set background=light
+  " no need to fold things in markdown all the time
+  let g:vim_markdown_folding_disabled = 1
+  " turn on spelling for markdown files
+  autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  " highlight bad words in red
+  autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+  " disable markdown auto-preview. Gets annoying
+  let g:instant_markdown_autostart = 0
+  " Keep my termo window open when I navigate away
+  autocmd TermOpen * set bufhidden=hide
 "}}}
 
 " Fold, gets it's own section  ----------------------------------------------{{{
@@ -391,24 +365,19 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "}}}
 
 " Typescript & Javscript omni complete --------------------------------------{{{
-  let g:vimjs#casesensistive = 1
-  let g:vimjs#smartcomplete = 1
   let g:tsuquyomi_disable_quickfix = 1
-  let g:vim_json_syntax_conceal = 0
-  " autocmd FileType typescript setlocal completeopt+=menu,preview,noselect
-  autocmd FileType typescript setlocal completeopt+=menu,preview
-  set completeopt+=menu,preview,noselect
+  " autocmd FileType typescript setlocal completeopt+=menu,preview
+  " autocmd FileType typescript setlocal completeopt+=menu,preview
+  " set completeopt+=menu,preview,noselect
   set splitbelow
-  let g:deoplete#enable_debug = 2
-" set completeopt+=noselect
-" let g:deoplete#omni_patterns = {}
-" let g:deoplete#omni_patterns.typescript=[
-"               \'[^. \t0-9]\.\w*',
-"               \'[^. \t0-9]\->\w*',
-"               \'[^. \t0-9]\::\w*',
-"               \'\s[A-Z][a-z]',
-"               \'^\s*@[A-Z][a-z]'
-"               \]
+  set completeopt+=noselect
+  autocmd FileType vmailMessageList let b:deoplete_disable_auto_complete=1
+  function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete=1
+  endfunction
+  function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete=0
+  endfunction
 "}}}
 
 " Emmet customization -------------------------------------------------------{{{
@@ -445,9 +414,10 @@ let g:unite_source_history_yank_enable=1
 let g:unite_prompt='» '
 let g:unite_source_rec_async_command =['ag', '--follow', '--nocolor', '--nogroup','--hidden', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'lib']
 
-nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/neovim2<CR>
+nnoremap <silent> <c-p> :Unite -auto-resize -start-insert -direction=botright file_rec/neovim<CR>
 nnoremap <silent> <leader>c :Unite -auto-resize -start-insert -direction=botright colorscheme<CR>
-nnoremap <silent> <leader>u :Unite neobundle/update<CR>
+nnoremap <silent> <leader>u :call dein#update()<CR>
+nnoremap <silent> <leader>m :Unite -auto-resize -start-insert -direction=botright redismru<CR>
 
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
@@ -566,4 +536,4 @@ nmap <leader>9 <Plug>AirlineSelectTab9
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
 "}}}
-endif
+" endif

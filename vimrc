@@ -10,122 +10,107 @@
 
 " Setup NeoBundle  ----------------------------------------------------------{{{
 " If vundle is not installed, do it first
-  if (!isdirectory(expand("$HOME/.config/nvim/bundle/neobundle.vim")))
-     call system(expand("mkdir -p $HOME/.confg/nvim/bundle"))
-     call system(expand("git clone https://github.com/Shougo/neobundle.vim $HOME/.config/nvim/bundle/neobundle.vim"))
+  if (!isdirectory(expand("$HOME/.vim/repos/github.com/Shougo/dein.vim")))
+    call system(expand("mkdir -p $HOME/.vim/repos/github.com"))
+    call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.vim/repos/github.com/Shougo/dein.vim"))
   endif
+
 
   set nocompatible
 
 " Required:
-    set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+    set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
     " set runtimepath+=~/Github/deoplete-angular/
 
 " Required:
-  call neobundle#begin(expand('~/.config/nvim/bundle/'))
+  call dein#begin(expand('~/.vim'))
   let pluginsExist = 0
 " Let NeoBundle manage NeoBundle
 " Required:
-  NeoBundleFetch 'Shougo/neobundle.vim'
+  call dein#add('Shougo/dein.vim')
+  " syntax
+  call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+  call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
+  call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+  call dein#add('1995eaton/vim-better-javascript-completion', {'on_ft': ['javascript']})
+  call dein#add('othree/javascript-libraries-syntax.vim')
+  call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+  call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
+  call dein#add('elzr/vim-json', {'on_ft': 'json'})
+  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  call dein#add('dhruvasagar/vim-table-mode')
+  call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
+  call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
+  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+  call dein#add('Quramy/tsuquyomi', {'on_ft': 'typescript'})
 
-" syntax
-  NeoBundleLazy 'othree/yajs.vim',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'othree/es.next.syntax.vim',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'othree/jsdoc-syntax.vim', {'autoload':{'filetypes':['javascript','typescript']}}
-  NeoBundleLazy '1995eaton/vim-better-javascript-completion',{'autoload':{'filetypes':['javascript']}}
-  NeoBundleLazy 'kchmck/vim-coffee-script',{'autoload':{'filetypes':['coffee']}}
-  NeoBundleLazy 'hail2u/vim-css3-syntax',{'autoload':{'filetypes':['css','scss']}}
-  " NeoBundle 'vim-scripts/SyntaxComplete'
-  " NeoBundle 'othree/javascript-libraries-syntax.vim'
-  NeoBundleLazy 'elzr/vim-json', {'autoload':{'filetypes':['json']}}
-  NeoBundle 'tpope/vim-markdown'
-  NeoBundle 'dhruvasagar/vim-table-mode'
-  NeoBundle 'suan/vim-instant-markdown'
-  NeoBundle 'tmhedberg/SimpylFold'
-" Typescript
-  NeoBundle 'HerringtonDarkholme/yats.vim'
-  " NeoBundle 'Quramy/tsuquyomi'
-" colorscheme & syntax highlighting
-  NeoBundle 'mhartington/oceanic-next'
-  NeoBundle 'nanotech/jellybeans.vim'
-  NeoBundle 'chriskempson/base16-vim'
-  NeoBundle 'Yggdroot/indentLine'
-  NeoBundle 'Raimondi/delimitMate'
-  NeoBundle 'valloric/MatchTagAlways'
- " Git helpers
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'jreybert/vimagit'
-  " NeoBundle 'airblade/vim-gitgutter'
-  NeoBundle 'mhinz/vim-signify'
-  NeoBundle 'Xuyuanp/nerdtree-git-plugin'
-  NeoBundle 'https://github.com/jaxbot/github-issues.vim'
-  NeoBundle 'LemonBoy/autobahn'
-" utils
-  NeoBundle 'tpope/vim-repeat'
-  NeoBundle 'benekastah/neomake'
-  NeoBundle 'editorconfig/editorconfig-vim'
-  NeoBundle 'scrooloose/nerdtree'
-  NeoBundle 'AndrewRadev/switch.vim'
-  NeoBundle 'christoomey/vim-tmux-navigator'
-  NeoBundle 'tmux-plugins/vim-tmux'
-  NeoBundle 'tmux-plugins/vim-tmux-focus-events'
-  NeoBundle 'vim-airline/vim-airline'
-  NeoBundle 'vim-airline/vim-airline-themes'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'tomtom/tcomment_vim'
-  NeoBundle 'mattn/emmet-vim'
-  NeoBundle 'Chiel92/vim-autoformat'
-  NeoBundle 'ap/vim-css-color'
-" Shougo
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/unite-outline'
-  NeoBundle 'ujihisa/unite-colorscheme'
-  NeoBundle 'junkblocker/unite-codesearch'
-  NeoBundle 'Shougo/vimfiler.vim'
-  " NeoBundle 'Valloric/YouCompleteMe', {
-  "    \ 'build' : {
-  "    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-  "    \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-  "    \    }
-  "    \ }
-  NeoBundle 'Shougo/vimproc.vim', {
-        \ 'build' : {
-        \     'windows' : 'tools\\update-dll-mingw',
-        \     'cygwin' : 'make -f make_cygwin.mak',
-        \     'mac' : 'make -f make_mac.mak',
-        \     'linux' : 'make',
-        \     'unix' : 'gmake',
-        \    },
-        \ }
-  NeoBundle 'Shougo/neocomplete.vim'
+  call dein#add('mhartington/oceanic-next')
+  call dein#add('Yggdroot/indentLine')
+  call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
+  call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
-  NeoBundle 'Shougo/neosnippet.vim'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'honza/vim-snippets'
-  NeoBundle 'matthewsimo/angular-vim-snippets'
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('jreybert/vimagit')
+  call dein#add('mhinz/vim-signify')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('https://github.com/jaxbot/github-issues.vim')
 
-  NeoBundle 'mhinz/vim-sayonara'
-  NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
-  NeoBundle 'terryma/vim-multiple-cursors'
-  NeoBundle 'rhysd/github-complete.vim'
-  NeoBundle 'junegunn/goyo.vim'
-  NeoBundle 'https://github.com/danielmiessler/VimBlog'
+  call dein#add('tpope/vim-repeat')
+  call dein#add('benekastah/neomake')
+  call dein#add('editorconfig/editorconfig-vim')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('AndrewRadev/switch.vim')
+  call dein#add('christoomey/vim-tmux-navigator')
+  call dein#add('tmux-plugins/vim-tmux')
+  call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tomtom/tcomment_vim')
+  call dein#add('mattn/emmet-vim', {'on_ft': 'html'})
+  call dein#add('Chiel92/vim-autoformat')
+  call dein#add('ap/vim-css-color')
+  call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/unite-outline')
+  call dein#add('ujihisa/unite-colorscheme')
+  call dein#add('junkblocker/unite-codesearch')
+  call dein#add('Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \    },
+      \ })
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
+  call dein#add('Shougo/neoinclude.vim')
+  call dein#add('ujihisa/neco-look')
+  call dein#add('zchee/deoplete-jedi')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('honza/vim-snippets')
+  call dein#add('matthewsimo/angular-vim-snippets')
+  call dein#add('mhinz/vim-sayonara')
+  call dein#add('mattn/webapi-vim')
+  call dein#add('mattn/gist-vim')
+  call dein#add('terryma/vim-multiple-cursors')
+  call dein#add('rhysd/github-complete.vim')
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('vim-scripts/SyntaxRange')
+  call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
+  call dein#add('rhysd/nyaovim-popup-tooltip')
+  call dein#add('ryanoasis/vim-devicons')
 
-  NeoBundle 'vim-scripts/SyntaxRange'
-
-  NeoBundle 'ryanoasis/vim-devicons'
-
-  call neobundle#end()
+  if dein#check_install()
+    call dein#install()
+  endif
+  call dein#end()
 
 " Required:
   filetype plugin indent on
-  let pluginsExist=1
-  NeoBundleCheck
 " }}}
 
-if pluginsExist
 " System Settings  ----------------------------------------------------------{{{
 
 " Let airline tell me my status
@@ -539,4 +524,3 @@ set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
 "}}}
-endif

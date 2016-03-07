@@ -55,6 +55,7 @@
   # antigen theme cloud
   antigen bundle zsh-users/zsh-syntax-highlighting
   # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+  antigen bundle zsh-users/zsh-autosuggestions
   # Tell antigen that you're done.
   antigen apply
 
