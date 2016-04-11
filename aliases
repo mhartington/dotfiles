@@ -75,6 +75,10 @@ function download(){
 curl -O "$1"
 }
 
+function highlight(){
+  highlight -O rtf $1 --font-size 25 --style solarized-dark -W -J 50 -j 3 --src-lang $2 | pbcopy
+}
+
 alias dl=download
 function ghUpdate() {
 if git remote | grep upstream > /dev/null;

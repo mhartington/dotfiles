@@ -1,9 +1,6 @@
 # Obligatory Dotfile Repo
 
-~~Nothing super crazy going on here, but some sensable vim and tmux configs.~~
-
-I lied, this is some crazy stuff...
-So yeah...Here be dragons?
+Nothing super crazy going on here, but some sensable vim and tmux configs.
 
 ## Note to iterm
 Iterm nightly is a must.
@@ -11,21 +8,20 @@ Or any terminal that supports true colors.
 
 Once installed, click on the iterm color config in `config/colors` to add oceanicNext
 
-
 ## NeoVim
 
-Yeahh, I've moved over to neovim completely now. It still has it's problems here and there, but its pretty stable for the most part.
+I've moved over to neovim completely. It still has it's problems here and there, but its pretty stable for the most part.
 
 Anyways, neovim has support for true colors, so that flag is turned on.
 Some key plugins for neovim are:
 
 
 ### Vim-Airline
- [vim-airline](https://github.com/bling/vim-airline) is much lighterweight, intergrates with a bunch of plugins I
+ [vim-airline](https://github.com/vim-airline/vim-airline) is much lighterweight, intergrates with a bunch of plugins I
 already have, and is eaiser to set up.
 
 ```
-  Bundle 'bling/vim-airline'
+  call dein#add('vim-airline/vim-airline')
 ```
 
 ### Anything by Shougo
@@ -42,23 +38,13 @@ npm -g install typescript
 
 ```viml
 " install vimproc
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-
-NeoBundle 'Quramy/tsuquyomi'
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Quramy/tsuquyomi')
 ```
 vimproc is needed since we need to run a TSServer. Sadly, you need both even in neovim
 
 ### [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
-The lengths I'll go for some gui-goodness in my vim.
 This is really optional and over the top, but it adds icons to your file tree (if using nerdTree). So over the top....I need it.
 
 I use Source Code Pro for my fonts, maybe you do too. But we're using powerline here folks, so we need some patched fonts.
@@ -70,28 +56,8 @@ Install one of these fonts and you should be good to go. Don't forget to set you
 ## Tmux
 
 So if you can tell by now, I'm set on using true colors....everywhere.
-This is possible with tmux as well, though it requires patching.
 
-Not a big deal for most people, but I like it so I do it.
-
-Assuming you're using homebrew, edit tmux
-
-```bash
-brew edit tmux
-```
-
-Then, before `def install`, add this.
-
-```ruby
-  option "with-truecolor", "Build with truecolor patch enabled"
-  patch do
-    url "https://gist.githubusercontent.com/zchee/9f6f2ca17acf49e04088/raw/0c9bf0d84e69cb49b5e59950dd6dde6ca265f9a1/tmux-truecolor.diff"
-    sha1 "8e91ab1c076899feba1340854e96594aafee55de"
-  end if build.with? "truecolor"
-
-```
-
-Now you can run `brew install tmux --with-truecolor` and get all the colors for iterm nightly.
+You can run `brew install tmux --head` and get all the colors for iterm nightly.
 
 ### Tmux powerline
 My status bar for tmux is custom, only using a few plugins for battery charge and memory usage. Was a nice experiment with the tmux API. Also it uses powerline symbols, which should be covered.

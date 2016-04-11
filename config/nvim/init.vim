@@ -13,27 +13,25 @@
     call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
     call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
   endif
-" Required:
-  if &compatible
-    set nocompatible
-  endif
+
   set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
   call dein#begin(expand('~/.config/nvim'))
-" Required:
+
   call dein#add('Shougo/dein.vim')
 " syntax
-  call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
-  call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
-  call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
-  call dein#add('othree/javascript-libraries-syntax.vim')
-  call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
-  call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
+  call dein#add('sheerun/vim-polyglot')
+  " call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
+  " call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
+  " call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+  " call dein#add('othree/javascript-libraries-syntax.vim')
+  " call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+  " call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
   call dein#add('elzr/vim-json', {'on_ft': 'json'})
-  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  " call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
   call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
   call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+  " call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
   call dein#add('Quramy/tsuquyomi')
 
   call dein#add('mhartington/oceanic-next')
@@ -53,7 +51,6 @@
   call dein#add('scrooloose/nerdtree')
   call dein#add('AndrewRadev/switch.vim')
   call dein#add('christoomey/vim-tmux-navigator')
-  call dein#add('tmux-plugins/vim-tmux')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
   call dein#add('vim-airline/vim-airline')
   call dein#add('tpope/vim-surround')
@@ -65,22 +62,15 @@
   call dein#add('Shougo/unite-outline')
   call dein#add('ujihisa/unite-colorscheme')
   call dein#add('junkblocker/unite-codesearch')
-  call dein#add('Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make',
-      \     'unix' : 'gmake',
-      \    },
-      \ })
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('carlitux/deoplete-ternjs')
   " call dein#add('mhartington/deoplete-typescript')
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
-  call dein#add('ujihisa/neco-look', {'on_ft': 'markdown'})
+  call dein#add('ujihisa/neco-look', {'on_ft': ['markdown','text','html']})
   call dein#add('zchee/deoplete-jedi')
+  call dein#add('Konfekt/FastFold')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('honza/vim-snippets')
@@ -92,18 +82,23 @@
   call dein#add('rhysd/github-complete.vim')
   call dein#add('junegunn/goyo.vim')
   call dein#add('vim-scripts/SyntaxRange')
+  call dein#add('itchyny/vim-cursorword')
   " call dein#add('zchee/deoplete-go', {'build': 'make'})
   call dein#add('rhysd/nyaovim-popup-tooltip')
   call dein#add('troydm/asyncfinder.vim')
+  call dein#add('nelstrom/vim-markdown-folding')
+  call dein#add('tyru/markdown-codehl-onthefly.vim')
   call dein#add('ryanoasis/vim-devicons')
+
   if dein#check_install()
     call dein#install()
+    let pluginsExist=1
   endif
+
   call dein#end()
   filetype plugin indent on
 " }}}
 
-" if pluginsExist
 " System Settings  ----------------------------------------------------------{{{
 
   source ~/.local.vim
@@ -240,16 +235,16 @@
 
 " Themes, Commands, etc  ----------------------------------------------------{{{
 " Theme
-  syntax enable
+  syntax on
   colorscheme OceanicNext
   set background=dark
   " set background=light
   " no need to fold things in markdown all the time
   let g:vim_markdown_folding_disabled = 1
   " turn on spelling for markdown files
-  autocmd BufRead,BufNewFile *.md setlocal spell complete+=kspell
+  autocmd FileType markdown,text,html setlocal spell complete+=kspell
   " highlight bad words in red
-  autocmd BufRead,BufNewFile *.md hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
+  autocmd FileType markdown,text,html hi SpellBad guibg=#ff2929 guifg=#ffffff" ctermbg=224
   " disable markdown auto-preview. Gets annoying
   let g:instant_markdown_autostart = 0
   " Keep my termo window open when I navigate away
@@ -274,14 +269,6 @@
       return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
   endfunction " }}}
 
-  function! JavaScriptFold() "{{{
-    " syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-    setlocal foldmethod=syntax
-    setlocal foldlevel=99
-    echo "hello"
-    syn region foldBraces start=/{/ skip=/\(\/\/.*\)\|\(\/.*\/\)/ end=/}/ transparent fold keepend extend
-  endfunction "}}}
-
   set foldtext=MyFoldText()
 
 "{{{
@@ -289,8 +276,6 @@
         \ '\/',
         \ '!',
         \ 'html',
-        \ 'head\>',
-        \ 'body',
         \ 'area',
         \ 'base',
         \ 'br',
@@ -307,7 +292,12 @@
         \ 'source',
         \ 'track',
         \ 'wbr',
-        \ 'ion-spinner'
+        \ 'ion-spinner',
+        \ 'ion-tab',
+        \ 'ion-icon',
+        \ 'ion-item',
+        \ 'ion-input',
+        \ 'ion-content'
         \ ]
   let s:exclude_tags = join(s:exclude_tags_list, '\|')
 "}}}
@@ -331,15 +321,6 @@
     return '='
   endfunction "}}}
 
-  setlocal foldmethod=expr
-  setlocal foldexpr=HTMLFolds()
-
-  " syn region TagFold start=+^<\([^/?!><]*[^/]>\)\&.*\(<\1\|[[:alnum:]]\)$+ end=+^</.*[^-?]>$+ fold transparent keepend extend
-  " syn match CommentFold "<!--\_.\{-}-->" fold transparent extend
-
-  " syn match XMLCData "<!\[CDATA\[\_.\{-}\]\]>" fold transparent extend
-  " syn match XMLCommentFold "<!--\_.\{-}-->" fold transparent extend
-
   autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
   autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
@@ -351,18 +332,17 @@
   autocmd FileType vim setlocal foldmethod=marker
   autocmd FileType vim setlocal foldlevel=0
 
-  " au FileType html call HTMLFold()
-  " autocmd FileType html setlocal foldmethod=syntax
   autocmd FileType html setlocal fdl=99
 
-  " autocmd FileType javascript call JavaScriptFold()
   autocmd FileType javascript,html,css,scss,typescript setlocal foldlevel=99
-  autocmd FileType javascript,typescript,css,scss,json setlocal foldmethod=marker
-  autocmd FileType javascript,typescript,css,scss,json setlocal foldmarker={,}
+  autocmd FileType css,scss,json setlocal foldmethod=marker
+  autocmd FileType css,scss,json setlocal foldmarker={,}
+
   autocmd FileType coffee setl foldmethod=indent
   autocmd FileType html setl foldmethod=expr
   autocmd FileType html setl foldexpr=HTMLFolds()
-" au FileType html nnoremap <buffer> <leader>F zfat
+
+  autocmd FileType javascript,typescript,json setl foldmethod=syntax
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -416,10 +396,12 @@
 "}}}
 
 " Typescript & Javscript omni complete --------------------------------------{{{
-  let g:tsuquyomi_disable_quickfix = 1
+
+let g:tsuquyomi_disable_quickfix = 1
   " autocmd FileType typescript setlocal completeopt+=menu,preview
   " autocmd FileType typescript setlocal completeopt+=menu,preview
   " set completeopt+=menu,preview,noselect
+  let g:vim_json_syntax_conceal = 0
   set splitbelow
   set completeopt+=noselect
   autocmd FileType vmailMessageList let b:deoplete_disable_auto_complete=1
@@ -568,6 +550,8 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
+
+  let g:neomake_javascript_enabled_makers = ['eslint']
   function! neomake#makers#ft#javascript#eslint()
       return {
           \ 'args': ['-f', 'compact'],
@@ -575,8 +559,20 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
           \ '%W%f: line %l\, col %c\, Warning - %m'
           \ }
   endfunction
-  let g:neomake_javascript_enabled_makers = ['eslint']
+  function! neomake#makers#ft#typescript#tsc()
+      return {
+          \ 'args': [
+              \ '-m', 'commonjs', '--noEmit','-t','ES5', '--emitDecoratorMetadata', '--experimentalDecorators'
+          \ ],
+          \ 'errorformat':
+              \ '%E%f %#(%l\,%c): error %m,' .
+              \ '%E%f %#(%l\,%c): %m,' .
+              \ '%Eerror %m,' .
+              \ '%C%\s%\+%m'
+          \ }
+  endfunction
   autocmd! BufWritePost * Neomake
+
   function! JscsFix()
       let l:winview = winsaveview()
       % ! jscs -x
@@ -585,4 +581,3 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
   command JscsFix :call JscsFix()
   noremap <leader>j :JscsFix<CR>
 "}}}
-" endif
