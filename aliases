@@ -22,6 +22,7 @@ alias l1='ls -1'
 alias v='nvim'
 alias n="nvim"
 alias s="sudo"
+alias e="open -a /Applications/Emacs.app"
 # Desktop Programs
 alias xcode="open -a '/Applications/XCode.app'"
 alias safari="open -a safari"
@@ -97,17 +98,17 @@ git rebase upstream/master
   }
 
 
-  # incase i forget how to clear
+# incase i forget how to clear
   alias c='clear'
   alias k='clear'
   alias cls='clear'
 
-  # presentation crap
-  alias whoamireally='echo "Mike Hartington
-  Dev Advocate for Ionic
-  Beer lover and Cat lover" '
+# presentation crap
+  # alias whoamireally='echo "Mike Hartington
+  # Dev Advocate for Ionic
+  # Beer lover and Cat lover" '
 
-  # archive file or folder
+# archive file or folder
   function compress()
   {
     dirPriorToExe=`pwd`
@@ -245,3 +246,9 @@ shift
   done
 }
 alias x=extract
+
+
+
+function gif(){
+   ffmpeg -i $1 -vf scale=$2:-1:flags=lanczos -f gif - | gifsicle --optimize=3 --delay=3 > $3
+}
