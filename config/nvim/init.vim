@@ -125,8 +125,6 @@
 
   call dein#add('rafi/vim-unite-issue')
   call dein#add('tyru/open-browser.vim')
-  call dein#add('junegunn/fzf', {'build': './install --all' })
-  call dein#add('junegunn/fzf.vim')
 
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
