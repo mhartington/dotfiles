@@ -24,32 +24,35 @@
   call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
   call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
   call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
+  "
   call dein#add('moll/vim-node')
   " call dein#add('othree/javascript-libraries-syntax.vim')
-  " call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
+  call dein#add('kchmck/vim-coffee-script', {'on_ft': 'coffee'})
   call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
   call dein#add('elzr/vim-json', {'on_ft': 'json'})
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  call dein#add('jtratner/vim-flavored-markdown', {'on_ft': 'markdown'})
   call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('suan/vim-instant-markdown', {'on_ft': 'markdown'})
   call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
-
-  call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': 'typescript'})
+  call dein#add('dearrrfish/vim-applescript')
+  call dein#add('HerringtonDarkholme/yats.vim')
   call dein#add('tmux-plugins/vim-tmux')
-
+  call dein#add('neovimhaskell/haskell-vim')
   " call dein#add('hewes/unite-gtags')
   " call dein#add('Shougo/vimfiler.vim')
   " call dein#add('m2mdas/unite-file-vcs')
   " call dein#add('tpope/vim-vinegar')
   call dein#add('Shougo/denite.nvim')
 
-  call dein#add('mhartington/oceanic-next')
-  " call dein#local('~/GitHub', {},['oceanic-next'])
+  " call dein#add('mhartington/oceanic-next')
+  call dein#local('~/GitHub', {},['oceanic-next'])
+  call dein#add('reedes/vim-colors-pencil')
   call dein#add('frankier/neovim-colors-solarized-truecolor-only')
   call dein#add('mhartington/vim-folds')
   call dein#add('Yggdroot/indentLine')
   " call dein#add('Raimondi/delimitMate', {'on_ft': ['javascript', 'typescript', 'css', 'scss']})
-  " call dein#add('itmammoth/doorboy.vim')
+  call dein#add('itmammoth/doorboy.vim')
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
   call dein#add('tpope/vim-fugitive')
@@ -60,7 +63,8 @@
   " call dein#add('https://github.com/jaxbot/github-issues.vim')
 
   call dein#add('tpope/vim-repeat')
-  call dein#add('neomake/neomake')
+  " call dein#add('neomake/neomake')
+  call dein#local('~/GitHub', {},['neomake'])
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('AndrewRadev/switch.vim')
@@ -80,27 +84,25 @@
 
 " deoplete stuff
   call dein#add('Shougo/deoplete.nvim')
-  " call dein#add('carlitux/deoplete-ternjs')
+  call dein#add('carlitux/deoplete-ternjs')
 
-  " call dein#local('~/GitHub', {},['deoplete-tss'])
   " call dein#local('~/GitHub', {},['deoplete-html'])
-  " call dein#add('Quramy/tsuquyomi')
-  call dein#local('~/GitHub', {},['deoplete-typescript'], {'rev': 'feature/tss-neovim'})
-  call dein#local('~/GitHub', {},['deoplete-ternjs'])
 
-  " call dein#add('flowtype/vim-flow')
-  " call dein#add('steelsojka/deoplete-flow')
-  "
+  " call dein#add('Quramy/tsuquyomi')
+  call dein#local('~/GitHub', {},['deoplete-typescript'])
+
+  " call dein#add('mhartington/deoplete-typescript')
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
-  call dein#add('ujihisa/neco-look', {'on_ft': ['markdown','text','html']})
-  call dein#add('zchee/deoplete-jedi')
+  " call dein#add('ujihisa/neco-look', {'on_ft': ['markdown','text','html']})
+  " call dein#add('zchee/deoplete-jedi')
   " call dein#add('zchee/deoplete-go', {'build': 'make'})
 
   " call dein#add('wellle/tmux-complete.vim')
   " call dein#add('SevereOverfl0w/deoplete-github')
   " call dein#add('rhysd/github-complete.vim')
 
+  " call dein#add('landaire/deoplete-swift')
   call dein#add('Konfekt/FastFold')
 
   call dein#add('Shougo/neosnippet.vim')
@@ -109,7 +111,7 @@
   call dein#add('matthewsimo/angular-vim-snippets')
   call dein#local('~/GitHub', {},['vim-angular2-snippets'])
   call dein#local('~/GitHub', {},['vim-typings'])
-
+  call dein#add('heavenshell/vim-jsdoc')
 
   call dein#add('mhinz/vim-sayonara')
   call dein#add('mattn/webapi-vim')
@@ -141,12 +143,11 @@
 
   source ~/.local.vim
 " Neovim Settings
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set termguicolors
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
   " let $NVIM_PYTHON_LOG_FILE="nvimpy.log"
   " let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
-  set clipboard+=unnamedplus
+  " set clipboard+=unnamedplus
 " Currently needed for neovim paste issue
   set pastetoggle=<f6>
   set nopaste
@@ -199,6 +200,11 @@
   " let g:vimfiler_as_default_explorer = 1
   " autocmd filetype vimfiler set nonumber norelativenumber
   let g:dein#install_progress_type = 'none'
+
+  " augroup markdown
+  "   au!
+  "   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  " augroup END
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -548,6 +554,7 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
 
 " vim-airline ---------------------------------------------------------------{{{
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline_skip_empty_sections = 1
   set hidden
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#show_tab_nr = 1
@@ -585,9 +592,6 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
 " Linting -------------------------------------------------------------------{{{
 
 
-  function! EchoPWD()
-    echom getcwd()
-  endfunction
   let g:neomake_javascript_enabled_makers = ['eslint']
   function! neomake#makers#ft#javascript#eslint()
       return {
@@ -597,11 +601,13 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
           \ }
   endfunction
 
+  function! TSCPWD()
+    return ['--project', getcwd()]
+  endfunction
   function! neomake#makers#ft#typescript#tsc()
       return {
-          \ 'args': [
-          \ '-m', 'commonjs', '--noEmit', '--experimentalDecorators', '--emitDecoratorMetadata'
-          \],
+          \ 'exe': 'tsc',
+          \ 'args': function('TSCPWD'),
           \ 'errorformat':
               \ '%E%f %#(%l\,%c): error %m,' .
               \ '%E%f %#(%l\,%c): %m,' .
@@ -609,6 +615,15 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
               \ '%C%\s%\+%m'
           \ }
   endfunction
+
+  " let g:neomake_open_list = 2
+
+  let g:neomake_markdown_alex_maker = {
+    \ 'exe': 'alex',
+    \ 'errorformat': '%f: line %l\, col %c\, %m',
+    \ }
+  let g:neomake_markdown_enabled_makers = ['alex']
+
   autocmd! BufWritePost * Neomake
 
   function! JscsFix()

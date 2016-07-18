@@ -73,15 +73,7 @@
   call dein#add('Shougo/unite-outline')
   call dein#add('ujihisa/unite-colorscheme')
   call dein#add('junkblocker/unite-codesearch')
-  call dein#add('Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'tools\\update-dll-mingw',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make',
-      \     'unix' : 'gmake',
-      \    },
-      \ })
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
