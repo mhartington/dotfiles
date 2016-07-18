@@ -20,9 +20,10 @@ alias l1='ls -1'
 
 # because I'm to lazy to write vim
 alias v='nvim'
-alias n="nvim"
+# alias n="nvim"
 alias s="sudo"
 alias e="open -a /Applications/Emacs.app"
+alias n="open -a /Applications/Neovim.app"
 # Desktop Programs
 alias xcode="open -a '/Applications/XCode.app'"
 alias safari="open -a safari"

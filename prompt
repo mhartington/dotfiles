@@ -67,6 +67,7 @@ function __promptline_cwd {
 
   printf "%s" "$first_char$formatted_cwd"
 }
+
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 
@@ -89,7 +90,7 @@ function __promptline_left_prompt {
   __promptline_wrapper "$(__promptline_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
-  printf "%s" "${reset_bg}${sep}$reset$space"
+  printf "%s" "${reset_bg}${sep}$reset$space$(prompt_line_sep)$ "
 }
 
 function __promptline_wrapper {
@@ -184,18 +185,8 @@ function __promptline {
   local c_bg="${wrap}48;5;238${end_wrap}"
   local c_sep_fg="${wrap}38;5;238${end_wrap}"
 
-  if [[ -n ${ZSH_VERSION-} ]]; then
-    PROMPT="$(__promptline_left_prompt)"
-    RPROMPT="$(__promptline_right_prompt)"
-  elif [[ -n ${FISH_VERSION-} ]]; then
-    if [[ -n "$1" ]]; then
-      [[ "$1" = "left" ]] && __promptline_left_prompt || __promptline_right_prompt
-    else
-      __promptline_ps1
-    fi
-  else
-    PS1="$(__promptline_ps1)"
-  fi
+
+  PROMPT="$(__promptline_left_prompt)"
 }
 
 if [[ -n ${ZSH_VERSION-} ]]; then
@@ -213,4 +204,5 @@ fi
 prompt_line_sep() {
     # newline wont print without a non newline character, so add a zero-width space
     echo -e '\n%{\u200B%}'
+    # echo -e '\n'
 }

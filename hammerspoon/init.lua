@@ -25,9 +25,10 @@ end)
 
 local focusKeys = {
   s='Safari',
-  -- c='Safari',
+  a='Atom',
+  c='Safari',
   w='Mail',
-  c='Google Chrome',
+  -- c='Google Chrome',
   -- b='Google Chrome Canary',
   d='Slack',
   f='iTerm',
