@@ -15,6 +15,8 @@ zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-compl
 set editing-mode vi
 set blink-matching-paren on
 
+
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
@@ -28,13 +30,17 @@ source ~/antigen/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle marzocchi/zsh-notify
+antigen bundle marzocchi/zsh-notify
 antigen apply
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-zstyle ':notify:*' notifier /usr/local/bin/terminal-notifier
-zstyle ':notify:*' error-sound "Glass"
-zstyle ':notify:*' success-sound "default"
 
 source ~/.z/z.sh
 alias journal=~/.journal.sh
+
+zstyle ':notify:*' notifier /usr/local/bin/terminal-notifier
+zstyle ':notify:*' error-icon "https://media3.giphy.com/media/10ECejNtM1GyRy/200_s.gif"
+zstyle ':notify:*' error-title "wow such #fail"
+zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a/18/b55a1805f5650495a74202279036ecd2.jpg"
+zstyle ':notify:*' success-title "very #success. wow"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

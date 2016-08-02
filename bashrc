@@ -291,10 +291,5 @@ while (( $# > 0 )); do
 
 alias x=extract
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-###-tns-completion-start-###
-if [ -f /Users/mhartington/.tnsrc ]; then
-  source /Users/mhartington/.tnsrc
-fi
-###-tns-completion-end-###

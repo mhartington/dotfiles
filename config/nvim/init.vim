@@ -86,16 +86,16 @@
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('carlitux/deoplete-ternjs')
 
-  " call dein#local('~/GitHub', {},['deoplete-html'])
+  " call dein#local('~/GitHub', {},['deoplete-html', 'deoplete-npm'])
 
-  " call dein#add('Quramy/tsuquyomi')
   call dein#local('~/GitHub', {},['deoplete-typescript'])
-
   " call dein#add('mhartington/deoplete-typescript')
+  " call dein#add('DonnieWest/deoplete-typescript')
+
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
   " call dein#add('ujihisa/neco-look', {'on_ft': ['markdown','text','html']})
-  " call dein#add('zchee/deoplete-jedi')
+  call dein#add('zchee/deoplete-jedi')
   " call dein#add('zchee/deoplete-go', {'build': 'make'})
 
   " call dein#add('wellle/tmux-complete.vim')
@@ -127,7 +127,6 @@
 
   call dein#add('rafi/vim-unite-issue')
   call dein#add('tyru/open-browser.vim')
-
   call dein#add('ryanoasis/vim-devicons')
   call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   if dein#check_install()
@@ -184,7 +183,6 @@
   let g:indentLine_char='│'
   " enable deoplete
   let g:deoplete#enable_at_startup = 1
-
   " let g:deoplete#enable_debug = 1
   " let g:deoplete#enable_ignore_case = 1
   " let g:deoplete#auto_complete_start_length = 0
@@ -427,7 +425,7 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
 
 " Typescript & Javscript omni complete --------------------------------------{{{
 
-  let g:tsuquyomi_disable_quickfix = 1
+  let g:deoplete#sources#tss#javascript_support = 1
   let g:vim_json_syntax_conceal = 0
   set splitbelow
   set completeopt+=noselect
@@ -435,7 +433,7 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
 	" set completeopt-=menu,preview
   autocmd FileType vmailMessageList let b:deoplete_disable_auto_complete=1
   function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete=1
+    let b:deoplete_disable_auto_complete=2
   endfunction
   function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete=0
@@ -446,6 +444,13 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
   call deoplete#custom#set('file', 'mark', 'file')
   let g:deoplete#omni_patterns = {}
   let g:deoplete#omni_patterns.html = ''
+  function! Preview_func()
+    if &pvw
+      setlocal nonumber norelativenumber
+     endif
+  endfunction
+
+  autocmd WinEnter * call Preview_func()
 
 "}}}
 
@@ -591,32 +596,25 @@ nnoremap <silent> <Leader>g :Unite -direction=botright -silent -buffer-name=git 
 
 " Linting -------------------------------------------------------------------{{{
 
+  let g:neomake_warning_sign = {'text': '?', 'texthl': 'NeomakeWarningSign'}
+function! neomake#makers#ft#typescript#tsc()
+    return {
+        \ 'args': [
+            \ '-m', 'commonjs', '--target', 'es5', '--emitDecoratorMetadata', 'true', '--experimentalDecorators', 'true'
+        \ ],
+        \ 'errorformat':
+            \ '%f %#(%l\,%c): error %m,'
+        \ }
+endfunction
 
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  function! neomake#makers#ft#javascript#eslint()
-      return {
-          \ 'args': ['-f', 'compact'],
-          \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-          \ '%W%f: line %l\, col %c\, Warning - %m'
-          \ }
-  endfunction
 
-  function! TSCPWD()
-    return ['--project', getcwd()]
-  endfunction
-  function! neomake#makers#ft#typescript#tsc()
-      return {
-          \ 'exe': 'tsc',
-          \ 'args': function('TSCPWD'),
-          \ 'errorformat':
-              \ '%E%f %#(%l\,%c): error %m,' .
-              \ '%E%f %#(%l\,%c): %m,' .
-              \ '%Eerror %m,' .
-              \ '%C%\s%\+%m'
-          \ }
-  endfunction
+    let g:neomake_typescript_tslint = {
+        \ 'args': ['%:p', '--format verbose'],
+        \ 'errorformat': 'f:%l:%c: %m'
+        \ }
 
-  " let g:neomake_open_list = 2
+
+  let g:neomake_open_list = 2
 
   let g:neomake_markdown_alex_maker = {
     \ 'exe': 'alex',
