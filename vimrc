@@ -28,6 +28,7 @@
 " Let NeoBundle manage NeoBundle
 " Required:
   call dein#add('Shougo/dein.vim')
+  call dein#add('haya14busa/dein-command.vim')
   " syntax
   call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
   call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
@@ -56,7 +57,7 @@
   call dein#add('https://github.com/jaxbot/github-issues.vim')
 
   call dein#add('tpope/vim-repeat')
-  call dein#add('benekastah/neomake')
+  call dein#add('scrooloose/syntastic')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('AndrewRadev/switch.vim')
@@ -75,6 +76,7 @@
   call dein#add('junkblocker/unite-codesearch')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('Shougo/neocomplete.vim')
+  " call dein#add('Valloric/YouCompleteMe', {'build': './install.py --all'})
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
   call dein#add('ujihisa/neco-look')
@@ -92,8 +94,9 @@
   call dein#add('vim-scripts/SyntaxRange')
   call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
   call dein#add('rhysd/nyaovim-popup-tooltip')
+  call dein#add('jacoborus/tender.vim')
   call dein#add('ryanoasis/vim-devicons')
-
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   if dein#check_install()
     call dein#install()
   endif
@@ -106,6 +109,7 @@
 " System Settings  ----------------------------------------------------------{{{
 
 " Let airline tell me my status
+  set termguicolors
   set noshowmode
   set noswapfile
   filetype on
@@ -295,53 +299,17 @@ autocmd FileType coffee setl foldmethod=indent
 
 " NERDTree ------------------------------------------------------------------{{{
 
-map <C-\> :NERDTreeToggle<CR>
+map <silent> - :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let NERDTreeShowHidden=1
 let g:NERDTreeWinSize=45
 let g:NERDTreeAutoDeleteBuffer=1
 
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-
-" call NERDTreeHighlightFile('jade', 'green', 'none', 'green', 'none')
-" call NERDTreeHighlightFile('md', 'blue', 'none', '#6699CC', 'none')
-" call NERDTreeHighlightFile('config', 'yellow', 'none', '#d8a235', 'none')
-" call NERDTreeHighlightFile('conf', 'yellow', 'none', '#d8a235', 'none')
-" call NERDTreeHighlightFile('json', 'green', 'none', '#d8a235', 'none')
-" call NERDTreeHighlightFile('html', 'yellow', 'none', '#d8a235', 'none')
-" call NERDTreeHighlightFile('css', 'cyan', 'none', '#5486C0', 'none')
-" call NERDTreeHighlightFile('scss', 'cyan', 'none', '#5486C0', 'none')
-" call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', 'none')
-" call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', 'none')
-" call NERDTreeHighlightFile('ts', 'Blue', 'none', '#6699cc', 'none')
-" call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', 'none')
-" call NERDTreeHighlightFile('gitconfig', 'black', 'none', '#686868', 'none')
-" call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#7F7F7F', 'none')
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#141e23')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#141e23')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#141e23')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#141e23')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#141e23')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#141e23')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#141e23')
-call NERDTreeHighlightFile('ts', 'Blue', 'none', '#6699cc', '#141e23')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#141e23')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#141e23')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#141e23')
+  " let g:webdevicons_enable_nerdtree = 0
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+  " let g:NERDTreeFileExtensionHighlightFullName = 1
 
 "}}}
 
@@ -499,15 +467,9 @@ set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h13
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
-  function! neomake#makers#ft#javascript#eslint()
-      return {
-          \ 'args': ['-f', 'compact'],
-          \ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-          \ '%W%f: line %l\, col %c\, Warning - %m'
-          \ }
-  endfunction
-  let g:neomake_javascript_enabled_makers = ['eslint']
-  autocmd! BufWritePost * Neomake
+  let g:syntastic_javascript_checkers = ['flow']
+  let g:syntastic_typescript_checkers = ['tsuquyomi', 'tslint']
+  let g:syntastic_typescript_tsc_args = '--target ES5 --noEmit'
   function! JscsFix()
       let l:winview = winsaveview()
       % ! jscs -x
