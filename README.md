@@ -17,11 +17,11 @@ Some key plugins for neovim are:
 
 
 ### Vim-Airline
- [vim-airline](https://github.com/vim-airline/vim-airline) is much lighterweight, intergrates with a bunch of plugins I
+[vim-airline](https://github.com/vim-airline/vim-airline) is much lighterweight, intergrates with a bunch of plugins I
 already have, and is eaiser to set up.
 
 ```
-  call dein#add('vim-airline/vim-airline')
+call dein#add('vim-airline/vim-airline')
 ```
 
 ### Anything by Shougo
@@ -29,19 +29,20 @@ The guy is big in the vim/neovim community and his plugins are top notch.
 Hell, even my plugin manager is made by him. If he ever sees this, thanks Shougo!
 
 ### [Quramy/tsuquyomi](https://github.com/Quramy/tsuquyomi)
-Code completion for typescript. This is a must for me, and since I'm in neovim, it's non-block, yay async. A bit difficult to setup but it's pretty well documented.
+Code completion for typescript. This is a must for me.
 
 ```bash
 # install typescript
 npm -g install typescript
 ```
 
+
 ```viml
-" install vimproc
-call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-call dein#add('Quramy/tsuquyomi')
+call dein#add('Shougo/deoplete')
+call dein#add('mhartington/deoplte-typescript')
 ```
-vimproc is needed since we need to run a TSServer. Sadly, you need both even in neovim
+
+It may take a bit on first startup or with a large project, but that's typescript's fault...not mine.
 
 ### [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
 
@@ -86,6 +87,6 @@ cd $HOME
 rcup
 ```
 ##Inspiration
- - [Maximum Awesome](https://github.com/square/maximum-awesome)
- - [Paul's Dotfiles](https://github.com/paulirish/dotfiles)
- - [Andrew's Dotfiles](https://github.com/ajoslin/dot)
+- [Maximum Awesome](https://github.com/square/maximum-awesome)
+- [Paul's Dotfiles](https://github.com/paulirish/dotfiles)
+- [Andrew's Dotfiles](https://github.com/ajoslin/dot)

@@ -24,7 +24,6 @@ function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
     zle reset-prompt
   }
-
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
 export TERM=xterm-256color-italic
@@ -44,6 +43,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=${PATH}:~/bin
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$GOPATH/bin
+PATH=$PATH:$HOME/.composer/vendor/bin
 
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore .git --ignore *.png --ignore lib -l -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

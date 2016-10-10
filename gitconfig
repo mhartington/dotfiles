@@ -26,5 +26,7 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
-[commit]
-  gpgsign = true
+# [commit]
+#   gpgsign = true
+[ghi]
+	token = !security find-internet-password -a mhartington -s github.com -l 'ghi token' -w
