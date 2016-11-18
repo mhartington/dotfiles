@@ -4,6 +4,7 @@ for file in ~/.{aliases,functions,keys,prompt}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
 bindkey -v
 
 # Disable zsh autocorrect
@@ -21,10 +22,8 @@ zmodload -i zsh/complist
 . <(npm completion)
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Setting ag as the default source for fzf
 source ~/antigen/antigen.zsh
 # antigen use oh-my-zsh
-# antigen theme cloud
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 antigen bundle zsh-users/zsh-autosuggestions

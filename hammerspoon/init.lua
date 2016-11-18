@@ -26,12 +26,13 @@ end)
 local focusKeys = {
   s='Safari',
   a='Atom',
-  c='Safari',
+  -- c='Safari',
   w='Mail',
-  -- c='Google Chrome',
+  c='Google Chrome',
   -- b='Google Chrome Canary',
   d='Slack',
   f='iTerm',
+  -- f='Hyper',
   e='Simulator',
   t='Messages',
   -- v="Visual Studio Code"
