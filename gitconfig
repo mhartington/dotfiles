@@ -30,3 +30,5 @@
 #   gpgsign = true
 [ghi]
 	token = !security find-internet-password -a mhartington -s github.com -l 'ghi token' -w
+[diff]
+	external = /Users/mhartington/bin/git-diff.sh

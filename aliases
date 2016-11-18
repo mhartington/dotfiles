@@ -98,6 +98,15 @@ git checkout master
 git rebase upstream/master
   }
 
+function ghPages(){
+  if [ -z "$1" ]
+  then
+    echo "Which folder do you want to deploy to GitHub Pages?"
+    exit 1
+  fi
+  git subtree push --prefix $1 origin gh-pages
+
+}
 
 # incase i forget how to clear
   alias c='clear'
@@ -252,4 +261,9 @@ alias x=extract
 
 function gif(){
    ffmpeg -i $1 -vf scale=$2:-1:flags=lanczos -f gif - | gifsicle --optimize=3 --delay=3 > $3
+}
+
+function fixSSH(){
+  eval $(ssh-agent);
+  ssh-add
 }

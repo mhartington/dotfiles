@@ -71,11 +71,15 @@
   call dein#add('Chiel92/vim-autoformat')
   call dein#add('ap/vim-css-color')
   call dein#add('Shougo/unite.vim')
+  call dein#add('Shougo/Denite.nvim')
   call dein#add('Shougo/unite-outline')
   call dein#add('ujihisa/unite-colorscheme')
   call dein#add('junkblocker/unite-codesearch')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('Shougo/neocomplete.vim')
+  " call dein#add('Shougo/neocomplete.vim')
+  call dein#add('maralla/completor.vim')
+ call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
+  call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
   " call dein#add('Valloric/YouCompleteMe', {'build': './install.py --all'})
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
@@ -95,8 +99,8 @@
   call dein#add('zchee/deoplete-go', {'build': 'make'},{'on_ft': 'go'})
   call dein#add('rhysd/nyaovim-popup-tooltip')
   call dein#add('jacoborus/tender.vim')
-  call dein#add('ryanoasis/vim-devicons')
-  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+  " call dein#add('ryanoasis/vim-devicons')
+  " call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   if dein#check_install()
     call dein#install()
   endif
@@ -375,7 +379,8 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "}}}
 
 " unite ---------------------------------------------------------------------{{{
-"
+let g:completor_node_binary="/usr/local/bin/node"
+let g:completor_python_binary = ' /usr/local/lib/python3.5/site-packages'
 let g:unite_data_directory='~/.nvim/.cache/unite'
 let g:unite_source_history_yank_enable=1
 let g:unite_prompt='» '
