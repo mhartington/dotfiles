@@ -4,7 +4,7 @@
 [user]
 	name = mhartington
 	email = mikehartington@gmail.com
-	signingkey = E890DB47
+	signingkey = 493BFB24814E6209
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
@@ -26,9 +26,9 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
-# [commit]
-#   gpgsign = true
 [ghi]
 	token = !security find-internet-password -a mhartington -s github.com -l 'ghi token' -w
-[diff]
-	external = /Users/mhartington/bin/git-diff.sh
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg1

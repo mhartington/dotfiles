@@ -4,7 +4,6 @@ for file in ~/.{aliases,functions,keys,prompt}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
-
 bindkey -v
 
 # Disable zsh autocorrect

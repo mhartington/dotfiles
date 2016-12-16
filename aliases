@@ -265,5 +265,5 @@ function gif(){
 
 function fixSSH(){
   eval $(ssh-agent);
-  ssh-add
+  ssh-add ~/.ssh/id_rsa
 }

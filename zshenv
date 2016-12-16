@@ -26,7 +26,7 @@ function zle-line-init zle-keymap-select {
   }
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
-export TERM=xterm-256color-italic
+# export TERM=xterm-256color-italic
 export CLICOLOR=1
 export EDITOR=nvim
 # export BREW_PATH=$(brew --prefix)
