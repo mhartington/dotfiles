@@ -90,7 +90,8 @@ function __promptline_left_prompt {
   __promptline_wrapper "$(__promptline_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # close sections
-  printf "%s" "${reset_bg}${sep}$reset$space$(prompt_line_sep)$ "
+  printf "%s" "${reset_bg}${sep}$reset$space"
+  # printf "%s" "${reset_bg}${sep}$reset$space$(prompt_line_sep)\$$space"
 }
 
 function __promptline_wrapper {
