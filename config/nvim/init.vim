@@ -18,7 +18,6 @@
   call dein#begin(expand('~/.config/nvim'))
   call dein#add('Shougo/dein.vim')
   call dein#add('Shougo/denite.nvim')
-  " call dein#local('~/GitHub', {},['denite.nvim'])
   call dein#add('Shougo/neomru.vim')
   call dein#add('haya14busa/dein-command.vim')
 
@@ -29,18 +28,17 @@
   call dein#add('othree/html5.vim')
   call dein#add('othree/yajs.vim', {'on_ft': 'javascript'})
   call dein#add('othree/es.next.syntax.vim', {'on_ft': 'javascript'})
-  call dein#add('mxw/vim-jsx')
+
   call dein#add('othree/jsdoc-syntax.vim', {'on_ft':['javascript', 'typescript']})
   call dein#add('heavenshell/vim-jsdoc', {'on_ft':['javascript', 'typescript']})
   call dein#add('moll/vim-node', {'on_ft':['javascript', 'typescript']})
   call dein#add('elzr/vim-json', {'on_ft': 'json'})
 
   call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css','scss']})
-  call dein#add('ap/vim-css-color', {'on_ft': ['css', 'scss', 'yaml']})
+  call dein#add('ap/vim-css-color')
 
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
   call dein#add('dhruvasagar/vim-table-mode')
-  call dein#add('suan/vim-instant-markdown')
   call dein#add('nelstrom/vim-markdown-folding')
   call dein#add('tyru/markdown-codehl-onthefly.vim')
 
@@ -48,28 +46,22 @@
   call dein#add('dearrrfish/vim-applescript')
 
   call dein#add('HerringtonDarkholme/yats.vim', {'on_ft': ['typescript']})
-  call dein#add('ianks/vim-tsx')
   call dein#add('tmux-plugins/vim-tmux')
 
-  " call dein#add('mhartington/vim-folds')
-  " call dein#add('Yggdroot/indentLine')
   call dein#add('itmammoth/doorboy.vim')
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
 
   call dein#add('tpope/vim-fugitive')
   call dein#add('jreybert/vimagit')
   call dein#add('airblade/vim-gitgutter')
+
   call dein#add('scrooloose/nerdtree')
-
-
-  " call dein#add('justinmk/vim-dirvish')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
+
   call dein#add('tpope/vim-repeat')
 
   call dein#add('neomake/neomake')
-  " call dein#add('w0rp/ale')
   call dein#add('chrisbra/nrrwrgn')
-  call dein#add('majutsushi/tagbar')
   call dein#add('editorconfig/editorconfig-vim')
   call dein#add('AndrewRadev/switch.vim')
   call dein#add('christoomey/vim-tmux-navigator')
@@ -78,20 +70,18 @@
   call dein#add('tomtom/tcomment_vim')
   call dein#add('mattn/emmet-vim')
   call dein#add('Chiel92/vim-autoformat')
-  call dein#add('Shougo/unite.vim')
-  call dein#add('Shougo/vimfiler')
 
 " deoplete stuff
   call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/deol.nvim')
   call dein#add('landaire/deoplete-swift', {'on_ft': 'swift'})
   call dein#add('keith/swift.vim', {'on_ft': 'swift'})
   call dein#add('ternjs/tern_for_vim', {'build': 'npm install'})
   call dein#add('carlitux/deoplete-ternjs', {'on_ft': 'javascript'})
   call dein#add('artur-shaik/vim-javacomplete2', {'on_ft': 'java'})
-  call dein#add('pbogut/deoplete-padawan', {'on_ft': 'php'})
   call dein#add('Shougo/neco-vim', {'on_ft': 'vim'})
   call dein#add('Shougo/neoinclude.vim')
-  call dein#add('ujihisa/neco-look', {'on_ft': ['markdown','text','html']})
+  call dein#add('ujihisa/neco-look')
   call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
   call dein#add('zchee/deoplete-jedi', {'on_ft': 'python'})
   " call dein#add('zchee/nvim-go', {'build': 'gb build'})
@@ -109,23 +99,24 @@
   call dein#add('tyru/open-browser.vim')
   call dein#add('junegunn/vim-easy-align')
   call dein#add('MartinLafreniere/vim-PairTools')
-  call dein#add('othree/jspc.vim')
-  " call dein#local('~/GitHub', {},['deoplete-html'])
-  " call dein#local('~/GitHub', {},['deoplete-npm'])
+  call dein#add('Shougo/vimfiler.vim')
+  call dein#add('Shougo/unite.vim')
+
   call dein#local('~/GitHub', {},['vim-folds'])
   call dein#local('~/GitHub', {},['oceanic-next'])
   call dein#local('~/GitHub', {},['operator-next'])
   call dein#local('~/GitHub', {},['nvim-typescript'])
   call dein#local('~/GitHub', {},['vim-angular2-snippets'])
-  call dein#local('~/GitHub', {},['vim-typings'])
-  " call dein#local('~/GitHub', {},['vim-airline'])
+  " call dein#local('~/GitHub', {},['vim-typings'])
+
 
   " call dein#local('~/GitHub', {},['mdown.vim'])
 " these need to be added last
-  " call dein#add('ryanoasis/vim-devicons')
-  " call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+  call dein#add('ryanoasis/vim-devicons')
+  call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
   " call dein#local('~/GitHub', {} , ['vimfiler-syntax-highlight'])
-
+  call dein#add('carlitux/denite-cool-grep')
+  call dein#add('Yabes/vim-complete-commit-type')
 
   if dein#check_install()
     call dein#install()
@@ -187,6 +178,10 @@
   set inccommand=nosplit
   set shortmess=I
 " }}}
+
+let g:dein#enable_notification = 1
+let g:dein#install_progress_type="echo"
+let g:dein#install_message_type="none"
 
 " System mappings  ----------------------------------------------------------{{{
   let g:lmap =  {}
@@ -255,7 +250,7 @@
   let g:lmap.d = { 'name' : 'Empty delete' }
   vnoremap <leader>d "_d
   vnoremap <c-/> :TComment<cr>
-  map <esc> :noh<cr>
+  map <silent> <esc> :noh<cr>
   autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
 
   nnoremap <leader>e :call <SID>SynStack()<CR>
@@ -303,14 +298,14 @@
 
 " MarkDown ------------------------------------------------------------------{{{
 " no need to fold things in markdown all the time
-  let g:vim_markdown_folding_disabled = 1
-  let g:instant_markdown_autostart = 0
+  " let g:vim_markdown_folding_disabled = 1
+  " let g:instant_markdown_autostart = 0
 " turn on spelling for markdown files
-  autocmd FileType ghmarkdown,markdown,text,html setlocal spell complete+=kspell
+  " autocmd FileType ghmarkdown,markdown,text,html setlocal spell complete+=kspell
 " don't mess with folding text for markdown
-  let g:markdown_fold_override_foldtext = 1
-  let g:vim_markdown_conceal = 1
-
+  " let g:markdown_fold_override_foldtext = 1
+  " let g:vim_markdown_conceal = 1
+  " let g:gfm_syntax_enable_always = 1
 "}}}
 
 " Javascript ----------------------------------------------------------------{{{
@@ -405,29 +400,76 @@
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
-  " nnoremap <silent> - :Lex<CR>
-  map <silent> - :NERDTreeToggle<CR>
-  " map <silent> - :VimFiler<CR>
-  " let g:NERDTreeHijackNetrw=0
-  let g:netrw_banner = 0
-  let g:netrw_liststyle = 3
-  let g:netrw_browse_split = 4
-  let g:netrw_altv = 1
-  let g:netrw_winsize = 20
-
-  let NERDTreeMapJumpFirstChild = ''
-  let g:webdevicons_enable_vimfiler = 0
+  " map <silent> - :NERDTreeToggle<CR>
+  " let g:NERDTreeMapJumpLastChild = ' '
+  " let g:NERDTreeMapJumpFirstChild = ' '
   let g:WebDevIconsOS = 'Darwin'
-  let NERDTreeShowHidden=1
-  let g:NERDTreeWinSize=45
-  let g:NERDTreeAutoDeleteBuffer=1
-  " let g:webdevicons_enable_nerdtree = 0
-  " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  " let g:DevIconsEnableFoldersOpenClose = 1
-  " let g:NERDTreeFileExtensionHighlightFullName = 1
-  "
-  "
+  " let NERDTreeShowHidden=1
+  " let g:NERDTreeWinSize=45
+  " let g:NERDTreeAutoDeleteBuffer=1
+  map <silent> - :VimFiler<CR>
+	let g:vimfiler_tree_leaf_icon = ''
+	let g:vimfiler_tree_opened_icon = '▾'
+	let g:vimfiler_tree_closed_icon = '▸'
+	let g:vimfiler_file_icon = ''
+	let g:vimfiler_marked_file_icon = '*'
+  let g:vimfiler_expand_jump_to_first_child = 0
+  let g:vimfiler_force_overwrite_statusline = 0
+  call vimfiler#custom#profile('default', 'context', {
+              \ 'explorer' : 1,
+              \ 'winwidth' : 35,
+              \ 'winminwidth' : 35,
+              \ 'toggle' : 1,
+              \ 'auto_expand': 0,
+              \ 'parent': 1,
+              \ 'explorer_columns' : 'mhdevicons:git',
+              \ 'status' : 0,
+              \ 'safe' : 0,
+              \ 'split' : 1,
+              \ 'hidden': 1,
+              \ 'no_quit' : 1,
+              \ 'force_hide' : 0,
+              \ })
+              " \ 'explorer_columns' : 'devicons',
+  augroup vfinit
+  autocmd FileType vimfiler call s:vimfilerinit()
+  augroup END
+  function! s:vimfilerinit()
+      set nonumber
+      set norelativenumber
+      nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+            \ "\<Plug>(vimfiler_expand_tree)",
+            \ "\<Plug>(vimfiler_edit_file)"
+            \)
+      nmap <silent> m <Plug>(vimfiler_choose_action)
+      call unite#custom#alias('file', 'delete', 'vimfiler__delete')
+      nmap <silent> r <Plug>(vimfiler_redraw_screen)
+      " nmap <silent> <Space> <Plug>(vimfiler_toggle_mark_current_line)
+
+  endf
+  let g:vimfiler_ignore_pattern = '^\%(\.git\|\.DS_Store\)$'
+  let g:webdevicons_enable_vimfiler = 0
+  let g:vimfiler_no_default_key_mappings=1
+
+  hi vimfilerColumnGitDirty guifg=#FAC863
+
+  hi vimfilerColumn__html guifg=#F16529
+  " hi vimfilerColumn__config ' '
+  hi vimfilerColumn__json guifg=#F5C06F
+  hi vimfilerColumn__node_modules guifg=#8FAA54
+  hi vimfilerColumn__folder guifg=#79a6d2
+  hi vimfilerColumn__typescript guifg=#689FB6
+  hi vimfilerColumn__javascript guifg=#F5C06F
+  hi vimfilerColumn__css guifg=#689FB6
+  hi vimfilerColumn__scss guifg=#CB6F6F
+
 "}}}
+
+" Nvim terminal -------------------------------------------------------------{{{
+  au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  autocmd BufEnter term://* startinsert
+  autocmd TermOpen * set bufhidden=hide
+" }}}
 
 " Snipppets -----------------------------------------------------------------{{{
 
@@ -511,6 +553,7 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
 
 " Denite --------------------------------------------------------------------{{{
 "
+  let s:menus = {} " Useful when building interfaces at appropriate places
   call denite#custom#option('default', 'prompt', '❯')
   call denite#custom#source(
 	\ 'file_rec', 'vars', {
@@ -543,8 +586,11 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
 
+  call denite#custom#var('menu', 'menus', s:menus)
+  nnoremap <silent> <Leader>i :Denite -auto-resize menu:ionic <CR>
+"}}}
+
 " Git from unite...ERMERGERD ------------------------------------------------{{{
-  let s:menus = {} " Useful when building interfaces at appropriate places
   let s:menus.git = {
     \ 'description' : 'Fugitive interface',
     \}
@@ -577,9 +623,47 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
     \[' git grep',  'exe "Ggrep " input("string: ")'],
     \[' git prompt', 'exe "Git! " input("command: ")'],
     \] " Append ' --' after log to get commit info commit buffers
-  call denite#custom#var('menu', 'menus', s:menus)
-  nnoremap <silent> <Leader>g :Denite menu:git <CR>
 "}}}
+
+" Ionic denite source -------------------------------------------------------{{{
+
+    function! s:JobHandler(job_id, data, event) dict
+      if a:event == 'stdout'
+        let str = self.shell.' stdout: '.join(a:data)
+      elseif a:event == 'stderr'
+        let str = self.shell.' stderr: '.join(a:data)
+      else
+        let str = self.shell.' exited'
+      endif
+
+      call append(line('$'), str)
+    endfunction
+    let s:callbacks = {
+    \ 'on_stdout': function('s:JobHandler'),
+    \ 'on_stderr': function('s:JobHandler'),
+    \ 'on_exit': function('s:JobHandler')
+    \ }
+
+  function! Ionic(job, ...) abort
+    enew!
+    let filename = 'Ionic:\ '. a:job
+    call termopen('ionic '. a:job)
+    exe 'file 'filename
+    startinsert
+  endfunction
+
+  function ExitHandle()
+    echom self
+  endfunction
+
+  let s:menus.ionic = {
+    \ 'description' : 'some rando ionic stuff',
+    \}
+  let s:menus.ionic.command_candidates = [
+    \[' serve', 'call Ionic("serve")' ],
+    \[' run device', 'call Ionic("run", input("platform: "))'],
+    \[' emulate device', 'call Ionic("emulate", input("platform: "))'],
+    \]
 "}}}
 
 " Navigate between vim buffers and tmux panels ------------------------------{{{
@@ -688,6 +772,7 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
   hi NeomakeError gui=undercurl
   " let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
   let g:neomake_markdown_enabled_makers = ['alex']
+  let g:neomake_html_enabled_makers = []
   let g:neomake_javascript_enabled_makers = ['eslint']
   autocmd! BufWritePost * Neomake
   function! TsLintFix()
@@ -699,9 +784,3 @@ let g:neosnippet#snippets_directory='~/.config/repos/github.com/Shougo/neosnippe
   endfunction
   command TsLintFix :call TsLintFix()
 "}}}
-
-
-let g:switch_custom_definitions =
-    \ [
-    \   ['build', 'watch']
-    \ ]

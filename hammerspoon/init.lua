@@ -1,5 +1,4 @@
 local modalKey = {"alt"}
-
 local resizeMappings = {
   h={x=0, y=0, w=0.5, h=1},
   j={x=0, y=0.5, w=1, h=0.5},
@@ -25,15 +24,14 @@ end)
 
 local focusKeys = {
   s='Safari',
-  a='Atom',
-  -- c='Safari',
-  w='Mail',
+  -- a='Atom',
+  -- w='Mail',
   c='Google Chrome',
   -- b='Google Chrome Canary',
   d='Slack',
   f='iTerm',
   -- f='Hyper',
-  e='Simulator',
+  -- e='Simulator',
   t='Messages',
   -- v="Visual Studio Code"
 }
@@ -42,4 +40,27 @@ for key in pairs(focusKeys) do
   hs.hotkey.bind(modalKey, key, function()
     hs.application.launchOrFocus(focusKeys[key])
   end)
+end
+
+hs.hotkey.bind({"alt","shift"}, "l", function()
+  send_window_next_monitor()
+end)
+
+hs.hotkey.bind({"alt", "shift"}, "h", function()
+  send_window_prev_monitor()
+end)
+
+function send_window_next_monitor()
+  hs.alert.show("Next Monitor")
+  local win = hs.window.focusedWindow()
+  local nextScreen = win:screen():next()
+  win:moveToScreen(nextScreen)
+end
+
+
+function send_window_prev_monitor()
+  hs.alert.show("Prev Monitor")
+  local win = hs.window.focusedWindow()
+  local nextScreen = win:screen():previous()
+  win:moveToScreen(nextScreen)
 end

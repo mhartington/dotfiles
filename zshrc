@@ -1,6 +1,6 @@
 # Source any other dot files
 # Just .aliases right now git-completion.bash
-for file in ~/.{aliases,functions,keys,prompt}; do
+for file in ~/.{keys,prompt}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
@@ -25,7 +25,7 @@ source ~/antigen/antigen.zsh
 # antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle marzocchi/zsh-notify
 antigen apply
 
@@ -40,3 +40,11 @@ zstyle ':notify:*' success-title "very #success. wow"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Add the following to your shell init to set up gpg-agent automatically for every shell
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+  fi
