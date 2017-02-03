@@ -12,12 +12,21 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 setopt completeinword
 zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
 
+# Autoload zsh modules when they are referenced
+zmodload -a zsh/zpty zpty
+zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+# stat(1) is now commonly an external command, so just load zstat
+zmodload -aF zsh/stat b:zstat
+
 set editing-mode vi
 set blink-matching-paren on
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
+compinit -d ~/.zcompdump_capture
+
 . <(npm completion)
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -25,8 +34,9 @@ source ~/antigen/antigen.zsh
 # antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
-# antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle marzocchi/zsh-notify
+# antigen bundle https://github.com/Valodim/zsh-capture-completion
 antigen apply
 
 source ~/.z/z.sh
@@ -37,7 +47,6 @@ zstyle ':notify:*' error-icon "https://media3.giphy.com/media/10ECejNtM1GyRy/200
 zstyle ':notify:*' error-title "wow such #fail"
 zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a/18/b55a1805f5650495a74202279036ecd2.jpg"
 zstyle ':notify:*' success-title "very #success. wow"
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
