@@ -9,6 +9,8 @@ local resizeMappings = {
   i={x=0.33, y=0, w=0.33, h=1},
   o={x=0.66, y=0, w=0.33, h=1},
 
+  b={x=0, y=0, w=0.75, h=1},
+  n={x=0.75, y=0, w=0.25, h=1},
 }
 
 for key in pairs(resizeMappings) do
@@ -31,7 +33,7 @@ local focusKeys = {
   d='Slack',
   f='iTerm',
   -- f='Hyper',
-  -- e='Simulator',
+  e='Simulator',
   t='Messages',
   -- v="Visual Studio Code"
 }
