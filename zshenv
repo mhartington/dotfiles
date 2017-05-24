@@ -15,11 +15,12 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=${PATH}:~/bin
+export PATH=${PATH}:~/.cargo/bin:$PATH
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$HOME/.composer/vendor/bin
-
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore .git --ignore *.png --ignore lib -l -g ""'
+export NPM_TOKEN=19e676c0-ed55-4f5c-94ec-05ee8a55ece1
+export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export ZLE_RPROMPT_INDENT=0
@@ -27,7 +28,8 @@ export BULLETTRAIN_TIME_SHOW=false
 export BULLETTRAIN_STATUS_SHOW=false
 export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
 export DISABLE_AUTO_TITLE=true
-
+# export NVIM_PYTHON_LOG_FILE=/tmp/log
+# export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export EVENT_NOKQUEUE=1
 export VSCODE_TSJS=1
 
