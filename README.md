@@ -86,7 +86,7 @@ git clone https://github.com/mhartington/dotfiles.git ~/.dotfiles
 cd $HOME
 rcup
 ```
-##Inspiration
+## Inspiration
 - [Maximum Awesome](https://github.com/square/maximum-awesome)
 - [Paul's Dotfiles](https://github.com/paulirish/dotfiles)
 - [Andrew's Dotfiles](https://github.com/ajoslin/dot)
