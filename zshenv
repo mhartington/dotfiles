@@ -3,12 +3,13 @@ export TERMINAL_DARK=1
 export TERM=xterm-256color-italic
 export CLICOLOR=1
 export EDITOR=nvim
-# export BREW_PATH=$(brew --prefix)
 export GOPATH=$HOME/go
 export _Z_DATA="$HOME/z-data"
 export JOURNAL_DIR="/Users/mhartington/Journal"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
+
 # This is for android crap
 export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -17,6 +18,11 @@ export PATH=/usr/local/bin:$PATH
 export PATH=${PATH}:~/bin
 export PATH=${PATH}:~/.cargo/bin:$PATH
 export ANDROID_HOME=~/Library/Android/sdk
+export BREW_PATH=$(brew --prefix)
+export GRADLE_HOME=$BREW_PATH
+export PATH=$PATH:$GRADLE_HOME/bin
+export RUST_SRC_PATH=$HOME/.cargo/bin
+export PATH=$PATH:$RUST_SRC_PATH
 export PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$HOME/.composer/vendor/bin
 export NPM_TOKEN=19e676c0-ed55-4f5c-94ec-05ee8a55ece1
@@ -28,8 +34,6 @@ export BULLETTRAIN_TIME_SHOW=false
 export BULLETTRAIN_STATUS_SHOW=false
 export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
 export DISABLE_AUTO_TITLE=true
-# export NVIM_PYTHON_LOG_FILE=/tmp/log
-# export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export EVENT_NOKQUEUE=1
 export VSCODE_TSJS=1
 
@@ -60,7 +64,6 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
   }
 
-
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
 alias bout='brew outdated'
@@ -83,8 +86,7 @@ alias l1='ls -1'
 alias v='nvim'
 # alias n="nvim"
 alias s="sudo"
-alias e="open -a /Applications/Emacs.app"
-alias n="open -a /Applications/Neovim.app"
+# alias n="open -a /Applications/Neovim.app"
 # Desktop Programs
 alias xcode="open -a '/Applications/XCode.app'"
 alias safari="open -a safari"

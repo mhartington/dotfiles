@@ -26,16 +26,12 @@ end)
 
 local focusKeys = {
   s='Safari',
-  -- a='Atom',
-  -- w='Mail',
   c='Google Chrome',
-  -- b='Google Chrome Canary',
   d='Slack',
-  f='iTerm',
-  -- f='Hyper',
+  -- f='iTerm',
+  f='kitty',
   e='Simulator',
   t='Messages',
-  -- v="Visual Studio Code"
 }
 
 for key in pairs(focusKeys) do
@@ -44,6 +40,10 @@ for key in pairs(focusKeys) do
   end)
 end
 
+hs.hotkey.bind({"alt","shift"}, "s", function()
+  hs.application.launchOrFocus('Safari Technology Preview')
+end)
+
 hs.hotkey.bind({"alt","shift"}, "l", function()
   send_window_next_monitor()
 end)
@@ -51,6 +51,16 @@ end)
 hs.hotkey.bind({"alt", "shift"}, "h", function()
   send_window_prev_monitor()
 end)
+
+-- hs.hotkey.bind(modalKey, 'f', function()
+--   -- f='Alacritty',
+--   local alacritty = hs.application.find('Alacritty')
+--   if alacritty then
+--     alacritty:mainWindow():focus()
+--   else
+--     hs.application.launchOrFocus('Alacritty')
+--   end
+-- end)
 
 function send_window_next_monitor()
   hs.alert.show("Next Monitor")
