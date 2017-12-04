@@ -1,0 +1,106 @@
+#!/bin/bash
+
+#
+# NOTE: specify the absolutepath to the directory to use when
+#       loading a plugin. '~' expansion is supported.
+#
+
+chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
+
+#
+# NOTE: if enabled, chunkwm will monitor the specified plugin_dir
+#       and automatically reload any '.so' file that is changed.
+#
+
+chunkc core::hotload 1
+
+#
+# NOTE: the following are config variables for the chunkwm-tiling plugin.
+# bsp | monocle | float
+
+chunkc set global_desktop_mode           float
+# chunkc set 2_desktop_mode                float
+# chunkc set 5_desktop_mode                float
+
+chunkc set 1_desktop_tree                ~/.chunkwm_layouts/dev_1
+
+chunkc set global_desktop_offset_top     20
+chunkc set global_desktop_offset_bottom  20
+chunkc set global_desktop_offset_left    20
+chunkc set global_desktop_offset_right   20
+chunkc set global_desktop_offset_gap     15
+
+# chunkc set 1_desktop_offset_top          190
+# chunkc set 1_desktop_offset_bottom       190
+# chunkc set 1_desktop_offset_left         190
+# chunkc set 1_desktop_offset_right        190
+# chunkc set 1_desktop_offset_gap          15
+#
+# chunkc set 3_desktop_offset_top          190
+# chunkc set 3_desktop_offset_bottom       190
+# chunkc set 3_desktop_offset_left         190
+# chunkc set 3_desktop_offset_right        190
+
+chunkc set desktop_padding_step_size     10.0
+chunkc set desktop_gap_step_size         5.0
+
+# chunkc set bsp_spawn_left                0
+# chunkc set bsp_optimal_ratio             1.618
+# chunkc set bsp_split_mode                optimal
+# chunkc set bsp_split_ratio               0.5
+
+chunkc set window_focus_cycle            monitor
+chunkc set mouse_follows_focus           0
+chunkc set window_float_next             1
+chunkc set window_float_center           0
+chunkc set window_region_locked          1
+
+#
+# NOTE: shell commands require escaped quotes
+#       to pass value containing a whitespace.
+#
+# chunkc set mouse_modifier              \"cmd shift\"
+chunkc set mouse_modifier                fn
+
+# chunkc set preselect_border_color        0xffd75f5f
+chunkc set preselect_border_color       0xFF57b3b3
+chunkc set preselect_border_width        5
+chunkc set preselect_border_radius       0
+
+#
+# NOTE: these settings require chwm-sa.
+#       (https://github.com/koekeishiya/chwm-sa)
+#
+
+chunkc set window_float_topmost          1
+chunkc set window_fade_inactive          0
+chunkc set window_fade_alpha             0.85
+chunkc set window_fade_duration          0.01
+chunkc set window_use_cgs_move           0
+
+#
+# NOTE: the following are config variables for the chunkwm-border plugin.
+#
+
+chunkc set focused_border_color          0xFF57b3b3
+chunkc set focused_border_width          1
+chunkc set focused_border_radius         0
+chunkc set focused_border_skip_floating  0
+
+#
+# NOTE: specify plugins to load when chunkwm starts.
+#       if chunkc plugin_dir is not set, the absolutepath is necessary.
+#
+
+chunkc core::load border.so
+chunkc core::load tiling.so
+# chunkc core::load ffm.so
+
+#
+# NOTE: shell commands require escaped quotes
+#       to pass value containing a whitespace.
+#
+
+chunkc tiling::rule --owner Spotify --role AXWindow --subrole AXDialog --state tile
+chunkc tiling::rule --owner Finder --name Copy --state float
+chunkc tiling::rule --owner \"App Store\" --state float

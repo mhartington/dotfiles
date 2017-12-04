@@ -16,9 +16,8 @@ packages=(
 "git"
 "node"
 "tmux"
-"lua"
 "neovim"
-"weechat --with-lua --with-perl --with-python --with-ruby"
+"zsh"
 )
 
 for i in "${packages[@]}"
@@ -69,13 +68,6 @@ echo "---------------------------------------------------------"
 echo "running oxs defaults"
 ~./osx.sh
 
-echo "---------------------------------------------------------"
-echo "Downloading Hammerspoon"
-cd ~/Downloads
-curl https://github.com/Hammerspoon/hammerspoon/releases/download/0.9.43/Hammerspoon-0.9.43.zip | unzip
-unzip Hammerspoon-0.9.43.zip
-mv Hammerspoon /Applications/
-echo 'done'
 echo "---------------------------------------------------------"
 echo "All done!"
 echo "and change your terminal font to source code pro"
