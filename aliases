@@ -82,16 +82,16 @@ function highlight(){
 }
 
 alias dl=download
+
 function ghUpdate() {
-  if git remote | grep upstream > /dev/null;
-    then
-      echo "upstream is set"
-    else
-      read "?Whats the URl of the original repo? | " answer
-    # Add the remote, call it "upstream":
-    echo $answer
-      git remote add upstream $answer
-    fi
+  if git remote | grep upstream > /dev/null; then
+    echo "upstream is set"
+  elif ["$1" ]; then
+    git remote add upstram $1
+  else
+    read "?Whats the URl of the original repo? | " answer
+    git remote add upstream $answer
+  fi
   git fetch upstream
   git checkout master
   git rebase upstream/master

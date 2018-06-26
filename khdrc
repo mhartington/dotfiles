@@ -7,8 +7,8 @@ alt - s : open /Applications/Safari.app
 shift+alt - s : open /Applications/Safari\ Technology\ Preview.app
 alt - c : open /Applications/Google\ Chrome.app
 alt - d : open /Applications/Slack.app
-# alt - t : open /Applications/Messages.app
-alt - e : open /Applications/Xcode-beta.app/Contents/Developer/Applications/Simulator.app
+alt - t : open /Applications/Messages.app
+alt - e : open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app
 
 # focus window
 # alt - h : chunkc tiling::window --focus west
@@ -38,8 +38,8 @@ alt - e : open /Applications/Xcode-beta.app/Contents/Developer/Applications/Simu
 alt - m  : chunkc tiling::window --warp-floating fullscreen
 alt - h  : chunkc tiling::window --warp-floating left
 alt - l  : chunkc tiling::window --warp-floating right
-shift+alt - h : chunkc tiling::window --send-to-monitor next
-shift+alt - l : chunkc tiling::window --send-to-monitor prev
+shift+alt - h : chunkc tiling::window --send-to-monitor prev
+shift+alt - l : chunkc tiling::window --send-to-monitor next
 # alt - j   : chunkc tiling::window --warp-floating top-left
 
 # shift + cmd - left   : chunkc tiling::window --warp-floating top-left
@@ -130,7 +130,7 @@ shift+alt - l : chunkc tiling::window --send-to-monitor prev
 # alt - e : chunkc tiling::window --toggle split
 #
 # # float / unfloat window
- alt - t : chunkc tiling::window --toggle float
+#  alt - t : chunkc tiling::window --toggle float
 #
 # # toggle sticky, float and resize to picture-in-picture size
 # alt - s : chunkc tiling::window --toggle sticky;\

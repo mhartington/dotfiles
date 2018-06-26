@@ -1,3 +1,4 @@
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
 export TERM=xterm-256color-italic
@@ -8,7 +9,7 @@ export _Z_DATA="$HOME/z-data"
 export JOURNAL_DIR="/Users/mhartington/Journal"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
-
+export ITERM_24BIT=1
 
 # This is for android crap
 export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
@@ -19,7 +20,17 @@ export PATH=${PATH}:~/bin
 export PATH=${PATH}:~/.cargo/bin:$PATH
 export ANDROID_HOME=~/Library/Android/sdk
 export BREW_PATH=$(brew --prefix)
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/python@2/bin:$PATH"
+
+# export PATH="$(brew --prefix gettext)/bin:$PATH"
+# export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS"
+# export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
+# export LDFLAGS="-Wl,-headerpad_max_install_names ${LDFLAGS}"
+
 export GRADLE_HOME=$BREW_PATH
+
 export PATH=$PATH:$GRADLE_HOME/bin
 export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
@@ -107,7 +118,7 @@ alias hideall='defaults write com.apple.finder AppleShowAllFiles NO && killall F
 
 # Get rid of those pesky .DS_Store files recursively
 alias dsclean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
-
+alias cleanSlack="slack-cleaner --token xoxp-3358924549-5226614595-334014934704-60b9a81ae92b0b3cf0c4c43fa77e8bc6 --file --user '*' --perform"
 # Flush your dns cache
 alias flush='dscacheutil -flushcache'
 
@@ -145,21 +156,20 @@ function highlight(){
 }
 
 alias dl=download
-function ghUpdate() {
-if git remote | grep upstream > /dev/null;
-then
-  echo "upstream is set"
-else
-  read "?Whats the URl of the original repo? | " answer
-  # Add the remote, call it "upstream":
-  echo $answer
-  git remote add upstream $answer
 
-fi
-git fetch upstream
-git checkout master
-git rebase upstream/master
-  }
+function ghUpdate() {
+  if git remote | grep upstream > /dev/null; then
+    echo "upstream is set"
+  elif [ -z "$1" ]; then
+    read "?Whats the URl of the original repo? " answer
+    git remote add upstream $answer
+  else
+    git remote add upstream $1
+  fi
+  git fetch upstream
+  git checkout master
+  git rebase upstream/master
+}
 
 function ghPages(){
   if [ -z "$1" ]
@@ -182,8 +192,7 @@ function ghPages(){
   # Beer lover and Cat lover" '
 
 # archive file or folder
-  function compress()
-  {
+  function compress()  {
     dirPriorToExe=`pwd`
     dirName=`dirname $1`
     baseName=`basename $1`
