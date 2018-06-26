@@ -44,10 +44,10 @@ chunkc set global_desktop_offset_gap     15
 chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
 
-# chunkc set bsp_spawn_left                0
-# chunkc set bsp_optimal_ratio             1.618
-# chunkc set bsp_split_mode                optimal
-# chunkc set bsp_split_ratio               0.5
+chunkc set bsp_spawn_left                0
+chunkc set bsp_optimal_ratio             1.618
+chunkc set bsp_split_mode                optimal
+chunkc set bsp_split_ratio               0.5
 
 chunkc set window_focus_cycle            monitor
 chunkc set mouse_follows_focus           0

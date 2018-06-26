@@ -1,28 +1,90 @@
 #!/bin/zsh
 
-fpath=( ~/bin/faster-vcs-info "${fpath[@]}" )
-
-
 autoload -Uz vcs_info
 autoload -U add-zsh-hook
+autoload -Uz async && async
 
 setopt PROMPT_SUBST
-
-add-zsh-hook precmd precmd_vcs_info
-add-zsh-hook precmd __promptline
-prompt_line_sep=$'\n'
-
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats " %b"
 
+add-zsh-hook precmd precmd_vcs_info
+add-zsh-hook precmd __prompt
+
+prompt_line_sep=$'\n'
+
+
+# prompt_async_taskts(){
+#   setopt localoptions noshwordsplit
+
+# 	# initialize async worker
+# 	((!${pl_prompt_async_init:-0})) && {
+# 		async_start_worker "pl_prompt" -u -n
+# 		async_register_callback "pl_prompt" pl_prompt_async_callback
+# 		typeset -g pl_prompt_async_init=1
+# 	}
+
+#   	typeset -gA pl_prompt_vcs_info
+
+# 	local -H MATCH MBEGIN MEND
+# 	if ! [[ $PWD = ${pl_prompt_vcs_info[pwd]}* ]]; then
+# 		# stop any running async jobs
+# 		async_flush_jobs "pl_prompt"
+
+# 		# reset git preprompt variables, switching working tree
+# 		unset pl_prompt_git_dirty
+# 		unset pl_prompt_git_last_dirty_check_timestamp
+# 		unset pl_prompt_git_arrows
+# 		unset pl_prompt_git_fetch_pattern
+# 		pl_prompt_vcs_info[branch]=
+# 		pl_prompt_vcs_info[top]=
+# 	fi
+# 	unset MATCH MBEGIN MEND
+
+# 	async_job "pl_prompt" pl_prompt_async_vcs_info $PWD
+
+# 	# # only perform tasks inside git working tree
+# 	[[ -n $pl_prompt_vcs_info[top] ]] || return
+
+# 	pl_prompt_async_refresh
+# }
+
+# pl_prompt_async_refresh() {
+# 	setopt localoptions noshwordsplit
+
+# 	if [[ -z $pl_prompt_git_fetch_pattern ]]; then
+# 		# we set the pattern here to avoid redoing the pattern check until the
+# 		# working three has changed. pull and fetch are always valid patterns.
+# 		typeset -g pl_prompt_git_fetch_pattern="pull|fetch"
+# 		async_job "pl_prompt" pl_prompt_async_git_aliases $working_tree
+# 	fi
+
+# 	async_job "pl_prompt" pl_prompt_async_git_arrows $PWD
+
+# 	# do not preform git fetch if it is disabled or working_tree == HOME
+# 	if (( ${PURE_GIT_PULL:-1} )) && [[ $working_tree != $HOME ]]; then
+# 		# tell worker to do a git fetch
+# 		async_job "pl_prompt" pl_prompt_async_git_fetch $PWD
+# 	fi
+
+# 	# if dirty checking is sufficiently fast, tell worker to check it again, or wait for timeout
+# 	integer time_since_last_dirty_check=$(( EPOCHSECONDS - ${pl_prompt_git_last_dirty_check_timestamp:-0} ))
+# 	if (( time_since_last_dirty_check > ${PURE_GIT_DELAY_DIRTY_CHECK:-1800} )); then
+# 		unset pl_prompt_git_last_dirty_check_timestamp
+# 		# check check if there is anything to pull
+# 		async_job "pl_prompt" pl_prompt_async_git_dirty ${PL_GIT_UNTRACKED_DIRTY:-1} $PWD
+# 	fi
+# }
+
+# pl_prompt_async_git_arrows() {
+# 	setopt localoptions noshwordsplit
+# 	builtin cd -q $1
+# 	command git rev-list --left-right --count HEAD...@'{u}'
+# }
 precmd_vcs_info() { vcs_info }
 
-vcs_branch() {
 
-  printf "${vcs_info_msg_0_}"
-}
-
-__promptline_cwd() {
+__format_cwd() {
   local dir_limit="3"
   local truncation="⋯"
   local first_char
@@ -53,8 +115,12 @@ __promptline_cwd() {
   printf "%s" "$first_char$formatted_cwd"
 }
 
-__promptline_left_prompt() {
-  local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
+left_prompt() {
+  local slice_prefix
+  local slice_empty_prefix
+  local slice_joiner
+  local slice_suffix
+  local is_prompt_empty=1
 
   # section "a" header
   slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}"
@@ -65,7 +131,7 @@ __promptline_left_prompt() {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
 
   # section "a" slices
-  __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __segment_wrapper "$(__format_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}"
@@ -76,7 +142,7 @@ __promptline_left_prompt() {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
 
   # section "b" slices
-  __promptline_wrapper "$(vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __segment_wrapper "$(vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "c" header
   slice_prefix="${c_bg}${sep}${c_fg}${c_bg}${space}"
@@ -87,13 +153,12 @@ __promptline_left_prompt() {
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
 
   # section "c" slices
-  __promptline_wrapper "$(__promptline_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  # __promptline_wrapper "" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
+  __segment_wrapper "$(__async_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   printf "%s" "${reset_bg}${sep}$reset$space${prompt_line_sep}\$$space"
 }
 
-__promptline_wrapper() {
+__segment_wrapper() {
   # wrap the text in $1 with $2 and $3, only if $1 is not empty
   # $2 and $3 typically contain non-content-text, like color escape codes and separators
 
@@ -101,13 +166,18 @@ __promptline_wrapper() {
   printf "%s" "${2}${1}${3}"
 }
 
-__promptline_git_status() {
+# Get branch
+vcs_branch() {
+  printf "${vcs_info_msg_0_}"
+}
+
+# Gets git diff status
+__async_git_status() {
   [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
 
   local added_symbol="●"
-  local unmerged_symbol="✗"
+  local unmerged_symbol="ⅹ"
   local modified_symbol="+"
-  # local clean_symbol="✔"
   local clean_symbol=""
   local has_untracked_files_symbol="…"
 
@@ -152,12 +222,13 @@ __promptline_git_status() {
   [[ $is_clean -gt 0 ]]            && { printf "%s" "$leading_whitespace$clean_symbol"; leading_whitespace=" "; }
 }
 
-__promptline() {
-  local last_exit_code="${PROMPTLINE_LAST_EXIT_CODE:-$?}"
-
-  local esc=$'[' end_esc=m
-  local noprint='%{' end_noprint='%}'
-  local wrap="$noprint$esc" end_wrap="$end_esc$end_noprint"
+__prompt() {
+  local esc=$'['
+  local end_esc=m
+  local noprint='%{'
+  local end_noprint='%}'
+  local wrap="$noprint$esc"
+  local end_wrap="$end_esc$end_noprint"
   local space=" "
   local sep=""
   local rsep=""
@@ -177,8 +248,6 @@ __promptline() {
   local c_fg="${wrap}38;5;7${end_wrap}"
   local c_bg="${wrap}48;5;238${end_wrap}"
   local c_sep_fg="${wrap}38;5;238${end_wrap}"
-  PROMPT="$(__promptline_left_prompt)"
+
+  PROMPT="$(left_prompt)"
 }
-
-
-

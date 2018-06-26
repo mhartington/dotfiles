@@ -27,11 +27,7 @@
   call dein#add('haya14busa/dein-command.vim')
   " syntax
   call dein#add('HerringtonDarkholme/yats.vim')
-	call dein#add('roxma/vim-hug-neovim-rpc')
-	call dein#add('roxma/nvim-yarp')
-  call dein#add('Shougo/deoplete.nvim')
-	call dein#local('~/GitHub', {},['nvim-typescript', 'test-vim'])
-
+  call dein#add('Quramy/tsuquyomi')
   call dein#add('mhartington/oceanic-next')
   if dein#check_install()
     call dein#install()
@@ -43,14 +39,12 @@
 " }}}
 
 " System Settings  ----------------------------------------------------------{{{
-let $NVIM_PYTHON_LOG_FILE="/Users/mhartington/nvim_log"
-let $NVIM_PYTHON_LOG_LEVEL="DEBUG"
 " Let airline tell me my status
   set termguicolors
   set noshowmode
   set noswapfile
   filetype on
-  set relativenumber number
+  set number
   set tabstop=2 shiftwidth=2 expandtab
   set conceallevel=0
 " block select not limited by shortest line
@@ -224,5 +218,5 @@ colorscheme OceanicNext
 " " au FileType html nnoremap <buffer> <leader>F zfat
 " " }}}
 
+" let g:deoplete#enable_at_startup = 1
 " autocmd FileType css setl omnifunc=csscomplete#CompleteCSS
-" autocmd FileType typescript setl omnifunc=tsuquyomi#complete
