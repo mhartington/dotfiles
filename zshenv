@@ -36,7 +36,6 @@ export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
 export PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$HOME/.composer/vendor/bin
-export NPM_TOKEN=19e676c0-ed55-4f5c-94ec-05ee8a55ece1
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -118,7 +117,6 @@ alias hideall='defaults write com.apple.finder AppleShowAllFiles NO && killall F
 
 # Get rid of those pesky .DS_Store files recursively
 alias dsclean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
-alias cleanSlack="slack-cleaner --token xoxp-3358924549-5226614595-334014934704-60b9a81ae92b0b3cf0c4c43fa77e8bc6 --file --user '*' --perform"
 # Flush your dns cache
 alias flush='dscacheutil -flushcache'
 
