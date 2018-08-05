@@ -86,9 +86,9 @@ alias bdr='brew doctor'
 
 # Some directory listing with colors
 alias sl=ls
-alias ls='ls -G'        # Compact view, show colors
-alias la='ls -AF'       # Compact view, show hidden
-alias ll='ls -al'
+alias ls='ls -GpF'        # Compact view, show colors
+alias la='ls -GAF'       # Compact view, show hidden
+alias ll='ls -alGpF'
 alias l='ls -a'
 alias l1='ls -1'
 

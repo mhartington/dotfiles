@@ -43,3 +43,5 @@
 
 [format]
 	pretty = %Cred%h%Creset - %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset
+[help]
+	autocorrect = 1
