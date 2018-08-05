@@ -39,3 +39,7 @@ zstyle ':notify:*' error-title "Fail"
 zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a/18/b55a1805f5650495a74202279036ecd2.jpg"
 zstyle ':notify:*' success-title "Success"
 
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh

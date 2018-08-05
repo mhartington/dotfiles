@@ -12,77 +12,7 @@ add-zsh-hook precmd precmd_vcs_info
 add-zsh-hook precmd __prompt
 
 prompt_line_sep=$'\n'
-
-
-# prompt_async_taskts(){
-#   setopt localoptions noshwordsplit
-
-# 	# initialize async worker
-# 	((!${pl_prompt_async_init:-0})) && {
-# 		async_start_worker "pl_prompt" -u -n
-# 		async_register_callback "pl_prompt" pl_prompt_async_callback
-# 		typeset -g pl_prompt_async_init=1
-# 	}
-
-#   	typeset -gA pl_prompt_vcs_info
-
-# 	local -H MATCH MBEGIN MEND
-# 	if ! [[ $PWD = ${pl_prompt_vcs_info[pwd]}* ]]; then
-# 		# stop any running async jobs
-# 		async_flush_jobs "pl_prompt"
-
-# 		# reset git preprompt variables, switching working tree
-# 		unset pl_prompt_git_dirty
-# 		unset pl_prompt_git_last_dirty_check_timestamp
-# 		unset pl_prompt_git_arrows
-# 		unset pl_prompt_git_fetch_pattern
-# 		pl_prompt_vcs_info[branch]=
-# 		pl_prompt_vcs_info[top]=
-# 	fi
-# 	unset MATCH MBEGIN MEND
-
-# 	async_job "pl_prompt" pl_prompt_async_vcs_info $PWD
-
-# 	# # only perform tasks inside git working tree
-# 	[[ -n $pl_prompt_vcs_info[top] ]] || return
-
-# 	pl_prompt_async_refresh
-# }
-
-# pl_prompt_async_refresh() {
-# 	setopt localoptions noshwordsplit
-
-# 	if [[ -z $pl_prompt_git_fetch_pattern ]]; then
-# 		# we set the pattern here to avoid redoing the pattern check until the
-# 		# working three has changed. pull and fetch are always valid patterns.
-# 		typeset -g pl_prompt_git_fetch_pattern="pull|fetch"
-# 		async_job "pl_prompt" pl_prompt_async_git_aliases $working_tree
-# 	fi
-
-# 	async_job "pl_prompt" pl_prompt_async_git_arrows $PWD
-
-# 	# do not preform git fetch if it is disabled or working_tree == HOME
-# 	if (( ${PURE_GIT_PULL:-1} )) && [[ $working_tree != $HOME ]]; then
-# 		# tell worker to do a git fetch
-# 		async_job "pl_prompt" pl_prompt_async_git_fetch $PWD
-# 	fi
-
-# 	# if dirty checking is sufficiently fast, tell worker to check it again, or wait for timeout
-# 	integer time_since_last_dirty_check=$(( EPOCHSECONDS - ${pl_prompt_git_last_dirty_check_timestamp:-0} ))
-# 	if (( time_since_last_dirty_check > ${PURE_GIT_DELAY_DIRTY_CHECK:-1800} )); then
-# 		unset pl_prompt_git_last_dirty_check_timestamp
-# 		# check check if there is anything to pull
-# 		async_job "pl_prompt" pl_prompt_async_git_dirty ${PL_GIT_UNTRACKED_DIRTY:-1} $PWD
-# 	fi
-# }
-
-# pl_prompt_async_git_arrows() {
-# 	setopt localoptions noshwordsplit
-# 	builtin cd -q $1
-# 	command git rev-list --left-right --count HEAD...@'{u}'
-# }
 precmd_vcs_info() { vcs_info }
-
 
 __format_cwd() {
   local dir_limit="3"
@@ -90,7 +20,7 @@ __format_cwd() {
   local first_char
   local part_count=0
   local formatted_cwd=""
-  local dir_sep="  "
+  local dir_sep=" "
   local tilde="~"
 
   local cwd="${PWD/#$HOME/$tilde}"
@@ -111,7 +41,6 @@ __format_cwd() {
 
     [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
   done
-
   printf "%s" "$first_char$formatted_cwd"
 }
 

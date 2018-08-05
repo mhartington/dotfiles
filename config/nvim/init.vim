@@ -37,8 +37,7 @@
   call dein#add('majutsushi/tagbar')
   call dein#add('tmux-plugins/vim-tmux')
   call dein#add('Shougo/context_filetype.vim')
-  call dein#add('nhooyr/neoman.vim')
-  call dein#add('Konfekt/FastFold')
+  " call dein#add('Konfekt/FastFold')
   call dein#add('mhinz/vim-sayonara')
   call dein#add('mattn/webapi-vim')
   call dein#add('mattn/gist-vim')
@@ -54,20 +53,19 @@
   call dein#add('vim-airline/vim-airline')
   call dein#add('drzel/vim-line-no-indicator')
   call dein#add('rakr/vim-one')
+  call dein#add('morhetz/gruvbox')
+  call dein#add('RRethy/vim-illuminate')
 " }}}
 " rust {{{
   call dein#add('rust-lang/rust.vim')
   call dein#add('racer-rust/vim-racer')
-
 " }}}
 " markdown {{{
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
   call dein#add('dhruvasagar/vim-table-mode')
   call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
   call dein#add('rhysd/vim-grammarous')
-  call dein#add('junegunn/limelight.vim')
   call dein#add('junegunn/goyo.vim')
-  call dein#add('amix/vim-zenroom2')
   call dein#add('euclio/vim-markdown-composer', {'build': 'cargo build --release'})
 " }}}
 " completion {{{
@@ -87,14 +85,11 @@
   call dein#add('Shougo/echodoc.vim')
 " }}}
 " denite {{{
-  " call dein#add('Shougo/denite.nvim')
-  call dein#local('~/GitHub', {},['denite.nvim'])
+  call dein#add('Shougo/denite.nvim')
   call dein#add('nixprime/cpsm', {'build': 'PY3=ON ./install.sh'})
   call dein#add('Shougo/neomru.vim')
-  call dein#add('chemzqm/denite-git')
   call dein#add('chemzqm/denite-extra')
   call dein#add('pocari/vim-denite-gists')
-  call dein#add('neoclide/todoapp.vim')
 " }}}
 " code style {{{
   call dein#add('neomake/neomake')
@@ -104,14 +99,11 @@
 " git {{{{
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-rhubarb')
-  call dein#add('chemzqm/vim-easygit')
   call dein#add('jreybert/vimagit', {'on_cmd': ['Magit', 'MagitOnly']})
   call dein#add('sgeb/vim-diff-fold')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('junegunn/gv.vim')
   call dein#add('lambdalisue/gina.vim')
-  call dein#add('junegunn/gv.vim')
-  call dein#add('jaxbot/github-issues.vim')
 " }}}}
 " python{{{
   call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
@@ -123,12 +115,11 @@
   call dein#add('heavenshell/vim-jsdoc')
   call dein#add('elzr/vim-json')
   call dein#add('HerringtonDarkholme/yats.vim')
-  call dein#add('jsfaint/gen_tags.vim')
   call dein#add('Quramy/vison')
 " }}}
 " html {{{
-  call dein#add('mattn/emmet-vim')
   call dein#add('othree/html5.vim')
+  call dein#add('mattn/emmet-vim')
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
   call dein#add('posva/vim-vue')
   call dein#add('skwp/vim-html-escape')
@@ -142,10 +133,8 @@
 " }}}
 " go {{{
   call dein#add('fatih/vim-go')
-  " call dein#add('zchee/nvim-go', {'build': 'make'})
 " }}}
 " java {{{
-  " call dein#add('DonnieWest/VimStudio')
 " }}}
 " snippets {{{
   call dein#add('Shougo/neosnippet.vim')
@@ -155,9 +144,8 @@
 " local {{{
   call dein#local('~/GitHub', {},['nvim-typescript'])
   call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next'])
-  call dein#local('~/GitHub', {}, ['nerdtree','nerdtree-git-plugin'])
+  call dein#local('~/GitHub', {}, ['nerdtree-git-plugin'])
 " }}}
-call dein#add('ElmCast/elm-vim')
 " Has to be last according to docs
   call dein#add('ryanoasis/vim-devicons')
 
@@ -171,8 +159,7 @@ call dein#add('ElmCast/elm-vim')
 " }}}
 
 " System Settings  ----------------------------------------------------------{{{
-  " let &t_Cs = "\e[6m"
-  " let &t_Ce = "\e[24m"
+
   source ~/.local.vim
   if exists('g:GuiLoaded')
     Guifont Hasklig:h15
@@ -228,14 +215,22 @@ call dein#add('ElmCast/elm-vim')
   "
   "
   if has('termguicolors')
+    " let &t_8u = "\<Esc>[58;2;%lu;%lu;%lum"
   " Don't need this in xterm-256color, but do need it inside tmux.
   " (See `:h xterm-true-color`.)
-  if &term =~# 'tmux-256color'
-    let &t_8f="\e[38;2;%ld;%ld;%ldm"
-    let &t_8b="\e[48;2;%ld;%ld;%ldm"
+  if &term =~# 'xterm-256color-italic'
+    " let &t_8f="\e[38;2;%ld;%ld;%ldm"
+    " let &t_8b="\e[48;2;%ld;%ld;%ldm"
     " deus
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+  "
+  " " let &t_Cs = "\e[6m"
+  " " let &t_Ce = "\e[24m"
+  "
+  " let &t_Cs = "\e[4:3m"
+  " let &t_Ce = "\e[4:0m"
   endif
 endif
 " }}}
@@ -322,6 +317,10 @@ endif
   let g:oceanic_next_terminal_bold = 1
   let g:oceanic_next_terminal_italic = 1
   colorscheme OceanicNext
+  let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig']
+
+  set list
+  set listchars=tab:‣\ ,trail:·
   " colorscheme one
   " set background=dark
 "}}}
@@ -428,6 +427,7 @@ endif
     autocmd FileType nerdtree call s:nerdtreeinit()
   augroup END
   function! s:nerdtreeinit() abort
+    set nolist
     if !has("gui_running")
       nunmap <buffer> K
       nunmap <buffer> J
@@ -511,20 +511,22 @@ endif
 " Snipppets -----------------------------------------------------------------{{{
 
 " Enable snipMate compatibility feature.
-  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_completed_snippet=0
+  let g:neosnippet#enable_snipmate_compatibility=0
+  " let g:neosnippet#enable_conceal_markers=0
   " let g:neosnippet#snippets_directory='~/GitHub/ionic-snippets'
   " let g:neosnippet#expand_word_boundary = 1
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
   xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-  " imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-  " \ "\<Plug>(neosnippet_expand_or_jump)"
-  " \: "\<TAB>"
+" " SuperTab like snippets behavior.
+"   imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"   \ "\<Plug>(neosnippet_expand_or_jump)"
+"   \: pumvisible() ? "\<C-n>" : "\<TAB>"
+"   smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"   \ "\<Plug>(neosnippet_expand_or_jump)"
+"   \: "\<TAB>"
 
 "}}}
 
@@ -553,8 +555,8 @@ endif
   call deoplete#custom#source('jedi', 'mark', '')
   call deoplete#custom#source('neosnippet', 'mark', '')
   call deoplete#custom#source('LanguageClient', 'mark', '')
-  " call deoplete#custom#source('typescript',  'rank', 630)
-  " call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+  call deoplete#custom#source('typescript',  'rank', 630)
+  call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
   " call deoplete#custom#source('_', 'sorters', [])
   let g:deoplete#omni_patterns = {
         \ 'html': '',
@@ -863,8 +865,8 @@ endif
 
   " let $NVIM_NODE_LOG_FILE='nvim-node.log'
   " let $NVIM_NODE_LOG_LEVEL='warn'
-  nnoremap <m-Enter> :TSGetCodeFix<CR>
-  " nnoremap <c-\.> :NERDTreeToggle<CR>
+  " let $NVIM_NODE_HOST_DEBUG=1
+
   " autocmd FileType typescript.tsx setlocal commentstring=
   " call tcomment#type#Define('typescriptreact', '{/* %s */}')
   " call tcomment#type#Define('typescript.tsx_block',       '{/* %s */}')
@@ -874,7 +876,7 @@ endif
   autocmd FileType vue syntax sync fromstart
 
   let g:jsx_ext_required = 0
-  let g:neomake_javascript_enabled_makers = ['eslint']
+  let g:neomake_javascript_enabled_makers = []
   let g:jsx_ext_required = 1
   let g:jsdoc_allow_input_prompt = 1
   let g:jsdoc_input_description = 1
@@ -886,10 +888,11 @@ endif
   let g:tern_map_keys=1
 
   autocmd FileType typescript,typescriptreact setl omnifunc=TSOmnicFunc
-  let g:neomake_typescript_enabled_makers = []
+  " let g:neomake_typescript_enabled_makers = ['tslint']
   let g:nvim_typescript#max_completion_detail=50
   let g:nvim_typescript#completion_mark=''
   let g:nvim_typescript#javascript_support=1
+  let g:nvim_typescript#expand_snippet=0
   " let g:nvim_typescript#vue_support=1
   let g:nvim_typescript#diagnosticsEnable=1
   map <silent> <leader>gd :TSDoc <cr>
@@ -898,6 +901,7 @@ endif
   map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
   map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
   map <silent> <leader>ti :TSImport <cr>
+  nnoremap <m-Enter> :TSGetCodeFix<CR>
 
   let g:neomake_typescript_enabled_makers = []
   let g:neomake_vue_enabled_makers = []
@@ -905,7 +909,6 @@ endif
   let g:neoformat_enabled_typescript = ['prettier']
   let g:neoformat_typescriptreact_prettier = g:standard_prettier_settings
   let g:neoformat_enabled_typescriptreact = ['prettier']
-
   " let g:neomake_typescript_enabled_makers = ['nvim_ts']
   let g:nvim_typescript#kind_symbols = {
       \ 'keyword': 'keyword',
@@ -1039,3 +1042,72 @@ let g:tagbar_type_typescript = {
 "     \ {'short' : 'c', 'long' : 'const',     'fold' : 0, 'stl' : 0},
 "     \ ]
 "   \ }
+"
+	autocmd FileType defx call s:defx_my_settings()
+	function! s:defx_my_settings() abort
+	  " Define mappings
+	  nnoremap <silent><buffer><expr> <CR>
+	  \ defx#do_action('open')
+	  nnoremap <silent><buffer><expr> K
+	  \ defx#do_action('new_directory')
+	  nnoremap <silent><buffer><expr> N
+	  \ defx#do_action('new_file')
+	  nnoremap <silent><buffer><expr> h
+	  \ defx#do_action('cd', ['..'])
+	  nnoremap <silent><buffer><expr> ~
+	  \ defx#do_action('cd')
+	  nnoremap <silent><buffer><expr> <Space>
+	  \ defx#do_action('toggle_select') . 'j'
+    setl nonumber
+	endfunction
+
+" set laststatus=2
+" "   ~define function for filename
+" function! FileName()
+"   let ext=tolower(expand("%:e"))
+"   return ext
+" endfunction
+"
+" function! LinterStatus() abort
+"   " let l:counts = ale#statusline#Count(bufnr(''))
+"   "
+"   " let l:all_errors = l:counts.error + l:counts.style_error
+"   " let l:all_non_errors = l:counts.total - l:all_errors
+"
+"   return printf(
+"         \   ' %d  %d  ',
+"         \   'test',
+"         \   'test'
+"         \)
+" endfunction
+"
+" "set numberwidth=4
+" set statusline=
+" set statusline+=\ %{}
+" set statusline+=\ %{LinterStatus()}
+" " set statusline+=\ %04l
+" "set statusline+=\ •\ %3c
+" "set statusline+=\ •\ %3p%%
+" "set statusline+=\ \ \ %.30F\ %{WebDevIconsGetFileTypeSymbol()}
+" "set statusline+=\ •\ %t\ %{WebDevIconsGetFileTypeSymbol()}
+" " set statusline+=\ \ \ %t
+" "set statusline+=\ \ %{toupper(mode())}
+"
+" "set statusline+=\ %02p%%
+" "set statusline+=\:\%04l
+"
+" "set statusline+=\ •\ %l
+" set statusline+=\ %.40F
+" "set statusline+=:\%-4c
+" "set statusline+=%#ErrorMsg#
+" "set statusline+=\ %{getbufvar(bufnr('%'),'&mod')?'':'\ '}
+"
+"
+" set statusline+=%=
+" "set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" "set statusline+=\ \|\ %{&fileformat}
+" "set statusline+=\ \|\ %y
+" set statusline+=%l
+" set statusline+=\:
+" set statusline+=\%c
+" " set statusline+=\ %y

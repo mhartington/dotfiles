@@ -27,7 +27,9 @@
   call dein#add('haya14busa/dein-command.vim')
   " syntax
   call dein#add('HerringtonDarkholme/yats.vim')
+  call dein#add('posva/vim-vue')
   call dein#add('Quramy/tsuquyomi')
+  call dein#add('Quramy/tsuquyomi-vue')
   call dein#add('mhartington/oceanic-next')
   if dein#check_install()
     call dein#install()
@@ -40,7 +42,11 @@
 
 " System Settings  ----------------------------------------------------------{{{
 " Let airline tell me my status
+
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
   set termguicolors
+  hi SpellBad  gui=undercurl guisp=red term=undercurl cterm=undercurl
   set noshowmode
   set noswapfile
   filetype on
