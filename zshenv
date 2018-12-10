@@ -1,3 +1,5 @@
+
+source ~/.keys
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
@@ -12,13 +14,19 @@ export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export ITERM_24BIT=1
 
 # This is for android crap
-export PATH=${PATH}:~/Library/Android/sdk/platform-tools:~/Library/Android/sdk/tools
 export JAVA_HOME=$(/usr/libexec/java_home)
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK=$ANDROID_HOME
+export ANDROID_NDK=~/Library/Android/ndk
+export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+export PATH=${PATH}:$ANDROID_HOME/tools/bin/avdmanager:$ANDROID_HOME/tools/bin/sdkmanager
+export PATH=$ANDROID_HOME/emulator:$PATH
+
+export PATH=$ANDROID_NDK:$PATH
 export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=${PATH}:~/bin
 export PATH=${PATH}:~/.cargo/bin:$PATH
-export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
 
 export PATH="/usr/local/sbin:$PATH"
@@ -341,3 +349,5 @@ function fixSSH(){
 function ghPatch () {
   curl -L $1.patch | git am
 }
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"

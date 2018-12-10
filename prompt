@@ -2,7 +2,7 @@
 
 autoload -Uz vcs_info
 autoload -U add-zsh-hook
-autoload -Uz async && async
+# autoload -Uz async && async
 
 setopt PROMPT_SUBST
 zstyle ':vcs_info:*' enable git
