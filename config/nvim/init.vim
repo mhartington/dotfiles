@@ -329,7 +329,7 @@ endif
   let g:oceanic_next_terminal_bold = 1
   let g:oceanic_next_terminal_italic = 1
   colorscheme OceanicNext
-  let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig']
+  let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig','gina-blame']
 
   set list
   set listchars=tab:‣\ ,trail:·
