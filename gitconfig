@@ -1,3 +1,6 @@
+[core]
+  editor = "nvim"
+
 [filter "media"]
 	clean = git-media-clean %f
   smudge = git-media-smudge %f
@@ -16,15 +19,16 @@
   required = true
 
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-  required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [github]
   user = mhartington
 
-[core]
-  pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
+# [core]
+#   pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
 
 [color "diff-highlight"]
   oldNormal = "red bold"

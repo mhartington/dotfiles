@@ -3,7 +3,6 @@
 # Just .aliases right now git-completion.bash
 autoload -U promptinit; promptinit
 bindkey -v
-source ~/.keys
 source ~/.prompt
 # Disable zsh autocorrect
 zstyle ':completion:*' menu select
@@ -24,8 +23,8 @@ compinit -d ~/.zcompdump_capture
 . <(npm completion)
 
 source /usr/local/share/antigen/antigen.zsh
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle mafredri/zsh-async
 # antigen bundle sindresorhus/pure
 antigen apply
@@ -42,4 +41,4 @@ zstyle ':notify:*' success-title "Success"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh
+# [[ -f /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/mhartington/GitHub/xi-electron/node_modules/tabtab/.completions/electron-forge.zsh
