@@ -3,7 +3,8 @@ source ~/.keys
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
-export TERM=xterm-256color-italic
+# export TERM=xterm-256color-italic
+# export TERM=xterm-kitty
 export CLICOLOR=1
 export EDITOR=nvim
 export GOPATH=$HOME/go
@@ -82,6 +83,13 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
   }
 
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
 alias bout='brew outdated'
@@ -94,7 +102,7 @@ alias bdr='brew doctor'
 
 # Some directory listing with colors
 alias sl=ls
-alias ls='ls -GpF'        # Compact view, show colors
+# alias ls='ls -GpF'        # Compact view, show colors
 alias la='ls -GAF'       # Compact view, show hidden
 alias ll='ls -alGpF'
 alias l='ls -a'

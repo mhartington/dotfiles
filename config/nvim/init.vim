@@ -24,21 +24,19 @@
 "}}}
   " call dein#add('Raimondi/delimitMate')
 " system {{{
-  call dein#add('matze/vim-move')
+  " call dein#add('matze/vim-move')
   call dein#add('itmammoth/doorboy.vim')
   call dein#add('eugen0329/vim-esearch')
-  call dein#add('AndrewRadev/splitjoin.vim')
   call dein#add('tpope/vim-repeat')
   call dein#add('tpope/vim-unimpaired')
   call dein#add('AndrewRadev/switch.vim')
   call dein#add('christoomey/vim-tmux-navigator')
   call dein#add('tpope/vim-surround')
-  call dein#add('tomtom/tcomment_vim')
+  " call dein#add('tomtom/tcomment_vim')
+  call dein#add('tyru/caw.vim')
   call dein#add('junegunn/vim-easy-align')
-  call dein#add('majutsushi/tagbar')
   call dein#add('tmux-plugins/vim-tmux')
   call dein#add('Shougo/context_filetype.vim')
-  " call dein#add('Konfekt/FastFold')
   call dein#add('mhinz/vim-sayonara')
   call dein#add('mattn/webapi-vim')
   call dein#add('mattn/gist-vim')
@@ -48,46 +46,30 @@
   call dein#add('simnalamburt/vim-mundo')
 " }}}
 " UI {{{
-  call dein#add('scrooloose/nerdtree')
-  " call dein#add('Shougo/defx.nvim')
-  call dein#local('~/GitHub', {}, ['defx.nvim'])
+  " call dein#add('scrooloose/nerdtree')
+  call dein#add('Shougo/defx.nvim')
   call dein#add('kristijanhusak/defx-git')
   call dein#add('kristijanhusak/defx-icons')
   call dein#add('Yggdroot/indentLine')
-  " call dein#add('vim-airline/vim-airline')
-  call dein#add('drzel/vim-line-no-indicator')
+  call dein#add('vim-airline/vim-airline')
+  " call dein#add('drzel/vim-line-no-indicator')
   call dein#add('rakr/vim-one')
   call dein#add('morhetz/gruvbox')
-  call dein#add('RRethy/vim-illuminate')
+  call dein#add('patstockwell/vim-monokai-tasty')
+  " call dein#add('RRethy/vim-illuminate')
   call dein#add('lambdalisue/fila.vim')
 " }}}
-" rust {{{
-  call dein#add('rust-lang/rust.vim')
-  call dein#add('racer-rust/vim-racer')
-" }}}
-" markdown {{{
-  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
-  call dein#add('dhruvasagar/vim-table-mode')
-  call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
-  call dein#add('rhysd/vim-grammarous')
-  call dein#add('junegunn/goyo.vim')
-  call dein#add('iamcco/markdown-preview.nvim', {'build': 'cd app & npm install'})
-  call dein#add('kurocode25/mdforvim')
+" code style {{{
+  " call dein#add('neomake/neomake')
+  call dein#add('sbdchd/neoformat')
+  call dein#add('editorconfig/editorconfig-vim')
 " }}}
 " completion {{{
   call dein#add('Shougo/deoplete.nvim')
-  " call dein#add('roxma/nvim-completion-manager')
-  " call dein#add('autozimu/LanguageClient-neovim', {
-  "       \ 'rev': 'next',
-  "       \ 'build': 'bash install.sh',
-  "       \ })
   call dein#add('tweekmonster/deoplete-clang2')
   call dein#add('artur-shaik/vim-javacomplete2')
   call dein#add('Shougo/neco-vim')
   call dein#add('Shougo/neoinclude.vim')
-  call dein#add('ujihisa/neco-look')
-  call dein#add('zchee/deoplete-jedi')
-  call dein#add('zchee/deoplete-go', {'build': 'make'})
   call dein#add('Shougo/echodoc.vim')
 " }}}
 " denite {{{
@@ -99,23 +81,37 @@
   call dein#add('chemzqm/denite-extra')
   call dein#add('pocari/vim-denite-gists')
 " }}}
-" code style {{{
-  call dein#add('neomake/neomake')
-  call dein#add('sbdchd/neoformat')
-  call dein#add('editorconfig/editorconfig-vim')
-" }}}
 " git {{{{
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-rhubarb')
-  call dein#add('jreybert/vimagit', {'on_cmd': ['Magit', 'MagitOnly']})
   call dein#add('sgeb/vim-diff-fold')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('junegunn/gv.vim')
-  call dein#add('lambdalisue/gina.vim')
   call dein#add('AGhost-7/critiq.vim')
+  call dein#add('lambdalisue/gina.vim')
 " }}}}
+" snippets {{{
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('honza/vim-snippets')
+  call dein#add('gfontenot/vim-xcode')
+" }}}
+" markdown {{{
+  call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
+  call dein#add('dhruvasagar/vim-table-mode')
+  call dein#add('nelstrom/vim-markdown-folding', {'on_ft': 'markdown'})
+  call dein#add('rhysd/vim-grammarous')
+  call dein#add('junegunn/goyo.vim')
+  call dein#add('iamcco/markdown-preview.nvim', {'build': 'cd app & npm install', 'on_ft': 'markdown'})
+  call dein#add('kurocode25/mdforvim')
+  call dein#add('ujihisa/neco-look')
+" }}}
+" rust {{{
+  call dein#add('rust-lang/rust.vim')
+  call dein#add('racer-rust/vim-racer')
+" }}}
 " python{{{
-  call dein#add('numirias/semshi')
+  call dein#add('zchee/deoplete-jedi')
   call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
   call dein#add('tmhedberg/SimpylFold', {'on_ft': 'python'})
 " }}}
@@ -126,6 +122,7 @@
   call dein#add('elzr/vim-json')
   call dein#add('HerringtonDarkholme/yats.vim')
   call dein#add('Quramy/vison')
+  " call dein#add('yardnsm/vim-import-cost', {'build': 'npm install'})
 " }}}
 " html {{{
   call dein#add('othree/html5.vim')
@@ -133,30 +130,25 @@
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
   call dein#add('posva/vim-vue')
   call dein#add('skwp/vim-html-escape')
+  call dein#add('pedrohdz/vim-yaml-folds')
 " }}}
 " css {{{
   call dein#add('hail2u/vim-css3-syntax')
   call dein#add('ap/vim-css-color')
+  call dein#add('ncm2/ncm2-cssomni')
 " }}}
 " reason {{{
   call dein#add('reasonml-editor/vim-reason-plus')
 " }}}
 " go {{{
   call dein#add('fatih/vim-go')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
 " }}}
 " java {{{
 " }}}
-" snippets {{{
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('honza/vim-snippets')
-" }}}
 " local {{{
-  call dein#local('~/GitHub', {},['nvim-typescript'])
-  " call dein#add('autozimu/LanguageClient-neovim', {'rev': 'next', 'build': 'bash install.sh'})
-  " call dein#add('neoclide/coc.nvim', {'build': 'npm install'})
+  call dein#local('~/GitHub', {},['nvim-typescript', 'neomake'])
   call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next'])
-  call dein#local('~/GitHub', {}, ['nerdtree-git-plugin'])
 " }}}
 " Has to be last according to docs
   call dein#add('ryanoasis/vim-devicons')
@@ -184,6 +176,7 @@
   set clipboard+=unnamedplus
   set pastetoggle=<f6>
   set nopaste
+  set hidden
   autocmd BufWritePre * %s/\s\+$//e
   set noshowmode
   set noswapfile
@@ -224,27 +217,19 @@
   " set scrolloff=999
   " set sidescrolloff=999
   " let g:indentLine_char="⎸"
-  "
-  "
-  if has('termguicolors')
-    " let &t_8u = "\<Esc>[58;2;%lu;%lu;%lum"
-  " Don't need this in xterm-256color, but do need it inside tmux.
-  " (See `:h xterm-true-color`.)
-  if &term =~# 'xterm-256color-italic'
-    " let &t_8f="\e[38;2;%ld;%ld;%ldm"
-    " let &t_8b="\e[48;2;%ld;%ld;%ldm"
-    " deus
-    " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-  "
-  " " let &t_Cs = "\e[6m"
-  " " let &t_Ce = "\e[24m"
-  "
-  " let &t_Cs = "\e[4:3m"
-  " let &t_Ce = "\e[4:0m"
-  endif
-endif
+  let g:clipboard = {
+  \ 'name': 'pbcopy',
+  \ 'copy': {
+  \    '+': 'pbcopy',
+  \    '*': 'pbcopy',
+  \  },
+  \ 'paste': {
+  \    '+': 'pbpaste',
+  \    '*': 'pbpaste',
+  \ },
+  \ 'cache_enabled': 0,
+  \ }
 " }}}
 
 " System mappings  ----------------------------------------------------------{{{
@@ -259,6 +244,8 @@ endif
 " Navigate between display lines
   nnoremap <silent><expr> k      v:count == 0 ? 'gk' : 'k'
   nnoremap <silent><expr> j      v:count == 0 ? 'gj' : 'j'
+  vnoremap <silent><expr> k      v:count == 0 ? 'gk' : 'k'
+  vnoremap <silent><expr> j      v:count == 0 ? 'gj' : 'j'
   nnoremap <silent><expr> <Up>   v:count == 0 ? 'gk' : 'k'
   nnoremap <silent><expr> <Down> v:count == 0 ? 'gj' : 'j'
 
@@ -328,13 +315,23 @@ endif
   let g:one_allow_italics = 1
   let g:oceanic_next_terminal_bold = 1
   let g:oceanic_next_terminal_italic = 1
-  colorscheme OceanicNext
-  let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig','gina-blame']
+  let g:vim_monokai_tasty_italic = 1
+  " set pumblend=50
+  " if strftime('%H') >= 7 && strftime('%H') < 14
+  "   colorscheme OceanicNextLight
+  "   let g:airline_theme='oceanicnextlight'
+  " else
+    colorscheme OceanicNext
+    let g:airline_theme='oceanicnext'
+  " endif
+  " colorscheme vim-monokai-tasty
+  let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig','gina-blame', 'defx', 'fugitive', 'git']
 
   set list
   set listchars=tab:‣\ ,trail:·
   " colorscheme one
   " set background=dark
+
 "}}}
 
 " Code formatting -----------------------------------------------------------{{{
@@ -422,14 +419,10 @@ endif
   let g:gitgutter_sign_removed_first_line = '│'
   let g:gitgutter_sign_modified_removed = '│'
   let g:gina#command#blame#formatter#format="%in (%au) %ti"
-
-  call gina#custom#command#option(
-      \ '/\%(branch\|changes\|grep\|log\|status\)',
-      \ '--opener', 'split'
-      \)
-	call gina#custom#command#option(
-	      \ 'log', '--group', 'log-viewer'
-	      \)
+  autocmd FileType fugitive call s:fugitive_settings()
+  function! s:fugitive_settings() abort
+    setlocal nonumber
+  endfunction
 " }}}
 
 " NERDTree ------------------------------------------------------------------{{{
@@ -491,35 +484,49 @@ endif
 "}}}
 
 " Defx ----------------------------------------------------------------------{{{
-  map <silent> - :Defx -columns=git:mark:icons:filename:type -split=vertical -winwidth=45 -direction=topleft -toggle `expand('%:p:h')` -search=`expand('%:p')`<cr>
+
+  map <silent> - :call OpenDefx()<cr>
+  let g:defx_open_path = getcwd()
+  function! OpenDefx() abort
+    if isdirectory(expand('%:p:h'))
+      let g:defx_open_path = expand('%:p:h')
+    endif
+    execute('Defx
+      \ -columns=git:icons:filename:type
+      \ -buffer-name=""
+      \ -show_ignored_files
+      \ -split=vertical
+      \ -winwidth=45
+      \ -direction=topleft
+      \ -toggle
+      \ -resume
+      \ `g:defx_open_path`')
+  endfunction
+
+  " \ if isdirectory(expand('%:p:h')) | `expand('%:p:h')` | endif
+  "`expand('%:p:h')` -search=`expand('%:p')`
   autocmd FileType defx call s:defx_my_settings()
   function! s:defx_my_settings() abort
     IndentLinesDisable
     setl nospell
     setl signcolumn=no
-    call defx#do_action('toggle_ignored_files')    "defx-action-rename
+    setl nonumber
     nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+    nnoremap <silent><buffer><expr> C defx#do_action('copy')
+    nnoremap <silent><buffer><expr> P defx#do_action('paste')
     nnoremap <silent><buffer><expr> M defx#do_action('rename')
     nnoremap <silent><buffer><expr> D defx#do_action('remove_trash')
-    " nnoremap <silent><buffer><expr> P defx#do_action('new_directory')
-    nnoremap <silent><buffer><expr> N defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> A defx#do_action('new_multiple_files')
     nnoremap <silent><buffer><expr> U defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
-    " nnoremap <silent><buffer><expr> C defx#do_action('cd')
     nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select')
     nnoremap <silent><buffer><expr> R defx#do_action('redraw')
-    setl nonumber
+
   endfunction
-  let g:defx_git#indicators = {
-    \ 'Modified'  : '✹',
-    \ 'Staged'    : '✚',
-    \ 'Untracked' : '✭',
-    \ 'Renamed'   : '➜',
-    \ 'Unmerged'  : '═',
-    \ 'Ignored'   : ' ',
-    \ 'Unknown'   : '?',
-    \ 'Deleted'   : '✖'
-    \ }
+
+  let g:defx_git#show_ignored = 0
+  let g:defx_git#raw_mode = 1
+  let g:defx_git#column_length =2
 
   hi def link Defx_filename_directory NERDTreeDirSlash
   hi def link Defx_git_Modified Special
@@ -529,6 +536,36 @@ endif
   hi def link Defx_git_Untracked Tag
   hi def link Defx_git_Ignored Comment
   let g:defx_icons_parent_icon = ""
+
+
+  " let g:fila#renderer#default#expanded_symbol= "+ "
+  " let g:fila#renderer#default#root_symbol = " "
+  " let g:fila#renderer#default#leaf_symbol = " "
+
+  " map <silent> - :FilaDrawer<cr>
+  let g:fila#viewer#skip_default_mappings = 1
+  autocmd FileType fila call s:fila_settings()
+  function! s:fila_settings() abort
+    IndentLinesDisable
+    setl nospell
+    setl signcolumn=no
+    setl nonumber
+    nmap <buffer><nowait> <Backspace> <Plug>(fila-action-leave)
+    nmap <buffer><nowait> <C-h>       <Plug>(fila-action-leave)
+    nmap <buffer><nowait> <Return>    <Plug>(fila-action-expand-or-open)
+    " nmap <buffer><nowait> <C-m>       <Plug>(fila-action-enter-or-open)
+    nmap <buffer><nowait> R        <Plug>(fila-action-reload)
+    nmap <buffer><nowait> l           <Plug>(fila-action-expand-or-open)
+    nmap <buffer><nowait> h           <Plug>(fila-action-collapse)
+    nmap <buffer><nowait> <space>           <Plug>(fila-action-mark-toggle)
+  endfunction
+  let g:fila#renderer#default#leading = " "
+  let g:fila#renderer#default#root_symbol = "   "
+  let g:fila#renderer#default#leaf_symbol = "  "
+  let g:fila#renderer#default#expanded_symbol = " ▾ "
+  let g:fila#renderer#default#collapsed_symbol = " ▸ "
+  let g:fila#renderer#default#marked_symbol = " "
+  let g:fila#renderer#default#unmarked_symbol = " "
 
 "  }}}
 
@@ -586,7 +623,7 @@ endif
 
 " Deoplete ------------------------------------------------------------------{{{
 
-" enable deoplete
+  " enable deoplete
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#auto_complete_delay = 0
   let g:echodoc_enable_at_startup=1
@@ -594,7 +631,7 @@ endif
   set splitbelow
   set completeopt+=menuone,noinsert,noselect
   set completeopt-=preview
-  " autocmd CompleteDone * pclose
+  autocmd CompleteDone * pclose
 
   function! Multiple_cursors_before()
     let b:deoplete_disable_auto_complete=2
@@ -603,15 +640,15 @@ endif
     let b:deoplete_disable_auto_complete=0
   endfunction
   let g:deoplete#file#enable_buffer_path=1
-  call deoplete#custom#source('buffer', 'mark', 'ℬ')
-  call deoplete#custom#source('tern', 'mark', '')
-  call deoplete#custom#source('omni', 'mark', '⌾')
-  call deoplete#custom#source('file', 'mark', '')
-  call deoplete#custom#source('jedi', 'mark', '')
-  call deoplete#custom#source('neosnippet', 'mark', '')
-  call deoplete#custom#source('LanguageClient', 'mark', '')
-  call deoplete#custom#source('typescript',  'rank', 630)
-  call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
+  " call deoplete#custom#source('buffer', 'mark', 'ℬ')
+  " call deoplete#custom#source('tern', 'mark', '')
+  " call deoplete#custom#source('omni', 'mark', '⌾')
+  " call deoplete#custom#source('file', 'mark', '')
+  " call deoplete#custom#source('jedi', 'mark', '')
+  " call deoplete#custom#source('neosnippet', 'mark', '')
+  " call deoplete#custom#source('LanguageClient', 'mark', '')
+  " call deoplete#custom#source('typescript',  'rank', 630)
+  " call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
   " call deoplete#custom#source('_', 'sorters', [])
   let g:deoplete#omni_patterns = {
         \ 'html': '',
@@ -624,10 +661,10 @@ endif
      endif
   endfunction
   autocmd WinEnter * call Preview_func()
-  let g:deoplete#ignore_sources = {'_': ['around', 'buffer' ]}
+  let g:deoplete#ignore_sources = {'_': ['around', 'buffer', 'member' ]}
 
   " let g:deoplete#enable_debug = 1
-  " call deoplete#enable_logging('DEBUG', 'deoplete.log')
+  " call deoplete#enable_logging('WARN', 'deoplete.log')
   " call deoplete#custom#source('typescript', 'is_debug_enabled', 1)
 "}}}
 
@@ -664,17 +701,29 @@ endif
 
 " Language Client -----------------------------------------------------------{{{
 
-  let g:LanguageClient_diagnosticsEnable = 1
-
-  let g:LanguageClient_serverCommands = {
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ }
+  " let g:LanguageClient_diagnosticsEnable = 1
+  " let g:LanguageClient_serverCommands = {
+  "  \ 'reason': ['ocaml-language-server', '--stdio'],
+  "  \ 'ocaml': ['ocaml-language-server', '--stdio'],
+  "  \ 'typescript': ['typescript-language-server', '--stdio'],
+  "  \ }
     " \ 'scss': ['css-languageserver', '--stdio'],
     " \ 'css': ['css-languageserver', '--stdio'],
     " \ 'html': ['html-languageserver','--stdio'],
-    " \ 'typescript': ['typescript-language-server', '--stdio'],
+    " \ 'typescript': ['typescript-language-server', '--stdio']
+  " nmap <silent> gd <Plug>(coc-definition)
+  " nmap <silent> gy <Plug>(coc-type-definition)
+  " nmap <silent> gi <Plug>(coc-implementation)
+  " nmap <silent> gr <Plug>(coc-references)
+
+  " map <silent> <leader>gd :TSDoc <cr>
+  " map <silent> <leader>gt :TSType <cr>
+  " map <silent> <leader>gtd :call CocActionAsync('jumpTypeDefinition')<cr>
+  " map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
+  " map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
+  " nnoremap <m-Enter> :call CocActionAsync('codeAction',     '')<CR>
+  hi default CocUnderline   cterm=undercurl gui=undercurl
+
 "}}}
 
 " Denite --------------------------------------------------------------------{{{
@@ -783,26 +832,25 @@ endif
 "}}}
 
 " vim-airline ---------------------------------------------------------------{{{
+
   let g:webdevicons_enable_airline_statusline = 1
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
 
+  let g:airline_powerline_fonts = 0
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#mike#enabled = 0
-  set hidden
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline_powerline_fonts = 1
   let g:airline_symbols.branch = ''
-  let g:airline_theme='oceanicnext'
   " cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'x' : 'bd'
   cnoreabbrev x Sayonara
   " cnoreabbrev x bd
   tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
-  nmap <leader>, :bnext<CR>
+  nmap <silent><leader>, :bnext<CR>
   tmap <leader>, <C-\><C-n>:bnext<cr>
-  nmap <leader>. :bprevious<CR>
+  nmap <silent><leader>. :bprevious<CR>
   tmap <leader>. <C-\><C-n>:bprevious<CR>
   tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
   tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
@@ -836,20 +884,26 @@ endif
   let g:airline_section_z = '%l:%c'
   " let g:airline_section_z = '%{LineNoIndicator()} :%2c'
   let g:airline#parts#ffenc#skip_expected_string=''
-  " let g:line_no_indicator_chars = [' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█']
-  " let g:line_no_indicator_chars = ['⎺', '⎻', '⎼', '⎽', '_']
   let g:airline_mode_map = {
-        \ 'n' : '',
-        \ 'i' : '',
-        \ 'R' : '',
-        \ 'v' : '',
-        \ 'V' : '',
-        \ 'c' : '',
-        \ 's' : '',
-        \ 'S' : '',
-        \ ''  : '',
-        \ 't' : '',
-        \}
+      \ '__' : '',
+      \ 'c'  : '',
+      \ 'i'  : '',
+      \ 'ic' : '',
+      \ 'ix' : '',
+      \ 'n'  : '',
+      \ 'ni' : '',
+      \ 'no' : '',
+      \ 'R'  : '',
+      \ 'Rv' : '',
+      \ 's'  : '',
+      \ 'S'  : '',
+      \ '' : '',
+      \ 't'  : '',
+      \ 'v'  : '',
+      \ 'V'  : '',
+      \ '' : '',
+      \ }
+
   let g:airline#extensions#tabline#buffer_idx_format = {
         \ '0': '0 ',
         \ '1': '1 ',
@@ -867,12 +921,12 @@ endif
 
 " Linting -------------------------------------------------------------------{{{
 
-  call neomake#configure#automake({
-  \ 'BufWritePost': {'delay': 0},
-  \ 'BufWinEnter': {},
-  \ 'TextChanged': {},
-  \ 'InsertLeave': { },
-  \ }, 1000)
+  " call neomake#configure#automake({
+  "\ 'BufWritePost': {'delay': 0},
+  "\ 'BufWinEnter': {},
+  "\ 'TextChanged': {},
+  "\ 'InsertLeave': { },
+  "\ }, 1000)
   " call neomake#configure#automake({
   " \ 'BufWritePost': {},
   " \ }, 0)
@@ -944,12 +998,11 @@ endif
   let g:jsdoc_return=0
   let g:jsdoc_return_type=0
 
-  let g:tern#command = ['tern']
-  let g:tern#arguments = ['--persistent']
-  let g:tern_map_keys=1
 
-  autocmd FileType typescript,typescript.tsx setl omnifunc=TSOmnicFunc
+  " autocmd FileType typescript,typescript.tsx setl omnifunc=TSOmnicFunc
   " let g:neomake_typescript_enabled_makers = ['tslint']
+  let  g:typescript_use_builtin_tagbar_defs = 1
+  let g:neomake_typescript_enabled_makers = []
   let g:nvim_typescript#max_completion_detail=50
   let g:nvim_typescript#completion_mark=''
   let g:nvim_typescript#javascript_support=1
@@ -964,7 +1017,6 @@ endif
   map <silent> <leader>ti :TSImport <cr>
   nnoremap <m-Enter> :TSGetCodeFix<CR>
 
-  let g:neomake_typescript_enabled_makers = []
   let g:neomake_vue_enabled_makers = []
   let g:neoformat_typescript_prettier = g:standard_prettier_settings
   let g:neoformat_enabled_typescript = ['prettier']
@@ -1032,10 +1084,10 @@ endif
 
   let g:neoformat_enabled_vue = ['prettier']
   let g:neomake_html_enabled_makers = []
-  " let g:neoformat_enabled_html = ['htmlbeautify']
+  let g:neoformat_enabled_html = ['htmlbeautify']
 
-  let g:neoformat_html_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_html = ['prettier']
+  " let g:neoformat_html_prettier = g:standard_prettier_settings
+  " let g:neoformat_enabled_html = ['prettier']
 " }}}
 
 " Go ------------------------------------------------------------------------{{{
@@ -1069,56 +1121,9 @@ endif
 " }}}
 
 " Rust ----------------------------------------------------------------------{{{
+
   let g:racer_cmd = '/Users/mhartington/.cargo/bin/racer'
   " let g:racer_experimental_completer = 1
 
 "}}}
-
-let g:tagbar_left=1
-let g:tagbar_type_typescript = {
-  \ 'ctagstype': 'typescript',
-  \ 'kinds': [
-    \ 'c:classes',
-    \ 'n:modules',
-    \ 'f:functions',
-    \ 'v:variables',
-    \ 'v:varlambdas',
-    \ 'm:members',
-    \ 'i:interfaces',
-    \ 'e:enums',
-  \ ],
-	\ 'sort' : 0
-\ }
-
-
-let g:tagbar_type_typescript.tsx = {
-  \ 'ctagstype': 'typescript.tsx',
-  \ 'kinds': [
-    \ 'c:classes',
-    \ 'n:modules',
-    \ 'f:functions',
-    \ 'v:variables',
-    \ 'v:varlambdas',
-    \ 'm:members',
-    \ 'i:interfaces',
-    \ 'e:enums',
-  \ ],
-	\ 'sort' : 0
-\ }
-" let g:tagbar_type_typescript = {
-"   \ 'ctagstype': 'typescript',
-"   \ 'kinds': [
-"     \ {'short' : 'e', 'long' : 'enums',      'fold' : 1, 'stl' : 0},
-"     \ {'short' : 'f', 'long' : 'function',  'fold' : 1, 'stl' : 0},
-"     \ {'short' : 't', 'long' : 'typealias',       'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'M', 'long' : 'Module', 'fold' : 0, 'stl' : 0},
-"     \ {'short' : 'I', 'long' : 'import',    'fold' : 0, 'stl' : 0},
-"     \ {'short' : 'i', 'long' : 'interface',  'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'C', 'long' : 'class',     'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'm', 'long' : 'methods',     'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'p', 'long' : 'property',      'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'v', 'long' : 'variable',   'fold' : 0, 'stl' : 1},
-"     \ {'short' : 'c', 'long' : 'const',     'fold' : 0, 'stl' : 0},
-"     \ ]
-"   \ }
 "
