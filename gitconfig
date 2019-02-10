@@ -6,7 +6,7 @@
   smudge = git-media-smudge %f
 
 [user]
-  name = mhartington
+	name = Mike Hartington
 	email = mikehartington@gmail.com
   signingkey = 493BFB24814E6209
 
