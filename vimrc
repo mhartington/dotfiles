@@ -31,6 +31,7 @@
   call dein#add('Quramy/tsuquyomi')
   call dein#add('Quramy/tsuquyomi-vue')
   call dein#add('mhartington/oceanic-next')
+  call dein#add('fatih/vim-go')
   if dein#check_install()
     call dein#install()
   endif

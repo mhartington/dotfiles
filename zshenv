@@ -26,13 +26,12 @@ export PATH=$ANDROID_HOME/emulator:$PATH
 export PATH=$ANDROID_NDK:$PATH
 export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=${PATH}:~/.cargo/bin:$PATH
+# export PATH=${PATH}:~/.cargo/bin:$PATH
 export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
-
 # export PATH="$(brew --prefix gettext)/bin:$PATH"
 # export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS"
 # export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
@@ -44,7 +43,12 @@ export PATH=$PATH:$GRADLE_HOME/bin
 export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
 export PATH=$PATH:$GOPATH/bin
-PATH=$PATH:$HOME/.composer/vendor/bin
+export PATH=$PATH:$HOME/.composer/vendor/bin
+
+
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -343,8 +347,6 @@ shift
 }
 alias x=extract
 
-
-
 function gif(){
    ffmpeg -i $1 -vf scale=$2:-1:flags=lanczos -f gif - | gifsicle --optimize=3 --delay=3 > $3
 }
@@ -359,3 +361,16 @@ function ghPatch () {
 }
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+fi
+
+killport() { lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill }
+
+function changeMac(){
+  local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
+  sudo ifconfig en0 ether $mac
+  sudo ifconfig en0 down
+  sudo ifconfig en0 up
+  echo "Your new physical address is $mac"
+}
