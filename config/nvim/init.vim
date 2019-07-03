@@ -46,7 +46,7 @@
   call dein#add('simnalamburt/vim-mundo')
 " }}}
 " UI {{{
-  " call dein#add('scrooloose/nerdtree')
+  call dein#add('scrooloose/nerdtree')
   call dein#add('Shougo/defx.nvim')
   call dein#add('kristijanhusak/defx-git')
   call dein#add('kristijanhusak/defx-icons')
@@ -73,9 +73,11 @@
   call dein#add('Shougo/echodoc.vim')
 " }}}
 " denite {{{
+  " call dein#add('ctrlpvim/ctrlp.vim')
   call dein#add('Shougo/denite.nvim')
-  call dein#add('raghur/fruzzy', {'hook_post_update': 'call fruzzy#install()'})
+  call dein#add('raghur/fruzzy', {'build': 'python3 ./python3/fruzzy_installer.py'})
   call dein#add('nixprime/cpsm', {'build': 'PY3=ON ./install.sh'})
+
   call dein#add('Shougo/neomru.vim')
   call dein#add('neoclide/denite-git')
   call dein#add('chemzqm/denite-extra')
@@ -89,12 +91,17 @@
   call dein#add('junegunn/gv.vim')
   call dein#add('AGhost-7/critiq.vim')
   call dein#add('lambdalisue/gina.vim')
+  call dein#add('rhysd/git-messenger.vim', {
+    \   'lazy' : 1,
+    \   'on_cmd' : 'GitMessenger',
+    \   'on_map' : '<Plug>(git-messenger-',
+    \ })
 " }}}}
 " snippets {{{
-  call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('honza/vim-snippets')
-  call dein#add('gfontenot/vim-xcode')
+  " call dein#add('Shougo/neosnippet.vim')
+  " call dein#add('Shougo/neosnippet-snippets')
+  " call dein#add('honza/vim-snippets')
+  " call dein#add('gfontenot/vim-xcode')
 " }}}
 " markdown {{{
   call dein#add('tpope/vim-markdown', {'on_ft': 'markdown'})
@@ -104,7 +111,7 @@
   call dein#add('junegunn/goyo.vim')
   call dein#add('iamcco/markdown-preview.nvim', {'build': 'cd app & npm install', 'on_ft': 'markdown'})
   call dein#add('kurocode25/mdforvim')
-  call dein#add('ujihisa/neco-look')
+  " call dein#add('ujihisa/neco-look')
 " }}}
 " rust {{{
   call dein#add('rust-lang/rust.vim')
@@ -122,6 +129,7 @@
   call dein#add('elzr/vim-json')
   call dein#add('HerringtonDarkholme/yats.vim')
   call dein#add('Quramy/vison')
+  " call dein#add('meain/vim-package-info', {'build': 'npm install'})
   " call dein#add('yardnsm/vim-import-cost', {'build': 'npm install'})
 " }}}
 " html {{{
@@ -130,6 +138,8 @@
   call dein#add('valloric/MatchTagAlways', {'on_ft': 'html'})
   call dein#add('posva/vim-vue')
   call dein#add('skwp/vim-html-escape')
+  call dein#add('kana/vim-textobj-user')
+  call dein#add('whatyouhide/vim-textobj-xmlattr')
   call dein#add('pedrohdz/vim-yaml-folds')
 " }}}
 " css {{{
@@ -147,14 +157,19 @@
 " java {{{
 " }}}
 " local {{{
-  call dein#local('~/GitHub', {},['nvim-typescript', 'neomake'])
-  call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next'])
+  " call dein#add('w0rp/ale')
+  call dein#add('dharanasoft/rtf-highlight')
+  call dein#local('~/GitHub', {},['nvim-typescript'])
+  " call dein#add('neoclide/coc.nvim', {'build': 'yarn install'})
+  call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next', 'neomake'])
 " }}}
 " Has to be last according to docs
+  " call dein#add('wincent/command-t', {'build': 'sh -c "cd ruby/command-t/ext/command-t && ruby extconf.rb && make"' })
   call dein#add('ryanoasis/vim-devicons')
 
   if dein#check_install()
     call dein#install()
+    call fruzzy#install()
     let pluginsExist=1
   endif
 
@@ -174,7 +189,6 @@
   " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
   set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
   set clipboard+=unnamedplus
-  set pastetoggle=<f6>
   set nopaste
   set hidden
   autocmd BufWritePre * %s/\s\+$//e
@@ -186,10 +200,11 @@
   set tabstop=2 shiftwidth=2 expandtab
   set conceallevel=0
   set virtualedit=
-  set wildmenu
   set laststatus=2
   set wrap linebreak nolist
+  set wildmenu
   set wildmode=full
+  set wildoptions=pum
   set autoread
   set updatetime=500
   set fillchars+=vert:│
@@ -213,7 +228,7 @@
   set shortmess=atIc
   set isfname-==
   set spell
-  let g:indentLine_color_gui = '#343d46'
+  " let g:indentLine_color_gui = '#343d46'
   " set scrolloff=999
   " set sidescrolloff=999
   " let g:indentLine_char="⎸"
@@ -253,8 +268,6 @@
   noremap  <silent> <End>  g<End>
   inoremap <silent> <Home> <C-o>g<Home>
   inoremap <silent> <End>  <C-o>g<End>
-" copy current files path to clipboard
-  nmap cp :let @+= expand("%") <cr>
 " Neovim terminal mapping
 " terminal 'normal mode'
   tmap <esc> <c-\><c-n><esc><cr>
@@ -317,13 +330,14 @@
   let g:oceanic_next_terminal_italic = 1
   let g:vim_monokai_tasty_italic = 1
   " set pumblend=50
-  " if strftime('%H') >= 7 && strftime('%H') < 14
-  "   colorscheme OceanicNextLight
-  "   let g:airline_theme='oceanicnextlight'
-  " else
+  let iterm_profile = $ITERM_PROFILE
+  if iterm_profile == "Light"
+    colorscheme OceanicNextLight
+    let g:airline_theme='oceanicnextlight'
+  else
     colorscheme OceanicNext
     let g:airline_theme='oceanicnext'
-  " endif
+  endif
   " colorscheme vim-monokai-tasty
   let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig','gina-blame', 'defx', 'fugitive', 'git']
 
@@ -375,7 +389,7 @@
       " let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - len('lines   ')
       let fillcharcount = windowwidth - len(line)
       " return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . ' Lines'
-      return line . '…'. repeat(" ",fillcharcount)
+      return line . ''. repeat(" ",fillcharcount)
   endfunction " }}}
 
   set foldtext=MyFoldText()
@@ -412,6 +426,7 @@
 " Git -----------------------------------------------------------------------{{{
 
   set signcolumn=yes
+  set diffopt+=internal,algorithm:patience,iwhiteall
   let g:conflict_marker_enable_mappings = 0
   let g:gitgutter_sign_added = '│'
   let g:gitgutter_sign_modified = '│'
@@ -449,6 +464,7 @@
   let g:netrw_altv = 1
   let g:netrw_winsize = -28
   let g:netrw_banner = 0
+  let g:netrw_menu = 0
 
   let NERDTreeCascadeSingleChildDir=0
   let NERDTreeCascadeOpenSingleChildDir=0
@@ -485,48 +501,71 @@
 
 " Defx ----------------------------------------------------------------------{{{
 
-  map <silent> - :call OpenDefx()<cr>
-  let g:defx_open_path = getcwd()
-  function! OpenDefx() abort
-    if isdirectory(expand('%:p:h'))
-      let g:defx_open_path = expand('%:p:h')
-    endif
-    execute('Defx
-      \ -columns=git:icons:filename:type
-      \ -buffer-name=""
-      \ -show_ignored_files
-      \ -split=vertical
-      \ -winwidth=45
-      \ -direction=topleft
-      \ -toggle
-      \ -resume
-      \ `g:defx_open_path`')
-  endfunction
-
-  " \ if isdirectory(expand('%:p:h')) | `expand('%:p:h')` | endif
-  "`expand('%:p:h')` -search=`expand('%:p')`
+  set conceallevel=2
+  set concealcursor=nc
+  map <silent> - :Defx<cr>
   autocmd FileType defx call s:defx_my_settings()
+  call defx#custom#column('icon', {
+     \ 'directory_icon': '',
+     \ 'opened_icon':  '',
+     \ 'root_icon': '',
+     \ 'root_marker_highlight': 'Ignore',
+     \ })
+  call defx#custom#column('filename', {
+     \ 'root_marker_highlight': 'Ignore',
+     \ })
+  call defx#custom#column('mark', {
+        \ 'readonly_icon': '✗',
+        \ 'selected_icon': '',
+        \ })
+  call defx#custom#option('_', {
+      \ 'winwidth': 45,
+      \ 'columns': 'mark:indent:icon:icons:filename:git',
+      \ 'split': 'vertical',
+      \ 'direction': 'topleft',
+      \ 'show_ignored_files': 1,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ 'root_marker': ':',
+      \ })
   function! s:defx_my_settings() abort
+
     IndentLinesDisable
     setl nospell
     setl signcolumn=no
     setl nonumber
-    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+    nnoremap <silent><buffer><expr> <CR> defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+    nnoremap <silent><buffer><expr> l defx#is_directory() ? defx#do_action('open_or_close_tree') : defx#do_action('drop')
+    nnoremap <silent><buffer><expr> h defx#do_action('close_tree')
     nnoremap <silent><buffer><expr> C defx#do_action('copy')
     nnoremap <silent><buffer><expr> P defx#do_action('paste')
     nnoremap <silent><buffer><expr> M defx#do_action('rename')
     nnoremap <silent><buffer><expr> D defx#do_action('remove_trash')
     nnoremap <silent><buffer><expr> A defx#do_action('new_multiple_files')
+    nnoremap <silent><buffer><expr> S defx#do_action('open', 'vsplit')
     nnoremap <silent><buffer><expr> U defx#do_action('cd', ['..'])
     nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
     nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select')
     nnoremap <silent><buffer><expr> R defx#do_action('redraw')
+    nnoremap <silent><buffer><expr> <Tab> <SID>defx_toggle_zoom()
 
   endfunction
 
+  function s:defx_toggle_zoom() abort "{{{
+    let b:DefxOldWindowSize = get(b:, 'DefxOldWindowSize', winwidth('%'))
+    let size = b:DefxOldWindowSize
+    if exists("b:DefxZoomed") && b:DefxZoomed
+        exec "silent vertical resize ". size
+        let b:DefxZoomed = 0
+    else
+        exec "vertical resize ". get(g:, 'DefxWinSizeMax', '')
+        let b:DefxZoomed = 1
+    endif
+  endfunction "}}}
+
   let g:defx_git#show_ignored = 0
-  let g:defx_git#raw_mode = 1
-  let g:defx_git#column_length =2
+  let g:defx_git#column_length = 1
 
   hi def link Defx_filename_directory NERDTreeDirSlash
   hi def link Defx_git_Modified Special
@@ -535,37 +574,19 @@
   hi def link Defx_git_Unmerged Label
   hi def link Defx_git_Untracked Tag
   hi def link Defx_git_Ignored Comment
+
   let g:defx_icons_parent_icon = ""
-
-
-  " let g:fila#renderer#default#expanded_symbol= "+ "
-  " let g:fila#renderer#default#root_symbol = " "
-  " let g:fila#renderer#default#leaf_symbol = " "
-
-  " map <silent> - :FilaDrawer<cr>
-  let g:fila#viewer#skip_default_mappings = 1
-  autocmd FileType fila call s:fila_settings()
-  function! s:fila_settings() abort
-    IndentLinesDisable
-    setl nospell
-    setl signcolumn=no
-    setl nonumber
-    nmap <buffer><nowait> <Backspace> <Plug>(fila-action-leave)
-    nmap <buffer><nowait> <C-h>       <Plug>(fila-action-leave)
-    nmap <buffer><nowait> <Return>    <Plug>(fila-action-expand-or-open)
-    " nmap <buffer><nowait> <C-m>       <Plug>(fila-action-enter-or-open)
-    nmap <buffer><nowait> R        <Plug>(fila-action-reload)
-    nmap <buffer><nowait> l           <Plug>(fila-action-expand-or-open)
-    nmap <buffer><nowait> h           <Plug>(fila-action-collapse)
-    nmap <buffer><nowait> <space>           <Plug>(fila-action-mark-toggle)
-  endfunction
-  let g:fila#renderer#default#leading = " "
-  let g:fila#renderer#default#root_symbol = "   "
-  let g:fila#renderer#default#leaf_symbol = "  "
-  let g:fila#renderer#default#expanded_symbol = " ▾ "
-  let g:fila#renderer#default#collapsed_symbol = " ▸ "
-  let g:fila#renderer#default#marked_symbol = " "
-  let g:fila#renderer#default#unmarked_symbol = " "
+  let g:defx_icons_mark_icon = ''
+  let g:defx_icons_enable_syntax_highlight = 1
+  let g:defx_icons_column_length = 1
+  let g:defx_icons_mark_icon = '*'
+  let g:defx_icons_default_icon = ''
+  let g:defx_icons_directory_symlink_icon = ''
+  " Options below are applicable only when using "tree" feature
+  let g:defx_icons_directory_icon = ''
+  let g:defx_icons_root_opened_tree_icon = ''
+  let g:defx_icons_nested_opened_tree_icon = ''
+  let g:defx_icons_nested_closed_tree_icon = ''
 
 "  }}}
 
@@ -581,7 +602,7 @@
 
   let g:NERDTreeGitStatusNodeColorization = 1
   " 
-  let g:webdevicons_enable_denite = 0
+  let g:webdevicons_enable_denite = 1
   let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
   let g:DevIconsEnableFoldersOpenClose = 1
   let g:WebDevIconsOS = 'Darwin'
@@ -625,7 +646,16 @@
 
   " enable deoplete
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#auto_complete_delay = 0
+
+  call deoplete#custom#option({
+   \ 'auto_complete_delay': 0,
+   \ 'smart_case': v:true,
+   \})
+  call deoplete#custom#option('omni_patterns', {
+   \ 'html': '',
+   \ 'css': '',
+   \ 'scss': ''
+   \})
   let g:echodoc_enable_at_startup=1
   let g:echodoc#type="virtual"
   set splitbelow
@@ -633,12 +663,14 @@
   set completeopt-=preview
   autocmd CompleteDone * pclose
 
-  function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete=2
+  function g:Multiple_cursors_before()
+    call deoplete#custom#buffer_option('auto_complete', v:false)
   endfunction
-  function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete=0
+  function g:Multiple_cursors_after()
+    call deoplete#custom#buffer_option('auto_complete', v:true)
   endfunction
+
+
   let g:deoplete#file#enable_buffer_path=1
   " call deoplete#custom#source('buffer', 'mark', 'ℬ')
   " call deoplete#custom#source('tern', 'mark', '')
@@ -650,11 +682,6 @@
   " call deoplete#custom#source('typescript',  'rank', 630)
   " call deoplete#custom#source('_', 'matchers', ['matcher_cpsm'])
   " call deoplete#custom#source('_', 'sorters', [])
-  let g:deoplete#omni_patterns = {
-        \ 'html': '',
-        \ 'css': '',
-        \ 'scss': ''
-        \}
   function! Preview_func()
     if &pvw
       setlocal nonumber norelativenumber
@@ -692,11 +719,11 @@
   " let g:user_emmet_expandabbr_key='<Tab>'
   " imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
-  autocmd FileType html,css,scss,typescript.tsx imap <silent><buffer><expr><tab> <sid>expand_html_tab()
+  autocmd FileType html,css,scss,typescript.tsx,vue imap <silent><buffer><expr><tab> <sid>expand_html_tab()
   let g:user_emmet_mode='a'
   let g:user_emmet_complete_tag = 0
   let g:user_emmet_install_global = 0
-  autocmd FileType html,css,scss,typescript.tsx EmmetInstall
+  autocmd FileType html,css,scss,typescript.tsx,vue EmmetInstall
 "}}}
 
 " Language Client -----------------------------------------------------------{{{
@@ -730,52 +757,90 @@
 
   let s:menus = {}
   call denite#custom#option('_', {
-        \ 'prompt': '❯',
-        \ 'winheight': 10,
-        \ 'updatetime': 1,
-        \ 'auto_resize': 0,
-        \ 'highlight_matched_char': 'Underlined',
-        \ 'highlight_mode_normal': 'CursorLine',
-        \ 'reversed': 1,
-        \ 'auto-accel': 1,
-        \})
+       \ 'prompt': '❯',
+       \ 'winheight': 10,
+       \ 'updatetime': 1,
+       \ 'auto_resize': 0,
+       \ 'highlight_matched_char': 'Underlined',
+       \ 'highlight_mode_normal': 'CursorLine',
+       \ 'reversed': 1,
+       \ 'auto-accel': 1,
+       \ 'start_filter': 1,
+       \})
   call denite#custom#option('TSDocumentSymbol', {
-        \ 'prompt': ' @' ,
-        \})
+       \ 'prompt': '@ ' ,
+       \})
   call denite#custom#option('TSWorkspaceSymbol', {
-        \ 'prompt': ' #' ,
-        \})
+       \ 'prompt': '# ' ,
+       \ 'start_filter': 0,
+       \})
+  "
+  call denite#custom#source('file/rec', 'vars', {
+       \'command': ['rg', '--files', '--glob', '!.git'],
+       \'matchers': ['matcher/fruzzy'],
+       \'sorters':['sorter_sublime'],
+       \})
+  let g:denite#_update_timer = timer_start(5, {-> denite#call_async_map('update')}, {'repeat': -1})
+  call denite#custom#source('grep', 'vars', {
+       \'command': ['rg'],
+       \'default_opts': ['-i', '--vimgrep'],
+       \'recursive_opts': [],
+       \'pattern_opt': [],
+       \'separator': ['--'],
+       \'final_opts': [],
+       \'matchers': ['matcher/ignore_globs', 'matcher/regexp', 'matcher/pyfuzzy']
+       \})
 
-  call denite#custom#source('file_rec', 'vars', {
-        \'command': ['rg', '--files', '--glob', '!.git'],
-        \'matchers': ['matcher/fruzzy'],
-        \'sorters':['sorter_sublime'],
-        \})
-        " \'matchers': ['matcher/cpsm']
+  let g:ctrlp_user_command="rg --files --glob !.git"
+  let g:ctrlp_grep_command_definition="rg -i --vimgrep"
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_match_func = {'match': 'fruzzy#ctrlp#matcher'}
   let fruzzy#usenative = 1
-  "     \ 'command': ['ag', '--follow','--nogroup','--hidden', '--column', '-g', '', '--ignore', '.git', '--ignore', '*.png', '--ignore', 'node_modules'
 
- call denite#custom#source('grep', 'vars', {
-        \'command': ['rg'],
-        \'default_opts': ['-i', '--vimgrep'],
-        \'recursive_opts': [],
-        \'pattern_opt': [],
-        \'separator': ['--'],
-        \'final_opts': [],
-        \'matchers': ['matcher/ignore_globs', 'matcher/regexp', 'matcher/pyfuzzy']
-        \})
 
-  nnoremap <silent> <c-p> :Denite file_rec<CR>
-  nnoremap <silent> <leader>h :Denite help<CR>
-  nnoremap <silent> <leader>v :Denite vison<CR>
-  nnoremap <silent> <leader>c :Denite -auto-preview colorscheme<CR>
-  nnoremap <silent> <leader>b :Denite buffer<CR>
-  nnoremap <silent> <leader>l :Denite line<CR>
-  nnoremap <silent> <leader>a :Denite grep:::!<CR>
-  nnoremap <silent> <leader>u :DeinUpdate<CR>
-  nnoremap <silent> <Leader>i :Denite menu:ionic <CR>
+
+  nnoremap <silent> <c-p>      :Denite file/rec<CR>
+  nnoremap <silent> <leader>h  :Denite help<CR>
+  nnoremap <silent> <leader>v  :Denite vison<CR>
+  nnoremap <silent> <leader>c  :Denite colorscheme<CR>
+  nnoremap <silent> <leader>al :Denite airline<CR>
+  nnoremap <silent> <leader>b  :Denite buffer<CR>
+  nnoremap <silent> <leader>l  :Denite line<CR>
+  nnoremap <silent> <leader>a  :Denite grep:::!<CR>
+  nnoremap <silent> <leader>u  :DeinUpdate<CR>
+  nnoremap <silent> <Leader>i  :Denite menu:ionic <CR>
+  nnoremap <silent> z=   :Denite -no-start-filter spell <CR>
+
+
+  autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>    denite#do_map('do_action')
+
+    nnoremap <silent><buffer><expr> <Tab>    denite#do_map('choose_action')
+    nnoremap <silent><buffer><expr> <ESC>   denite#do_map('quit')
+    nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select')
+    nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  endfunction
+
+  autocmd FileType denite-filter call s:denite_filter_settings()
+  function s:denite_filter_settings() abort
+    setl nonumber
+    call deoplete#custom#buffer_option('auto_complete', v:false)
+    " nunmap <CR>
+    inoremap <silent><buffer><expr> <ESC> denite#do_map('quit')
+    inoremap <silent><buffer> <CR>  <ESC><C-w>p:call denite#call_map('do_action')<CR>
+    " inoremap <silent><buffer> <CR>  <Esc><C-w>p<CR>
+
+    " inoremap <silent><buffer> <Space> <Esc><C-w>p:call denite#call_map()('toggle_select', [])<CR><C-w>pA
+    inoremap <silent><buffer> <Tab>   <Esc><C-w>p:call denite#call_map('choose_action')<CR>
+    inoremap <silent><buffer> <Space> <Esc><C-w>p:call denite#call_map('toggle_select')<CR><C-w>pA
+    inoremap <silent><buffer> <C-n>   <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+    inoremap <silent><buffer> <C-p>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+  endfunction
+
   call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
   call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
+
   call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
@@ -835,15 +900,21 @@
 
   let g:webdevicons_enable_airline_statusline = 1
   if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+    let g:airline_symbols = {
+      \ 'branch': '',
+      \ 'modified': ' ●'
+      \}
   endif
 
+  " let w:airline_disabled = 1
   let g:airline_powerline_fonts = 0
   let g:airline#extensions#tabline#enabled = 1
-  let g:airline#extensions#mike#enabled = 0
   let g:airline#extensions#tabline#fnamemod = ':t'
   let g:airline#extensions#tabline#buffer_idx_mode = 1
-  let g:airline_symbols.branch = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+  " let g:airline#extensions#tabline#left_alt_sep = '│'
+  let g:airline#extensions#tabline#left_sep = " "
+
   " cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'x' : 'bd'
   cnoreabbrev x Sayonara
   " cnoreabbrev x bd
@@ -878,11 +949,8 @@
   let g:airline#extensions#whitespace#enabled = 0
   let g:airline_section_c = '%f%m'
   let g:airline_section_x = ''
-  " let g:airline_section_y = '%{WebDevIconsGetFileFormatSymbol()}'
   let g:airline_section_y = ''
-  " let g:webdevicons_enable_airline_statusline_fileformat_symbols = 0
   let g:airline_section_z = '%l:%c'
-  " let g:airline_section_z = '%{LineNoIndicator()} :%2c'
   let g:airline#parts#ffenc#skip_expected_string=''
   let g:airline_mode_map = {
       \ '__' : '',
@@ -905,28 +973,28 @@
       \ }
 
   let g:airline#extensions#tabline#buffer_idx_format = {
-        \ '0': '0 ',
-        \ '1': '1 ',
-        \ '2': '2 ',
-        \ '3': '3 ',
-        \ '4': '4 ',
-        \ '5': '5 ',
-        \ '6': '6 ',
-        \ '7': '7 ',
-        \ '8': '8 ',
-        \ '9': '9 ',
-        \}
+      \ '0': '0 ',
+      \ '1': '1 ',
+      \ '2': '2 ',
+      \ '3': '3 ',
+      \ '4': '4 ',
+      \ '5': '5 ',
+      \ '6': '6 ',
+      \ '7': '7 ',
+      \ '8': '8 ',
+      \ '9': '9 ',
+      \}
 
 "}}}
 
 " Linting -------------------------------------------------------------------{{{
 
-  " call neomake#configure#automake({
-  "\ 'BufWritePost': {'delay': 0},
-  "\ 'BufWinEnter': {},
-  "\ 'TextChanged': {},
-  "\ 'InsertLeave': { },
-  "\ }, 1000)
+  call neomake#configure#automake({
+  \ 'BufWritePost': {'delay': 0},
+  \ 'BufWinEnter': {},
+  \ 'TextChanged': {},
+  \ 'InsertLeave': { },
+  \ }, 1000)
   " call neomake#configure#automake({
   " \ 'BufWritePost': {},
   " \ }, 0)
@@ -937,7 +1005,6 @@
   let g:airline#extensions#ale#warning_symbol='•  '
   let g:airline#extensions#neomake#error_symbol='• '
   let g:airline#extensions#neomake#warning_symbol='•  '
-
   " let g:neomake_typescript_tsc_tempfile_enabled = 0
   " let g:neomake_typescript_tslint_tempfile_enabled = 0
   let g:neomake_warning_sign = {'text': '•'}
@@ -962,7 +1029,7 @@
       \ 'errorformat': '%W%f:%l:%c: %m',
       \ 'postprocess': function('neomake#postprocess#generic_length'),
       \}
-  let g:neomake_markdown_enabled_makers = ['alex', 'proselint']
+  let g:neomake_markdown_enabled_makers = ['proselint']
   let g:markdown_syntax_conceal = 0
   let g:mkdp_auto_start = 0
   let g:neoformat_markdown_prettier = g:standard_prettier_settings
@@ -977,52 +1044,62 @@
 "}}}
 
 " Javascript ----------------------------------------------------------------{{{
-" set nobinary
+  " set nobinary
   " let $NVIM_NODE_LOG_FILE='nvim-node.log'
   " let $NVIM_NODE_LOG_LEVEL='warn'
   " let $NVIM_NODE_HOST_DEBUG=1
 
-  " autocmd FileType typescript.tsx setlocal commentstring=
-  " call tcomment#type#Define('typescript.tsx', '{/* %s */}')
-  " call tcomment#type#Define('typescript.tsx_block',       '{/* %s */}')
-  " call tcomment#type#Define('typescript.tsx_inline',      '{/* %s */}')
   let g:neoformat_javascript_prettier = g:standard_prettier_settings
   let g:neoformat_enabled_javascript = ['prettier']
+
   autocmd FileType vue syntax sync fromstart
 
   let g:jsx_ext_required = 0
   let g:neomake_javascript_enabled_makers = []
-  let g:jsx_ext_required = 1
   let g:jsdoc_allow_input_prompt = 1
   let g:jsdoc_input_description = 1
   let g:jsdoc_return=0
   let g:jsdoc_return_type=0
 
+  let g:neoformat_json_prettier = g:standard_prettier_settings
+  let g:neoformat_enabled_json = ['prettier']
+  let g:vim_json_syntax_conceal = 0
 
-  " autocmd FileType typescript,typescript.tsx setl omnifunc=TSOmnicFunc
-  " let g:neomake_typescript_enabled_makers = ['tslint']
-  let  g:typescript_use_builtin_tagbar_defs = 1
-  let g:neomake_typescript_enabled_makers = []
+  autocmd FileType typescript,typescript.tsx setl omnifunc=TSOmniFunc
   let g:nvim_typescript#max_completion_detail=50
   let g:nvim_typescript#completion_mark=''
   let g:nvim_typescript#javascript_support=1
   let g:nvim_typescript#expand_snippet=0
   " let g:nvim_typescript#vue_support=1
-  let g:nvim_typescript#diagnosticsEnable=1
-  map <silent> <leader>gd :TSDoc <cr>
-  map <silent> <leader>gt :TSType <cr>
-  map <silent> <leader>gtd :TSTypeDef <cr>
-  map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
-  map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
-  map <silent> <leader>ti :TSImport <cr>
-  nnoremap <m-Enter> :TSGetCodeFix<CR>
+  let g:nvim_typescript#diagnostics_enable=1
 
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader>gd :TSDoc <cr>
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader>gt :TSType <cr>
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader>gtd :TSTypeDef <cr>
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
+  autocmd FileType typescript,typescript.tsx,javascript map <silent> <leader>ti :TSImport <cr>
+  autocmd FileType typescript,typescript.tsx,javascript nnoremap <m-Enter> :TSGetCodeFix<CR>
+
+  " nnoremap <silent> <leader>gt :call CocAction('doHover') <cr>
+  " nnoremap <silent> <leader>gtd <Plug>(coc-type-definition) <cr>
+  " nnoremap <silent> <leader>gd :call <SID>show_documentation()<CR>
+  " autocmd CursorHold * silent call CocActionAsync('highlight')
+  " function! s:show_documentation()
+  "   if (index(['vim','help'], &filetype) >= 0)
+  "     execute 'h '.expand('<cword>')
+  "   else
+  "     call CocAction('doHover')
+  "   endif
+  " endfunction
+  " autocmd FileType typescript,typescript.tsx,javascript nmap <m-Enter> <Plug>(coc-codeaction)
+  " nmap <leader>rn <Plug>(coc-rename)
+
+  let g:neomake_typescript_enabled_makers = []
+  " let g:neomake_typescript_enabled_makers = ['nvim_ts']
   let g:neomake_vue_enabled_makers = []
   let g:neoformat_typescript_prettier = g:standard_prettier_settings
   let g:neoformat_enabled_typescript = ['prettier']
-  let g:neoformat_typescript_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_typescript = ['prettier']
-  " let g:neomake_typescript_enabled_makers = ['nvim_ts']
   let g:nvim_typescript#kind_symbols = {
       \ 'keyword': 'keyword',
       \ 'class': '',
@@ -1067,9 +1144,6 @@
     \]
 
 
-  let g:neoformat_json_prettier = g:standard_prettier_settings
-  let g:neoformat_enabled_json = ['prettier']
-  let g:vim_json_syntax_conceal = 0
 
 " }}}
 

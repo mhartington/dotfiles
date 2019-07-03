@@ -12,9 +12,9 @@ chunkc core::plugin_dir /usr/local/opt/chunkwm/share/chunkwm/plugins
 #       and automatically reload any '.so' file that is changed.
 #
 chunkc core::hotload 1
-chunkc core::unload tiling.so
-chunkc core::unload ffm.so
-chunkc core::unload border.so
+# chunkc core::unload tiling.so
+# chunkc core::unload ffm.so
+# chunkc core::unload border.so
 
 chunkc set custom_bar_enabled            0
 chunkc set custom_bar_all_monitors       1
@@ -74,6 +74,7 @@ chunkc set window_use_cgs_move           1
 chunkc core::load tiling.so
 
 chunkc tiling::rule --owner Finder --name Copy --state float &
+# chunkc tiling::rule --owner iTerm  --state float &
 chunkc tiling::rule --owner \"App Store\" --state float &
 chunkc tiling::rule --owner Emacs --state float &
 chunkc tiling::rule --owner Simulator --state float
