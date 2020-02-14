@@ -39,7 +39,7 @@ source ~/.iterm2_shell_integration.zsh
 source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle marzocchi/zsh-notify
 antigen bundle mafredri/zsh-async
 # antigen theme eendroroy/alien alien
@@ -55,3 +55,13 @@ zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a
 zstyle ':notify:*' success-title "Success"
 
 # source ~/.dark_mode.sh
+#
+# #If you need to have libxml2 first in your PATH run:
+# export PATH="/usr/local/opt/libxml2/bin:$PATH"
+#
+# # For compilers to find libxml2 you may need to set:
+# export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+# export CPPFLAGS="-I/usr/local/opt/libxml2/include"
+#
+# # For pkg-config to find libxml2 you may need to set:
+# export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig"

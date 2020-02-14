@@ -1,6 +1,13 @@
 [core]
   editor = "nvim"
+  pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
 
+[color]
+	ui = true
+	status = auto
+	diff = auto
+	branch = auto
+	grep = auto
 [filter "media"]
 	clean = git-media-clean %f
   smudge = git-media-smudge %f
@@ -27,9 +34,6 @@
 [github]
   user = mhartington
 
-# [core]
-#   pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
-
 [color "diff-highlight"]
   oldNormal = "red bold"
   oldHighlight = "red bold 52"
@@ -48,4 +52,11 @@
 [format]
 	pretty = %Cred%h%Creset - %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset
 [help]
-	autocorrect = 1
+  autocorrect = 1
+
+[tig]
+	tab-size = 4
+	line-graphics = utf-8
+	main-view = line-number:no,interval=5 id:yes date:default author:full commit-title:yes,graph,refs,overflow=no
+	diff-highlight = true
+	mouse = true

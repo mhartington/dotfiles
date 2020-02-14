@@ -1,6 +1,6 @@
-
-source ~/.keys
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+source ~/.keys
+export MACOSX_DEPLOYMENT_TARGET=10.14
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
 # export TERM=xterm-256color-italic
@@ -29,6 +29,7 @@ export PATH=/usr/local/bin:$PATH
 # export PATH=${PATH}:~/.cargo/bin:$PATH
 export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
+export PATH=${PATH}:~/bin/nvim/bin
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
@@ -38,17 +39,18 @@ export PATH="/usr/local/opt/python@2/bin:$PATH"
 # export LDFLAGS="-Wl,-headerpad_max_install_names ${LDFLAGS}"
 
 export GRADLE_HOME=$BREW_PATH
-
 export PATH=$PATH:$GRADLE_HOME/bin
+
 export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.composer/vendor/bin
-
-
-
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -127,7 +129,7 @@ alias fh='open -a Finder .'
 alias textedit='open -a TextEdit'
 alias hex='open -a "Hex Fiend"'
 alias skype='open -a Skype'
-alias slack="open -a '/Applications/Slack.app'"
+# alias slack="open -a '/Applications/Slack.app'"
 
 # Usefull stuff for presentation and seeing dotfiles
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
@@ -192,11 +194,11 @@ function ghUpdate() {
 function ghPages(){
   if [ -z "$1" ]
   then
-    echo "Which folder do you want to deploy to GitHub Pages?"
-    exit 1
+    read "Which folder do you want to deploy to GitHub Pages?" answer
+    git subtree push --prefix $answer origin gh-pages
+  else
+    git subtree push --prefix $1 origin gh-pages
   fi
-  git subtree push --prefix $1 origin gh-pages
-
 }
 
 # incase i forget how to clear
@@ -350,27 +352,37 @@ alias x=extract
 function gif(){
    ffmpeg -i $1 -vf scale=$2:-1:flags=lanczos -f gif - | gifsicle --optimize=3 --delay=3 > $3
 }
-
-function fixSSH(){
-  eval $(ssh-agent);
-  ssh-add ~/.ssh/id_rsa
+function fixAudio(){
+  sudo kill -9 `ps ax|grep 'coreaudio[a-z]' | awk '{print $1}'`
 }
+function fixGpg(){
+  gpgconf --kill gpg-agent
+}
+
+# function fixSSH(){
+#   eval $(ssh-agent);
+#   ssh-add ~/.ssh/id_rsa
+# }
 
 function ghPatch () {
   curl -L $1.patch | git am
 }
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-fi
+# if [[ "$(uname -s)" == "Darwin" ]]; then
+# fi
 
-killport() { lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill }
+# killport() { lsof -i tcp:$1 | awk 'NR!=1 {print $2}' | xargs kill }
 
-function changeMac(){
-  local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
-  sudo ifconfig en0 ether $mac
-  sudo ifconfig en0 down
-  sudo ifconfig en0 up
-  echo "Your new physical address is $mac"
+# function changeMac(){
+#   local mac=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//')
+#   sudo ifconfig en0 ether $mac
+#   sudo ifconfig en0 down
+#   sudo ifconfig en0 up
+#   echo "Your new physical address is $mac"
+# }
+#
+function cleanModules() {
+  for i in $(find . -name node_modules -type d); do
+    rm -r $i
+  done
 }

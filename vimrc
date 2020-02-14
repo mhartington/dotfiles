@@ -32,6 +32,7 @@
   call dein#add('Quramy/tsuquyomi-vue')
   call dein#add('mhartington/oceanic-next')
   call dein#add('fatih/vim-go')
+  call dein#add('liuchengxu/vim-clap')
   if dein#check_install()
     call dein#install()
   endif
