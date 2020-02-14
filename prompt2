@@ -25,8 +25,8 @@
 local lsep=""
 local rsep=""
 local alt_sep=""
+# local alt_sep="/"
 local alt_rsep=""
-local gray1=#4f5b66
 local gray2=#343D46
 
 __format_cwd() {
@@ -36,6 +36,7 @@ __format_cwd() {
   local part_count=0
   local formatted_cwd=""
   local tilde="~"
+  local dir_sep=" "
 
   local cwd="${PWD/#$HOME/$tilde}"
 
@@ -50,7 +51,7 @@ __format_cwd() {
     local part="${cwd##*/}"
     cwd="${cwd%/*}"
 
-    formatted_cwd="$alt_sep $part $formatted_cwd"
+    formatted_cwd="$dir_sep $part $formatted_cwd"
     part_count=$((part_count+1))
 
     [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
@@ -73,16 +74,16 @@ prompt_preprompt_render() {
   then
     preprompt_parts+="%F{blue}$lsep%f"
   else
-    preprompt_parts+="%F{blue}%K{$gray1}$lsep%f%k%F{white}%K{$gray1} ${prompt_vcs_info[branch]} %f%k"
+    preprompt_parts+="%F{blue}%K{8}$lsep%f%k%F{white}%K{8} ${prompt_vcs_info[branch]} %f%k"
   fi
 
   if [[ -n $prompt_git_status ]];
   then
-    preprompt_parts+="%F{$gray1}%K{$gray2}$lsep%f%k%F{white}%K{$gray2} ${prompt_git_status} %f%k%F{$gray2}$lsep%f"
+    preprompt_parts+="%F{8}%K{$gray2}$lsep%f%k%F{white}%K{$gray2} ${prompt_git_status} %f%k%F{$gray2}$lsep%f"
   else
     if [[ $prompt_vcs_info[branch] ]];
     then
-      preprompt_parts+="%F{$gray1}%K{$gray2}$lsep%f%k%F{white}%K{$gray2} %f%k%F{$gray2}$lsep%f"
+      preprompt_parts+="%F{8}%K{$gray2}$lsep%f%k%F{white}%K{$gray2} %f%k%F{$gray2}$lsep%f"
     fi
   fi
 
