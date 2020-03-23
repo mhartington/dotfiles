@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo ".osx.sh — https://mths.be/osx"
-
 # Ask for the administrator password upfront
 sudo -v
 
@@ -29,16 +27,15 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Menu bar: hide the Time Machine, Volume, and User icons
 for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-	defaults write "${domain}" dontAutoLoad -array \
-		"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-		"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-		"/System/Library/CoreServices/Menu Extras/User.menu"
+  defaults write "${domain}" dontAutoLoad -array \
+    "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+    "/System/Library/CoreServices/Menu Extras/User.menu"
 done
 # defaults write com.apple.systemuiserver menuExtras -array \
-# 	"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-# 	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-# 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
-# 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
+#   "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
+#   "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
+#   "/System/Library/CoreServices/Menu Extras/Battery.menu" \
+#   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 #
 # Set highlight color to green
 #defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
@@ -165,7 +162,7 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
 defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
 defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
@@ -202,7 +199,7 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+defaults write com.apple.screencapture location -string "${HOME}/Documents/Screenshots"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -229,7 +226,7 @@ defaults write com.apple.finder DisableAllAnimations -bool true
 # Set Desktop as the default location for new Finder windows
 # For other paths, use `PfLo` and `file:///full/path/here/`
 defaults write com.apple.finder NewWindowTarget -string "PfDe"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -329,9 +326,9 @@ chflags nohidden ~/Library
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+  General -bool true \
+  OpenWith -bool true \
+  Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -512,10 +509,10 @@ defaults write com.apple.terminal StringEncodings -array 4
 # TERM_PROFILE='Solarized Dark xterm-256color';
 # CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
 # if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-# 	open "${HOME}/init/${TERM_PROFILE}.terminal";
-# 	sleep 1; # Wait a bit to make sure the theme is loaded
-# 	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
-# 	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
+#   open "${HOME}/init/${TERM_PROFILE}.terminal";
+#   sleep 1; # Wait a bit to make sure the theme is loaded
+#   defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
+#   defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
 # fi;
 
 # Enable “focus follows mouse” for Terminal.app and all X11 apps
@@ -655,8 +652,8 @@ defaults write com.twitter.twitter-mac HideInBackground -bool true
 ###############################################################################
 
 for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
-	"Terminal" "Transmission" "Twitter" "iCal"; do
-	killall "${app}" > /dev/null 2>&1
+  "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+  "Terminal" "Transmission" "Twitter" "iCal"; do
+  killall "${app}" > /dev/null 2>&1
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
