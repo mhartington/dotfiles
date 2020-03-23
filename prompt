@@ -16,7 +16,7 @@ precmd_vcs_info() { vcs_info }
 
 __format_cwd() {
   local dir_limit="3"
-  local truncation="⋯"
+  local truncation="…"
   local first_char
   local part_count=0
   local formatted_cwd=""

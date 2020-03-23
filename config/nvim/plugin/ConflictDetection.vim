@@ -20,9 +20,13 @@ function! s:isBufferContains( pattern, ... ) "{{{
 endfunction "}}}
 "- functions -------------------------------------------------------------------
 function! s:ConflictCheck() "{{{
+  " let doc = nvim_buf_get_lines(0, 0, -1, v:true)
+
+
+
   let l:conflictLnum = s:isBufferContains('^\([<=>|]\)\{7}\1\@!')
   if l:conflictLnum == 0
-    let b:conflicted = 0
+    let b:conflicted = v:false
     return
   endif
   " To avoid false positives (e.g. in nested email replies), ensure that both
@@ -65,10 +69,10 @@ augroup ConflictDetection "{{{
   autocmd BufReadPost,FileType * call <SID>ConflictHighlight()
 augroup END "}}}
 "- highlight groups ------------------------------------------------------------
-highlight conflictOurs guibg=#264A4D
+highlight conflictOurs guibg=#0F474B
+highlight conflictTheirs guibg=#13405B
+highlight conflictOursMarker guibg=#007771
+highlight conflictTheirsMarker guibg=#0E6699
+
 highlight def link conflictBase DiffChange
-highlight conflictTheirs guibg=#26435E
 highlight def link conflictSeparatorMarkerSymbol NonText
-highlight conflictOursMarker guibg=#357A71
-highlight conflictTheirsMarker guibg=#35699B
-" highlight def conflictSeparatorMarker   ctermfg=Grey guifg=Grey

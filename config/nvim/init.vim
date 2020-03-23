@@ -48,7 +48,7 @@
   call dein#add('simnalamburt/vim-mundo')
 " }}}
 " UI {{{
-  call dein#add('scrooloose/nerdtree')
+  call dein#add('preservim/nerdtree')
   call dein#add('Aldlevine/nerdtree-git-plugin')
   call dein#add('justinmk/vim-dirvish')
   call dein#add('kristijanhusak/vim-dirvish-git')
@@ -62,6 +62,7 @@
   call dein#add('morhetz/gruvbox')
   call dein#add('patstockwell/vim-monokai-tasty')
   call dein#add('arcticicestudio/nord-vim')
+  call dein#add('arzg/vim-colors-xcode')
   " call dein#add('RRethy/vim-illuminate')
   call dein#add('Khaledgarbaya/night-owl-vim-theme')
   call dein#add('kenwheeler/glow-in-the-dark-gucci-shark-bites-vim')
@@ -84,10 +85,10 @@
 " }}}
 " denite {{{
 
+  call dein#add('romgrk/searchReplace.vim')
+  call dein#add('liuchengxu/vim-clap', {'build': './install.sh'})
   call dein#add('ctrlpvim/ctrlp.vim')
-  call dein#add('conweller/findr.vim')
   call dein#add('Shougo/denite.nvim')
-  call dein#add('liuchengxu/vim-clap', {'hook_done_update': function('clap#helper#build_all') })
 
   call dein#add('raghur/fruzzy', {'build': 'python3 ./python3/fruzzy_installer.py'})
   call dein#add('nixprime/cpsm', {'build': 'PY3=ON ./install.sh'})
@@ -183,6 +184,7 @@
   call dein#local('~/GitHub', {},['nvim-typescript'])
   call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next'])
   call dein#add('neovim/nvim-lsp')
+  call dein#add('haorenW1025/diagnostic-nvim')
   " call dein#local('~/GitHub', {},['nvim-lsp'])
   " call dein#add('prabirshrestha/async.vim')
   " call dein#add('prabirshrestha/vim-lsp')
@@ -193,6 +195,11 @@
   "\ 'build': 'bash install.sh',
   "\ })
 " }}}
+" some lua experiments {{{
+  " call dein#add('kyazdani42/highlight.lua')
+  " call dein#add('kyazdani42/nvim-tree.lua')
+" }}}
+
 " Has to be last according to docs
   call dein#add('ryanoasis/vim-devicons')
 
@@ -281,6 +288,9 @@
 " No need for ex mode
   nnoremap Q <nop>
   vnoremap // y/<C-R>"<CR>
+  vnoremap <silent><c-a-j> :m '>+1<CR>gv=gv
+  vnoremap <silent><c-a-k> :m '<-2<CR>gv=gv
+
 " recording macros is not my thing
   map q <Nop>
 " exit insert, dd line, enter insert
@@ -368,6 +378,7 @@
     hi htmlArg gui=italic
   endfunction
   autocmd ColorScheme * call SetItalics()
+
   let g:one_allow_italics = 1
   let g:oceanic_next_terminal_bold = 1
   let g:oceanic_next_terminal_italic = 1
@@ -580,11 +591,13 @@ autocmd FileType nerdtree setlocal nolist  "if you show hidden characters, this 
   nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> <leader>gtd <cmd>lua vim.lsp.buf.type_definition()<CR>
   nnoremap <m-Enter> <cmd>lua vim.lsp.buf.code_action()<CR>
-  autocmd CursorHold * silent! :lua vim.lsp.util.show_line_diagnostics()
+  autocmd CursorHold * silent! :lua require'util'.show_line_diagnostics()
+  let g:diagnostic_auto_popup_while_jump = 1
   let g:LspDiagnosticsErrorSign='•'
   let g:LspDiagnosticsWarningSign='•'
   let g:LspDiagnosticsInformationSign='•'
   let g:LspDiagnosticsHintSign='•'
+  let g:diagnostic_show_sign = 1
   " if executable('typescript-language-server')
   "     au User lsp_setup call lsp#register_server({
   "\ 'name': 'typescript-language-server',
@@ -780,11 +793,11 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   \ 'smart_case': v:true,
   \})
   call deoplete#custom#option('ignore_sources', {'_': ['buffer', 'around', 'member', 'omni']})
-  call deoplete#custom#option('omni_patterns', {
-  \ 'html': '',
-  \ 'css': '',
-  \ 'scss': ''
-  \})
+  " call deoplete#custom#option('omni_patterns', {
+  " \ 'html': '',
+  " \ 'css': '',
+  " \ 'scss': ''
+  " \})
   let g:echodoc_enable_at_startup=1
   let g:echodoc#type="virtual"
   set splitbelow
@@ -899,21 +912,25 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   let g:ctrlp_map = ''
   let fruzzy#usenative = 1
 
-
-
-  " nnoremap <silent> <c-p>      :Denite file/rec<CR>
+  let g:clap_insert_mode_only = v:true
+  let g:clap_layout = { 'relative': 'editor' }
+  let g:clap_enable_icon = 1
+  let g:clap_theme = 'oceanicnext'
   nnoremap <silent> <c-p>      :Clap files<CR>
-
-  nnoremap <silent> <leader>h  :Denite help<CR>
-  nnoremap <silent> <leader>v  :Denite vison<CR>
-  nnoremap <silent> <leader>c  :Denite colorscheme<CR>
-  nnoremap <silent> <leader>al :Denite airline<CR>
-  nnoremap <silent> <leader>b  :Denite buffer<CR>
-  nnoremap <silent> <leader>l  :Denite line<CR>
-  nnoremap <silent> <leader>a  :Denite grep:::!<CR>
+  nnoremap <silent> <leader>a  :Clap grep<CR>
+  nnoremap <silent> <leader>h  :Clap help_tags<CR>
   nnoremap <silent> <leader>u  :DeinUpdate<CR>
-  nnoremap <silent> <Leader>i  :Denite menu:ionic <CR>
-  nnoremap <silent> z=   :Denite -no-start-filter spell <CR>
+
+  " nnoremap <silent> <leader>v  :Denite vison<CR>
+  " nnoremap <silent> <leader>c  :Denite colorscheme<CR>
+  " nnoremap <silent> <leader>al :Denite airline<CR>
+  " nnoremap <silent> <leader>b  :Denite buffer<CR>
+  " nnoremap <silent> <leader>l  :Denite line<CR>
+  " nnoremap <silent> <c-p>      :Denite file/rec<CR>
+  " nnoremap <silent> <leader>h  :Denite help<CR>
+  " nnoremap <silent> <leader>a  :Denite grep:::!<CR>
+  " nnoremap <silent> <Leader>i  :Denite menu:ionic <CR>
+  " nnoremap <silent> z=   :Denite -no-start-filter spell <CR>
 
 
   autocmd FileType denite call s:denite_my_settings()
@@ -940,8 +957,10 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
     " inoremap <silent><buffer> <Space> <Esc><C-w>p:call denite#call_map()('toggle_select', [])<CR><C-w>pA
     inoremap <silent><buffer> <Tab>   <Esc><C-w>p:call denite#call_map('choose_action')<CR>
     inoremap <silent><buffer> <Space> <Esc><C-w>p:call denite#call_map('toggle_select')<CR><C-w>pA
-    inoremap <silent><buffer> <C-n>   <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-    inoremap <silent><buffer> <C-p>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+    inoremap <silent><buffer> <C-j>   <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
+    inoremap <silent><buffer> <C-k>   <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+    " inoremap <silent><buffer> <C-n>   <Esc>
+    " inoremap <silent><buffer> <C-p>   <Esc>
   endfunction
 
   call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
@@ -1263,12 +1282,12 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " HTML ----------------------------------------------------------------------{{{
 
-  let g:neoformat_enabled_vue = ['prettier']
-  let g:neomake_html_enabled_makers = []
-  let g:neoformat_enabled_html = ['htmlbeautify']
+  " let g:neoformat_enabled_vue = ['prettier']
+  " let g:neomake_html_enabled_makers = []
+  " let g:neoformat_enabled_html = ['htmlbeautify']
 
-  " let g:neoformat_html_prettier = g:standard_prettier_settings
-  " let g:neoformat_enabled_html = ['prettier']
+  let g:neoformat_html_prettier = g:standard_prettier_settings
+  let g:neoformat_enabled_html = ['prettier']
 " }}}
 
 " Go ------------------------------------------------------------------------{{{
