@@ -49,7 +49,8 @@
 " }}}
 " UI {{{
   call dein#add('preservim/nerdtree')
-  call dein#add('Aldlevine/nerdtree-git-plugin')
+  call dein#add('kyazdani42/nvim-tree.lua')
+  call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('justinmk/vim-dirvish')
   call dein#add('kristijanhusak/vim-dirvish-git')
   call dein#add('Shougo/defx.nvim')
@@ -63,6 +64,8 @@
   call dein#add('patstockwell/vim-monokai-tasty')
   call dein#add('arcticicestudio/nord-vim')
   call dein#add('arzg/vim-colors-xcode')
+  call dein#add('chuling/vim-equinusocio-material')
+  call dein#add('romgrk/github-light.vim')
   " call dein#add('RRethy/vim-illuminate')
   call dein#add('Khaledgarbaya/night-owl-vim-theme')
   call dein#add('kenwheeler/glow-in-the-dark-gucci-shark-bites-vim')
@@ -75,7 +78,8 @@
 " }}}
 " completion {{{
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/deoplete-lsp')
+  call dein#add('haorenW1025/completion-nvim')
+  " call dein#add('Shougo/deoplete-lsp')
   call dein#add('fszymanski/deoplete-emoji')
   call dein#add('tweekmonster/deoplete-clang2')
   call dein#add('artur-shaik/vim-javacomplete2')
@@ -91,7 +95,6 @@
   call dein#add('Shougo/denite.nvim')
 
   call dein#add('raghur/fruzzy', {'build': 'python3 ./python3/fruzzy_installer.py'})
-  call dein#add('nixprime/cpsm', {'build': 'PY3=ON ./install.sh'})
 
   call dein#add('Shougo/neomru.vim')
   call dein#add('neoclide/denite-git')
@@ -108,7 +111,7 @@
   call dein#add('sgeb/vim-diff-fold')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('junegunn/gv.vim')
-  call dein#add('AGhost-7/critiq.vim')
+  " call dein#add('AGhost-7/critiq.vim')
   call dein#add('lambdalisue/gina.vim')
   call dein#add('rhysd/git-messenger.vim', {
    \   'lazy' : 1,
@@ -140,7 +143,7 @@
 " }}}
 " javascript {{{
   call dein#add('othree/yajs.vim')
-  call dein#add('mxw/vim-jsx')
+  call dein#add('MaxMEllon/vim-jsx-pretty')
   call dein#add('heavenshell/vim-jsdoc')
   call dein#add('elzr/vim-json')
   call dein#add('HerringtonDarkholme/yats.vim')
@@ -173,18 +176,16 @@
 " }}}
 " go {{{
   call dein#add('fatih/vim-go')
-  call dein#add('zchee/deoplete-go', {'build': 'make'})
   call dein#add('gfontenot/vim-xcode')
 " }}}
-" java {{{
+" lua {{{
+  call dein#add('tbastos/vim-lua')
 " }}}
 " local {{{
-  " call dein#add('w0rp/ale')
-  "
-  call dein#local('~/GitHub', {},['nvim-typescript'])
+  " call dein#local('~/GitHub', {},['nvim-typescript'])
   call dein#local('~/GitHub', {},['vim-folds', 'oceanic-next'])
   call dein#add('neovim/nvim-lsp')
-  call dein#add('haorenW1025/diagnostic-nvim')
+  " call dein#add('haorenW1025/diagnostic-nvim')
   " call dein#local('~/GitHub', {},['nvim-lsp'])
   " call dein#add('prabirshrestha/async.vim')
   " call dein#add('prabirshrestha/vim-lsp')
@@ -214,7 +215,7 @@
 
 " System Settings  ----------------------------------------------------------{{{
 
-  source ~/.local.vim
+  " source ~/.local.vim
   if exists('g:GuiLoaded')
     Guifont Hasklig:h15
   endif
@@ -248,6 +249,7 @@
 " leader is ,
   let mapleader = ','
   set undofile
+  set virtualedit=onemore
   set undodir="$HOME/.VIM_UNDO_FILES"
 " Remember cursor position between vim sessions
  autocmd BufReadPost *
@@ -383,17 +385,9 @@
   let g:oceanic_next_terminal_bold = 1
   let g:oceanic_next_terminal_italic = 1
   let g:vim_monokai_tasty_italic = 1
-  " set pumblend=50
-  " let iterm_profile = $ITERM_PROFILE
-  " if iterm_profile == "Light"
-    " colorscheme OceanicNextLight
-    " let g:airline_theme='oceanicnextlight'
-  " else
-    colorscheme OceanicNext
-    let g:airline_theme='oceanicnext'
-
-  " endif
-  " colorscheme vim-monokai-tasty
+  colorscheme OceanicNext
+  let g:airline_theme='oceanicnext'
+  let g:equinusocio_material_darker = 1
   let g:Illuminate_ftblacklist = ['nerdtree', 'gitconfig','gina-blame', 'defx', 'fugitive', 'git']
 
   set list
@@ -485,7 +479,7 @@
   " lua vim.api.nvim_command [[autocmd CursorMovedI * lua require'git'.clearBlameVirtText()]]
   "
   " hi! link GitLens Comment
-  set signcolumn=yes
+  set signcolumn=yes:1
   set diffopt+=internal,algorithm:patience,iwhiteall
   let g:conflict_marker_enable_mappings = 0
   let g:gitgutter_sign_added = '│'
@@ -553,18 +547,23 @@
 
 " }}}
 
+  let g:NERDTreeShowIgnoredStatus = 1  "enables ignored highlighting
+  let g:NERDTreeGitStatusNodeColorization = 1  "enables colorization
+  let g:NERDTreeGitStatusWithFlags = 1  "enables flags, (may be default), required for colorization
 
-let g:NERDTreeShowIgnoredStatus = 1  "enables ignored highlighting
-let g:NERDTreeGitStatusNodeColorization = 1  "enables colorization
-let g:NERDTreeGitStatusWithFlags = 1  "enables flags, (may be default), required for colorization
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-highlight link NERDTreeGitStatusIgnored Comment  "custom color
+  highlight link NERDTreeDir Question  "custom color
+  highlight link NERDTreeGitStatusIgnored Comment  "custom color
+  highlight link NERDTreeGitStatusModified cssURL  "custom color
 
-" NERDTree
-set hidden
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 
-autocmd FileType nerdtree setlocal nolist  "if you show hidden characters, this hides them in NERDTree
- let g:NERDTreeGitStatusIndicatorMap = {
+
+  " NERDTree
+  set hidden
+
+  autocmd FileType nerdtree setlocal nolist  "if you show hidden characters, this hides them in NERDTree
+"  let g:NERDTreeGitStatusIndicatorMap = {
+ let g:NERDTreeIndicatorMapCustom = {
          \ 'Modified'  : '✹',
          \ 'Staged'    : '✚',
          \ 'Untracked' : '✭',
@@ -581,56 +580,16 @@ autocmd FileType nerdtree setlocal nolist  "if you show hidden characters, this 
 
 " LSP -----------------------------------------------------------------------{{{
 
-" When nvim's LSP is ready...
-  " lua require
   lua require("lsp_config")
-  set omnifunc=v:lua.vim.lsp.omnifunc
-  nnoremap <silent> <leader>gdc <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> <leader>gt <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> <leader>gi <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <leader>gtd <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <m-Enter> <cmd>lua vim.lsp.buf.code_action()<CR>
-  autocmd CursorHold * silent! :lua require'util'.show_line_diagnostics()
-  let g:diagnostic_auto_popup_while_jump = 1
-  let g:LspDiagnosticsErrorSign='•'
-  let g:LspDiagnosticsWarningSign='•'
-  let g:LspDiagnosticsInformationSign='•'
-  let g:LspDiagnosticsHintSign='•'
-  let g:diagnostic_show_sign = 1
-  " if executable('typescript-language-server')
-  "     au User lsp_setup call lsp#register_server({
-  "\ 'name': 'typescript-language-server',
-  "\ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-  "\ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-  "\ 'whitelist': ['typescript'],
-  "\ })
-  " endif
-  " set omnifunc=lsp#complete
+  call sign_define('LspDiagnosticsErrorSign',       {'text': '・'})
+  call sign_define('LspDiagnosticsWarningSign',     {'text': '・'})
+  call sign_define('LspDiagnosticsInformationSign', {'text': '・'})
+  call sign_define('LspDiagnosticsHintSign',        {'text': '・'})
+  hi LspReferenceRead guibg='#343d46'
+  hi LspReferenceText guibg='#343d46'
+  hi LspReferenceWrite guibg='#343d46'
+  let g:completion_enable_snippet = 'Neosnippet'
 
-  " let g:lsc_server_commands = {'typescript': 'typescript-language-server --stdio'}
-  " highlight link lscDiagnosticError SpellBad
-  " highlight link lscDiagnosticWarning SpellBad
-
-  " let g:LanguageClient_selectionUI="location-list"
-  " let g:LanguageClient_useVirtualText = 0
-  " let g:LanguageClient_diagnosticsDisplay = {
-  "\1: { "name": "Error",       "texthl": "SpellBad", "signText": "•", "signTexthl": "ALEErrorSign",  "virtualTexthl": "ErrorMsg", },
-  "\2: { "name": "Warning",     "texthl": "SpellBad", "signText": "•", "signTexthl": "ALEWarningSign","virtualTexthl": "Constant", },
-  "\3: { "name": "Information", "texthl": "SpellBad", "signText": "•", "signTexthl": "ALEInfoSign",   "virtualTexthl": "Bold",  },
-  "\4: { "name": "Hint",        "texthl": "SpellBad", "signText": "•", "signTexthl": "ALEInfoSign",   "virtualTexthl": "Bold",  },
-  "\}
-  " set completefunc=LanguageClient#complete
-  " let g:LanguageClient_serverCommands = {
-  "\ 'javascript': ['typescript-language-server', '--stdio'],
-  "\ 'typescript': ['typescript-language-server', '--stdio'],
-  "\ 'typescript.tsx': ['typescript-language-server', '--stdio'],
-  "\ 'typescriptreact': ['typescript-language-server', '--stdio'],
-  "\ 'html': ['html-languageserver', '--stdio'],
-  "\ 'css': ['css-languageserver', '--stdio']
-  "\ }
-  "   nnoremap <silent> <leader>gt :call LanguageClient#textDocument_hover()<CR>
-  "   nnoremap <silent> <leader>gd :call LanguageClient#textDocument_definition()<CR>
 " }}}
 
 " Defx ----------------------------------------------------------------------{{{
@@ -654,7 +613,7 @@ autocmd FileType nerdtree setlocal nolist  "if you show hidden characters, this 
         \ })
   call defx#custom#option('_', {
       \ 'winwidth': 45,
-      \ 'columns': 'mark:indent:icon:icons:filename:git',
+      \ 'columns': 'mark:indent:icon:git:icons:filename',
       \ 'split': 'vertical',
       \ 'direction': 'topleft',
       \ 'show_ignored_files': 1,
@@ -786,7 +745,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " Deoplete ------------------------------------------------------------------{{{
 
   " enable deoplete
-  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_at_startup = 0
 
   call deoplete#custom#option({
   \ 'auto_complete_delay': 0,
@@ -798,7 +757,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   " \ 'css': '',
   " \ 'scss': ''
   " \})
-  let g:echodoc_enable_at_startup=1
+  let g:echodoc_enable_at_startup=0
   let g:echodoc#type="virtual"
   set splitbelow
   set completeopt+=menuone,noinsert,noselect
@@ -916,10 +875,13 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   let g:clap_layout = { 'relative': 'editor' }
   let g:clap_enable_icon = 1
   let g:clap_theme = 'oceanicnext'
+  let g:clap_popup_border='nil'
+  let g:clap_search_box_border_style='nil'
   nnoremap <silent> <c-p>      :Clap files<CR>
   nnoremap <silent> <leader>a  :Clap grep<CR>
   nnoremap <silent> <leader>h  :Clap help_tags<CR>
   nnoremap <silent> <leader>u  :DeinUpdate<CR>
+  nnoremap <silent> <leader>c  :Clap colors<CR>
 
   " nnoremap <silent> <leader>v  :Denite vison<CR>
   " nnoremap <silent> <leader>c  :Denite colorscheme<CR>
@@ -1198,15 +1160,15 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
   let g:nvim_typescript#type_info_on_hold=0
   let g:nvim_typescript#suggestions_enabled=1
 
-  autocmd FileType typescript,typescriptreact,javascript setl omnifunc=TSOmniFunc
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gd :TSDoc <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gt :TSType <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gtd :TSTypeDef <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gtD :TSDef <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
-  autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>ti :TSImport <cr>
-  autocmd FileType typescript,typescriptreact,javascript nnoremap <m-Enter> :TSGetCodeFix<CR>
+  " autocmd FileType typescript,typescriptreact,javascript setl omnifunc=TSOmniFunc
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gd :TSDoc <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gt :TSType <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gtd :TSTypeDef <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>gtD :TSDef <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>@ :Denite -buffer-name=TSDocumentSymbol TSDocumentSymbol <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader># :Denite -buffer-name=TSWorkspaceSymbol TSWorkspaceSymbol <cr>
+  " autocmd FileType typescript,typescriptreact,javascript map <silent> <leader>ti :TSImport <cr>
+  " autocmd FileType typescript,typescriptreact,javascript nnoremap <leader>ca :TSGetCodeFix<CR>
 
   let g:neomake_typescript_enabled_makers = []
   " let g:neomake_typescript_enabled_makers = ['nvim_ts']
@@ -1271,6 +1233,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \{ 'TSsuggestion': { 'texthl': 'TSSuggestionTexthl', 'signText': '･', 'signTexthl': 'TSInfoSignhl' } },
       \{ 'TShint':       { 'texthl': 'SpellBad', 'signText':           '?', 'signTexthl': 'TSInfoSignhl' } }
       \]
+  let g:vim_jsx_pretty_disable_tsx=0
 " }}}
 
 " Java ----------------------------------------------------------------------{{{

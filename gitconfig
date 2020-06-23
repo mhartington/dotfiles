@@ -1,6 +1,10 @@
 [core]
   editor = "nvim"
-  pager = zsh -lc 'diff-highlight | strip_diff_leading_symbols | less -r' -
+  # pager = "diff-so-fancy | less --tabs=4 -RFX"
+  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='oceanic-next'
+
+[interactive]
+    diffFilter = delta --color-only
 
 [color]
 	ui = true
@@ -15,7 +19,7 @@
 [user]
 	name = Mike Hartington
 	email = mikehartington@gmail.com
-  signingkey = 493BFB24814E6209
+  signingkey = 6782DBB958F09B85
 
 [credential]
   helper = osxkeychain
@@ -47,7 +51,7 @@
   gpgsign = true
 
 [gpg]
-  program = /usr/local/bin/gpg
+	program = gpg
 
 [format]
 	pretty = %Cred%h%Creset - %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset
@@ -60,3 +64,5 @@
 	main-view = line-number:no,interval=5 id:yes date:default author:full commit-title:yes,graph,refs,overflow=no
 	diff-highlight = true
 	mouse = true
+# [url "git@github.com:"]
+# 	insteadOf = https://github.com/

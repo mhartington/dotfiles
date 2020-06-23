@@ -599,6 +599,8 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
 ###############################################################################
 # Google Chrome & Google Chrome Canary                                        #
 ###############################################################################

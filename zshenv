@@ -1,5 +1,5 @@
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-source ~/.keys
+# source ~/.keys
 export MACOSX_DEPLOYMENT_TARGET=10.14
 export KEYTIMEOUT=1
 export TERMINAL_DARK=1
@@ -13,19 +13,25 @@ export JOURNAL_DIR="/Users/mhartington/Journal"
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export ITERM_24BIT=1
+export DISABLE_AUTO_TITLE="true"
+
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+
+export ANDROID_HOME=/usr/local/share/android-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
 # This is for android crap
-export JAVA_HOME=$(/usr/libexec/java_home)
-export ANDROID_HOME=~/Library/Android/sdk
-export ANDROID_SDK=$ANDROID_HOME
-export ANDROID_NDK=~/Library/Android/ndk
-export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
-export PATH=${PATH}:$ANDROID_HOME/tools/bin/avdmanager:$ANDROID_HOME/tools/bin/sdkmanager
-export PATH=$ANDROID_HOME/emulator:$PATH
+# export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+# export PATH=${PATH}:$ANDROID_HOME/tools/bin/avdmanager:$ANDROID_HOME/tools/bin/sdkmanager
+# export PATH=$ANDROID_HOME/emulator:$PATH
 
-export PATH=$ANDROID_NDK:$PATH
-export PATH=${JAVA_HOME}/bin:$PATH
+# export PATH=$ANDROID_NDK:$PATH
+# export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+
 # export PATH=${PATH}:~/.cargo/bin:$PATH
 export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
@@ -38,6 +44,12 @@ export PATH="/usr/local/opt/python@2/bin:$PATH"
 # export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
 # export LDFLAGS="-Wl,-headerpad_max_install_names ${LDFLAGS}"
 
+# Ruby
+# export PATH="/usr/local/opt/ruby/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/ruby/lib"
+# export CPPFLAGS="-I/usr/local/opt/ruby/include"
+# export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+#
 export GRADLE_HOME=$BREW_PATH
 export PATH=$PATH:$GRADLE_HOME/bin
 
@@ -45,8 +57,6 @@ export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.composer/vendor/bin
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/usr/local/opt/texinfo/bin:$PATH"
@@ -61,6 +71,14 @@ export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
 export DISABLE_AUTO_TITLE=true
 export EVENT_NOKQUEUE=1
 export VSCODE_TSJS=1
+
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+eval "$(rbenv init -)"
 
 function strip_diff_leading_symbols(){
     color_code_regex=$'(\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])'
@@ -89,12 +107,12 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
   }
 
-if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
-    source ~/.gnupg/.gpg-agent-info
-    export GPG_AGENT_INFO
-else
-    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
-fi
+# if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+#     source ~/.gnupg/.gpg-agent-info
+#     export GPG_AGENT_INFO
+# else
+#     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+# fi
 
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
@@ -194,7 +212,7 @@ function ghUpdate() {
 function ghPages(){
   if [ -z "$1" ]
   then
-    read "Which folder do you want to deploy to GitHub Pages?" answer
+    read "?Which folder do you want to deploy to GitHub Pages? " answer
     git subtree push --prefix $answer origin gh-pages
   else
     git subtree push --prefix $1 origin gh-pages
