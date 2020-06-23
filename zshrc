@@ -3,7 +3,6 @@
 # Just .aliases right now git-completion.bash
 autoload -U promptinit; promptinit
 bindkey -v
-source ~/.prompt2
 # Disable zsh autocorrect
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
@@ -18,6 +17,7 @@ autoload -U compinit && compinit
 
 zmodload -i zsh/complist
 compinit -d ~/.zcompdump_capture
+
 ###-begin-ionic-completion-###
 
 if type compdef &>/dev/null; then
@@ -31,19 +31,12 @@ fi
 ###-end-ionic-completion-###
 . <(npm completion)
 
-# Load rbenv automatically by appending
-# the following to ~/.zshrc:
-
-eval "$(rbenv init -)"
-source ~/.iterm2_shell_integration.zsh
 source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle marzocchi/zsh-notify
 antigen bundle mafredri/zsh-async
-# antigen theme eendroroy/alien alien
-# antigen bundle sindresorhus/pure
 antigen apply
 
 source ~/.z/z.sh
@@ -54,14 +47,6 @@ zstyle ':notify:*' error-title "Fail"
 zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a/18/b55a1805f5650495a74202279036ecd2.jpg"
 zstyle ':notify:*' success-title "Success"
 
-# source ~/.dark_mode.sh
-#
-# #If you need to have libxml2 first in your PATH run:
-# export PATH="/usr/local/opt/libxml2/bin:$PATH"
-#
-# # For compilers to find libxml2 you may need to set:
-# export LDFLAGS="-L/usr/local/opt/libxml2/lib"
-# export CPPFLAGS="-I/usr/local/opt/libxml2/include"
-#
-# # For pkg-config to find libxml2 you may need to set:
-# export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig"
+source ~/.prompt2
+# fpath+=$HOME/.zsh/pure
+# prompt pure

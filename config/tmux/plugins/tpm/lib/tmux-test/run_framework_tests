@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# This file is used to run "tmux-test" framework tests.
+
+# "setup" script is needed to run the tests, but it overrides some working dir
+# files. To address that, "setup" is run before the tests and it's actions are
+# undone after.
+
+main() {
+	git clone https://github.com/tmux-plugins/tmux-test lib/tmux-test
+	lib/tmux-test/setup
+	./run_tests
+	local exit_value=$?
+	lib/tmux-test/setup "undo"
+	exit "$exit_value"
+}
+main
