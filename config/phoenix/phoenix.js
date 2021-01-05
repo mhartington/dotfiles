@@ -17,7 +17,8 @@ const computeNewFrameFromGrid = (screen, grid) => {
   };
   return newFrame;
 };
-const move = (win, grid) => {
+const move = (grid) => {
+  const win = Window.focused();
   const screen = win.screen();
   var newFrame = computeNewFrameFromGrid(screen, grid);
   win.setSize({ width: newFrame.width, height: newFrame.height });
@@ -60,25 +61,20 @@ const moveToScreen = (window, newScreen) =>{
 }
 
 Key.on('l', ['alt'], () => {
-  const win = Window.focused();
-  move(win, { x: 1, y: 0, width: 1, height: 1, rows: 1, cols: 2 });
+  move({ x: 1, y: 0, width: 1, height: 1, rows: 1, cols: 2 });
 });
 Key.on('h', ['alt'], () => {
-  const win = Window.focused();
-  move(win, { x: 0, y: 0, width: 1, height: 1, rows: 1, cols: 2 });
+  move({ x: 0, y: 0, width: 1, height: 1, rows: 1, cols: 2 });
 });
 Key.on('m', ['alt'], () => {
-  const win = Window.focused();
-  move(win, { x: 0, y: 0, width: 1, height: 1, rows: 1, cols: 1 });
+  move({ x: 0, y: 0, width: 1, height: 1, rows: 1, cols: 1 });
 });
 
 Key.on('u', ['alt', 'shift'], () => {
-  const win = Window.focused();
-  move(win, { x: 0, y: 0, width: 6, height: 2, rows: 1, cols: 9 });
+  move({ x: 0, y: 0, width: 6, height: 2, rows: 1, cols: 9 });
 });
 Key.on('o', ['alt', 'shift'], () => {
-  const win = Window.focused();
-  move(win, { x: 6, y: 0, width: 3, height: 2, rows: 1, cols: 9 });
+  move({ x: 6, y: 0, width: 3, height: 2, rows: 1, cols: 9 });
 });
 
 Key.on('l', ['alt', 'shift'], () => {
@@ -91,10 +87,15 @@ Key.on('h', ['alt', 'shift'], function () {
 });
 
 //Launch Apps
-const launch = (appName) => App.launch(appName, { focus: true });
-Key.on('f', ['alt'], () => launch('iTerm'));
-Key.on('c', ['alt'], () => launch('Google Chrome'));
+const launch = (appName) => {
+  App.launch(appName, { focus: true })
+};
+// Key.on('f', ['alt'], () => launch('iTerm'));
+Key.on('f', ['alt'], () => launch('kitty'));
+Key.on('q', ['alt'], () => launch('QuickTime Player'));
+Key.on('c', ['alt'], () => launch('Brave Browser'));
 Key.on('s', ['alt'], () => launch('Safari'));
+Key.on('e', ['alt'], () => launch('Simulator'));
 Key.on('s', ['shift', 'alt'], () => launch('Safari Technology Preview'));
 Key.on('z', ['alt'], () => launch('zoom.us'));
 Key.on('d', ['alt'], () => launch('Slack'));

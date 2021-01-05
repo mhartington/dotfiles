@@ -35,7 +35,7 @@ source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle marzocchi/zsh-notify
+# antigen bundle marzocchi/zsh-notify
 antigen bundle mafredri/zsh-async
 antigen apply
 
@@ -48,5 +48,4 @@ zstyle ':notify:*' success-icon "https://s-media-cache-ak0.pinimg.com/564x/b5/5a
 zstyle ':notify:*' success-title "Success"
 
 source ~/.prompt2
-# fpath+=$HOME/.zsh/pure
-# prompt pure
+
