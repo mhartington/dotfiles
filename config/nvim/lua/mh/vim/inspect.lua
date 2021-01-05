@@ -1,0 +1,1 @@
+/Users/mhartington/.dotfiles/config/nvim/lua/vim/inspect.lua

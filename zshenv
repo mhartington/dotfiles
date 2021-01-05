@@ -1,41 +1,43 @@
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 # source ~/.keys
-export MACOSX_DEPLOYMENT_TARGET=10.14
+# export MACOSX_DEPLOYMENT_TARGET=10.14
 export KEYTIMEOUT=1
-export TERMINAL_DARK=1
-# export TERM=xterm-256color-italic
-# export TERM=xterm-kitty
 export CLICOLOR=1
 export EDITOR=nvim
-export GOPATH=$HOME/go
 export _Z_DATA="$HOME/z-data"
-export JOURNAL_DIR="/Users/mhartington/Journal"
-export NVIM_PYTHON_LOG_FILE=/tmp/log
-export NVIM_PYTHON_LOG_LEVEL=DEBUG
 export ITERM_24BIT=1
 export DISABLE_AUTO_TITLE="true"
 
-export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
-
-export ANDROID_HOME=/usr/local/share/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# This is for android crap
-# export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
-# export PATH=${PATH}:$ANDROID_HOME/tools/bin/avdmanager:$ANDROID_HOME/tools/bin/sdkmanager
-# export PATH=$ANDROID_HOME/emulator:$PATH
-
-# export PATH=$ANDROID_NDK:$PATH
-# export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-
-# export PATH=${PATH}:~/.cargo/bin:$PATH
 export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
 export PATH=${PATH}:~/bin/nvim/bin
+
+
+
+# Python...amiright
+export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+
+
+
+# Java setup
+# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_HOME=$JAVA_11_HOME
+export GRADLE_HOME=$BREW_PATH
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+export ANDROID_HOME=/usr/local/share/android-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
+
+export PATH=$ANDROID_NDK:$PATH
+export PATH=$PATH:$GRADLE_HOME/bin
+export PATH=$JAVA_HOME/bin:$PATH
+# This is for android crap
+# I dont know if I can delete this stuff yet.
+# export PATH="/usr/local/opt/openjdk/bin:$PATH"
+# export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+# export PATH=${PATH}:$ANDROID_HOME/tools/bin/avdmanager:$ANDROID_HOME/tools/bin/sdkmanager
+# export PATH=$ANDROID_HOME/emulator:$PATH
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
@@ -50,35 +52,29 @@ export PATH="/usr/local/opt/python@2/bin:$PATH"
 # export CPPFLAGS="-I/usr/local/opt/ruby/include"
 # export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 #
-export GRADLE_HOME=$BREW_PATH
-export PATH=$PATH:$GRADLE_HOME/bin
 
 export RUST_SRC_PATH=$HOME/.cargo/bin
 export PATH=$PATH:$RUST_SRC_PATH
+
+export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.composer/vendor/bin
-export PATH="/usr/local/opt/icu4c/bin:$PATH"
-export PATH="/usr/local/opt/icu4c/sbin:$PATH"
-export PATH="/usr/local/opt/texinfo/bin:$PATH"
 
-export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export ZLE_RPROMPT_INDENT=0
-export BULLETTRAIN_TIME_SHOW=false
-export BULLETTRAIN_STATUS_SHOW=false
-export BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-export DISABLE_AUTO_TITLE=true
+
+# export PATH="/usr/local/opt/icu4c/bin:$PATH"
+# export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+# export PATH="/usr/local/opt/texinfo/bin:$PATH"
+
+
 export EVENT_NOKQUEUE=1
-export VSCODE_TSJS=1
 
 
 # Load rbenv automatically by appending
 # the following to ~/.zshrc:
-
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
+
 
 function strip_diff_leading_symbols(){
     color_code_regex=$'(\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])'
@@ -106,7 +102,8 @@ function zle-line-init zle-keymap-select {
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
     zle reset-prompt
   }
-
+# alias pip=/usr/local/bin/pip3
+# alias python3=/usr/local/bin/python3
 # if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
 #     source ~/.gnupg/.gpg-agent-info
 #     export GPG_AGENT_INFO
@@ -114,6 +111,8 @@ function zle-line-init zle-keymap-select {
 #     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 # fi
 
+
+alias nvimInstall='make CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
 alias bout='brew outdated'
@@ -136,18 +135,9 @@ alias l1='ls -1'
 alias v='nvim'
 # alias n="nvim"
 alias s="sudo"
-# alias n="open -a /Applications/Neovim.app"
 # Desktop Programs
-alias xcode="open -a '/Applications/XCode.app'"
-alias safari="open -a safari"
-alias chrome="open -a google\ chrome"
-alias chromium="open -a chromium"
 alias f='open -a Finder '
 alias fh='open -a Finder .'
-alias textedit='open -a TextEdit'
-alias hex='open -a "Hex Fiend"'
-alias skype='open -a Skype'
-# alias slack="open -a '/Applications/Slack.app'"
 
 # Usefull stuff for presentation and seeing dotfiles
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
@@ -169,20 +159,13 @@ echo "done"
 
   # Because Typing python -m SimpleHTTPServer is too Damn Long
   # Start an HTTP server from a directory, optionally specifying the port
-  function server() {
+function server() {
   local port="${1:-8000}"
   #    open "http://localhost:${port}/"
   open -a google\ chrome\ canary "http://localhost:${port}/" --args --disable-web-security
   # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
   # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
   python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
-}
-
-function run(){
-ionic build "$1" && ionic run "$1" --device -lc
-}
-function sim(){
-ionic build "$1" && ionic emulate "$1"
 }
 
 function download(){
@@ -220,9 +203,9 @@ function ghPages(){
 }
 
 # incase i forget how to clear
-  alias c='clear'
-  alias k='clear'
-  alias cls='clear'
+alias c='clear'
+alias k='clear'
+alias cls='clear'
 
 # presentation crap
   # alias whoamireally='echo "Mike Hartington
@@ -230,7 +213,7 @@ function ghPages(){
   # Beer lover and Cat lover" '
 
 # archive file or folder
-  function compress()  {
+function compress()  {
     dirPriorToExe=`pwd`
     dirName=`dirname $1`
     baseName=`basename $1`

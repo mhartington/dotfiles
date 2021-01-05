@@ -293,3 +293,5 @@ alias x=extract
 
 # [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+[ -s "/Users/mhartington/.jabba/jabba.sh" ] && source "/Users/mhartington/.jabba/jabba.sh"

@@ -1,0 +1,144 @@
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+  vim.cmd "packadd packer.nvim"
+end
+vim.cmd "packadd packer.nvim"
+-- vim.cmd [[ autocmd BufWritePost packed.lua PackerCompile ]]
+-- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
+-- vim._update_package_paths()
+return require "packer".startup(
+  function(use)
+    -- Packer can manage itself as an optional plugin
+    use {"wbthomason/packer.nvim", opt = true}
+    use {"Raimondi/delimitMate"}
+    use {"tpope/vim-repeat"}
+    use {"tpope/vim-unimpaired"}
+    use {"AndrewRadev/switch.vim"}
+    use {"christoomey/vim-tmux-navigator"}
+    use {"tpope/vim-surround"}
+    use {"tyru/caw.vim"}
+    use {"junegunn/vim-easy-align"}
+    use {"tmux-plugins/vim-tmux"}
+    use {"Shougo/context_filetype.vim"}
+    use {"mhinz/vim-sayonara"}
+    use {"mg979/vim-visual-multi"}
+    use {"MartinLafreniere/vim-PairTools"}
+    use {"sjl/vitality.vim"}
+    use {"kyazdani42/nvim-tree.lua"}
+    use {"Yggdroot/indentLine"}
+
+    use{ "hoob3rt/lualine.nvim" }
+    -- use {"~/Github/mhartington/lualine.nvim"}
+
+    use {"akinsho/nvim-bufferline.lua"}
+
+    -- Colors
+    use {"morhetz/gruvbox"}
+    use {"patstockwell/vim-monokai-tasty"}
+    use {"arzg/vim-colors-xcode"}
+    use {"chuling/vim-equinusocio-material"}
+    use {"romgrk/github-light.vim"}
+    use {"Khaledgarbaya/night-owl-vim-theme"}
+    use {"kenwheeler/glow-in-the-dark-gucci-shark-bites-vim"}
+    use {"TroyFletcher/vim-colors-synthwave"}
+    use {"bluz71/vim-nightfly-guicolors"}
+
+    -- Editor Config
+    use {"editorconfig/editorconfig-vim"}
+    -- Git
+    use {"tpope/vim-fugitive"}
+    use {"tpope/vim-rhubarb"}
+    use {"sgeb/vim-diff-fold"}
+    use {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require "gitsigns".setup {
+          signs = {
+            add = {hl = "GitGutterAdd", text = "│"},
+            change = {hl = "GitGutterChange", text = "│"},
+            delete = {hl = "GitGutterDelete", text = "_"},
+            topdelete = {hl = "GitGutterDelete", text = "‾"},
+            changedelete = {hl = "GitGutterChangeDelete", text = "~"}
+          }
+        }
+      end
+    }
+    use {"TimUntersberger/neogit"}
+    -- Snippets
+    -- use {"hrsh7th/vim-vsnip"}
+    -- use {"hrsh7th/vim-vsnip-integ"}
+    -- Markdown
+    use {"tpope/vim-markdown", ft = "markdown"}
+    use {"nelstrom/vim-markdown-folding", ft = "markdown"}
+    use {"dhruvasagar/vim-table-mode"}
+    -- Rust
+    use {"rust-lang/rust.vim"}
+    use {"racer-rust/vim-racer"}
+    -- Python
+    use {"tmhedberg/SimpylFold", ft = "python"}
+    -- JS/TS
+    use {"othree/yajs.vim"}
+    use {"MaxMEllon/vim-jsx-pretty"}
+    use {"heavenshell/vim-jsdoc"}
+    use {"elzr/vim-json"}
+    use {"HerringtonDarkholme/yats.vim"}
+    use {"Quramy/vison"}
+    use {"jxnblk/vim-mdx-js"}
+    -- HTML
+    use {"othree/html5.vim"}
+    use {"mattn/emmet-vim"}
+    use {"posva/vim-vue"}
+    use {"leafOfTree/vim-svelte-plugin"}
+    use {"skwp/vim-html-escape"}
+    use {"kana/vim-textobj-user"}
+    use {"whatyouhide/vim-textobj-xmlattr"}
+    use {"pedrohdz/vim-yaml-folds"}
+    -- CSS
+    use {"hail2u/vim-css3-syntax"}
+    use {"norcalli/nvim-colorizer.lua", config = function() require "colorizer".setup() end}
+    -- Swift
+    use {"keith/swift.vim"}
+    use {"gfontenot/vim-xcode"}
+    -- Reason
+    -- use{ "reasonml-editor/vim-reason-plus" }
+    -- Go
+    -- use{ "fatih/vim-go" }
+    -- Lua
+    use {"tbastos/vim-lua"}
+    -- Local
+    use {"~/GitHub/mhartington/formatter.nvim"}
+    use {"~/GitHub/mhartington/vim-folds"}
+    use {"~/GitHub/mhartington/oceanic-next"}
+
+    use {"nvim-treesitter/nvim-treesitter"}
+    use {"nvim-treesitter/nvim-treesitter-angular"}
+    use {"nvim-lua/completion-nvim"}
+    use {"neovim/nvim-lspconfig"}
+
+    use {
+      "nvim-telescope/telescope.nvim",
+      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+    }
+    use {
+      "kyazdani42/nvim-web-devicons",
+      config = function()
+        require "nvim-web-devicons".setup(
+          {
+            overrides = {
+              js = {icon = ""},
+              --tsx  = { icon = 'ﯤ'},
+              --ts   = { icon = 'ﯤ'},
+              vim = {icon = ""},
+              css = {icon = ""},
+              html = {icon = ""},
+              json = {icon = ""},
+              md = {icon = ""},
+              sql = {icon = ""}
+            }
+          }
+        )
+      end
+    }
+  end
+)
