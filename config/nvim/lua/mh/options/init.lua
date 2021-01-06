@@ -73,7 +73,7 @@ Option.w {
   number = true,
   numberwidth = 1,
   signcolumn = "yes",
-  spell = true,
+  spell = false,
   foldlevel=99,
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
@@ -97,3 +97,5 @@ vim.g.markdown_fold_override_foldtext = false
 vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
+
+return Option
