@@ -39,7 +39,7 @@ npm -g install typescript
 
 ```viml
 call dein#add('Shougo/deoplete')
-call dein#add('mhartington/deoplte-typescript')
+call dein#add('mhartington/deoplete-typescript')
 ```
 
 It may take a bit on first startup or with a large project, but that's typescript's fault...not mine.
