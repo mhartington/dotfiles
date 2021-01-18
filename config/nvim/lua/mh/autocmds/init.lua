@@ -1,30 +1,32 @@
--- local M = {}
+local M = {}
+function M.autocmd(event, triggers, operations)
+  local cmd = string.format("autocmd %s %s %s", event, triggers, operations)
+ vim.cmd(cmd)
+end
 
-vim.api.nvim_command("autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif")
-vim.api.nvim_command("autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
-vim.api.nvim_command("autocmd FileType vue syntax sync fromstart")
-vim.api.nvim_command("autocmd CompleteDone * pclose")
-vim.api.nvim_command('autocmd BufEnter * if &buftype == "terminal" | :startinsert | endif')
-vim.api.nvim_command("autocmd TermOpen * set bufhidden=hide")
-vim.api.nvim_command("autocmd TermOpen * startinsert")
-vim.api.nvim_command("autocmd BufWritePre * %s/\\s\\+$//e")
-vim.api.nvim_command(
-  [[ autocmd BufReadPost *
-              if line("'\"") > 0 && line ("'\"") <= line("$") |
-                exe "normal! g'\"" |
-              endif
-]]
-)
+M.autocmd("BufEnter",     "*",   "if &buftype == 'terminal' | :startinsert | endif")
+M.autocmd("BufReadPost",  "*",   [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif]])
+M.autocmd("BufWritePre",  "*",   "%s/\\s\\+$//e")
 
-vim.api.nvim_command( 'autocmd InsertEnter * let save_cwd = getcwd() | set autochdir' )
-vim.api.nvim_command( "autocmd InsertLeave * set noautochdir | execute 'cd' fnameescape(save_cwd)" )
-vim.api.nvim_command("autocmd ColorScheme * lua require('mh.colors').setItalics()")
+M.autocmd("ColorScheme",  "*",   "lua require('mh.colors').setItalics()")
+M.autocmd("CompleteDone", "*",   "pclose")
+
+M.autocmd("FileType",     "vue", "syntax sync fromstart")
+
+M.autocmd("InsertEnter",  "*",   "let save_cwd = getcwd() | set autochdir")
+M.autocmd("InsertEnter",  "*",   "if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif")
+
+M.autocmd("InsertLeave",  "*",   "set noautochdir | execute 'cd' fnameescape(save_cwd)")
+M.autocmd("InsertLeave",  "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
+
+M.autocmd("TermOpen",     "*",   "set bufhidden=hide")
+M.autocmd("TermOpen",     "*",   "startinsert")
+
+M.autocmd("WinLeave",     "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
 
 
 -- vim.api.nvim_command('autocmd WinEnter * v:lua.mh.autocmds.Preview_func()')
 
--- autocmd BufEnter term://* startinsert
--- autocmd TermOpen * set bufhidden=hide
 -- autocmd WinEnter * call Preview_func()
 --
 -- function! Preview_func()
@@ -34,3 +36,4 @@ vim.api.nvim_command("autocmd ColorScheme * lua require('mh.colors').setItalics(
 -- endfunction
 --
 --
+return M

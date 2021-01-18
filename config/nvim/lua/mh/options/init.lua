@@ -21,7 +21,6 @@ Option.b = function(options)
   add_options(Type.BUFFER_OPTION, options)
 end
 
-
 Option.g {
   termguicolors = true,
   mouse = "a",
@@ -37,7 +36,7 @@ Option.g {
   wrap = true,
   linebreak = true,
   list = true,
-  listchars= "tab:»·,trail:·",
+  listchars = "tab:»·,trail:·",
   wildmenu = true,
   wildmode = "full",
   autoread = true,
@@ -51,7 +50,7 @@ Option.g {
   completeopt = "menu,menuone,noinsert,noselect",
   formatoptions = vim.o.formatoptions .. "t",
   inccommand = "nosplit",
-  shortmess = "atIc",
+  shortmess = "atIcF",
   isfname = table.concat(
     vim.tbl_filter(
       function(entry)
@@ -65,21 +64,24 @@ Option.g {
     ),
     ","
   ),
+  swapfile = false,
   diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
-  splitbelow = true,
-
+  splitbelow = true
+}
+Option.b {
+  swapfile = false,
+  shiftwidth = 2,
 }
 Option.w {
   number = true,
   numberwidth = 1,
   signcolumn = "yes",
   spell = false,
-  foldlevel=99,
-  foldmethod = "expr",
+  foldlevel = 99,
+  foldmethod = "syntax",
   foldexpr = "nvim_treesitter#foldexpr()",
   foldtext = "v:lua.foldText()"
 }
-Option.b {swapfile = false}
 vim.g.clipboard = {
   name = "macOS-clipboard",
   copy = {["+"] = "pbcopy", ["*"] = "pbcopy"},
@@ -87,12 +89,12 @@ vim.g.clipboard = {
   cache_enabled = false
 }
 
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
 vim.g.oceanic_next_terminal_italic = true
 vim.g.vim_monokai_tasty_italic = true
-vim.g.table_mode_corner="|"
+vim.g.table_mode_corner = "|"
 vim.g.markdown_fold_override_foldtext = false
 vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false

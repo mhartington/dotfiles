@@ -16,7 +16,6 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
-
 M.map("n", "Q", "<nop>")
 M.map("n", "q", "<nop>")
 M.map("n", "<c-p>", "<cmd>lua require('mh.telescope').find_files()<cr>")
@@ -32,7 +31,7 @@ M.map("n", "K", "5k")
 M.map("v", "J", "5j")
 M.map("v", "K", "5k")
 M.map("v", "gJ", ":join<cr>")
-M.map("n", ";", ":", {nowait = true})
+M.map("n", ";", ":", {nowait = true, silent = false})
 M.map("n", "<Space>", "za")
 M.map("n", "<Space>", "za")
 M.map("n", "<Leader>,", "<cmd>bnext<cr>")
@@ -56,9 +55,14 @@ M.map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 M.map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
 M.map("n", "<C-;>", "<cmd>TmuxNavigatePrevious<cr>")
 M.map("n", "<Leader>tm", "<cmd>TableModeToggle<cr>")
+M.map("n", "<Leader>u", "<cmd>PackerUpdate<cr>")
 
+for i = 1, 9 do
+  M.map("n", "<leader>" .. i, ':lua require"bufferline".go_to_buffer(' .. i .. ")<CR>")
+  M.map("t", "<leader>" .. i, '<C-\\><C-n>:lua require"bufferline".go_to_buffer(' .. i .. ")<CR>")
+end
 
-vim.cmd('cnoreabbrev x Sayonara')
+vim.cmd("cnoreabbrev x Sayonara")
 -- tmap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
 -- tmap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
 -- tmap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>

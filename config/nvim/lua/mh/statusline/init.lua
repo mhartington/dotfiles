@@ -13,7 +13,6 @@ lualine.sections = {
 }
 lualine.theme = oceanic_next
 lualine.status()
-
 bufferline.setup {
   options = {
     view = "default",
