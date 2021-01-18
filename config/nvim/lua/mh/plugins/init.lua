@@ -1,16 +1,12 @@
-local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-  vim.cmd "packadd packer.nvim"
 end
-vim.cmd "packadd packer.nvim"
--- vim.cmd [[ autocmd BufWritePost packed.lua PackerCompile ]]
--- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
--- vim._update_package_paths()
 return require "packer".startup(
   function(use)
     -- Packer can manage itself as an optional plugin
-    use {"wbthomason/packer.nvim", opt = true}
+    use {"wbthomason/packer.nvim"}
     use {"Raimondi/delimitMate"}
     use {"tpope/vim-repeat"}
     use {"tpope/vim-unimpaired"}
@@ -113,9 +109,10 @@ return require "packer".startup(
 
     use {"nvim-treesitter/nvim-treesitter"}
     use {"nvim-treesitter/nvim-treesitter-angular"}
+    use {"nvim-treesitter/playground"}
+
     use {"nvim-lua/completion-nvim"}
     use {"neovim/nvim-lspconfig"}
-
     use {
       "nvim-telescope/telescope.nvim",
       requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
