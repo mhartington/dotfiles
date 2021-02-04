@@ -48,7 +48,7 @@ Option.g {
   guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
   complete = ".,w,b,u,t,k",
   completeopt = "menu,menuone,noinsert,noselect",
-  formatoptions = vim.o.formatoptions .. "t",
+  formatoptions = "jtcroql",
   inccommand = "nosplit",
   shortmess = "atIcF",
   isfname = table.concat(
@@ -66,11 +66,15 @@ Option.g {
   ),
   swapfile = false,
   diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
-  splitbelow = true
+  splitbelow = true,
+  emoji = false,
+  indentexpr="nvim_treesitter#indent()"
+
 }
 Option.b {
   swapfile = false,
   shiftwidth = 2,
+  indentexpr="nvim_treesitter#indent()"
 }
 Option.w {
   number = true,
@@ -80,7 +84,8 @@ Option.w {
   foldlevel = 99,
   foldmethod = "syntax",
   foldexpr = "nvim_treesitter#foldexpr()",
-  foldtext = "v:lua.foldText()"
+  foldtext = "v:lua.foldText()",
+  linebreak = true
 }
 vim.g.clipboard = {
   name = "macOS-clipboard",

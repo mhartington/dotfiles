@@ -1,8 +1,8 @@
 local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 end
+
 return require "packer".startup(
   function(use)
     -- Packer can manage itself as an optional plugin
@@ -18,15 +18,14 @@ return require "packer".startup(
     use {"tmux-plugins/vim-tmux"}
     use {"Shougo/context_filetype.vim"}
     use {"mhinz/vim-sayonara"}
+    use {"ojroques/nvim-bufdel"}
     use {"mg979/vim-visual-multi"}
     use {"MartinLafreniere/vim-PairTools"}
     use {"sjl/vitality.vim"}
-    use {"kyazdani42/nvim-tree.lua"}
+    -- use {"kyazdani42/nvim-tree.lua"}
+    use {"preservim/nerdtree"}
     use {"Yggdroot/indentLine"}
-
-    use{ "hoob3rt/lualine.nvim" }
-    -- use {"~/Github/mhartington/lualine.nvim"}
-
+    use {"hoob3rt/lualine.nvim"}
     use {"akinsho/nvim-bufferline.lua"}
 
     -- Colors
@@ -61,13 +60,14 @@ return require "packer".startup(
       end
     }
     use {"TimUntersberger/neogit"}
-    -- Snippets
-    -- use {"hrsh7th/vim-vsnip"}
-    -- use {"hrsh7th/vim-vsnip-integ"}
-    -- Markdown
+    -- -- Markdown
     use {"tpope/vim-markdown", ft = "markdown"}
     use {"nelstrom/vim-markdown-folding", ft = "markdown"}
     use {"dhruvasagar/vim-table-mode"}
+    use {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && yarn install"
+    }
     -- Rust
     use {"rust-lang/rust.vim"}
     use {"racer-rust/vim-racer"}
@@ -92,7 +92,12 @@ return require "packer".startup(
     use {"pedrohdz/vim-yaml-folds"}
     -- CSS
     use {"hail2u/vim-css3-syntax"}
-    use {"norcalli/nvim-colorizer.lua", config = function() require "colorizer".setup() end}
+    use {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require "colorizer".setup()
+      end
+    }
     -- Swift
     use {"keith/swift.vim"}
     use {"gfontenot/vim-xcode"}
@@ -102,30 +107,37 @@ return require "packer".startup(
     -- use{ "fatih/vim-go" }
     -- Lua
     use {"tbastos/vim-lua"}
-    -- Local
+    -- -- Local
     use {"~/GitHub/mhartington/formatter.nvim"}
     use {"~/GitHub/mhartington/vim-folds"}
     use {"~/GitHub/mhartington/oceanic-next"}
-
+    --
     use {"nvim-treesitter/nvim-treesitter"}
     use {"nvim-treesitter/nvim-treesitter-angular"}
     use {"nvim-treesitter/playground"}
-
     use {"nvim-lua/completion-nvim"}
+
+    use {"Shougo/deoplete.nvim", run = "remote#host#UpdateRemotePlugins()"}
+    use {"shougo/deoplete-lsp"}
     use {"neovim/nvim-lspconfig"}
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
-    }
+    -- use {"hrsh7th/nvim-compe"}
+    -- use {"glepnir/lspsaga.nvim"}
+    --
+    use {"nvim-lua/popup.nvim"}
+    use {"nvim-lua/plenary.nvim"}
+    use {"nvim-telescope/telescope.nvim"}
+    use {"nvim-telescope/telescope-github.nvim"}
+    use {"nvim-telescope/telescope-packer.nvim"}
+    use {"nvim-telescope/telescope-node-modules.nvim"}
+    --
     use {
       "kyazdani42/nvim-web-devicons",
       config = function()
         require "nvim-web-devicons".setup(
           {
             overrides = {
+              git = {icon = ""},
               js = {icon = ""},
-              --tsx  = { icon = 'ﯤ'},
-              --ts   = { icon = 'ﯤ'},
               vim = {icon = ""},
               css = {icon = ""},
               html = {icon = ""},
