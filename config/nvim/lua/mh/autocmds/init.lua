@@ -19,8 +19,9 @@ M.autocmd("InsertEnter",  "*",   "if !exists('w:last_fdm') | let w:last_fdm=&fol
 M.autocmd("InsertLeave",  "*",   "set noautochdir | execute 'cd' fnameescape(save_cwd)")
 M.autocmd("InsertLeave",  "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
 
-M.autocmd("TermOpen",     "*",   "set bufhidden=hide")
+M.autocmd("TermOpen",     "*",   "setl bufhidden=hide")
 M.autocmd("TermOpen",     "*",   "startinsert")
+M.autocmd("TermOpen",     "*",   "setl nonumber")
 
 M.autocmd("WinLeave",     "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
 

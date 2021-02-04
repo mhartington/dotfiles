@@ -49,11 +49,22 @@ M.map("n", "<Esc>", "<cmd>noh<cr>")
 M.map("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 M.map("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
 M.map("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
+
 M.map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 M.map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
 M.map("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
 M.map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-M.map("n", "<C-;>", "<cmd>TmuxNavigatePrevious<cr>")
+
+M.map("i", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+M.map("i", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+M.map("i", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+M.map("i", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
+
+M.map("t", "<C-j>", "<c-\\><c-n>:TmuxNavigateDown<cr>")
+M.map("t", "<C-k>", "<c-\\><c-n>:TmuxNavigateUp<cr>")
+M.map("t", "<C-l>", "<c-\\><c-n>:TmuxNavigateRight<cr>")
+M.map("t", "<C-h>", "<c-\\><c-n>:TmuxNavigateLeft<CR>")
+
 M.map("n", "<Leader>tm", "<cmd>TableModeToggle<cr>")
 M.map("n", "<Leader>u", "<cmd>PackerUpdate<cr>")
 
@@ -63,6 +74,9 @@ for i = 1, 9 do
 end
 
 vim.cmd("cnoreabbrev x Sayonara")
+-- vim.cmd("cnoreabbrev x BufDel")
+-- vim.cmd("cnoreabbrev x! BufDel!")
+
 -- tmap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
 -- tmap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
 -- tmap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>

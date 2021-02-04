@@ -92,6 +92,7 @@ const launch = (appName) => {
 };
 // Key.on('f', ['alt'], () => launch('iTerm'));
 Key.on('f', ['alt'], () => launch('kitty'));
+// Key.on('f', ['alt'], () => launch('Alacritty'));
 Key.on('q', ['alt'], () => launch('QuickTime Player'));
 Key.on('c', ['alt'], () => launch('Brave Browser'));
 Key.on('s', ['alt'], () => launch('Safari'));
