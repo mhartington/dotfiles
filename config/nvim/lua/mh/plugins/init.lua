@@ -22,8 +22,14 @@ return require "packer".startup(
     use {"mg979/vim-visual-multi"}
     use {"MartinLafreniere/vim-PairTools"}
     use {"sjl/vitality.vim"}
-    -- use {"kyazdani42/nvim-tree.lua"}
+
+
+    use {"kyazdani42/nvim-tree.lua"}
+
     use {"preservim/nerdtree"}
+    use {"Xuyuanp/nerdtree-git-plugin"}
+    use {"Xuyuanp/yanil"}
+
     use {"Yggdroot/indentLine"}
     use {"hoob3rt/lualine.nvim"}
     use {"akinsho/nvim-bufferline.lua"}
@@ -116,12 +122,13 @@ return require "packer".startup(
     use {"nvim-treesitter/nvim-treesitter-angular"}
     use {"nvim-treesitter/playground"}
     use {"nvim-lua/completion-nvim"}
+    use {"hrsh7th/nvim-compe"}
 
     use {"Shougo/deoplete.nvim", run = "remote#host#UpdateRemotePlugins()"}
     use {"shougo/deoplete-lsp"}
     use {"neovim/nvim-lspconfig"}
     -- use {"hrsh7th/nvim-compe"}
-    -- use {"glepnir/lspsaga.nvim"}
+    use {"glepnir/lspsaga.nvim"}
     --
     use {"nvim-lua/popup.nvim"}
     use {"nvim-lua/plenary.nvim"}
