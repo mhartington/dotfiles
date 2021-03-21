@@ -45,6 +45,22 @@ local formatterConfig = {
         stdin = true
       }
     end
+  },
+  r = {
+    function()
+      return {
+        exe = "R",
+        args = {
+          "--slave",
+          "--no-restore",
+          "--no-save",
+          "-e",
+          '\'con <- file("stdin"); styler::style_text(readLines(con)); close(con)\'',
+          "2>/dev/null"
+        },
+        stdin = true
+      }
+    end
   }
 }
 local commonFT = {

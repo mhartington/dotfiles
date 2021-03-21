@@ -1,4 +1,5 @@
 -- Options
+local parsers = require'nvim-treesitter.parsers'
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
   if type(options) ~= "table" then
@@ -83,6 +84,7 @@ Option.w {
   spell = false,
   foldlevel = 99,
   foldmethod = "syntax",
+  -- foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
   foldtext = "v:lua.foldText()",
   linebreak = true
@@ -94,6 +96,9 @@ vim.g.clipboard = {
   cache_enabled = false
 }
 
+vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
+vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
+
 vim.g.mapleader = ","
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
@@ -104,5 +109,9 @@ vim.g.markdown_fold_override_foldtext = false
 vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
+vim.g.override_nvim_web_devicons = true
+local configs = parsers.get_parser_configs()
+local ft_str = table.concat(vim.tbl_map(function(ft) return configs[ft].filetype or ft end, parsers.available_parsers()), ',')
+vim.cmd('autocmd Filetype ' .. ft_str .. ' setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()')
 
 return Option

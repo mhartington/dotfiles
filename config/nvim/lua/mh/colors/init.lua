@@ -7,15 +7,15 @@ local M = {
   base05 = "#c0c5ce",
   base06 = "#cdd3de",
   base07 = "#d8dee9",
-  red = "#ec5f67",
+  red    = "#ec5f67",
   orange = "#f99157",
   yellow = "#fac863",
-  green = "#99c794",
-  cyan = "#62b3b2",
-  blue = "#6699cc",
+  green  = "#99c794",
+  cyan   = "#62b3b2",
+  blue   = "#6699cc",
   purple = "#c594c5",
-  brown = "#ab7967",
-  white = "#ffffff"
+  brown  = "#ab7967",
+  white  = "#ffffff"
 }
 
 vim.cmd("colorscheme OceanicNext")
