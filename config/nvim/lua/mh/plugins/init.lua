@@ -6,6 +6,8 @@ end
 return require "packer".startup(
   function(use)
     -- Packer can manage itself as an optional plugin
+    use {"nvim-lua/popup.nvim"}
+    use {"nvim-lua/plenary.nvim"}
     use {"wbthomason/packer.nvim"}
     use {"Raimondi/delimitMate"}
     use {"tpope/vim-repeat"}
@@ -23,11 +25,8 @@ return require "packer".startup(
     use {"MartinLafreniere/vim-PairTools"}
     use {"sjl/vitality.vim"}
 
-
-    use {"kyazdani42/nvim-tree.lua"}
-
-    use {"preservim/nerdtree"}
-    use {"Xuyuanp/nerdtree-git-plugin"}
+    use {'preservim/nerdtree'}
+    use {'Xuyuanp/nerdtree-git-plugin'}
     use {"Xuyuanp/yanil"}
 
     use {"Yggdroot/indentLine"}
@@ -55,6 +54,7 @@ return require "packer".startup(
       "lewis6991/gitsigns.nvim",
       config = function()
         require "gitsigns".setup {
+          debug_mode = false,
           signs = {
             add = {hl = "GitGutterAdd", text = "│"},
             change = {hl = "GitGutterChange", text = "│"},
@@ -117,44 +117,44 @@ return require "packer".startup(
     use {"~/GitHub/mhartington/formatter.nvim"}
     use {"~/GitHub/mhartington/vim-folds"}
     use {"~/GitHub/mhartington/oceanic-next"}
-    --
+
     use {"nvim-treesitter/nvim-treesitter"}
     use {"nvim-treesitter/nvim-treesitter-angular"}
+    use {"serenadeai/tree-sitter-scss"}
+    use {'ikatyang/tree-sitter-markdown'}
+
     use {"nvim-treesitter/playground"}
     use {"nvim-lua/completion-nvim"}
     use {"hrsh7th/nvim-compe"}
 
-    use {"Shougo/deoplete.nvim", run = "remote#host#UpdateRemotePlugins()"}
-    use {"shougo/deoplete-lsp"}
     use {"neovim/nvim-lspconfig"}
-    -- use {"hrsh7th/nvim-compe"}
     use {"glepnir/lspsaga.nvim"}
     --
-    use {"nvim-lua/popup.nvim"}
-    use {"nvim-lua/plenary.nvim"}
     use {"nvim-telescope/telescope.nvim"}
     use {"nvim-telescope/telescope-github.nvim"}
     use {"nvim-telescope/telescope-packer.nvim"}
     use {"nvim-telescope/telescope-node-modules.nvim"}
-    --
+    use {"nvim-telescope/telescope-fzy-native.nvim"}
+
     use {
       "kyazdani42/nvim-web-devicons",
-      config = function()
-        require "nvim-web-devicons".setup(
-          {
-            overrides = {
-              git = {icon = ""},
-              js = {icon = ""},
-              vim = {icon = ""},
-              css = {icon = ""},
-              html = {icon = ""},
-              json = {icon = ""},
-              md = {icon = ""},
-              sql = {icon = ""}
-            }
-          }
-        )
-      end
+      -- config = function()
+      --   require "nvim-web-devicons".setup {
+      --     overrides = {
+      --       git = {icon = ""},
+      --       js = {icon = ""},
+      --       ts = {icon = "ﯤ"},
+      --       vim = {icon = ""},
+      --       css = {icon = ""},
+      --       html = {icon = ""},
+      --       json = {icon = ""},
+      --       md = {icon = ""},
+      --       sql = {icon = ""}
+      --     },
+      --   }
+      -- end
     }
+    use {"yamatsum/nvim-nonicons"}
+    use {"mjlbach/neovim-ui"}
   end
 )

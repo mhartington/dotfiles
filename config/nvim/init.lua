@@ -10,11 +10,9 @@
 vim.cmd("filetype plugin indent on")
 require "mh.plugins"
 require "mh.options"
--- require "mh.plugins.paq"
 require "mh.mappings"
 require "mh.commands"
 require "mh.colors"
--- require "mh.completion"
 
 require "mh.autocmds"
 require "mh.folds"

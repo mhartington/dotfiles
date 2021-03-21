@@ -1,35 +1,37 @@
 local vim = vim
 local uv = vim.loop
 local lspconfig = require "lspconfig"
+local configs = require'lspconfig/configs'
 local mapBuf = require "mh.mappings".mapBuf
 local autocmd = require "mh.autocmds".autocmd
 
-require("compe").setup({
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    vsnip = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    snippets_nvim = true;
-    treesitter = true;
-  };
-})
+require("compe").setup(
+  {
+    enabled = true,
+    autocomplete = true,
+    debug = false,
+    min_length = 1,
+    preselect = "enable",
+    throttle_time = 80,
+    source_timeout = 200,
+    incomplete_delay = 400,
+    max_abbr_width = 100,
+    max_kind_width = 100,
+    max_menu_width = 100,
+    source = {
+      path = true,
+      buffer = true,
+      calc = true,
+      vsnip = true,
+      nvim_lsp = true,
+      nvim_lua = true,
+      spell = true,
+      tags = true,
+      snippets_nvim = true,
+      treesitter = true
+    }
+  }
+)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -100,8 +102,8 @@ local on_attach = function(client, bufnr)
   mapBuf(bufnr, "n", "<Leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
 
   --Hover
-  mapBuf(bufnr, "n", "<Leader>gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  -- mapBuf(bufnr, "n", "<Leader>gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
+  -- mapBuf(bufnr, "n", "<Leader>gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+  mapBuf(bufnr, "n", "<Leader>gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
 
   mapBuf(bufnr, "n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   mapBuf(bufnr, "n", "<Leader>gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
@@ -121,7 +123,6 @@ local on_attach = function(client, bufnr)
   autocmd("CursorHold", "<buffer>", "lua vim.lsp.diagnostic.show_line_diagnostics()")
   -- autocmd("CursorHold", "<buffer>", "lua require'lspsaga.diagnostic'.show_line_diagnostics()")
 
-
   -- if client.name ~= "angularls" then
   --   autocmd("CompleteDone", "<buffer>", "lua require('mh.lsp').on_complete_done()")
   -- end
@@ -138,7 +139,23 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
   }
 end
+lspconfig.vuels.setup {
+  on_attach = on_attach
+}
+lspconfig.sourcekit.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
+-- if not lspconfig.tsserver then
+--   configs.tsserver = {
+--     on_new_config = function(new_config, new_root_dir)
+--         print('on new config')
+--         print(vim.inspect(new_config))
+--         print(vim.inspect(new_root_dir))
+--     end
+--   }
+-- end
 lspconfig.tsserver.setup {
   filetypes = {
     "javascript",
@@ -147,7 +164,7 @@ lspconfig.tsserver.setup {
     "typescript",
     "typescriptreact",
     "typescript.tsx",
-    "vue"
+    -- "vue"
   },
   on_attach = on_attach,
   capabilities = capabilities,

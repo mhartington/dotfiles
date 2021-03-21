@@ -7,15 +7,23 @@ local M = {}
 telescope.load_extension("gh")
 telescope.load_extension("node_modules")
 telescope.load_extension("packer")
+telescope.load_extension("fzy_native")
 
 telescope.setup {
   defaults = {
+    file_sorter = require("telescope.sorters").get_fzy_sorter,
     mappings = {
       i = {
         ["<esc>"] = actions.close,
-        ["<CR>"] = actions.goto_file_selection_edit,
+        ["<CR>"] = actions.select_default,
         ["<Tab>"] = actions.toggle_selection
       }
+    }
+  },
+  extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true
     }
   }
 }
