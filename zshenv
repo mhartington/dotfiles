@@ -112,7 +112,7 @@ function zle-line-init zle-keymap-select {
 # fi
 
 
-alias nvimInstall='make CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
+alias nvimInstall='make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
 alias bout='brew outdated'

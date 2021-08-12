@@ -23,6 +23,7 @@ Option.b = function(options)
 end
 
 Option.g {
+  scrolloff = 999,
   termguicolors = true,
   mouse = "a",
   clipboard = "unnamedplus",
@@ -69,7 +70,8 @@ Option.g {
   diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
   splitbelow = true,
   emoji = false,
-  indentexpr="nvim_treesitter#indent()"
+  indentexpr="nvim_treesitter#indent()",
+  showmatch = false
 
 }
 Option.b {

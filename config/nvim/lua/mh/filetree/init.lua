@@ -1,7 +1,7 @@
 local vim = vim
 local api = vim.api
 local loop = vim.loop
-
+local get_diagnostics = vim.lsp.diagnostic.get_all
 local yanil = require("yanil")
 local git = require("yanil/git")
 local decorators = require("yanil/decorators")
@@ -35,6 +35,22 @@ local function git_status(node)
   -- local indent = depth_indent(node)
   -- return indent, git_hl
   return " " .. git_icon, git_hl
+end
+
+local function lsp_diagnostics(node)
+  local text = ''
+  local highlight = ''
+  for buf, diagnostics in pairs(get_diagnostics()) do
+    if api.nvim_buf_is_valid(buf) then
+      local bufname = api.nvim_buf_get_name(buf)
+      if bufname == node.abs_path then
+        if diagnostics ~= nil then
+          text = string.format(" %d",  #diagnostics)
+        end
+      end
+    end
+    return text, highlight
+  end
 end
 
 local function git_diff(_, node)
@@ -490,6 +506,7 @@ yanilTree:setup {
       decorators.readonly,
       decorators.executable,
       decorators.link_to,
+      -- lsp_diagnostics,
       git_status,
     }
   },
@@ -525,7 +542,9 @@ yanilTree:setup {
 canvas.register_hooks {
   -- on_exit()
   -- on_enter()
-  -- on_leave()
+  on_leave = function()
+    vim.wo.cursorline=false
+  end,
   -- on_open(cwd)
   on_enter = function()
     api.nvim_command("doautocmd User YanilTreeEnter")
@@ -533,6 +552,7 @@ canvas.register_hooks {
     vim.cmd("hi YanilGitUntracked gui=None guifg=#65737e")
     vim.cmd("hi YanilTreeDirectory guifg=#6699cc")
     vim.cmd("hi YanilTreeLinkTo guibg=none")
+    vim.cmd('hi YanilTreeFile guibg=none')
     vim.cmd("setl nowrap")
     vim.cmd("silent vertical resize 45")
     git.update(yanilTree.cwd)
@@ -549,7 +569,17 @@ canvas.setup {
         -- print(vim.inspect(yanilTree))
         git.refresh_tree(yanilTree)
       end
-    }
+    },
+        -- {
+      -- event = "User",
+      -- pattern = "LspDiagnosticsChanged",
+      -- cmd = function()
+        -- print('diagnostics changed')
+        -- -- print(vim.inspect(yanilTree))
+        -- git.refresh_tree(yanilTree)
+      -- end
+    -- }
+
   }
 }
 

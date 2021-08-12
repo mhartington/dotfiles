@@ -35,7 +35,7 @@ source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-syntax-highlighting
 # antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle marzocchi/zsh-notify
+antigen bundle marzocchi/zsh-notify
 antigen bundle mafredri/zsh-async
 antigen apply
 
