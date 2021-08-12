@@ -15,21 +15,40 @@ return require "packer".startup(
     use {"AndrewRadev/switch.vim"}
     use {"christoomey/vim-tmux-navigator"}
     use {"tpope/vim-surround"}
-    use {"tyru/caw.vim"}
+    use {
+      "terrortylor/nvim-comment",
+      config = function()
+        require("nvim_comment").setup(
+          {
+            hook = function()
+              require('ts_context_commentstring.internal').update_commentstring()
+            end
+          }
+        )
+      end
+    }
+    use {"JoosepAlviste/nvim-ts-context-commentstring"}
+
     use {"junegunn/vim-easy-align"}
+    use {"junegunn/goyo.vim"}
     use {"tmux-plugins/vim-tmux"}
-    use {"Shougo/context_filetype.vim"}
     use {"mhinz/vim-sayonara"}
     use {"ojroques/nvim-bufdel"}
     use {"mg979/vim-visual-multi"}
-    use {"MartinLafreniere/vim-PairTools"}
-    use {"sjl/vitality.vim"}
-
-    use {'preservim/nerdtree'}
-    use {'Xuyuanp/nerdtree-git-plugin'}
+    use {"vim-denops/denops.vim"}
+    use {"yukimemi/dps-asyngrep"}
     use {"Xuyuanp/yanil"}
-
-    use {"Yggdroot/indentLine"}
+    use {
+      "lukas-reineke/indent-blankline.nvim",
+      config = function()
+        vim.g.indent_blankline_buftype_exclude = {"terminal"}
+        vim.g.indent_blankline_filetype_exclude = {"help", "startify", "dashboard", "packer", "Yanil"}
+        vim.g.indent_blankline_char = "¦"
+        vim.g.indent_blankline_use_treesitter = false
+        vim.g.indent_blankline_show_current_context = false
+        vim.g.indent_blankline_show_trailing_blankline_indent = false
+      end
+    }
     use {"hoob3rt/lualine.nvim"}
     use {"akinsho/nvim-bufferline.lua"}
 
@@ -46,6 +65,7 @@ return require "packer".startup(
 
     -- Editor Config
     use {"editorconfig/editorconfig-vim"}
+
     -- Git
     use {"tpope/vim-fugitive"}
     use {"tpope/vim-rhubarb"}
@@ -65,9 +85,12 @@ return require "packer".startup(
         }
       end
     }
-    use {"TimUntersberger/neogit"}
+    use {"pwntester/octo.nvim"}
+    -- use {"TimUntersberger/neogit"}
+
     -- -- Markdown
     use {"tpope/vim-markdown", ft = "markdown"}
+    use {"rhysd/vim-grammarous"}
     use {"nelstrom/vim-markdown-folding", ft = "markdown"}
     use {"dhruvasagar/vim-table-mode"}
     use {
@@ -84,6 +107,7 @@ return require "packer".startup(
     use {"MaxMEllon/vim-jsx-pretty"}
     use {"heavenshell/vim-jsdoc"}
     use {"elzr/vim-json"}
+    use {"neoclide/jsonc.vim"}
     use {"HerringtonDarkholme/yats.vim"}
     use {"Quramy/vison"}
     use {"jxnblk/vim-mdx-js"}
@@ -113,6 +137,7 @@ return require "packer".startup(
     -- use{ "fatih/vim-go" }
     -- Lua
     use {"tbastos/vim-lua"}
+
     -- -- Local
     use {"~/GitHub/mhartington/formatter.nvim"}
     use {"~/GitHub/mhartington/vim-folds"}
@@ -120,13 +145,9 @@ return require "packer".startup(
 
     use {"nvim-treesitter/nvim-treesitter"}
     use {"nvim-treesitter/nvim-treesitter-angular"}
-    use {"serenadeai/tree-sitter-scss"}
-    use {'ikatyang/tree-sitter-markdown'}
-
     use {"nvim-treesitter/playground"}
-    use {"nvim-lua/completion-nvim"}
-    use {"hrsh7th/nvim-compe"}
 
+    use {"hrsh7th/nvim-compe"}
     use {"neovim/nvim-lspconfig"}
     use {"glepnir/lspsaga.nvim"}
     --
@@ -136,25 +157,10 @@ return require "packer".startup(
     use {"nvim-telescope/telescope-node-modules.nvim"}
     use {"nvim-telescope/telescope-fzy-native.nvim"}
 
-    use {
-      "kyazdani42/nvim-web-devicons",
-      -- config = function()
-      --   require "nvim-web-devicons".setup {
-      --     overrides = {
-      --       git = {icon = ""},
-      --       js = {icon = ""},
-      --       ts = {icon = "ﯤ"},
-      --       vim = {icon = ""},
-      --       css = {icon = ""},
-      --       html = {icon = ""},
-      --       json = {icon = ""},
-      --       md = {icon = ""},
-      --       sql = {icon = ""}
-      --     },
-      --   }
-      -- end
-    }
-    use {"yamatsum/nvim-nonicons"}
+    use {"kyazdani42/nvim-web-devicons"}
+    -- use {"yamatsum/nvim-nonicons"}
     use {"mjlbach/neovim-ui"}
+
+    use {"dstein64/vim-startuptime"}
   end
 )

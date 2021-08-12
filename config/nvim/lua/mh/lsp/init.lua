@@ -1,7 +1,7 @@
 local vim = vim
 local uv = vim.loop
 local lspconfig = require "lspconfig"
-local configs = require'lspconfig/configs'
+local configs = require "lspconfig/configs"
 local mapBuf = require "mh.mappings".mapBuf
 local autocmd = require "mh.autocmds".autocmd
 
@@ -120,8 +120,12 @@ local on_attach = function(client, bufnr)
   -- mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<cr>")
   -- mapBuf(bufnr, "v", "<Leader>ca", "<cmd>lua require('lspsaga.codeaction').range_code_action()<cr>")
 
-  autocmd("CursorHold", "<buffer>", "lua vim.lsp.diagnostic.show_line_diagnostics()")
-  -- autocmd("CursorHold", "<buffer>", "lua require'lspsaga.diagnostic'.show_line_diagnostics()")
+  -- autocmd(
+  --   "CursorHold",
+  --   "<buffer>",
+  --   "lua vim.lsp.diagnostic.show_line_diagnostics({show_header = true})"
+  -- )
+  autocmd("CursorHold", "<buffer>", "lua require'lspsaga.diagnostic'.show_line_diagnostics()")
 
   -- if client.name ~= "angularls" then
   --   autocmd("CompleteDone", "<buffer>", "lua require('mh.lsp').on_complete_done()")
@@ -131,8 +135,15 @@ local on_attach = function(client, bufnr)
   vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "•"})
   vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "•"})
   vim.fn.sign_define("LspDiagnosticsSignHint", {text = "•"})
+
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
+    vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
+    vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
+  end
+
 end
-local servers = {"pyls", "bashls"}
+local servers = {"pylsp", "bashls", "sourcekit"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -144,18 +155,36 @@ lspconfig.vuels.setup {
 }
 lspconfig.sourcekit.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = capabilities
 }
 
--- if not lspconfig.tsserver then
---   configs.tsserver = {
---     on_new_config = function(new_config, new_root_dir)
---         print('on new config')
---         print(vim.inspect(new_config))
---         print(vim.inspect(new_root_dir))
---     end
+-- configs.volar = {
+--   default_config = {
+--     cmd = {"emmet-ls", "--stdio"},
+--     filetypes = {"vue" },
+--     root_dir = function()
+--       return vim.loop.cwd()
+--     end,
+--     settings = {}
 --   }
--- end
+-- }
+
+configs.emmet_ls = {
+  default_config = {
+    cmd = {"emmet-ls", "--stdio"},
+    filetypes = {"html", "css"},
+    root_dir = function()
+      return vim.loop.cwd()
+    end,
+    settings = {}
+  }
+}
+
+lspconfig.emmet_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 lspconfig.tsserver.setup {
   filetypes = {
     "javascript",
@@ -163,7 +192,7 @@ lspconfig.tsserver.setup {
     "javascript.jsx",
     "typescript",
     "typescriptreact",
-    "typescript.tsx",
+    "typescript.tsx"
     -- "vue"
   },
   on_attach = on_attach,
@@ -179,7 +208,6 @@ lspconfig.tsserver.setup {
 local vs_code_extracted = {
   html = "vscode-html-language-server",
   cssls = "vscode-css-language-server",
-  jsonls = "vscode-json-language-server",
   vimls = "vim-language-server"
 }
 
@@ -192,6 +220,60 @@ for ls, cmd in pairs(vs_code_extracted) do
 end
 
 local lua_lsp_loc = "/Users/mhartington/Github/lua-language-server"
+
+lspconfig.jsonls.setup {
+  cmd = {"vscode-json-language-server", "--stdio"},
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"json", "jsonc"},
+  settings = {
+    json = {
+      -- Schemas https://www.schemastore.org
+      schemas = {
+        {
+          fileMatch = {"package.json"},
+          url = "https://json.schemastore.org/package.json"
+        },
+        {
+          fileMatch = {"tsconfig*.json"},
+          url = "https://json.schemastore.org/tsconfig.json"
+        },
+        {
+          fileMatch = {
+            ".prettierrc",
+            ".prettierrc.json",
+            "prettier.config.json"
+          },
+          url = "https://json.schemastore.org/prettierrc.json"
+        },
+        {
+          fileMatch = {".eslintrc", ".eslintrc.json"},
+          url = "https://json.schemastore.org/eslintrc.json"
+        },
+        {
+          fileMatch = {".babelrc", ".babelrc.json", "babel.config.json"},
+          url = "https://json.schemastore.org/babelrc.json"
+        },
+        {
+          fileMatch = {"lerna.json"},
+          url = "https://json.schemastore.org/lerna.json"
+        },
+        {
+          fileMatch = {"now.json", "vercel.json"},
+          url = "https://json.schemastore.org/now.json"
+        },
+        {
+          fileMatch = {
+            ".stylelintrc",
+            ".stylelintrc.json",
+            "stylelint.config.json"
+          },
+          url = "http://json.schemastore.org/stylelintrc.json"
+        }
+      }
+    }
+  }
+}
 
 local ngls_cmd = {
   "ngserver",

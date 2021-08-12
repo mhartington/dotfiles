@@ -8,6 +8,7 @@ telescope.load_extension("gh")
 telescope.load_extension("node_modules")
 telescope.load_extension("packer")
 telescope.load_extension("fzy_native")
+telescope.load_extension('octo')
 
 telescope.setup {
   defaults = {
@@ -34,8 +35,10 @@ local function generateOpts(opts)
     results_title = false,
     preview_title = "Preview",
     previewer = false,
-    width = 80,
-    results_height = 15,
+    layout_config = {
+      width = 80,
+      height = 15,
+    },
     borderchars = {
       {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
       prompt = {"─", "│", " ", "│", "╭", "╮", "│", "│"},
@@ -51,7 +54,7 @@ function M.colors()
 end
 function M.find_files()
   local cmn_opts = generateOpts({})
-  cmn_opts.find_command = {"rg", "--files", "-L", "--glob", "!.git"}
+  cmn_opts.find_command = {"rg","--hidden", "--files", "-L", "--glob", "!.git"}
   builtIn.find_files(cmn_opts)
 end
 function M.help_tags()

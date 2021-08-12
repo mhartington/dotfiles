@@ -7,7 +7,6 @@
 -- Author: Mike Hartington
 -- repo  : https://github.com/mhartington/dotfiles/
 
-vim.cmd("filetype plugin indent on")
 require "mh.plugins"
 require "mh.options"
 require "mh.mappings"

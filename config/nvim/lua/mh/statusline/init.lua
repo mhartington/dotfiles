@@ -2,26 +2,8 @@ local lualine = require "lualine"
 local bufferline = require "bufferline"
 local oceanic_next = require "mh.statusline.oceanic_next"
 local colors = require "mh.colors"
-lualine.sections = {
-  lualine_a = {""},
-  lualine_b = {"branch"},
-  lualine_c = {"filename"},
-  lualine_x = {"b:gitsigns_status"},
-  lualine_y = {"filetype"},
-  lualine_z = {
-    "location",
-    {
-      "diagnostics",
-      sources = {"nvim_lsp"},
-      symbols = {error = " ", warn = " ", info = " "}
-    }
-  }
-}
-lualine.options.theme = oceanic_next
 
 local function yanil_statusline()
-
-
 end
 -- lualine.extensions = {
 --   function()
@@ -29,7 +11,29 @@ end
 --     vim.cmd(([[autocmd! User  YanilTreeEnter setlocal statusline=%!v:lua.yanil_statusline()]]))
 --   end
 -- }
-lualine.status()
+lualine.setup(
+  {
+    options = {
+      theme = oceanic_next
+    },
+    sections = {
+      lualine_a = {""},
+      lualine_b = {"branch"},
+      lualine_c = {"filename"},
+      lualine_x = {"b:gitsigns_status"},
+      lualine_y = {"filetype"},
+      lualine_z = {
+        "location",
+        {
+          "diagnostics",
+          sources = {"nvim_lsp"},
+          symbols = {error = " ", warn = " ", info = " "}
+        }
+      }
+    }
+  }
+)
+
 bufferline.setup {
   options = {
     view = "default",
@@ -59,13 +63,13 @@ bufferline.setup {
     tab_selected = {guibg = "#142832"},
     tab_close = {guibg = "#0F1E28"},
     buffer_visible = {guibg = "#16242E"},
-    buffer_selected = {guibg = "#142832", guifg = colors.white, gui = ""},
+    buffer_selected = {guibg = "#142832", guifg = colors.white, gui = "NONE"},
     indicator_selected = {guifg = colors.cyan, guibg = "#142832"},
     separator = {guibg = "#62b3b2"},
     separator_selected = {guifg = colors.cyan, guibg = "#142832"},
     separator_visible = {guibg = colors.cyan},
-    duplicate = {guibg = "#0F1E28", guifg = colors.base04, gui = ""},
-    duplicate_selected = {guibg = "#142832", gui = "", guifg = colors.white},
-    duplicate_visible = {guibg = "#16242E", gui = ""}
+    duplicate = {guibg = "#0F1E28", guifg = colors.base04, gui = "NONE"},
+    duplicate_selected = {guibg = "#142832", gui = "NONE", guifg = colors.white},
+    duplicate_visible = {guibg = "#16242E", gui = "NONE"}
   }
 }

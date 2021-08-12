@@ -37,7 +37,7 @@ __format_cwd() {
   local part_count=0
   local formatted_cwd=""
   local tilde="~"
-  local dir_sep=" "
+  local dir_sep=""
 
   local cwd="${PWD/#$HOME/$tilde}"
 

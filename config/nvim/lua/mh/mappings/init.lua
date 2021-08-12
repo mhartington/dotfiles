@@ -18,10 +18,13 @@ end
 
 M.map("n", "Q", "<nop>")
 M.map("n", "q", "<nop>")
+
+M.map("n", "<Leader>H", '<cmd>TSHighlightCapturesUnderCursor<cr>')
 M.map("n", "<c-p>", "<cmd>lua require('mh.telescope').find_files()<cr>")
 M.map("n", "<Leader>h", "<cmd>lua require('mh.telescope').help_tags()<cr>")
 M.map("n", "<Leader>c", "<cmd>lua require('mh.telescope').colors()<cr>")
 M.map("n", "<Leader>a", "<cmd>Telescope live_grep<cr>")
+M.map("n", "<Leader>b", "<cmd>Telescope buffers<cr>")
 M.map("n", "<Leader>f", "<cmd>Format<cr>")
 M.map("n", "H", "^")
 M.map("n", "L", "g_")
@@ -75,6 +78,8 @@ for i = 1, 9 do
 end
 
 vim.cmd("cnoreabbrev x Sayonara")
+
+-- M.map("n", 'gc', "<cmd>lua require('ts_context_commentstring.internal').update_commentstring()<cr>")
 -- vim.cmd("cnoreabbrev x BufDel")
 -- vim.cmd("cnoreabbrev x! BufDel!")
 

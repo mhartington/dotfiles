@@ -13,11 +13,11 @@ M.autocmd("CompleteDone", "*",   "pclose")
 
 M.autocmd("FileType",     "vue", "syntax sync fromstart")
 
-M.autocmd("InsertEnter",  "*",   "let save_cwd = getcwd() | set autochdir")
-M.autocmd("InsertEnter",  "*",   "if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif")
+-- M.autocmd("InsertEnter",  "*",   "let save_cwd = getcwd() | set autochdir")
+-- M.autocmd("InsertEnter",  "*",   "if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif")
 
-M.autocmd("InsertLeave",  "*",   "set noautochdir | execute 'cd' fnameescape(save_cwd)")
-M.autocmd("InsertLeave",  "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
+-- M.autocmd("InsertLeave",  "*",   "set noautochdir | execute 'cd' fnameescape(save_cwd)")
+-- M.autocmd("InsertLeave",  "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
 
 M.autocmd("TermOpen",     "*",   "setl bufhidden=hide")
 M.autocmd("TermOpen",     "*",   "startinsert")
