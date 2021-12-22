@@ -25,6 +25,7 @@ M.map("n", "<Leader>h", "<cmd>lua require('mh.telescope').help_tags()<cr>")
 M.map("n", "<Leader>c", "<cmd>lua require('mh.telescope').colors()<cr>")
 M.map("n", "<Leader>a", "<cmd>Telescope live_grep<cr>")
 M.map("n", "<Leader>b", "<cmd>Telescope buffers<cr>")
+M.map("n", "z=", "<cmd>Telescope spell_suggest<cr>")
 M.map("n", "<Leader>f", "<cmd>Format<cr>")
 M.map("n", "H", "^")
 M.map("n", "L", "g_")
@@ -44,6 +45,10 @@ M.map("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
 M.map("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
 M.map("v", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true})
 M.map("v", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
+M.map('v', "Ô", ":m '>+1<CR>gv=gv")
+M.map('v', "", ":m '<-2<CR>gv=gv")
+
+
 M.map("v", "<", "<gv")
 M.map("v", ">", ">gv")
 M.map("n", "<Leader>d", '"_d')
@@ -53,6 +58,21 @@ M.map("n", "<Esc>", "<cmd>noh<cr>")
 M.map("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 M.map("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
 M.map("t", "<Leader>.", "<c-\\><c-n>:bprevious<cr>")
+
+-- M.map("n", "<C-j>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>")
+-- M.map("n", "<C-k>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>")
+-- M.map("n", "<C-l>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>")
+-- M.map("n", "<C-h>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>")
+--
+-- M.map("i", "<C-j>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>")
+-- M.map("i", "<C-k>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>")
+-- M.map("i", "<C-l>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>")
+-- M.map("i", "<C-h>", "<cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>")
+--
+-- M.map("t", "<C-j>", "<c-\\><c-n><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>")
+-- M.map("t", "<C-k>", "<c-\\><c-n><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>")
+-- M.map("t", "<C-l>", "<c-\\><c-n><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>")
+-- M.map("t", "<C-h>", "<c-\\><c-n><cmd>lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<CR>")
 
 M.map("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
 M.map("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
@@ -77,16 +97,35 @@ for i = 1, 9 do
   M.map("t", "<leader>" .. i, '<C-\\><C-n>:lua require"bufferline".go_to_buffer(' .. i .. ")<CR>")
 end
 
-vim.cmd("cnoreabbrev x Sayonara")
 
--- M.map("n", 'gc', "<cmd>lua require('ts_context_commentstring.internal').update_commentstring()<cr>")
--- vim.cmd("cnoreabbrev x BufDel")
+
+vim.cmd("cnoreabbrev <silent> x lua require('mh.commands').BufDel()")
+
+
+
+-- vim.cmd("cnoreabbrev x Sayonara")
 -- vim.cmd("cnoreabbrev x! BufDel!")
+--
+--
+-- Show package versions
+M.map("n", "<leader>ns", ":lua require('package-info').show()<CR>" )
 
--- tmap <C-j> <C-\><C-n>:TmuxNavigateDown<cr>
--- tmap <C-k> <C-\><C-n>:TmuxNavigateUp<cr>
--- tmap <C-l> <C-\><C-n>:TmuxNavigateRight<cr>
--- tmap <C-h> <C-\><C-n>:TmuxNavigateLeft<CR>
--- tmap <C-;> <C-\><C-n>:TmuxNavigatePrevious<cr>
+-- Hide package versions
+M.map("n", "<leader>nc", ":lua require('package-info').hide()<CR>")
+
+-- Update package on line
+M.map("n", "<leader>nu", ":lua require('package-info').update()<CR>")
+
+-- Delete package on line
+M.map("n", "<leader>nd", ":lua require('package-info').delete()<CR>")
+
+-- Install a new package
+M.map("n", "<leader>ni", ":lua require('package-info').install()<CR>")
+
+-- Reinstall dependencies
+M.map("n", "<leader>nr", ":lua require('package-info').reinstall()<CR>")
+
+-- Install a different package version
+M.map("n", "<leader>np", ":lua require('package-info').change_version()<CR>")
 
 return M

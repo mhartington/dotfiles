@@ -1,5 +1,5 @@
 Phoenix.set({
-  daemon: true,
+  daemon: false,
   openAtLogin: true,
 });
 const log = (val) => Phoenix.log(JSON.stringify(val));

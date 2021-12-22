@@ -8,6 +8,13 @@ export _Z_DATA="$HOME/z-data"
 export ITERM_24BIT=1
 export DISABLE_AUTO_TITLE="true"
 
+
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/shims:$PATH"
+
+
 export PATH=/usr/local/bin:$PATH
 export PATH=${PATH}:~/bin
 export BREW_PATH=$(brew --prefix)
@@ -41,6 +48,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
+
 # export PATH="$(brew --prefix gettext)/bin:$PATH"
 # export CFLAGS="-I/usr/local/opt/openssl/include $CFLAGS"
 # export LDFLAGS="-L/usr/local/opt/openssl/lib $LDFLAGS"
@@ -69,11 +77,7 @@ export PATH=$PATH:$GOPATH/bin
 export EVENT_NOKQUEUE=1
 
 
-# Load rbenv automatically by appending
-# the following to ~/.zshrc:
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
+# eval "$(rbenv init - zsh)"
 
 
 function strip_diff_leading_symbols(){

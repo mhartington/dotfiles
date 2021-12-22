@@ -5,9 +5,9 @@ ts.setup {
   ensure_installed = "all",
   highlight = {
     enable = true,
-    use_languagetree = true
+    additional_vim_regex_highlighting = false
   },
-  indent = {enable = false},
+  indent = {enable = true},
   query_linter = {
     enable = true,
     use_virtual_text = true,
