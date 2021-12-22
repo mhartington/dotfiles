@@ -16,28 +16,70 @@ return require "packer".startup(
     use {"christoomey/vim-tmux-navigator"}
     use {"tpope/vim-surround"}
     use {
-      "terrortylor/nvim-comment",
+      "numToStr/Comment.nvim",
       config = function()
-        require("nvim_comment").setup(
+        require("Comment").setup(
           {
-            hook = function()
-              require('ts_context_commentstring.internal').update_commentstring()
+            pre_hook = function(ctx)
+              -- Only calculate commentstring for tsx filetypes
+              if vim.bo.filetype == "typescriptreact" then
+                local U = require("Comment.utils")
+
+                -- Detemine whether to use linewise or blockwise commentstring
+                local type = ctx.ctype == U.ctype.line and "__default" or "__multiline"
+
+                -- Determine the location where to calculate commentstring from
+                local location = nil
+                if ctx.ctype == U.ctype.block then
+                  location = require("ts_context_commentstring.utils").get_cursor_location()
+                elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+                  location = require("ts_context_commentstring.utils").get_visual_start_location()
+                end
+
+                return require("ts_context_commentstring.internal").calculate_commentstring(
+                  {
+                    key = type,
+                    location = location
+                  }
+                )
+              end
             end
           }
         )
       end
     }
+    -- use {
+    --   "terrortylor/nvim-comment",
+    --   config = function()
+    --     require("nvim_comment").setup(
+    --       {
+    --         hook = function()
+    --           require("ts_context_commentstring.internal").update_commentstring()
+    --         end
+    --       }
+    --     )
+    --   end
+    -- }
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
 
     use {"junegunn/vim-easy-align"}
     use {"junegunn/goyo.vim"}
     use {"tmux-plugins/vim-tmux"}
-    use {"mhinz/vim-sayonara"}
-    use {"ojroques/nvim-bufdel"}
     use {"mg979/vim-visual-multi"}
-    use {"vim-denops/denops.vim"}
-    use {"yukimemi/dps-asyngrep"}
     use {"Xuyuanp/yanil"}
+    use {"kyazdani42/nvim-tree.lua"}
+    use {
+      "luukvbaal/stabilize.nvim",
+      config = function()
+        require("stabilize").setup()
+      end
+    }
+    use {
+      "folke/trouble.nvim",
+      config = function()
+        require("trouble").setup {}
+      end
+    }
     use {
       "lukas-reineke/indent-blankline.nvim",
       config = function()
@@ -49,11 +91,74 @@ return require "packer".startup(
         vim.g.indent_blankline_show_trailing_blankline_indent = false
       end
     }
-    use {"hoob3rt/lualine.nvim"}
+    use {"nvim-lualine/lualine.nvim"}
     use {"akinsho/nvim-bufferline.lua"}
 
     -- Colors
     use {"morhetz/gruvbox"}
+    use {
+      "catppuccin/nvim",
+      config = function()
+          local catppuccin = require("catppuccin")
+         catppuccin.setup {
+          {
+            colorscheme = "dark_catppuccino",
+            transparency = false,
+            term_colors = false,
+            styles = {
+              comments = "italic",
+              functions = "italic",
+              keywords = "italic",
+              strings = "NONE",
+              variables = "NONE"
+            },
+            integrations = {
+              treesitter = true,
+              native_lsp = {
+                enabled = true,
+                virtual_text = {
+                  errors = "italic",
+                  hints = "italic",
+                  warnings = "italic",
+                  information = "italic"
+                },
+                underlines = {
+                  errors = "underline",
+                  hints = "underline",
+                  warnings = "underline",
+                  information = "underline"
+                }
+              },
+              lsp_trouble = false,
+              lsp_saga = false,
+              gitgutter = false,
+              gitsigns = false,
+              telescope = false,
+              nvimtree = {
+                enabled = true,
+                show_root = true
+              },
+              which_key = false,
+              indent_blankline = {
+                enabled = false,
+                colored_indent_levels = false
+              },
+              dashboard = false,
+              neogit = false,
+              vim_sneak = false,
+              fern = false,
+              barbar = false,
+              bufferline = false,
+              markdown = false,
+              lightspeed = false,
+              ts_rainbow = false,
+              hop = false
+            }
+          }
+        }
+      end
+    }
+    use {"rose-pine/neovim"}
     use {"patstockwell/vim-monokai-tasty"}
     use {"arzg/vim-colors-xcode"}
     use {"chuling/vim-equinusocio-material"}
@@ -85,8 +190,13 @@ return require "packer".startup(
         }
       end
     }
-    use {"pwntester/octo.nvim"}
-    -- use {"TimUntersberger/neogit"}
+    use {
+      "pwntester/octo.nvim",
+      config = function()
+        require "octo".setup()
+      end
+    }
+    use {"TimUntersberger/neogit"}
 
     -- -- Markdown
     use {"tpope/vim-markdown", ft = "markdown"}
@@ -105,7 +215,7 @@ return require "packer".startup(
     -- JS/TS
     use {"othree/yajs.vim"}
     use {"MaxMEllon/vim-jsx-pretty"}
-    use {"heavenshell/vim-jsdoc"}
+    -- use {"heavenshell/vim-jsdoc"}
     use {"elzr/vim-json"}
     use {"neoclide/jsonc.vim"}
     use {"HerringtonDarkholme/yats.vim"}
@@ -147,7 +257,18 @@ return require "packer".startup(
     use {"nvim-treesitter/nvim-treesitter-angular"}
     use {"nvim-treesitter/playground"}
 
-    use {"hrsh7th/nvim-compe"}
+    use {
+      "hrsh7th/nvim-cmp",
+      requires = {
+        "hrsh7th/cmp-nvim-lsp",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "f3fora/cmp-spell"
+      }
+    }
+    use {"simrat39/symbols-outline.nvim"}
+    use {"nvim-lua/lsp-status.nvim"}
+
     use {"neovim/nvim-lspconfig"}
     use {"glepnir/lspsaga.nvim"}
     --
@@ -160,7 +281,31 @@ return require "packer".startup(
     use {"kyazdani42/nvim-web-devicons"}
     -- use {"yamatsum/nvim-nonicons"}
     use {"mjlbach/neovim-ui"}
-
+    use {"MunifTanjim/nui.nvim"}
+    -- use {
+    --   "vuki656/package-info.nvim",
+    --   requires = "MunifTanjim/nui.nvim",
+    --   config = function()
+    --     require("package-info").setup(
+    --       {
+    --         colors = {
+    --           up_to_date = "#3C4048", -- Text color for up to date package virtual text
+    --           outdated = "#d19a66" -- Text color for outdated package virtual text
+    --         },
+    --         icons = {
+    --           enable = true, -- Whether to display icons
+    --           style = {
+    --             up_to_date = "|  ", -- Icon for up to date packages
+    --             outdated = "|  " -- Icon for outdated packages
+    --           }
+    --         },
+    --         autostart = true,
+    --         hide_up_to_date = true,
+    --         hide_unstable_versions = false
+    --       }
+    --     )
+    --   end
+    -- }
     use {"dstein64/vim-startuptime"}
   end
 )

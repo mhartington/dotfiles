@@ -5,7 +5,7 @@ local get_diagnostics = vim.lsp.diagnostic.get_all
 local yanil = require("yanil")
 local git = require("yanil/git")
 local decorators = require("yanil/decorators")
-local devicons = require ("nvim-web-devicons")
+local devicons = require("nvim-web-devicons")
 local canvas = require("yanil/canvas")
 local Section = require("yanil/section")
 local nodelib = require("yanil/node")
@@ -13,14 +13,14 @@ local map = require("mh.mappings").map
 local mapBuf = require("mh.mappings").mapBuf
 local dotutil = require("mh/util")
 
+local Menu = require("nui.menu")
+local event = require("nui.utils.autocmd").event
+
 local open_mode = loop.constants.O_CREAT + loop.constants.O_WRONLY + loop.constants.O_TRUNC
 
 local M = {}
 
 local function depth_indent(node)
-  -- -- if not node.parent  then
-  -- --   return '  '
-  -- -- end
   local text = string.rep("  ", node.depth)
   return text
 end
@@ -29,23 +29,20 @@ local function git_status(node)
   if not node.parent then
     return
   end
-
   local git_icon, git_hl = git.get_icon_and_hl(node.abs_path)
   git_icon = git_icon or " "
-  -- local indent = depth_indent(node)
-  -- return indent, git_hl
   return " " .. git_icon, git_hl
 end
 
 local function lsp_diagnostics(node)
-  local text = ''
-  local highlight = ''
+  local text = ""
+  local highlight = ""
   for buf, diagnostics in pairs(get_diagnostics()) do
     if api.nvim_buf_is_valid(buf) then
       local bufname = api.nvim_buf_get_name(buf)
       if bufname == node.abs_path then
         if diagnostics ~= nil then
-          text = string.format(" %d",  #diagnostics)
+          text = string.format(" %d", #diagnostics)
         end
       end
     end
@@ -65,7 +62,7 @@ local function git_diff(_, node)
   api.nvim_buf_set_option(bufnr, "bufhidden", "wipe")
   api.nvim_buf_set_option(bufnr, "swapfile", false)
   api.nvim_buf_set_lines(bufnr, 0, -1, false, diff)
-  mapBuf(bufnr, 'n', 'q', '<CMD>exit<cr>')
+  mapBuf(bufnr, "n", "q", "<CMD>exit<cr>")
   local winnr = dotutil.floating_window_big(bufnr)
 
   api.nvim_win_set_option(winnr, "cursorline", true)
@@ -79,6 +76,10 @@ end
 local function default_decorator(node)
   local text = node.name
   local hl_group = "YanilTreeFile"
+
+  local status = git.state[node.abs_path]
+  local git_hl = git.options.highlights[status]
+
   if node:is_dir() then
     if not node.parent then
       text = vim.fn.fnamemodify(node.name:sub(1, -2), ":.:t")
@@ -93,6 +94,18 @@ local function default_decorator(node)
       hl_group = "YanilTreeFileExecutable"
     end
   end
+
+  if git_hl == "YanilGitIgnored" then
+    hl_group = git_hl
+  end
+
+  -- if node.parent then
+  --   local parent_status = git.options.highlights[git.state[node.parent.abs_path]]
+  --   if parent_status == 'YanilGitIgnored' then
+  --     hl_group = parent_status
+  --   end
+  -- end
+
   return text, hl_group
 end
 
@@ -147,14 +160,18 @@ end
 local function create_dirs_if_needed(dirs)
   local parentDir = vim.fn.fnamemodify(dirs, ":h")
   local dir_split = vim.split(parentDir, "/")
-  dotutil.reduce( dir_split, "", function(directories, dir)
-    directories = directories .. dir .. "/"
-    local stats = loop.fs_stat(directories)
-    if stats == nil then
-      loop.fs_mkdir(directories, 493)
+  dotutil.reduce(
+    dir_split,
+    "",
+    function(directories, dir)
+      directories = directories .. dir .. "/"
+      local stats = loop.fs_stat(directories)
+      if stats == nil then
+        loop.fs_mkdir(directories, 493)
+      end
+      return directories
     end
-    return directories
-  end)
+  )
 end
 
 -- Move Node
@@ -179,24 +196,35 @@ local function move_node(tree, node)
     return
   end
 
-  local refresh = vim.schedule_wrap( function()
-    tree:refresh( nil, {}, function()
-        tree.root:load(true)
-    end)
-    git.update(tree.cwd)
-    tree:go_to_node(tree.root:find_node_by_path(destination))
-  end)
+  local refresh =
+    vim.schedule_wrap(
+    function()
+      tree:refresh(
+        nil,
+        {},
+        function()
+          tree.root:load(true)
+        end
+      )
+      git.update(tree.cwd)
+      tree:go_to_node(tree.root:find_node_by_path(destination))
+    end
+  )
 
   create_dirs_if_needed(destination)
-  loop.fs_rename(original_location, destination, function(err)
-    if err then
-      print("Could not move the files")
-      return
-    else
-      print("Moved " .. node.name .. " successfully")
+  loop.fs_rename(
+    original_location,
+    destination,
+    function(err)
+      if err then
+        print("Could not move the files")
+        return
+      else
+        print("Moved " .. node.name .. " successfully")
+      end
+      refresh()
     end
-    refresh()
-  end)
+  )
 end
 
 -- Copy Node
@@ -207,14 +235,21 @@ local function copy_node(tree, node)
   local ans = vim.fn.input(msg, node.abs_path)
   clear_prompt()
 
-  local refresh = vim.schedule_wrap( function()
-    tree:refresh( nil, {}, function()
-      tree.root:load(true)
-    end)
-    git.update(tree.cwd)
-    -- tree:go_to_node(tree.root:find_node_by_path(ans))
-    print("Created " .. ans .. " successfully")
-  end)
+  local refresh =
+    vim.schedule_wrap(
+    function()
+      tree:refresh(
+        nil,
+        {},
+        function()
+          tree.root:load(true)
+        end
+      )
+      git.update(tree.cwd)
+      -- tree:go_to_node(tree.root:find_node_by_path(ans))
+      print("Created " .. ans .. " successfully")
+    end
+  )
 
   if not ans or ans == "" then
     return
@@ -226,38 +261,53 @@ local function copy_node(tree, node)
 
   loop.fs_copyfile(node.abs_path, ans)
   local handle
-  handle = loop.spawn( "cp", {args = {"-r", node.abs_path, ans}}, function(code)
-    handle:close()
-    if code ~= 0 then
-      print("copy failed")
-      return
+  handle =
+    loop.spawn(
+    "cp",
+    {args = {"-r", node.abs_path, ans}},
+    function(code)
+      handle:close()
+      if code ~= 0 then
+        print("copy failed")
+        return
+      end
+      refresh()
     end
-    refresh()
-  end)
+  )
 end
 
 -- Reveal Node
 local function reveal_in_finder(_tree, node)
   local handle
-  handle = loop.spawn('open', { args = { '-R', node.abs_path}}, function(code)
+  handle =
+    loop.spawn(
+    "open",
+    {args = {"-R", node.abs_path}},
+    function(code)
       handle:close()
       if code ~= 0 then
         print("erro")
         return
       end
-  end)
+    end
+  )
 end
 
 -- Quick Look
 local function quick_look(_tree, node)
   local handle
-  handle = loop.spawn('qlmanage', { args = { '-p', node.abs_path}}, function(code)
+  handle =
+    loop.spawn(
+    "qlmanage",
+    {args = {"-p", node.abs_path}},
+    function(code)
       handle:close()
       if code ~= 0 then
         print("error")
         return
       end
-  end)
+    end
+  )
 end
 
 -- Create Node
@@ -328,11 +378,11 @@ local function delete_node(tree, node)
     msg_tag = "Warning, directory is not empty \n" .. msg_tag
   end
 
-  local msg = string.format("Delete the current node \n%s \n%s", string.rep("=", 58), msg_tag)
-  local answer = vim.fn.input(msg)
+  local opts = {"&yes", "&no" }
+  local choice = vim.fn.confirm(string.format("Delete the current node \n%s:",node.abs_path), table.concat(opts, "\n"))
 
   clear_prompt()
-  if answer:lower() ~= "y" then
+  if choice == 2 then
     print("Operation canceld")
     return
   end
@@ -400,29 +450,64 @@ local function delete_node(tree, node)
   refresh()
 end
 
--- TODO: FS Menu
+local popup_options = {
+  relative = "cursor",
+  position = {row = 1, col = 1},
+  border = {
+    style = "rounded",
+    highlight = "FloatBorder",
+    text = {
+      top = "[Choose Item]",
+      top_align = "center"
+    }
+  },
+  highlight = "Normal:Normal"
+}
+
 local function menu_float(tree, node)
-  -- print(vim.inspect(node))
-  local settings = {
-    "Add a node",
-    "Delete a node",
-    "Move a node",
-    "Reveal in system finder"
-  }
+  local menu =
+    Menu(
+    popup_options,
+    {
+      lines = {
+        Menu.item("Add a node"),
+        Menu.item("Delete a node"),
+        Menu.item("Move a node"),
+        Menu.item("Copy a node"),
+        Menu.item("Reveal in system finder")
+      },
+      separator = {
+        char = "-",
+        text_align = "right"
+      },
+      keymap = {
+        focus_next = {"j", "<Down>", "<Tab>"},
+        focus_prev = {"k", "<Up>", "<S-Tab>"},
+        close = {"<Esc>", "<C-c>"},
+        submit = {"<CR>", "<Space>"},
 
-  local bufnr = api.nvim_create_buf(false, true)
-  api.nvim_buf_set_option(bufnr, "bufhidden", "wipe")
-  api.nvim_buf_set_option(bufnr, "swapfile", false)
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, settings)
-
-  local winnr = dotutil.floating_window_small(bufnr, {})
-
-  api.nvim_win_set_option(winnr, "cursorline", true)
-  api.nvim_win_set_option(winnr, "winblend", 0)
-  api.nvim_win_set_option(winnr, "winhl", "NormalFloat:")
-  api.nvim_win_set_option(winnr, "number", true)
-
-  -- api.nvim_command(string.format([[command! -buffer Apply lua require("yanil/git").apply_buf(%d)]], bufnr))
+      },
+      on_submit = function(item)
+        if item._index == 1 then
+          create_node(tree, node)
+        end
+        if item._index == 2 then
+          delete_node(tree, node)
+        end
+        if item._index == 3 then
+          move_node(tree, node)
+        end
+        if item._index == 4 then
+          copy_node(tree, node)
+        end
+        if item._index == 5 then
+          reveal_in_finder(tree, node)
+        end
+      end
+    }
+  )
+  menu:mount()
+        -- print(vim.inspect(menu))
 end
 
 local function refresh_and_focus(tree, node)
@@ -437,45 +522,62 @@ local function refresh_and_focus(tree, node)
   tree:go_to_node(tree.root:find_node_by_path(node.abs_path))
 end
 
-local yanilBuffers = Section:new({
-  name = "Buffers",
-  total_lines = 2
-})
+local yanilBuffers =
+  Section:new(
+  {
+    name = "Buffers",
+    total_lines = 2
+  }
+)
 
 function yanilBuffers:get_buffers()
   local buffers = {}
-  local bufnrs = vim.tbl_filter(function(buf)
-    if 1 ~= vim.fn.buflisted(buf) then return false end
-    if buf == canvas.bufnr then return false end
-    if not vim.api.nvim_buf_is_loaded(buf) then return false end
-    if buf == vim.api.nvim_get_current_buf() then return false end
+  local bufnrs =
+    vim.tbl_filter(
+    function(buf)
+      if 1 ~= vim.fn.buflisted(buf) then
+        return false
+      end
+      if buf == canvas.bufnr then
+        return false
+      end
+      if not vim.api.nvim_buf_is_loaded(buf) then
+        return false
+      end
+      if buf == vim.api.nvim_get_current_buf() then
+        return false
+      end
 
-    return true
-  end, api.nvim_list_bufs())
+      return true
+    end,
+    api.nvim_list_bufs()
+  )
   for _, bufnr in ipairs(bufnrs) do
     local element = {
       bufnr = bufnr,
-      name = vim.fn.getbufinfo(bufnr)[1].name,
+      name = vim.fn.getbufinfo(bufnr)[1].name
     }
     table.insert(buffers, element)
   end
+  print(vim.inspect(buffers))
   return buffers
 end
 
 function yanilBuffers:draw()
   local bufs = yanilBuffers:get_buffers()
-  local lines = {"Buffers" }
-  for _, buf in ipairs(bufs) do table.insert(lines, buf.name) end
+  local lines = {"Buffers"}
+  for _, buf in ipairs(bufs) do
+    table.insert(lines, buf.name)
+  end
   -- self.total_lines = #lines
-  return { texts = {line_start = 0, line_end = #lines, lines= lines} }
+  return {texts = {line_start = 0, line_end = #lines, lines = lines}}
 end
 
 function yanilBuffers:total_lines()
-  print(vim.inspect(yanilBuffers))
+  -- print(vim.inspect(yanilBuffers))
   return 2
-    -- return yanilBuffers.total_lines
+  -- return yanilBuffers.total_lines
 end
-
 
 yanil.setup {
   git = {
@@ -488,7 +590,7 @@ yanil.setup {
       Modified = "M",
       Deleted = "●",
       Dirty = "●",
-      Ignored = "●",
+      Ignored = " ",
       Clean = "●",
       Unknown = "●"
     }
@@ -507,7 +609,7 @@ yanilTree:setup {
       decorators.executable,
       decorators.link_to,
       -- lsp_diagnostics,
-      git_status,
+      git_status
     }
   },
   filters = {},
@@ -520,7 +622,7 @@ yanilTree:setup {
     ["D"] = delete_node,
     ["M"] = move_node,
     ["<tab>"] = toggle_zoom,
-    ["C"] = copy_node,
+    -- ["C"] = copy_node,
     ["U"] = dotutil.noop,
     ["K"] = function()
       api.nvim_feedkeys("5k", "n", true)
@@ -529,7 +631,7 @@ yanilTree:setup {
       api.nvim_feedkeys("5j", "n", true)
     end,
     ["R"] = refresh_and_focus,
-    ["r"] = reveal_in_finder,
+    -- ["r"] = reveal_in_finder,
     ["<space>"] = quick_look,
     ["P"] = function(tree, node)
       if not node.parent then
@@ -542,20 +644,26 @@ yanilTree:setup {
 canvas.register_hooks {
   -- on_exit()
   -- on_enter()
-  on_leave = function()
-    vim.wo.cursorline=false
-  end,
   -- on_open(cwd)
+  on_leave = function() vim.wo.cursorline = false end,
   on_enter = function()
     api.nvim_command("doautocmd User YanilTreeEnter")
-    vim.wo.cursorline=true
+    vim.wo.cursorline = true
     vim.cmd("hi YanilGitUntracked gui=None guifg=#65737e")
     vim.cmd("hi YanilTreeDirectory guifg=#6699cc")
     vim.cmd("hi YanilTreeLinkTo guibg=none")
-    vim.cmd('hi YanilTreeFile guibg=none')
+    vim.cmd("hi YanilTreeFile guibg=none")
     vim.cmd("setl nowrap")
-    vim.cmd("silent vertical resize 45")
+    -- vim.cmd("silent vertical resize 45")
     git.update(yanilTree.cwd)
+    -- vim.cmd('setlocal winhighlight=EndOfBuffer:YanilEndOfBuffer,Normal:YanilNormal,SignColumn:YanilSignColumn,NormalNC:YanilnNormalNC,VertSplit:YanilVertSplit')
+
+
+
+  vim.cmd('hi YanilNormal guibg=#11171A')
+  vim.cmd('hi YanilEndOfBuffer guifg=#11171A')
+  vim.cmd('hi YanilnNormalNC guibg=#11171A')
+  vim.cmd('hi YanilVertSplit guibg=#19222A guifg=#19222A')
   end
 }
 canvas.setup {
@@ -563,23 +671,21 @@ canvas.setup {
   sections = {yanilTree},
   autocmds = {
     {
-      event = "User",
-      pattern = "YanilGitStatusChanged",
+      event = 'User',
+      pattern = 'YanilGitStatusChanged',
       cmd = function()
-        -- print(vim.inspect(yanilTree))
         git.refresh_tree(yanilTree)
       end
-    },
-        -- {
-      -- event = "User",
-      -- pattern = "LspDiagnosticsChanged",
-      -- cmd = function()
-        -- print('diagnostics changed')
-        -- -- print(vim.inspect(yanilTree))
-        -- git.refresh_tree(yanilTree)
-      -- end
+    }
+    -- {
+    -- event = "User",
+    -- pattern = "LspDiagnosticsChanged",
+    -- cmd = function()
+    -- print('diagnostics changed')
+    -- -- print(vim.inspect(yanilTree))
+    -- git.refresh_tree(yanilTree)
+    -- end
     -- }
-
   }
 }
 

@@ -1,5 +1,5 @@
 -- Options
-local parsers = require'nvim-treesitter.parsers'
+local parsers = require "nvim-treesitter.parsers"
 local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
 local add_options = function(option_type, options)
   if type(options) ~= "table" then
@@ -44,7 +44,7 @@ Option.g {
   autoread = true,
   updatetime = 500,
   redrawtime = 500,
-  fillchars = vim.o.fillchars .. "vert:│",
+  fillchars = vim.o.fillchars .. "vert:│,fold: ",
   undofile = true,
   virtualedit = "onemore",
   guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
@@ -70,14 +70,13 @@ Option.g {
   diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
   splitbelow = true,
   emoji = false,
-  indentexpr="nvim_treesitter#indent()",
+  indentexpr = "nvim_treesitter#indent()",
   showmatch = false
-
 }
 Option.b {
   swapfile = false,
   shiftwidth = 2,
-  indentexpr="nvim_treesitter#indent()"
+  indentexpr = "nvim_treesitter#indent()"
 }
 Option.w {
   number = true,
@@ -112,8 +111,18 @@ vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
 vim.g.override_nvim_web_devicons = true
+-- vim.g.tmux_navigator_no_mappings = true
 local configs = parsers.get_parser_configs()
-local ft_str = table.concat(vim.tbl_map(function(ft) return configs[ft].filetype or ft end, parsers.available_parsers()), ',')
-vim.cmd('autocmd Filetype ' .. ft_str .. ' setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()')
+local ft_str =
+  table.concat(
+  vim.tbl_map(
+    function(ft)
+      return configs[ft].filetype or ft
+    end,
+    parsers.available_parsers()
+  ),
+  ","
+)
+vim.cmd("autocmd Filetype " .. ft_str .. " setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()")
 
 return Option

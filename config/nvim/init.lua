@@ -11,6 +11,7 @@ require "mh.plugins"
 require "mh.options"
 require "mh.mappings"
 require "mh.commands"
+require "mh.completion"
 require "mh.colors"
 
 require "mh.autocmds"

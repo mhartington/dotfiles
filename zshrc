@@ -1,4 +1,9 @@
 #! /usr/bin/env zsh
+#
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+# [ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # Source any other dot files
 # Just .aliases right now git-completion.bash
 autoload -U promptinit; promptinit
@@ -34,12 +39,14 @@ fi
 source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-syntax-highlighting
-# antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle marzocchi/zsh-notify
 antigen bundle mafredri/zsh-async
 antigen apply
 
 source ~/.z/z.sh
+# eval "$(zoxide init zsh)"
+
 alias journal=~/.journal.sh
 zstyle ':notify:*' command-complete-timeout 5
 zstyle ':notify:*' error-icon "https://media3.giphy.com/media/10ECejNtM1GyRy/200_s.gif"
@@ -49,3 +56,10 @@ zstyle ':notify:*' success-title "Success"
 
 source ~/.prompt2
 
+
+alias luamake=/Users/mhartington/Github/lua-language-server/3rd/luamake/luamake
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+# [ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####

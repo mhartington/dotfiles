@@ -1,7 +1,7 @@
 [core]
   editor = "nvim"
-  # pager = "diff-so-fancy | less --tabs=4 -RFX"
-  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='oceanic-next'
+  ; pager = "diff-so-fancy | less --tabs=4 -RFX"
+  ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='oceanic-next'
 
 [interactive]
     diffFilter = delta --color-only

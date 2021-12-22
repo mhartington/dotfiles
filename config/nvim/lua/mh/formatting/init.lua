@@ -8,17 +8,15 @@ local prettierConfig = function()
   }
 end
 
-
-
 local formatterConfig = {
   lua = {
- -- function()
- --    return {
- --      exe = "stylua",
- --      args = {  "-" },
- --      stdin = true,
- --    }
- --  end,
+    -- function()
+    --    return {
+    --      exe = "stylua",
+    --      args = {  "-" },
+    --      stdin = true,
+    --    }
+    --  end,
     function()
       return {
         exe = "luafmt",
@@ -31,7 +29,13 @@ local formatterConfig = {
     function()
       return {
         exe = "prettier",
-        args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--parser", "vue"},
+        args = {
+          "--stdin-filepath",
+          vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)),
+          "--single-quote",
+          "--parser",
+          "vue"
+        },
         stdin = true
       }
     end
@@ -71,6 +75,16 @@ local formatterConfig = {
         stdin = true
       }
     end
+  },
+  ["*"] = {
+    function()
+      return {
+        -- remove trailing whitespace
+        exe = "sed",
+        args = {"-i", "'s/[ \t]*$//'"},
+        stdin = false
+      }
+    end
   }
 }
 local commonFT = {
@@ -79,21 +93,23 @@ local commonFT = {
   "html",
   "java",
   "javascript",
+  "javascriptreact",
   "typescript",
   "typescriptreact",
   "markdown",
   "markdown.mdx",
-  "json"
+  "json",
+  "yaml",
+  "xml",
+  "svg"
 }
 for _, ft in ipairs(commonFT) do
-  formatterConfig[ft] = {
-    prettierConfig
-  }
+  formatterConfig[ft] = {prettierConfig}
 end
 -- Setup functions
 formatter.setup(
   {
-    logging = false,
+    logging = true,
     filetype = formatterConfig
   }
 )
