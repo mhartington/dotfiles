@@ -4,15 +4,20 @@ local lspconfig = require "lspconfig"
 local configs = require "lspconfig.configs"
 local util = require "lspconfig.util"
 local mapBuf = require "mh.mappings".mapBuf
-local autocmd = require "mh.autocmds".autocmd
+-- local autocmd = require "mh.autocmds".autocmd
 
-local lsp_status = require("lsp-status")
-lsp_status.register_progress()
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = {
+textDocument = {
+    completion = {
+      completionItem = {
+        snippetSupport = true
+      }
+    }
+  }
+}
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
+-- capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
 
 local M = {}
 
@@ -20,7 +25,15 @@ local M = {}
 vim.diagnostic.config {
   virtual_text = false,
   signs = true,
-  update_in_insert = true
+  update_in_insert = true,
+float = {
+      focusable = false,
+      -- style = "minimal",
+      -- border = "rounded",
+      -- source = "always",
+      -- header = "",
+      -- prefix = "",
+    },
 }
 
 local function get_node_modules(root_dir)
@@ -38,7 +51,6 @@ local default_node_modules = get_node_modules(vim.fn.getcwd())
 
 local on_attach = function(client, bufnr)
 
-  lsp_status.on_attach(client)
   mapBuf(bufnr, "n", "<Leader>gdc", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
   mapBuf(bufnr, "n", "<Leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
   mapBuf(bufnr, "n", "<Leader>gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
@@ -47,8 +59,8 @@ local on_attach = function(client, bufnr)
   mapBuf(bufnr, "n", "<Leader>gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
   mapBuf(bufnr, "n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
   mapBuf(bufnr, "n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  -- mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  mapBuf(bufnr, "n", "<Leader>ca", "<cmd> lua require('mh.telescope').code_actions()<cr>")
+  mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  -- mapBuf(bufnr, "n", "<Leader>ca", "<cmd> lua require('mh.telescope').code_actions()<cr>")
   mapBuf(bufnr, "v", "<Leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
   mapBuf(bufnr, "n", "<Leader>sd", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<CR>")
   -- autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.show_position_diagnostics({focusable=false})")
@@ -60,14 +72,14 @@ local on_attach = function(client, bufnr)
   vim.fn.sign_define("DiagnosticSignInfo", {text = "•", texthl = "DiagnosticSignInfo"})
   vim.fn.sign_define("DiagnosticSignHint", {text = "•", texthl = "DiagnosticSignHint"})
 
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
     vim.api.nvim_command("autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()")
     vim.api.nvim_command("autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()")
   end
 end
 
-local servers = {"pylsp", "bashls", "sourcekit", "tsserver", "html", "cssls", "volar", "vimls"}
+local servers = {"pylsp", "bashls", "sourcekit", "tsserver", "html", "cssls", "volar", "vimls", "svelte"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

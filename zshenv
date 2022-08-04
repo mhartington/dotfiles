@@ -28,15 +28,27 @@ export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 
 
 # Java setup
-# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_HOME=$JAVA_11_HOME
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+# export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+export JAVA_HOME=$JAVA_8_HOME
 export GRADLE_HOME=$BREW_PATH
-export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
-export ANDROID_HOME=/usr/local/share/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
+# export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+# export ANDROID_HOME=/usr/local/share/android-sdk
+# export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
 
-export PATH=$ANDROID_NDK:$PATH
+# new android setup?
+export ANDROID_SDK_ROOT=/usr/local/share/android-commandlinetools
+export ANDROID_HOME=/usr/local/share/android-commandlinetools
+export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
+export PATH=$ANDROID_HOME:$PATH
+export AVD=/usr/local/bin/avdmanager
+export PATH=$AVD:$PATH
+export SDK_MANAGER=/usr/local/bin/sdkmanager
+export PATH=$SDK_MANAGER:$PATH
+export ADB=/usr/local/bin/adb
+export PATH=$ADB:$PATH
+
+# export PATH=$ANDROID_NDK:$PATH
 export PATH=$PATH:$GRADLE_HOME/bin
 export PATH=$JAVA_HOME/bin:$PATH
 # This is for android crap
@@ -116,7 +128,7 @@ function zle-line-init zle-keymap-select {
 # fi
 
 
-alias nvimInstall='make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
+alias nvimInstall='make distclean && make deps && make && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
 # Some aliases for Homebrew
 alias bup='brew update && brew upgrade'
 alias bout='brew outdated'
@@ -153,6 +165,7 @@ alias hideall='defaults write com.apple.finder AppleShowAllFiles NO && killall F
 alias dsclean='find . -type f -name .DS_Store -print0 | xargs -0 rm'
 # Flush your dns cache
 alias flush='dscacheutil -flushcache'
+alias luamake=/Users/mhartington/Github/lua-language-server/3rd/luamake/luamake
 
 function symLink(){
 echo "Creating symlinks"

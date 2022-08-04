@@ -16,11 +16,19 @@ function M.mapBuf(buf, mode, lhs, rhs, opts)
   vim.api.nvim_buf_set_keymap(buf, mode, lhs, rhs, options)
 end
 
+function M.keymap(modes, mapping, func, opts)
+  local options = {noremap = true, silent = true}
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+vim.keymap.set(modes, mapping, func, opts)
+end
+
 M.map("n", "Q", "<nop>")
 M.map("n", "q", "<nop>")
 
 M.map("n", "<Leader>H", '<cmd>TSHighlightCapturesUnderCursor<cr>')
-M.map("n", "<c-p>", "<cmd>lua require('mh.telescope').find_files()<cr>")
+M.keymap({"n"}, "<c-p>", function() require('mh.telescope').find_files()end )
 M.map("n", "<Leader>h", "<cmd>lua require('mh.telescope').help_tags()<cr>")
 M.map("n", "<Leader>c", "<cmd>lua require('mh.telescope').colors()<cr>")
 M.map("n", "<Leader>a", "<cmd>Telescope live_grep<cr>")
