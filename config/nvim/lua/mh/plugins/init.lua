@@ -7,6 +7,86 @@ return require "packer".startup(
   function(use)
     -- Packer can manage itself as an optional plugin
     use {"nvim-lua/popup.nvim"}
+    use {
+      "stevearc/dressing.nvim",
+      config = function()
+        require("dressing").setup(
+          {
+            input = {
+              -- Set to false to disable the vim.ui.input implementation
+              enabled = true,
+              -- Default prompt string
+              default_prompt = "Input:",
+              -- Can be 'left', 'right', or 'center'
+              prompt_align = "left",
+              -- When true, <Esc> will close the modal
+              insert_only = true,
+              -- These are passed to nvim_open_win
+              anchor = "SW",
+              border = "rounded",
+              -- 'editor' and 'win' will default to being centered
+              relative = "cursor",
+              -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+              prefer_width = 40,
+              width = nil,
+              -- min_width and max_width can be a list of mixed types.
+              -- min_width = {20, 0.2} means "the greater of 20 columns or 20% of total"
+              max_width = {140, 0.9},
+              min_width = {20, 0.2},
+              -- Window transparency (0-100)
+              winblend = 10,
+              -- Change default highlight groups (see :help winhl)
+              winhighlight = "",
+              override = function(conf)
+                -- This is the config that will be passed to nvim_open_win.
+                -- Change values here to customize the layout
+                return conf
+              end,
+              -- see :help dressing_get_config
+              get_config = nil
+            },
+            select = {
+              -- Set to false to disable the vim.ui.select implementation
+              enabled = true,
+              -- Priority list of preferred vim.select implementations
+              backend = {nil},
+              -- Trim trailing `:` from prompt
+              trim_prompt = true,
+              -- Options for built-in selector
+              builtin = {
+                -- These are passed to nvim_open_win
+                anchor = "NW",
+                border = "rounded",
+                -- 'editor' and 'win' will default to being centered
+                relative = "cursor",
+                -- Window transparency (0-100)
+                winblend = 0,
+                -- Change default highlight groups (see :help winhl)
+                winhighlight = "Normal:MyNormal",
+                -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+                -- the min_ and max_ options can be a list of mixed types.
+                -- max_width = {140, 0.8} means "the lesser of 140 columns or 80% of total"
+                width = nil,
+                max_width = {140, 0.8},
+                min_width = {40, 0.2},
+                height = nil,
+                max_height = 0.9,
+                min_height = {5, 0.2},
+                override = function(conf)
+                  -- This is the config that will be passed to nvim_open_win.
+                  -- Change values here to customize the layout
+                  return conf
+                end
+              },
+              -- Used to override format_item. See :help dressing-format
+              format_item_override = {},
+              -- see :help dressing_get_config
+              get_config = nil
+            }
+          }
+        )
+      end
+    }
     use {"nvim-lua/plenary.nvim"}
     use {"wbthomason/packer.nvim"}
     use {"Raimondi/delimitMate"}
@@ -48,18 +128,6 @@ return require "packer".startup(
         )
       end
     }
-    -- use {
-    --   "terrortylor/nvim-comment",
-    --   config = function()
-    --     require("nvim_comment").setup(
-    --       {
-    --         hook = function()
-    --           require("ts_context_commentstring.internal").update_commentstring()
-    --         end
-    --       }
-    --     )
-    --   end
-    -- }
     use {"JoosepAlviste/nvim-ts-context-commentstring"}
 
     use {"junegunn/vim-easy-align"}
@@ -92,15 +160,16 @@ return require "packer".startup(
       end
     }
     use {"nvim-lualine/lualine.nvim"}
-    use {"akinsho/nvim-bufferline.lua"}
+    use {"akinsho/bufferline.nvim"}
+    use {"Pocco81/true-zen.nvim"}
 
     -- Colors
     use {"morhetz/gruvbox"}
     use {
       "catppuccin/nvim",
       config = function()
-          local catppuccin = require("catppuccin")
-         catppuccin.setup {
+        local catppuccin = require("catppuccin")
+        catppuccin.setup {
           {
             colorscheme = "dark_catppuccino",
             transparency = false,
@@ -219,6 +288,7 @@ return require "packer".startup(
     use {"elzr/vim-json"}
     use {"neoclide/jsonc.vim"}
     use {"HerringtonDarkholme/yats.vim"}
+    use {"antonk52/vim-browserslist"}
     use {"Quramy/vison"}
     use {"jxnblk/vim-mdx-js"}
     -- HTML
@@ -241,6 +311,10 @@ return require "packer".startup(
     -- Swift
     use {"keith/swift.vim"}
     use {"gfontenot/vim-xcode"}
+    use {
+      "tami5/xbase",
+      run = "make install"
+    }
     -- Reason
     -- use{ "reasonml-editor/vim-reason-plus" }
     -- Go
@@ -256,17 +330,18 @@ return require "packer".startup(
     use {"nvim-treesitter/nvim-treesitter"}
     use {"nvim-treesitter/nvim-treesitter-angular"}
     use {"nvim-treesitter/playground"}
-
+    use {"nyngwang/NeoClear.lua"}
     use {
       "hrsh7th/nvim-cmp",
       requires = {
         "hrsh7th/cmp-nvim-lsp",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         "f3fora/cmp-spell"
       }
     }
-    use {"simrat39/symbols-outline.nvim"}
+    -- use {"simrat39/symbols-outline.nvim"}
     use {"nvim-lua/lsp-status.nvim"}
 
     use {"neovim/nvim-lspconfig"}

@@ -313,6 +313,10 @@ end
 -- Create Node
 local function create_node(tree, node)
   node = node:is_dir() and node or node.parent
+  -- print(vim.inspect(node.abs_path))
+  -- print(vim.inspect(tree.root.abs_path))
+  -- local pathPrefix = node.abs_path:gsub(tree.root.abs_path)
+  -- print(pathPrefix)
   local msg_tag = "Enter the dir/file name to be created. Dirs end with a '/'\n"
   local msg = string.format("Add a childnode \n%s \n%s", string.rep("=", 58), msg_tag)
   local ans = vim.fn.input(msg, node.abs_path)
@@ -378,8 +382,8 @@ local function delete_node(tree, node)
     msg_tag = "Warning, directory is not empty \n" .. msg_tag
   end
 
-  local opts = {"&yes", "&no" }
-  local choice = vim.fn.confirm(string.format("Delete the current node \n%s:",node.abs_path), table.concat(opts, "\n"))
+  local opts = {"&yes", "&no"}
+  local choice = vim.fn.confirm(string.format("Delete the current node \n%s:", node.abs_path), table.concat(opts, "\n"))
 
   clear_prompt()
   if choice == 2 then
@@ -430,7 +434,7 @@ local function delete_node(tree, node)
     clear_buffer(node.abs_path)
   end
 
-  local next_node = tree:find_neighbor(node, -1)
+  local next_node = node:find_sibling(1) or node:find_sibling(-1) or tree:find_neighbor(node, -1)
   local path = next_node.abs_path
   local refresh =
     vim.schedule_wrap(
@@ -450,64 +454,39 @@ local function delete_node(tree, node)
   refresh()
 end
 
-local popup_options = {
-  relative = "cursor",
-  position = {row = 1, col = 1},
-  border = {
-    style = "rounded",
-    highlight = "FloatBorder",
-    text = {
-      top = "[Choose Item]",
-      top_align = "center"
-    }
-  },
-  highlight = "Normal:Normal"
-}
-
 local function menu_float(tree, node)
-  local menu =
-    Menu(
-    popup_options,
+  vim.ui.select(
     {
-      lines = {
-        Menu.item("Add a node"),
-        Menu.item("Delete a node"),
-        Menu.item("Move a node"),
-        Menu.item("Copy a node"),
-        Menu.item("Reveal in system finder")
-      },
-      separator = {
-        char = "-",
-        text_align = "right"
-      },
-      keymap = {
-        focus_next = {"j", "<Down>", "<Tab>"},
-        focus_prev = {"k", "<Up>", "<S-Tab>"},
-        close = {"<Esc>", "<C-c>"},
-        submit = {"<CR>", "<Space>"},
-
-      },
-      on_submit = function(item)
-        if item._index == 1 then
-          create_node(tree, node)
-        end
-        if item._index == 2 then
-          delete_node(tree, node)
-        end
-        if item._index == 3 then
-          move_node(tree, node)
-        end
-        if item._index == 4 then
-          copy_node(tree, node)
-        end
-        if item._index == 5 then
-          reveal_in_finder(tree, node)
-        end
+      "Add",
+      "Delete",
+      "Move",
+      "Copy",
+      "Reveal"
+    },
+    {
+      prompt = "Choose Item",
+      format_item = function(item)
+        return item .. " node"
       end
-    }
+    },
+    function(choice)
+      if choice == "Add" then
+        create_node(tree, node)
+      end
+      if choice == "Delete" then
+        delete_node(tree, node)
+      end
+      if choice == "Move" then
+        move_node(tree, node)
+      end
+      if choice == "Copy" then
+        copy_node(tree, node)
+      end
+      if choice == "Reveal" then
+        reveal_in_finder(tree, node)
+      end
+    end
   )
-  menu:mount()
-        -- print(vim.inspect(menu))
 end
 
 local function refresh_and_focus(tree, node)
@@ -645,7 +624,9 @@ canvas.register_hooks {
   -- on_exit()
   -- on_enter()
   -- on_open(cwd)
-  on_leave = function() vim.wo.cursorline = false end,
+  on_leave = function()
+    vim.wo.cursorline = false
+  end,
   on_enter = function()
     api.nvim_command("doautocmd User YanilTreeEnter")
     vim.wo.cursorline = true
@@ -658,12 +639,11 @@ canvas.register_hooks {
     git.update(yanilTree.cwd)
     -- vim.cmd('setlocal winhighlight=EndOfBuffer:YanilEndOfBuffer,Normal:YanilNormal,SignColumn:YanilSignColumn,NormalNC:YanilnNormalNC,VertSplit:YanilVertSplit')
 
-
-
-  vim.cmd('hi YanilNormal guibg=#11171A')
-  vim.cmd('hi YanilEndOfBuffer guifg=#11171A')
-  vim.cmd('hi YanilnNormalNC guibg=#11171A')
-  vim.cmd('hi YanilVertSplit guibg=#19222A guifg=#19222A')
+    --
+    -- vim.cmd('hi YanilNormal guibg=#11171A')
+    -- vim.cmd('hi YanilEndOfBuffer guifg=#11171A')
+    -- vim.cmd('hi YanilnNormalNC guibg=#11171A')
+    -- vim.cmd('hi YanilVertSplit guibg=#19222A guifg=#19222A')
   end
 }
 canvas.setup {
@@ -671,8 +651,8 @@ canvas.setup {
   sections = {yanilTree},
   autocmds = {
     {
-      event = 'User',
-      pattern = 'YanilGitStatusChanged',
+      event = "User",
+      pattern = "YanilGitStatusChanged",
       cmd = function()
         git.refresh_tree(yanilTree)
       end

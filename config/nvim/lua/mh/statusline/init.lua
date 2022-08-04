@@ -2,37 +2,6 @@ local lualine = require "lualine"
 local bufferline = require "bufferline"
 local oceanic_next = require "mh.statusline.oceanic_next"
 local colors = require "mh.colors"
-local messages = require("lsp-status/messaging").messages
-local spinner_frames = {"⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"}
-
-local function get_lsp_progress()
-  local buf_messages = messages()
-  local msgs = {}
-  for _, msg in ipairs(buf_messages) do
-    local contents
-    if msg.progress then
-      contents = msg.title
-      if msg.spinner then
-        contents = spinner_frames[(msg.spinner % #spinner_frames) + 1] .. " " .. contents
-      end
-    elseif msg.status then
-      contents = msg.content
-      if msg.uri then
-        local filename = vim.uri_to_fname(msg.uri)
-        filename = vim.fn.fnamemodify(filename, ":~:.")
-        local space = math.min(60, math.floor(0.6 * vim.fn.winwidth(0)))
-        if #filename > space then
-          filename = vim.fn.pathshorten(filename)
-        end
-        contents = "(" .. filename .. ") " .. contents
-      end
-    else
-      contents = msg.content
-    end
-    table.insert(msgs, contents)
-  end
-  return table.concat(msgs, " ")
-end
 
 local function get_short_cwd()
   return vim.fn.fnamemodify(vim.fn.getcwd(), ":.:t")
@@ -51,7 +20,7 @@ lualine.setup {
   sections = {
     lualine_a = {""},
     lualine_b = {"branch"},
-    lualine_c = {"filename", get_lsp_progress},
+    lualine_c = {"filename"},
     lualine_x = {"b:gitsigns_status"},
     lualine_y = {"filetype"},
     lualine_z = {
@@ -90,13 +59,16 @@ bufferline.setup {
     tab_selected = {guibg = "#142832"},
     tab_close = {guibg = "#0D1519"},
     buffer_visible = {guibg = "#101920"},
-    buffer_selected = {guibg = "#142832", guifg = colors.white, gui = "NONE"},
+    buffer_selected = {guibg = "#142832", guifg = colors.white},
     indicator_selected = {guifg = colors.cyan, guibg = "#142832"},
     separator = {guibg = "#62b3b2"},
     separator_selected = {guifg = colors.cyan, guibg = "#142832"},
     separator_visible = {guibg = colors.cyan},
-    duplicate = {guibg = "#0D1519", guifg = colors.base04, gui = "NONE"},
-    duplicate_selected = {guibg = "#142832", gui = "NONE", guifg = colors.white},
-    duplicate_visible = {guibg = "#101920", gui = "NONE"}
+    duplicate = {guibg = "#0D1519", guifg = colors.base04},
+    duplicate_selected = {guibg = "#142832", guifg = colors.white},
+    duplicate_visible = {guibg = "#101920"},
+    numbers = {guibg = "#0D1519", guifg = colors.base04},
+    numbers_selected = {guibg = "#142832"},
+    numbers_visible = {guibg = "#101920"},
   }
 }

@@ -79,11 +79,11 @@ Key.on('o', ['alt', 'shift'], () => {
 
 Key.on('l', ['alt', 'shift'], () => {
   const win = Window.focused();
-  moveToScreen(win, win.screen().next());
+  moveToScreen(win, win.screen().previous());
 });
 Key.on('h', ['alt', 'shift'], function () {
   const win = Window.focused();
-  moveToScreen(win, win.screen().previous());
+  moveToScreen(win, win.screen().next());
 });
 
 //Launch Apps
@@ -91,15 +91,18 @@ const launch = (appName) => {
   App.launch(appName, { focus: true })
 };
 Key.on('f', ['alt'], () => launch('iTerm'));
-// Key.on('f', ['alt'], () => launch('kitty'));
-// Key.on('f', ['alt'], () => launch('Alacritty'));
-Key.on('q', ['alt'], () => launch('QuickTime Player'));
-Key.on('o', ['alt'], () => launch('OBS'));
-Key.on('c', ['shift', 'alt'], () => launch('Brave Browser'));
-Key.on('c', ['alt'], () => launch('Microsoft Edge'));
+Key.on('v', ['alt'], () => launch('Visual Studio Code'));
 Key.on('s', ['alt'], () => launch('Safari'));
 Key.on('e', ['alt'], () => launch('Simulator'));
+Key.on('k', ['shift', 'alt'], () => launch('Keynote'));
+
+Key.on('q', ['alt'], () => launch('QuickTime Player'));
+Key.on('o', ['alt'], () => launch('OBS'));
+
+Key.on('c', ['shift', 'alt'], () => launch('Brave Browser'));
+Key.on('c', ['alt'], () => launch('Microsoft Edge'));
 Key.on('s', ['shift', 'alt'], () => launch('Safari Technology Preview'));
+
 Key.on('z', ['alt'], () => launch('zoom.us'));
 Key.on('d', ['alt'], () => launch('Slack'));
 Key.on('t', ['alt'], () => launch('Messages'));

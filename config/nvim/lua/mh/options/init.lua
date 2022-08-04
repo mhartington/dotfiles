@@ -24,6 +24,7 @@ end
 
 Option.g {
   scrolloff = 999,
+  cmdheight = 1,
   termguicolors = true,
   mouse = "a",
   clipboard = "unnamedplus",
