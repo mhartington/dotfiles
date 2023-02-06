@@ -17,7 +17,7 @@ export DISABLE_AUTO_TITLE="true"
 
 export PATH=/usr/local/bin:$PATH
 export PATH=${PATH}:~/bin
-export BREW_PATH=$(brew --prefix)
+# export BREW_PATH=$(brew --prefix)
 export PATH=${PATH}:~/bin/nvim/bin
 
 
@@ -40,6 +40,8 @@ export GRADLE_HOME=$BREW_PATH
 # new android setup?
 export ANDROID_SDK_ROOT=/usr/local/share/android-commandlinetools
 export ANDROID_HOME=/usr/local/share/android-commandlinetools
+
+
 export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
 export PATH=$ANDROID_HOME:$PATH
 export AVD=/usr/local/bin/avdmanager
