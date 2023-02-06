@@ -11,10 +11,10 @@ local Section = require("yanil/section")
 local nodelib = require("yanil/node")
 local map = require("mh.mappings").map
 local mapBuf = require("mh.mappings").mapBuf
-local dotutil = require("mh/util")
 
-local Menu = require("nui.menu")
-local event = require("nui.utils.autocmd").event
+local dotutil = require("mh/util")
+-- local Menu = require("nui.menu")
+-- local event = require("nui.utils.autocmd").event
 
 local open_mode = loop.constants.O_CREAT + loop.constants.O_WRONLY + loop.constants.O_TRUNC
 

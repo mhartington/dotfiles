@@ -54,6 +54,8 @@ Option.g {
   formatoptions = "jtcroql",
   inccommand = "nosplit",
   shortmess = "atIcF",
+  loaded_netrw = 0,
+  loaded_netrwPlugin = 0,
   isfname = table.concat(
     vim.tbl_filter(
       function(entry)
@@ -101,7 +103,6 @@ vim.g.clipboard = {
 vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
 vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
 
-vim.g.mapleader = ","
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
 vim.g.oceanic_next_terminal_italic = true
@@ -125,5 +126,7 @@ local ft_str =
   ","
 )
 vim.cmd("autocmd Filetype " .. ft_str .. " setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()")
-
+--vim.opt.completeopt = {"menu","menuone","insert","select"}
 return Option
+
+

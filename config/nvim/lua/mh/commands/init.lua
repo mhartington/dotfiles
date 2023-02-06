@@ -20,7 +20,7 @@ function M.BufDel()
 
   local bufType = vim.bo.bt
   -- If it's a quickfix or temporary buffer, not a "real" buffer
-  if bufType == "quickfix" or bufType == "nofile" or bufType == "Yanil" then
+  if bufType == "quickfix" or bufType == "nofile" and vim.bo.filetype == "vim" or bufType == "Yanil" then
     cmd("close")
     return
   elseif bufType == "terminal" then
@@ -33,7 +33,7 @@ function M.BufDel()
       return
     end
 
-    local buf  = api.nvim_get_current_buf()
+    local buf = api.nvim_get_current_buf()
     if vim.bo.modified then
       local opts = {"&write", "&skip", "&break"}
       local choice = vim.fn.confirm("Unsaved changes:", table.concat(opts, "\n"))
@@ -46,8 +46,8 @@ function M.BufDel()
         return
       end
     else
-      cmd("bp")
-      cmd(string.format('bd %d', buf))
+      -- cmd("bp")
+      cmd(string.format("bd"))
     end
   end
 

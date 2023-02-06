@@ -7,6 +7,9 @@
 -- Author: Mike Hartington
 -- repo  : https://github.com/mhartington/dotfiles/
 
+vim.g.mapleader = ","
+vim.o.tgc = true
+
 require "mh.plugins"
 require "mh.options"
 require "mh.mappings"
@@ -21,3 +24,4 @@ require "mh.statusline"
 require "mh.treesitter"
 require "mh.formatting"
 require "mh.lsp"
+
