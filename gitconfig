@@ -19,7 +19,7 @@
 [user]
 	name = Mike Hartington
 	email = mikehartington@gmail.com
-  signingkey = 6782DBB958F09B85
+  signingkey = A3FD57A1E163A45F
 
 [credential]
   helper = osxkeychain
