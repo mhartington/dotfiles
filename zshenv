@@ -28,9 +28,10 @@ export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 
 
 # Java setup
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-# export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_HOME=$JAVA_8_HOME
+# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+# export JAVA_HOME=$JAVA_8_HOME
+export JAVA_HOME=$JAVA_11_HOME
 export GRADLE_HOME=$BREW_PATH
 # export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
 # export ANDROID_HOME=/usr/local/share/android-sdk

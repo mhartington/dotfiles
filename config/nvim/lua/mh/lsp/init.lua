@@ -16,8 +16,8 @@ textDocument = {
   }
 }
 -- capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
--- capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities)
+-- capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities = vim.tbl_extend("keep", capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
 
 local M = {}
 
@@ -37,11 +37,12 @@ float = {
 }
 
 local function get_node_modules(root_dir)
+  -- return util.find_node_modules_ancestor(root_dir) .. '/node_modules' or ''
   -- util.find_node_modules_ancestor()
   local root_node = root_dir .. "/node_modules"
   local stats = uv.fs_stat(root_node)
   if stats == nil then
-    return nil
+    return ''
   else
     return root_node
   end
@@ -65,7 +66,7 @@ local on_attach = function(client, bufnr)
   mapBuf(bufnr, "n", "<Leader>sd", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<CR>")
   -- autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.show_position_diagnostics({focusable=false})")
 
-  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+  -- vim.bo.omnifunc = "noselect" --v:lua.vim.lsp.omnifunc"
 
   vim.fn.sign_define("DiagnosticSignError", {text = "•", texthl = "DiagnosticSignError"})
   vim.fn.sign_define("DiagnosticSignWarn", {text = "•", texthl = "DiagnosticSignWarn"})
@@ -79,7 +80,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
-local servers = {"pylsp", "bashls", "sourcekit", "tsserver", "html", "cssls", "volar", "vimls", "svelte"}
+local servers = {"pylsp", "bashls", "sourcekit", "tsserver", "html", "cssls", "vimls", "svelte"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -106,7 +107,10 @@ lspconfig.emmet_ls.setup {
 }
 
 local lua_lsp_loc = "/Users/mhartington/Github/lua-language-server"
-
+lspconfig.dartls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 lspconfig.jsonls.setup {
   cmd = {"vscode-json-language-server", "--stdio"},
   on_attach = on_attach,
@@ -178,7 +182,6 @@ local ngls_cmd = {
   -- "/Users/mhartington/Github/StarTrack-ng/logs.txt"
 
 }
-
 lspconfig.angularls.setup {
   cmd = ngls_cmd,
   on_attach = on_attach,
@@ -187,6 +190,15 @@ lspconfig.angularls.setup {
   on_new_config = function(new_config)
     new_config.cmd = ngls_cmd
   end
+}
+lspconfig.volar.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+ init_options = {
+    typescript = {
+      tsdk = default_node_modules .. '/typescript/lib',
+    }
+  }
 }
 
 local runtime_path = vim.split(package.path, ";")

@@ -17,13 +17,13 @@ local formatterConfig = {
     --      stdin = true,
     --    }
     --  end,
-    function()
-      return {
-        exe = "luafmt",
-        args = {"--indent-count", 2, "--stdin"},
-        stdin = true
-      }
-    end
+    -- function()
+    --   return {
+    --     exe = "luafmt",
+    --     args = {"--indent-count", 2, "--stdin"},
+    --     stdin = true
+    --   }
+    -- end
   },
   vue = {
     function()
@@ -76,15 +76,20 @@ local formatterConfig = {
       }
     end
   },
-  ["*"] = {
+  dart = {
     function()
       return {
-        -- remove trailing whitespace
-        exe = "sed",
-        args = {"-i", "'s/[ \t]*$//'"},
-        stdin = false
+        exe = "dart",
+        args = {
+          'format'
+        },
+        stdin = true
       }
     end
+  },
+  ['*'] = {
+      -- require("formatter.filetypes.any").lsp_format,
+    -- require('formatter.filetypes.any').remove_trailing_whitespace
   }
 }
 local commonFT = {
