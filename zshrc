@@ -25,13 +25,12 @@ if type compdef &>/dev/null; then
   compdef __ionic ionic
 fi
 ##-end-ionic-completion-###
-source <(npm completion)
-source <(ng completion script)
-
-source /usr/local/share/antigen/antigen.zsh
+# source <(npm completion)
+# source <(ng completion script)
+source /opt/homebrew/share/antigen/antigen.zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle marzocchi/zsh-notify
-antigen bundle mafredri/zsh-async
+antigen bundle mafredri/zsh-async@main
 antigen apply
 #
 source ~/.prompt2
