@@ -18,4 +18,7 @@
   (try_statement)
   (catch_clause)
   (object)
+  (expression_statement)
+  (export_statement)
+  (parenthesized_expression)
 ] @fold

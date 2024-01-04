@@ -1,4 +1,11 @@
 " Remapping <C-y>, just doesn't cut it.
+"
+if &term =~ 'xterm\|kitty\|alacritty\|tmux'
+    let &t_Ts = "\e[9m"   " Strikethrough
+    let &t_Te = "\e[29m"
+    let &t_Cs = "\e[4:3m" " Undercurl
+    let &t_Ce = "\e[4:0m"
+endif
 function! s:expand_html_tab()
 
 " try to determine if we're within quotes or tags.

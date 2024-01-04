@@ -18,25 +18,27 @@
 
   set nocompatible
 
+set runtimepath+=~/Github/mhartington/oceanic-next
+colorscheme OceanicNext
 " Required:
-    set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
-  call dein#begin(expand('~/.vim'))
-" Let NeoBundle manage NeoBundle
-" Required:
-  call dein#add('Shougo/dein.vim')
-  call dein#add('haya14busa/dein-command.vim')
-  " syntax
-  call dein#add('HerringtonDarkholme/yats.vim')
-  call dein#add('posva/vim-vue')
-  call dein#add('Quramy/tsuquyomi')
-  call dein#add('Quramy/tsuquyomi-vue')
-  call dein#add('mhartington/oceanic-next')
-  call dein#add('fatih/vim-go')
-  call dein#add('liuchengxu/vim-clap')
-  if dein#check_install()
-    call dein#install()
-  endif
-  call dein#end()
+"     set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim/
+"   call dein#begin(expand('~/.vim'))
+" " Let NeoBundle manage NeoBundle
+" " Required:
+"   call dein#add('Shougo/dein.vim')
+"   call dein#add('haya14busa/dein-command.vim')
+"   " syntax
+"   call dein#add('HerringtonDarkholme/yats.vim')
+"   call dein#add('posva/vim-vue')
+"   call dein#add('Quramy/tsuquyomi')
+"   call dein#add('Quramy/tsuquyomi-vue')
+"   call dein#add('mhartington/oceanic-next')
+"   call dein#add('fatih/vim-go')
+"   call dein#add('liuchengxu/vim-clap')
+"   if dein#check_install()
+"     call dein#install()
+"   endif
+"   call dein#end()
 
 " Required:
   filetype plugin indent on

@@ -9,8 +9,10 @@
 
 vim.g.mapleader = ","
 vim.o.tgc = true
-
+vim.o.guifont = "VictorMono Nerd Font Mono:h20"
+-- vim.opt.linespace = 1.2
 require "mh.plugins"
+vim.cmd("colorscheme OceanicNext")
 require "mh.options"
 require "mh.mappings"
 require "mh.commands"
