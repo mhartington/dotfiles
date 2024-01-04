@@ -7,7 +7,7 @@ export EDITOR=nvim
 export _Z_DATA="$HOME/z-data"
 export ITERM_24BIT=1
 export DISABLE_AUTO_TITLE="true"
-
+# export TERM="xterm-updated"
 
 # Load rbenv automatically by appending
 # the following to ~/.zshrc:
@@ -28,32 +28,33 @@ export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 
 
 # Java setup
-# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-# export JAVA_HOME=$JAVA_8_HOME
-export JAVA_HOME=$JAVA_11_HOME
+
 export GRADLE_HOME=$BREW_PATH
 # export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
 # export ANDROID_HOME=/usr/local/share/android-sdk
 # export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
 
 # new android setup?
-export ANDROID_SDK_ROOT=/usr/local/share/android-commandlinetools
-export ANDROID_HOME=/usr/local/share/android-commandlinetools
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export ANDROID_HOME=~/Library/Android/sdk
 
 
 export PATH=$PATH:$ANDROID_HOME/platform-tools/:$ANDROID_HOME/emulator
 export PATH=$ANDROID_HOME:$PATH
+
 export AVD=/usr/local/bin/avdmanager
 export PATH=$AVD:$PATH
+
 export SDK_MANAGER=/usr/local/bin/sdkmanager
 export PATH=$SDK_MANAGER:$PATH
+
 export ADB=/usr/local/bin/adb
 export PATH=$ADB:$PATH
 
 # export PATH=$ANDROID_NDK:$PATH
 export PATH=$PATH:$GRADLE_HOME/bin
 export PATH=$JAVA_HOME/bin:$PATH
+
 # This is for android crap
 # I dont know if I can delete this stuff yet.
 # export PATH="/usr/local/opt/openjdk/bin:$PATH"

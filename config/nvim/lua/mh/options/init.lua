@@ -54,8 +54,6 @@ Option.g {
   formatoptions = "jtcroql",
   inccommand = "nosplit",
   shortmess = "atIcF",
-  loaded_netrw = 0,
-  loaded_netrwPlugin = 0,
   isfname = table.concat(
     vim.tbl_filter(
       function(entry)
@@ -74,7 +72,8 @@ Option.g {
   splitbelow = true,
   emoji = false,
   indentexpr = "nvim_treesitter#indent()",
-  showmatch = false
+  showmatch = false,
+  splitkeep = 'screen'
 }
 Option.b {
   swapfile = false,
@@ -113,6 +112,7 @@ vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
 vim.g.override_nvim_web_devicons = true
+vim.g.skip_ts_context_commentstring_module = true
 -- vim.g.tmux_navigator_no_mappings = true
 local configs = parsers.get_parser_configs()
 local ft_str =

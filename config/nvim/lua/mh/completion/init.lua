@@ -1,5 +1,6 @@
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local lspkind = require('lspkind')
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -64,6 +65,18 @@ cmp.setup {
       }
     )
   },
+formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			local kind = lspkind.cmp_format({
+				preset = "codicons",
+				maxwidth = 50,
+			})(entry, vim_item)
+			local strings = vim.split(vim_item.kind, "%s+", { trimempty = true })
+			kind.kind = " " .. string.format("%s │", strings[1], strings[2]) .. " "
+			return kind
+		end,
+	},
   sources = {
     {name = "nvim_lsp"},
     {name = "luasnip"},
