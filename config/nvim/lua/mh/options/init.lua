@@ -1,102 +1,64 @@
 -- Options
-local parsers = require "nvim-treesitter.parsers"
-local Type = {GLOBAL_OPTION = "o", WINDOW_OPTION = "wo", BUFFER_OPTION = "bo"}
-local add_options = function(option_type, options)
-  if type(options) ~= "table" then
-    error 'options should be a type of "table"'
-    return
-  end
-  local vim_option = vim[option_type]
-  for key, value in pairs(options) do
-    vim_option[key] = value
-  end
-end
-local Option = {}
-Option.g = function(options)
-  add_options(Type.GLOBAL_OPTION, options)
-end
-Option.w = function(options)
-  add_options(Type.WINDOW_OPTION, options)
-end
-Option.b = function(options)
-  add_options(Type.BUFFER_OPTION, options)
-end
+local parsers = require("nvim-treesitter.parsers")
 
-Option.g {
-  scrolloff = 999,
-  cmdheight = 1,
-  termguicolors = true,
-  mouse = "a",
-  clipboard = "unnamedplus",
-  hidden = true,
-  showmode = false,
-  timeoutlen = 3e3,
-  tabstop = 2,
-  shiftwidth = 2,
-  expandtab = true,
-  conceallevel = 0,
-  laststatus = 2,
-  wrap = true,
-  linebreak = true,
-  list = true,
-  listchars = "tab:»·,trail:·",
-  wildmenu = true,
-  wildmode = "full",
-  autoread = true,
-  updatetime = 500,
-  redrawtime = 500,
-  fillchars = vim.o.fillchars .. "vert:│,fold: ",
-  undofile = true,
-  virtualedit = "onemore",
-  guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
-  complete = ".,w,b,u,t,k",
-  completeopt = "menu,menuone,noinsert,noselect",
-  formatoptions = "jtcroql",
-  inccommand = "nosplit",
-  shortmess = "atIcF",
-  isfname = table.concat(
-    vim.tbl_filter(
-      function(entry)
-        if entry == "=" then
-          return false
-        else
-          return true
-        end
-      end,
-      vim.split(vim.o.isfname, ",")
-    ),
-    ","
-  ),
-  swapfile = false,
-  diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
-  splitbelow = true,
-  emoji = false,
-  indentexpr = "nvim_treesitter#indent()",
-  showmatch = false,
-  splitkeep = 'screen'
+local Option = {}
+
+vim.opt.scrolloff = 999
+vim.opt.cmdheight = 1
+vim.opt.termguicolors = true
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.hidden = true
+vim.opt.showmode = false
+vim.opt.timeoutlen = 3e3
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.conceallevel = 0
+vim.opt.laststatus = 3
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.list = true
+vim.opt.listchars = "tab:»·,trail:·"
+vim.opt.wildmenu = true
+vim.opt.wildmode = "full"
+vim.opt.autoread = true
+vim.opt.updatetime = 500
+vim.opt.redrawtime = 500
+vim.opt.fillchars = { vert = "│", fold = " " }
+vim.opt.undofile = true
+vim.opt.virtualedit = "onemore"
+vim.opt.guicursor = {
+  "n-v-c-sm:block",
+  "i-ci-ve:ver25",
+  "r-cr-o:hor20",
 }
-Option.b {
-  swapfile = false,
-  shiftwidth = 2,
-  indentexpr = "nvim_treesitter#indent()"
-}
-Option.w {
-  number = true,
-  numberwidth = 1,
-  signcolumn = "yes",
-  spell = false,
-  foldlevel = 99,
-  foldmethod = "syntax",
-  -- foldmethod = "expr",
-  foldexpr = "nvim_treesitter#foldexpr()",
-  foldtext = "v:lua.foldText()",
-  linebreak = true
-}
+vim.opt.complete = ".,w,b,u,t,k"
+vim.opt.completeopt = "menu,menuone,noinsert,noselect"
+vim.opt.formatoptions = "jtcroql"
+vim.opt.inccommand = "nosplit"
+vim.opt.shortmess = "atIcF"
+vim.opt.diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall"
+vim.opt.splitbelow = true
+vim.opt.emoji = false
+vim.opt.showmatch = false
+vim.opt.splitkeep = "screen"
+vim.opt.swapfile = false
+vim.opt.shiftwidth = 2
+vim.opt.indentexpr = "nvim_treesitter#indent()"
+vim.opt.number = true
+vim.opt.numberwidth = 1
+vim.opt.signcolumn = "yes"
+vim.opt.spell = false
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "syntax"
+vim.opt.foldtext = "v:lua.foldText()"
+vim.opt.linebreak = true
 vim.g.clipboard = {
   name = "macOS-clipboard",
-  copy = {["+"] = "pbcopy", ["*"] = "pbcopy"},
-  paste = {["+"] = "pbpaste", ["*"] = "pbpaste"},
-  cache_enabled = false
+  copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
+  paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
+  cache_enabled = false,
 }
 
 vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
@@ -113,20 +75,21 @@ vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
 vim.g.override_nvim_web_devicons = true
 vim.g.skip_ts_context_commentstring_module = true
--- vim.g.tmux_navigator_no_mappings = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local configs = parsers.get_parser_configs()
-local ft_str =
-  table.concat(
-  vim.tbl_map(
-    function(ft)
-      return configs[ft].filetype or ft
-    end,
-    parsers.available_parsers()
-  ),
-  ","
-)
-vim.cmd("autocmd Filetype " .. ft_str .. " setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()")
---vim.opt.completeopt = {"menu","menuone","insert","select"}
+local ft_str = vim.tbl_map(function(ft)
+  return configs[ft].filetype or ft
+end, parsers.available_parsers())
+
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = ft_str,
+  desc = "Use Treesitter for Folds",
+  callback = function()
+    vim.wo.foldmethod="expr"
+    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  end,
+})
+
 return Option
-
-

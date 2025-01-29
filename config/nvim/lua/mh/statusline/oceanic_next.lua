@@ -1,36 +1,35 @@
-local colors = require "mh.colors"
 local M = {}
 M.normal = {
-  a = {bg = colors.base01, fg = colors.white},
-  b = {bg = colors.base01, fg = colors.white},
-  c = {bg = colors.base01, fg = colors.white}
+  a = {bg = vim.g.base01, fg = vim.g.base07},
+  b = {bg = vim.g.base01, fg = vim.g.base07},
+  c = {bg = vim.g.base01, fg = vim.g.base07}
 }
 M.insert = {
-  a = {bg = colors.base01, fg = colors.green},
-  b = {bg = colors.base01, fg = colors.green},
-  c = {bg = colors.base01, fg = colors.green}
+  a = {bg = vim.g.base01, fg = vim.g.green},
+  b = {bg = vim.g.base01, fg = vim.g.green},
+  c = {bg = vim.g.base01, fg = vim.g.green}
 }
 M.visual = {
-  a = {bg = colors.base01, fg = colors.orange},
-  b = {bg = colors.base01, fg = colors.orange},
-  c = {bg = colors.base01, fg = colors.orange}
+  a = {bg = vim.g.base01, fg = vim.g.orange},
+  b = {bg = vim.g.base01, fg = vim.g.orange},
+  c = {bg = vim.g.base01, fg = vim.g.orange}
 }
 M.replace = {
-  a = {bg = colors.base01, fg = colors.red},
-  b = {bg = colors.base01, fg = colors.red},
-  c = {bg = colors.base01, fg = colors.red}
+  a = {bg = vim.g.base01, fg = vim.g.red},
+  b = {bg = vim.g.base01, fg = vim.g.red},
+  c = {bg = vim.g.base01, fg = vim.g.red}
 }
 M.command = {
-  a = {bg = colors.base01, fg = colors.cyan},
-  b = {bg = colors.base01, fg = colors.cyan},
-  c = {bg = colors.base01, fg = colors.cyan}
+  a = {bg = vim.g.base01, fg = vim.g.cyan},
+  b = {bg = vim.g.base01, fg = vim.g.cyan},
+  c = {bg = vim.g.base01, fg = vim.g.cyan}
 }
 
 M.terminal = M.normal
 
 M.inactive = {
-  a = {bg = colors.base01, fg = colors.base03},
-  b = {bg = colors.base01, fg = colors.base03},
-  c = {bg = colors.base01, fg = colors.base03}
+  a = {bg = vim.g.base01, fg = vim.g.base03},
+  b = {bg = vim.g.base01, fg = vim.g.base03},
+  c = {bg = vim.g.base01, fg = vim.g.base03}
 }
 return M

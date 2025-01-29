@@ -21,18 +21,18 @@ function M.keymap(modes, mapping, func, opts)
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end
-vim.keymap.set(modes, mapping, func, opts)
+  vim.keymap.set(modes, mapping, func, opts)
 end
 
 M.map("n", "Q", "<nop>")
 M.map("n", "q", "<nop>")
 
-M.keymap("n", "<c-p>", function() require('mh.telescope').find_files() end)
-M.keymap("n", "<Leader>h", function() require('mh.telescope').help_tags() end)
-M.keymap("n", "<Leader>c", function() require('mh.telescope').colors() end)
-M.keymap("n", "<Leader>a", "<cmd>Telescope live_grep<cr>")
-M.keymap("n", "<Leader>b", "<cmd>Telescope buffers<cr>")
-M.keymap("n", "z=", "<cmd>Telescope spell_suggest<cr>")
+M.keymap("n", "<c-p>", Snacks.picker.files)
+M.keymap("n", "<Leader>h", Snacks.picker.help)
+M.keymap("n", "<Leader>c", Snacks.picker.colorschemes)
+M.keymap("n", "<Leader>a", Snacks.picker.grep)
+M.keymap("n", "<Leader>b", Snacks.picker.buffers) --"<cmd>Telescope buffers<cr>")
+M.keymap("n", "z=", Snacks.picker.spelling) -- "<cmd>Telescope spell_suggest<cr>")
 M.keymap("n", "<Leader>f", "<cmd>Format<cr>")
 M.keymap("n", "H", "^")
 M.keymap("n", "L", "g_")
@@ -86,10 +86,12 @@ M.keymap("n", "<Leader>tm", "<cmd>TableModeToggle<cr>")
 M.keymap("n", "<Leader>u", "<cmd>Lazy update<cr>")
 
 for i = 1, 9 do
-  M.keymap("n", "<leader>" .. i, function() require"bufferline".go_to(i, true) end)
+  M.keymap("n", "<leader>" .. i, function() require("bufferline").go_to(i, true) end)
   M.keymap("t", "<leader>" .. i, '<C-\\><C-n>:lua require"bufferline".go_(' .. i .. ", true)<CR>")
 end
 
 vim.cmd("cnoreabbrev <silent> x lua require('mh.commands').BufDel()")
+-- vim.cmd("cnoreabbrev <silent> x lua Snacks.bufdelete()")
 
+M.keymap("n", "<Leader>e", function() vim.cmd('Inspect') end)
 return M

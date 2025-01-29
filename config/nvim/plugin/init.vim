@@ -1,6 +1,7 @@
 " Remapping <C-y>, just doesn't cut it.
 "
-if &term =~ 'xterm\|kitty\|alacritty\|tmux'
+let loaded_netrwPlugin = 1
+if &term =~ 'xterm\|kitty\|alacritty\|tmux\|ghostty'
     let &t_Ts = "\e[9m"   " Strikethrough
     let &t_Te = "\e[29m"
     let &t_Cs = "\e[4:3m" " Undercurl
@@ -29,13 +30,9 @@ return "\<tab>"
 endfunction
 
 
-autocmd FileType html,css,scss,typescriptreact,vue,javascript,markdown imap <silent><buffer><expr><tab> <sid>expand_html_tab()
-let g:user_emmet_mode='a'
-let g:user_emmet_complete_tag = 0
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,typescriptreact,vue,javascript,markdown EmmetInstall
-
-nnoremap <leader>e :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+" autocmd FileType angular.html,html,css,scss,typescriptreact,vue,javascript,markdown imap <silent><buffer><expr><tab> <sid>expand_html_tab()
+" let g:user_emmet_mode='a'
+" let g:user_emmet_complete_tag = 0
+" let g:user_emmet_install_global = 0
+" autocmd FileType angular.html,html,css,scss,typescriptreact,vue,javascript,markdown EmmetInstall
+"

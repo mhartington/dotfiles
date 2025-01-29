@@ -1,40 +1,61 @@
-local M = {}
-function M.autocmd(event, triggers, operations)
-  local cmd = string.format("autocmd %s %s %s", event, triggers, operations)
- vim.cmd(cmd)
-end
-
-M.autocmd("BufEnter",     "*",   "if &buftype == 'terminal' | :startinsert | endif")
-M.autocmd("BufReadPost",  "*",   [[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif]])
--- M.autocmd("BufWritePre",  "*",   "%s/\\s\\+$//e")
-
-M.autocmd("ColorScheme",  "*",   "lua require('mh.colors').setItalics()")
-M.autocmd("CompleteDone", "*",   "pclose")
-
-M.autocmd("FileType",     "vue", "syntax sync fromstart")
-
--- M.autocmd("InsertEnter",  "*",   "let save_cwd = getcwd() | set autochdir")
--- M.autocmd("InsertEnter",  "*",   "if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif")
-
--- M.autocmd("InsertLeave",  "*",   "set noautochdir | execute 'cd' fnameescape(save_cwd)")
--- M.autocmd("InsertLeave",  "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
-
-M.autocmd("TermOpen",     "*",   "setl bufhidden=hide")
-M.autocmd("TermOpen",     "*",   "startinsert")
-M.autocmd("TermOpen",     "*",   "setl nonumber")
-
-M.autocmd("WinLeave",     "*",   "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif")
+vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = "Move Cursor to last line",
+  callback = function()
+    vim.cmd([[if line("'\"") > 0 && line ("'\"") <= line("$") | exe "normal! g'\"" | endif]])
+  end,
+})
+vim.api.nvim_create_autocmd("ColorScheme", {
+  desc = "Set Italics",
+  callback = function()
+    require("mh.colors").setItalics()
+  end,
+})
 
 
--- vim.api.nvim_command('autocmd WinEnter * v:lua.mh.autocmds.Preview_func()')
+vim.api.nvim_create_autocmd("User", {
+  desc = "Tell LSP whne file has moved and update imports",
+  pattern= "YanilTreeFileMoved",
+  callback = function(event)
+    Snacks.rename.on_rename_file(event.data.prev, event.data.next)
+  end,
+})
 
--- autocmd WinEnter * call Preview_func()
---
--- function! Preview_func()
---   if &pvw
---     setlocal nonumber norelativenumber
---    endif
--- endfunction
---
---
-return M
+vim.api.nvim_create_autocmd("CompleteDone", {
+  desc = "Close Pmenu when done",
+  callback = function()
+    vim.cmd("pclose")
+  end,
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  desc = "Hide number, hide buffer, make insert for terminal",
+  callback = function()
+    vim.opt_local.bufhidden = "hide"
+    vim.opt_local.number = false
+    vim.cmd("startinsert")
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspProgress", {
+  ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+  callback = function(ev)
+    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+    vim.notify(vim.lsp.status(), "info", {
+      id = "lsp_progress",
+      title = "LSP Progress",
+    })
+  end,
+})
+
+vim.api.nvim_create_autocmd("TermResponse", {
+  once= true,
+  callback = function(args)
+    -- print(vim.inspect(args))
+    -- local bg = vim.o.bg
+    -- if bg == "dark" then
+    --   vim.cmd.colorscheme("OceanicNext")
+    -- else
+    --   vim.cmd.colorscheme("OceanicNextLight")
+    -- end
+  end,
+})

@@ -1,0 +1,25 @@
+# vim: set ft=conf
+
+background           = #1b2b34
+foreground           = #c1c5cd
+cursor-color         = #c1c5cd
+selection-background = #515b65
+selection-foreground = #c1c5cd
+
+palette              = 0=#1b2b34
+palette              = 1=#db686b
+palette              = 2=#a2c699
+palette              = 3=#f2ca73
+palette              = 4=#7198c8
+palette              = 5=#bd96c2
+palette              = 6=#74b1b2
+palette              = 7=#ffffff
+
+palette              = 8=#68737d
+palette              = 9=#db686b
+palette              = 10=#a2c699
+palette              = 11=#f2ca73
+palette              = 12=#7198c8
+palette              = 13=#bd96c2
+palette              = 14=#74b1b2
+palette              = 15=#ffffff

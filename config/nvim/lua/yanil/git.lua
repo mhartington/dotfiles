@@ -106,7 +106,7 @@ function M.update(cwd)
     vim.schedule_wrap(
     function(code, _signal, stdout, stderr)
       if code > 0 then
-        api.nvim_err_writeln(string.format("git status failed: %s", stderr))
+        api.nvim_echo({string.format("git status failed: %s", stderr)}, false, {err=true})
         return
       end
 
@@ -235,7 +235,7 @@ function M.apply_buf(bufnr)
   patch = table.concat(patch, "\n")
   local output = vim.fn.system({"git", "apply", "--cached"}, patch)
   if vim.v.shell_error > 0 then
-    api.nvim_err_writeln(string.format("git apply failed: %s", output))
+    api.nvim_echo({string.format("git status failed: %s", output)}, false, {err=true})
     return
   end
 
