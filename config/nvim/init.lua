@@ -12,7 +12,6 @@ vim.o.tgc = true
 vim.o.guifont = "VictorMono Nerd Font Mono:h20"
 -- vim.opt.linespace = 1.2
 require "mh.plugins"
-vim.cmd("colorscheme OceanicNext")
 require "mh.options"
 require "mh.mappings"
 require "mh.commands"
@@ -23,6 +22,7 @@ require "mh.autocmds"
 require "mh.folds"
 require "mh.filetree"
 require "mh.statusline"
+require "mh.tabline"
 require "mh.treesitter"
 require "mh.formatting"
 require "mh.lsp"

@@ -1,10 +1,10 @@
 # Obligatory Dotfile Repo
 
-Neovim, Kitty, Tmux...oh my.
+Neovim, Ghostty, Tmux...oh my.
 
 ## Install
 Note this install is if you have a new machine, and need everything setup.
-For that, I sugguest
+For that, I suggest
 
 ```
 curl https://cdn.rawgit.com/mhartington/dotfiles/master/install.sh | sh

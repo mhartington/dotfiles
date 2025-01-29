@@ -1,74 +1,95 @@
 local lualine = require("lualine")
 local bufferline = require("bufferline")
 local oceanic_next = require("mh.statusline.oceanic_next")
-local colors = require("mh.colors")
-
-local function get_short_cwd()
-	return vim.fn.fnamemodify(vim.fn.getcwd(), ":.:t")
-end
-
-local yanil_statusline = {
-	sections = {
-		lualine_a = { get_short_cwd },
-	},
-	filetypes = { "Yanil" },
-}
 
 lualine.setup({
-	extensions = { yanil_statusline },
-	options = { theme = oceanic_next },
-	sections = {
-		lualine_a = { "" },
-		lualine_b = { "branch" },
-		lualine_c = { "filename" },
-		lualine_x = { "b:gitsigns_status" },
-		lualine_y = { "filetype" },
-		lualine_z = {
-			"location",
-			{ "diagnostics", sources = { "nvim_diagnostic" } },
-		},
-	},
+  options = { theme = oceanic_next },
+  sections = {
+    lualine_a = { "" },
+    lualine_b = { { "branch", icon = "" } },
+    lualine_c = { "filename" },
+    lualine_x = { "b:gitsigns_status" },
+    lualine_y = { "filetype" },
+    lualine_z = {
+      "location",
+      { "diagnostics", sources = { "nvim_diagnostic" } },
+    },
+  },
 })
 
 bufferline.setup({
-	options = {
-		view = "default",
-		numbers = function(opts)
-			return string.format("%s.", opts.ordinal)
-		end,
-		buffer_close_icon = "x",
-		modified_icon = "•",
-		close_icon = "",
-		left_trunc_marker = "",
-		right_trunc_marker = "",
-		max_name_length = 18,
-		max_prefix_length = 15,
-		show_buffer_close_icons = false,
-		persist_buffer_sort = true,
-		separator_style = { "", "" },
-		enforce_regular_tabs = false,
-		always_show_bufferline = true,
-	},
-	highlights = {
-		modified = { fg = colors.green, bg = "#0D1519" },
-		modified_visible = { fg = "#3C706F", bg = "#101920" },
-		modified_selected = { fg = colors.cyan, bg = "#142832" },
-		fill = { bg = "#0D1519" },
-		background = { bg = "#0D1519", fg = colors.base04 },
-		tab = { bg = "#0D1519", fg = colors.base01 },
-		tab_selected = { bg = "#142832" },
-		tab_close = { bg = "#0D1519" },
-		buffer_visible = { bg = "#101920" },
-		buffer_selected = { bg = "#142832", fg = colors.white },
-		indicator_selected = { fg = colors.cyan, bg = "#142832" },
-		separator = { bg = "#62b3b2" },
-		separator_selected = { fg = colors.cyan, bg = "#142832" },
-		separator_visible = { bg = colors.cyan },
-		duplicate = { bg = "#0D1519", fg = colors.base04 },
-		duplicate_selected = { bg = "#142832", fg = colors.white },
-		duplicate_visible = { bg = "#101920" },
-		numbers = { bg = "#0D1519", fg = colors.base04 },
-		numbers_selected = { bg = "#142832" },
-		numbers_visible = { bg = "#101920" },
-	},
+  options = {
+    numbers = function(opts)
+      return string.format("%s.", opts.ordinal)
+    end,
+
+    offsets = {
+      {
+        filetype = "Yanil",
+        text = "Explorer",
+        highlight = "Directory",
+        text_align = "left",
+        separator = false, -- use a "true" to enable the default, or set your own character
+      },
+    },
+    buffer_close_icon = "x",
+    modified_icon = "●",
+    close_icon = "",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
+    -- style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
+    max_name_length = 18,
+    max_prefix_length = 15,
+    show_buffer_close_icons = false,
+    persist_buffer_sort = true,
+    separator_style = { "", "" },
+    enforce_regular_tabs = false,
+    always_show_bufferline = true,
+    color_icons = true,
+  },
+  highlights = {
+    -- tabline bar
+    fill = { link = "TabLineFill" },
+
+    -- default tab styles
+    background = { bg = { highlight = "TabLine", attribute = "bg" } },
+    numbers = { bg = { highlight = "TabLine", attribute = "bg" } },
+    -- For duplicate files, this will control the path before the file name
+    duplicate = { bg = { highlight = "TabLine", attribute = "bg" } },
+
+    -- Modifer Symbol, consisten
+    modified = { fg = vim.g.cyan, bg = { highlight = "TabLine", attribute = "bg" } },
+    modified_visible = { fg = vim.g.cyan, bg = { highlight = "TabLineSel", attribute = "bg" } },
+    modified_selected = { fg = vim.g.cyan, bg = { highlight = "TabLineSel", attribute = "bg" } },
+
+    -- Active buffer indicator
+    indicator_selected = { fg = vim.g.cyan, bg = vim.g.cyan },
+    indicator_visible = { fg = vim.g.cyan, bg = vim.g.cyan },
+
+    -- Selected, Visable, not Focused
+    buffer_visible = {
+      fg = { highlight = "Normal", attribute = "fg" },
+      bg = { highlight = "TabLineSel", attribute = "bg" },
+      italic = true,
+      bold = true,
+    },
+    numbers_visible = {
+      fg = { highlight = "Normal", attribute = "fg" },
+      bg = { highlight = "TabLineSel", attribute = "bg" },
+      italic = true,
+      bold = true,
+    },
+    duplicate_visible = { bg = { highlight = "TabLineSel", attribute = "bg" }, italic = true },
+
+    -- Selected, Visable, Focused
+    buffer_selected = {
+      fg = { highlight = "Normal", attribute = "fg" },
+      bg = { highlight = "TabLineSel", attribute = "bg" },
+    },
+    numbers_selected = {
+      fg = { highlight = "Normal", attribute = "fg" },
+      bg = { highlight = "TabLineSel", attribute = "bg" },
+    },
+    duplicate_selected = { bg = { highlight = "TabLineSel", attribute = "bg" } },
+  },
 })

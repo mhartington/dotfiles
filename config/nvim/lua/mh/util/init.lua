@@ -186,4 +186,14 @@ function M.reduce(list, memo, func)
   return memo
 end
 
+
+
+
+
+function M.decToHex(num)
+  num = tonumber(num)
+  return string.format("#%06x", num)
+end
+
+
 return M

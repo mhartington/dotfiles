@@ -5,17 +5,17 @@ local util = require("formatter.util")
 local prettierConfig = function()
 	return {
 		exe = "prettier",
-		args = { "--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0)), "--single-quote" },
+		args = { "--stdin-filepath", util.escape_path(util.get_current_buffer_file_path()), "--single-quote" },
 		stdin = true,
 	}
 end
-local biomeConfig = function()
-	return {
-		exe = "biome",
-		args = { "format", "--stdin-file-path", util.escape_path(util.get_current_buffer_file_path()) },
-		stdin = true,
-	}
-end
+-- local biomeConfig = function()
+-- 	return {
+-- 		exe = "biome",
+-- 		args = { "format", "--stdin-file-path", util.escape_path(util.get_current_buffer_file_path()) },
+-- 		stdin = true,
+-- 	}
+-- end
 
 local formatterConfig = {
 	lua = {
@@ -96,15 +96,31 @@ local formatterConfig = {
 			}
 		end,
 	},
+	cs = {
+		function()
+			return {
+				exe = "dotnet",
+				args = {
+					"format",
+					"whitespace",
+					"--include",
+				},
+				no_append = true,
+				ignore_exitcode = true,
+				stdin = false,
+			}
+		end,
+	},
+
 	["*"] = {
-		-- require("formatter.filetypes.any").lsp_format,
-		require('formatter.filetypes.any').substitute_trailing_whitespace()
+		require("formatter.filetypes.any").substitute_trailing_whitespace(),
 	},
 }
 local commonFT = {
 	"css",
 	"scss",
 	"html",
+	"angular.html",
 	"java",
 	"javascript",
 	"javascriptreact",
@@ -113,13 +129,17 @@ local commonFT = {
 	"markdown",
 	"markdown.mdx",
 	"json",
+	"jsonc",
 	"yaml",
 	"xml",
 	"svg",
 	"svelte",
 }
 for _, ft in ipairs(commonFT) do
-	formatterConfig[ft] = { prettierConfig, biomeConfig }
+	formatterConfig[ft] = {
+		prettierConfig,
+		-- biomeConfig
+	}
 end
 -- Setup functions
 formatter.setup({

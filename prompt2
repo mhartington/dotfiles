@@ -25,9 +25,9 @@
 local lsep=""
 local rsep=""
 local alt_sep=""
-# local alt_sep="/"
 local alt_rsep=""
 local gray2=#343D46
+local white=#FFFFFF
 
 
 __format_cwd() {
@@ -37,7 +37,7 @@ __format_cwd() {
   local part_count=0
   local formatted_cwd=""
   local tilde="~"
-  local dir_sep=""
+  local dir_sep=$alt_sep
 
   local cwd="${PWD/#$HOME/$tilde}"
 
@@ -67,7 +67,7 @@ prompt_preprompt_render() {
   local -a preprompt_parts
 
   # Set the path.
-  preprompt_parts+="%F{white}%K{blue} $(__format_cwd) %f%k"
+  preprompt_parts+="%F{$white}%K{blue} $(__format_cwd) %f%k"
 
   # Add Git branch and dirty status info.
   typeset -gA prompt_vcs_info
@@ -76,12 +76,12 @@ prompt_preprompt_render() {
   then
     preprompt_parts+="%F{blue}$lsep%f"
   else
-    preprompt_parts+="%F{blue}%K{8}$lsep%f%k%F{white}%K{8} ${prompt_vcs_info[branch]} %f%k"
+    preprompt_parts+="%F{blue}%K{8}$lsep%f%k%F{$white}%K{8} ${prompt_vcs_info[branch]} %f%k"
     if [[ -n $prompt_git_status ]];
     then
-      preprompt_parts+="%F{8}%K{$gray2}$lsep%f%k%F{white}%K{$gray2} ${prompt_git_status} %f%k%F{$gray2}$lsep%f"
+      preprompt_parts+="%F{8}%K{$gray2}$lsep%f%k%F{$white}%K{$gray2} ${prompt_git_status} %f%k%F{$gray2}$lsep%f"
     else
-      preprompt_parts+="%F{8}$lsep%f%F{white} %f"
+      preprompt_parts+="%F{8}$lsep%f%F{$white} %f"
 
     fi
   fi
@@ -149,6 +149,7 @@ prompt_async_git_status() {
   [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
 
   local added_symbol="•"
+  local deleted_symbol="-"
   local unmerged_symbol="ⅹ"
   local modified_symbol="+"
   local clean_symbol=""
@@ -157,7 +158,12 @@ prompt_async_git_status() {
   local ahead_symbol="↑"
   local behind_symbol="↓"
 
-  local unmerged_count=0 modified_count=0 has_untracked_files=0 added_count=0 is_clean=""
+  local unmerged_count=0 
+  local modified_count=0 
+  local deleted_count=0 
+  local has_untracked_files=0 
+  local added_count=0 
+  local is_clean=""
 
   set -- $(git rev-list --left-right --count @{upstream}...HEAD 2>/dev/null)
   local behind_count=$1
@@ -168,6 +174,7 @@ prompt_async_git_status() {
     case "$line" in
       M*) modified_count=$(( $modified_count + 1 )) ;;
       U*) unmerged_count=$(( $unmerged_count + 1 )) ;;
+      D*) deleted_count=$(( $deleted_count + 1 )) ;;
     esac
   done < <(git diff --name-status)
 
@@ -181,7 +188,7 @@ prompt_async_git_status() {
     has_untracked_files=1
   fi
 
-  if [ $(( unmerged_count + modified_count + has_untracked_files + added_count )) -eq 0 ]; then
+  if [ $(( unmerged_count + modified_count + deleted_count + has_untracked_files + added_count )) -eq 0 ]; then
     is_clean=1
   fi
 
@@ -190,6 +197,7 @@ prompt_async_git_status() {
   [[ $behind_count -gt 0 ]]        && { printf "%s" "$leading_whitespace$behind_symbol$behind_count"; leading_whitespace=" "; }
   [[ $modified_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$modified_symbol$modified_count"; leading_whitespace=" "; }
   [[ $unmerged_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$unmerged_symbol$unmerged_count"; leading_whitespace=" "; }
+  [[ $deleted_count -gt 0 ]]       && { printf "%s" "$leading_whitespace$deleted_symbol$deleted_count"; leading_whitespace=" "; }
   [[ $added_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$added_symbol$added_count"; leading_whitespace=" "; }
   [[ $has_untracked_files -gt 0 ]] && { printf "%s" "$leading_whitespace$has_untracked_files_symbol"; leading_whitespace=" "; }
   [[ $is_clean -gt 0 ]]            && { printf "%s" "$leading_whitespace$clean_symbol"; leading_whitespace=" "; }
@@ -238,7 +246,11 @@ prompt_async_refresh() {
 
 prompt_async_callback() {
   setopt localoptions noshwordsplit
-  local job=$1 code=$2 output=$3 exec_time=$4 next_pending=$6
+  local job=$1 
+  local code=$2 
+  local output=$3 
+  local exec_time=$4 
+  local next_pending=$6
   local do_render=0
 
   case $job in

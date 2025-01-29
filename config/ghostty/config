@@ -1,0 +1,30 @@
+title= "  "
+confirm-close-surface = false
+shell-integration = zsh
+
+keybind = ctrl+z=close_surface
+keybind = ctrl+d=new_split:right
+
+macos-non-native-fullscreen = true
+macos-titlebar-style = native
+macos-titlebar-proxy-icon = hidden
+
+cursor-style = block
+cursor-style-blink = true
+minimum-contrast = 1.0
+
+font-family = GeistMono Nerd Font Mono
+font-thicken = false
+font-size = 24
+adjust-cell-height = 50%
+adjust-cursor-thickness = 1
+
+window-colorspace = display-p3
+theme=dark:Oceanic-Next,light:Oceanic-Next-Light
+mouse-hide-while-typing = true
+shell-integration-features = no-title
+# custom-shader = ./bloom.glsl
+# custom-shader = ./crt.glsl
+# custom-shader = ./flicker.glsl
+# custom-shader = ./glow.glsl
+# custom-shader = ./fire.glsl

@@ -7,7 +7,6 @@ export EDITOR=nvim
 export _Z_DATA="$HOME/z-data"
 export ITERM_24BIT=1
 export DISABLE_AUTO_TITLE="true"
-# export TERM="xterm-updated"
 
 # Load rbenv automatically by appending
 # the following to ~/.zshrc:
@@ -23,8 +22,8 @@ export PATH=${PATH}:~/bin/nvim/bin
 
 
 # Python...amiright
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-
+# export PATH="/usr/local/opt/python@3.7/bin:$PATH"
+export PATH="/Users/mhartington/.local/bin:$PATH"
 
 
 # Java setup
@@ -131,6 +130,8 @@ function zle-line-init zle-keymap-select {
 #     eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
 # fi
 
+# eval "$(uv generate-shell-completion zsh)"
+# eval "$(uvx --generate-shell-completion zsh)"
 
 alias nvimInstall='make distclean && make deps && make && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/bin/nvim install'
 # Some aliases for Homebrew
@@ -193,8 +194,17 @@ function download(){
 curl -O "$1"
 }
 
-function highlight(){
-  highlight -O rtf $1 --font-size 25 --style solarized-dark -W -J 50 -j 3 --src-lang $2 | pbcopy
+# function highlight(){
+#   highlight -O rtf $1 --font-size 25 --style solarized-dark -W -J 50 -j 3 --src-lang $2 | pbcopy
+#
+# }
+function hl() {
+pbpaste | npx prettier --parser $1 | highlight --font "GeistMono Nerd Font Mono" --font-size "44" --style "base16/oceanicnext" --syntax "$1" --out-format "rtf" | pbcopy
+}
+
+
+function hlRaw() {
+pbpaste | highlight --font "GeistMono Nerd Font Mono" --font-size "44" --style "base16/oceanicnext" --syntax "$1" --out-format "rtf" | pbcopy
 }
 
 alias dl=download
@@ -223,15 +233,21 @@ function ghPages(){
   fi
 }
 
+function deployHugo(){
+  if [ -z "$1" ]
+  then
+    read "?Which folder do you want to deploy to GitHub Pages? " answer
+    git subtree push --prefix $answer origin master
+  else
+    git subtree push --prefix $1 origin master
+  fi
+}
+
+
 # incase i forget how to clear
 alias c='clear'
 alias k='clear'
 alias cls='clear'
-
-# presentation crap
-  # alias whoamireally='echo "Mike Hartington
-  # Dev Advocate for Ionic
-  # Beer lover and Cat lover" '
 
 # archive file or folder
 function compress()  {
@@ -302,7 +318,7 @@ function compress()  {
 
   # Extract archives - use: extract <file>
   # Based on http://dotfiles.org/~pseup/.bashrc
-  function extract() {
+function extract() {
   local remove_archive
   local success
   local file_name
