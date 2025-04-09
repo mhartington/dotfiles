@@ -1,13 +1,10 @@
 -- Options
-local parsers = require("nvim-treesitter.parsers")
-
-local Option = {}
+local M = {}
 
 vim.opt.scrolloff = 999
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.hidden = true
 vim.opt.showmode = false
 vim.opt.timeoutlen = 3e3
@@ -54,6 +51,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldmethod = "syntax"
 vim.opt.foldtext = "v:lua.foldText()"
 vim.opt.linebreak = true
+vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.clipboard = {
   name = "macOS-clipboard",
   copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
@@ -78,18 +76,4 @@ vim.g.skip_ts_context_commentstring_module = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local configs = parsers.get_parser_configs()
-local ft_str = vim.tbl_map(function(ft)
-  return configs[ft].filetype or ft
-end, parsers.available_parsers())
-
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = ft_str,
-  desc = "Use Treesitter for Folds",
-  callback = function()
-    vim.wo.foldmethod="expr"
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  end,
-})
-
-return Option
+return M

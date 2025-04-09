@@ -15,14 +15,20 @@ local capabilities = {
         },
       },
     },
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
   },
 }
 capabilities.textDocument.colorProvider = { dynamicRegistration = false }
-capabilities = vim.tbl_extend("keep", capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
+capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+-- capabilities = vim.tbl_extend("keep", capabilities or {}, require("cmp_nvim_lsp").default_capabilities())
 
 local M = {}
 -- Diagnostic settings
 vim.diagnostic.config({
+  virtual_lines = false, --{ current_line = true },
   virtual_text = false,
   signs = {
     text = {
@@ -35,7 +41,7 @@ vim.diagnostic.config({
   update_in_insert = true,
   float = {
     focusable = false,
-    border = "single",
+    border = "rounded",
     scope = "cursor",
     header = "",
     prefix = " ",
@@ -50,24 +56,33 @@ local function get_node_modules(root_dir)
     return lspNMRoot
   end
 end
-
+vim.lsp.buf.references = Snacks.picker.lsp_references
 local default_node_modules = get_node_modules(vim.fn.getcwd())
 
 local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  local float_opts = { border = "rounded", max_width = 45, silent = true }
-  keymap("n", "<Leader>gdc", vim.lsp.buf.declaration,     bufopts)
-  keymap("n", "<Leader>gd",  vim.lsp.buf.definition,      bufopts)
-  keymap("n", "<Leader>gh",  function() vim.lsp.buf.hover(float_opts) end)
-  keymap("n", "<Leader>gi",  vim.lsp.buf.implementation,  bufopts)
-  keymap("n", "<Leader>gs",  vim.lsp.buf.signature_help,  bufopts)
+  local float_opts = { border = "rounded", silent = true }
+  keymap("n", "<Leader>gdc", vim.lsp.buf.declaration, bufopts)
+  keymap("n", "<Leader>gd", vim.lsp.buf.definition, bufopts)
+  keymap("n", "<Leader>gh", function()
+    vim.lsp.buf.hover(float_opts)
+  end)
+  keymap("n", "<Leader>gi", vim.lsp.buf.implementation, bufopts)
+  keymap("n", "<Leader>gs", vim.lsp.buf.signature_help, bufopts)
   keymap("n", "<Leader>gtd", vim.lsp.buf.type_definition, bufopts)
-  keymap("n", "<Leader>rn",  vim.lsp.buf.rename,          bufopts)
-  keymap("n", "<Leader>gr",  vim.lsp.buf.references,      bufopts)
-  keymap("n", "<Leader>ca",  vim.lsp.buf.code_action,     bufopts)
-  keymap("n", "<Leader>sd",  vim.diagnostic.open_float,   bufopts)
+  keymap("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
+  keymap("n", "<Leader>gr", vim.lsp.buf.references, bufopts)
+  keymap("n", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
+  keymap("n", "<Leader>sd", vim.diagnostic.open_float, bufopts)
 
   -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+  --
+  vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+    callback = function()
+      vim.diagnostic.open_float(nil, { focus = false })
+    end,
+  })
 
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
@@ -85,6 +100,11 @@ local on_attach = function(client, bufnr)
       desc = "Clear All the References",
     })
   end
+
+  -- if client:supports_method("textDocument/foldingRange") then
+  --   local win = vim.api.nvim_get_current_win()
+  --   vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+  -- end
 end
 
 local servers = { "pylsp", "bashls", "html", "cssls", "vimls", "svelte", "zls" } --"biome" }
@@ -110,8 +130,8 @@ lspconfig.sourcekit.setup({
 
 lspconfig.vtsls.setup({
   root_dir = function(file)
-      return vim.fs.dirname(vim.fs.find('.git', { path = file, upward = true })[1])
-        or util.root_pattern('.git', 'package.json', 'tsconfig.json')(file)
+    return vim.fs.dirname(vim.fs.find(".git", { path = file, upward = true })[1])
+      or util.root_pattern(".git", "package.json", "tsconfig.json")(file)
   end,
   on_attach = on_attach,
   capabilities = capabilities,
@@ -157,7 +177,7 @@ lspconfig.nxls.setup({})
 configs.emmet_ls = {
   default_config = {
     cmd = { "emmet-ls", "--stdio" },
-    filetypes = { "html", "css", "scss" },
+    filetypes = { "html", "css", "scss", "typescriptreact" },
     root_dir = function()
       return uv.cwd()
     end,
@@ -232,20 +252,6 @@ lspconfig.jsonls.setup({
   },
 })
 
-local ngls_cmd = {
-  "ngserver",
-  "--stdio",
-  "--tsProbeLocations",
-  default_node_modules,
-  "--ngProbeLocations",
-  default_node_modules,
-  -- "--includeCompletionsWithSnippetText",
-  -- "--includeAutomaticOptionalChainCompletions",
-  -- "--logToConsole",
-  -- "--logFile",
-  -- "/Users/mhartington/Github/StarTrack-ng/logs.txt"
-}
-
 lspconfig.angularls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -262,22 +268,40 @@ lspconfig.volar.setup({
   },
 })
 
-local runtime_path = vim.split(package.path, ";")
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
+-- lspconfig.harper_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     ["harper-ls"] = {
+--       userDictPath = "",
+--       fileDictPath = "",
+--       linters = {
+--         SpellCheck = true,
+--         SpelledNumbers = false,
+--         AnA = true,
+--         SentenceCapitalization = true,
+--         UnclosedQuotes = true,
+--         WrongQuotes = false,
+--         LongSentences = true,
+--         RepeatedWords = true,
+--         Spaces = true,
+--         Matcher = true,
+--         CorrectNumberSuffix = true
+--       },
+--       codeActions = {
+--         ForceStable = false
+--       },
+--       markdown = {
+--         IgnoreLinkTitle = false
+--       },
+--       diagnosticSeverity = "hint",
+--       isolateEnglish = false
+--     }
+--   }
+-- }
 
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = { version = "LuaJIT", path = runtime_path },
-      diagnostics = { globals = { "vim" } },
-      telemetry = { enable = false },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-    },
-  },
 })
 return M

@@ -413,55 +413,7 @@ local function refresh_and_focus(tree, node)
   tree:go_to_node(tree.root:find_node_by_path(node.abs_path))
 end
 
-local yanilBuffers = Section:new({
-  name = "Buffers",
-  total_lines = 2,
-})
 
-function yanilBuffers:get_buffers()
-  local buffers = {}
-  local bufnrs = vim.tbl_filter(function(buf)
-    if 1 ~= vim.fn.buflisted(buf) then
-      return false
-    end
-    if buf == canvas.bufnr then
-      return false
-    end
-    if not vim.api.nvim_buf_is_loaded(buf) then
-      return false
-    end
-    if buf == vim.api.nvim_get_current_buf() then
-      return false
-    end
-
-    return true
-  end, api.nvim_list_bufs())
-  for _, bufnr in ipairs(bufnrs) do
-    local element = {
-      bufnr = bufnr,
-      name = vim.fn.getbufinfo(bufnr)[1].name,
-    }
-    table.insert(buffers, element)
-  end
-  print(vim.inspect(buffers))
-  return buffers
-end
-
-function yanilBuffers:draw()
-  local bufs = yanilBuffers:get_buffers()
-  local lines = { "Buffers" }
-  for _, buf in ipairs(bufs) do
-    table.insert(lines, buf.name)
-  end
-  -- self.total_lines = #lines
-  return { texts = { line_start = 0, line_end = #lines, lines = lines } }
-end
-
-function yanilBuffers:total_lines()
-  -- print(vim.inspect(yanilBuffers))
-  return 2
-  -- return yanilBuffers.total_lines
-end
 
 yanil.setup({
   git = {
@@ -482,6 +434,7 @@ yanil.setup({
 })
 
 local yanilTree = require("yanil/sections/tree"):new()
+-- local buffers = yanilBuffers:new()
 
 yanilTree:setup({
   draw_opts = {
@@ -526,6 +479,8 @@ yanilTree:setup({
     end,
   },
 })
+
+
 canvas.register_hooks({
   -- on_exit()
   -- on_enter()
@@ -540,7 +495,7 @@ canvas.register_hooks({
     vim.api.nvim_set_hl(0, "YanilGitUntracked", { link="Comment" })
     vim.api.nvim_set_hl(0, "YanilTreeDirectory", { link="Function" })
     vim.api.nvim_set_hl(0, "YanilTreeLinkTo", { bg = "none" })
-    vim.api.nvim_set_hl(1, "YanilTreeFile", { bg = "none" })
+    vim.api.nvim_set_hl(0, "YanilTreeFile", { bg = "none" })
     vim.opt_local.wrap = false
     git.update(yanilTree.cwd)
     -- vim.wo.winhighlight =
@@ -556,7 +511,10 @@ canvas.register_hooks({
 canvas.setup({
   --yanilBuffers,
   -- side='right',
-  sections = { yanilTree },
+  sections = {
+    --  buffers, 
+     yanilTree
+     },
   autocmds = {
     {
       event = "User",
@@ -565,6 +523,7 @@ canvas.setup({
         git.refresh_tree(yanilTree)
       end,
     },
+   
     -- {
     -- event = "User",
     -- pattern = "LspDiagnosticsChanged",

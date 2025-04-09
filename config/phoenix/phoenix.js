@@ -70,6 +70,9 @@ Key.on('m', ['alt'], () => {
   move({ x: 0, y: 0, width: 1, height: 1, rows: 1, cols: 1 });
 });
 
+// Key.on('y', ['alt', 'shift'], () => {
+//   move({ x: 0, y: 0, width:9, height: 16, rows: 16, cols: 16 });
+// });
 Key.on('u', ['alt', 'shift'], () => {
   move({ x: 0, y: 0, width: 6, height: 2, rows: 1, cols: 9 });
 });

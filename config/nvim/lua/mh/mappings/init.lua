@@ -91,6 +91,7 @@ for i = 1, 9 do
 end
 
 vim.cmd("cnoreabbrev <silent> x lua require('mh.commands').BufDel()")
+-- vim.cmd("cnoreabbrev <silent> h H")
 -- vim.cmd("cnoreabbrev <silent> x lua Snacks.bufdelete()")
 
 M.keymap("n", "<Leader>e", function() vim.cmd('Inspect') end)
