@@ -111,17 +111,19 @@ local formatterConfig = {
 			}
 		end,
 	},
-
+  java = {
+    require("formatter.filetypes.java").clangformat()
+  },
 	["*"] = {
 		require("formatter.filetypes.any").substitute_trailing_whitespace(),
 	},
+
 }
 local commonFT = {
 	"css",
 	"scss",
 	"html",
 	"angular.html",
-	"java",
 	"javascript",
 	"javascriptreact",
 	"typescript",

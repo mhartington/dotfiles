@@ -176,13 +176,40 @@ local create_file = a.wrap(function(path)
   uv.fs_close(file_writer)
 end)
 
+local function copy_recursive(src, dest)
+  create_dirs_if_needed(dest)
+  local req, scan_err = uv.fs_scandir(src)
+  while true do
+    local name, typ = uv.fs_scandir_next(req)
+    if not name then
+      break
+    end
+    local from, to = src .. name, dest .. name
+    print(vim.inspect(typ))
+    if typ == "link" then
+      uv.fs_symlink(from, to, 0)
+    end
+
+    if typ == "directory" then
+      from = from .. "/"
+      to = to .. "/"
+      copy_recursive(from, to)
+    else
+      local ok, err = uv.fs_copyfile(from, to, { ficlone = true })
+      if not ok then
+        error(("copy '%s' failed: %s"):format(from, err))
+      end
+    end
+  end
+end
+
 -- refresh tree and focus node
 local function refresh(tree, node)
-    tree:refresh(nil, {}, function()
-      tree.root:load(true)
-    end)
-    git.update(tree.cwd)
-    tree:go_to_node(tree.root:find_node_by_path(node))
+  tree:refresh(nil, {}, function()
+    tree.root:load(true)
+  end)
+  git.update(tree.cwd)
+  tree:go_to_node(tree.root:find_node_by_path(node))
 end
 
 -- Move Node
@@ -211,41 +238,28 @@ local move_node = a.wrap(function(tree, node)
 end)
 
 -- Copy Node
-local function copy_node(tree, node)
-  -- node = node:is_dir() and node or node.parent
-  local msg_tag = "Enter the new path for the node:"
-  local msg = string.format("Copy the node \n%s \n%s", string.rep("=", 58), msg_tag)
-  local ans = vim.fn.input(msg, node.abs_path)
-  clear_prompt()
+local copy_node = a.wrap(function(tree, node)
+  local src = node.abs_path
+  local dest = a.ui.input({ prompt = "Copy Node", default = src, completion = "file" }).await()
 
-  local refresh = vim.schedule_wrap(function()
-    tree:refresh(nil, {}, function()
-      tree.root:load(true)
-    end)
-    git.update(tree.cwd)
-    -- tree:go_to_node(tree.root:find_node_by_path(ans))
-    print("Created " .. ans .. " successfully")
-  end)
-
-  if not ans or ans == "" then
-    return
-  end
-  if uv.fs_stat(ans) then
-    print("Node already exists")
+  if not dest or dest == "" then
     return
   end
 
-  uv.fs_copyfile(node.abs_path, ans)
-  local handle
-  handle = uv.spawn("cp", { args = { "-r", node.abs_path, ans } }, function(code)
-    handle:close()
-    if code ~= 0 then
-      print("copy failed")
-      return
-    end
-    refresh()
-  end)
-end
+  if tree.root:find_node_by_path(dest) then
+    vim.notify('path "' .. dest .. '" is already exists', "WARN")
+    return
+  end
+
+  vim.notify("Copying...")
+  a.uv().fs_copyfile(src, dest).await()
+  a.system({ "cp", "-r", src, dest }).await()
+
+  a.schedule(function()
+    refresh(tree, dest)
+    vim.notify("Created " .. dest .. " successfully")
+  end).await()
+end)
 
 -- Reveal Node
 local function reveal_in_finder(_, node)
@@ -287,12 +301,10 @@ local create_node = a.wrap(function(tree, node)
     refresh(tree, dest)
     vim.notify("Created " .. dest .. " successfully")
   end).await()
-
 end)
 
 -- Delete Node
-
-local delete_node = a.wrap(function (tree, node)
+local delete_node = a.wrap(function(tree, node)
   if node == tree.root then
     return
   end
@@ -332,7 +344,7 @@ local delete_node = a.wrap(function (tree, node)
       if t == "directory" then
         local success = delete_dir(new_cwd)
         if not success then
-          vim.notify("failed to delete ".. new_cwd, "WARN")
+          vim.notify("failed to delete " .. new_cwd, "WARN")
           return false
         end
       else
@@ -356,7 +368,7 @@ local delete_node = a.wrap(function (tree, node)
     local success = uv.fs_unlink(node.abs_path)
     if not success then
       vim.notify("Could not remove " .. node.name, "WARN")
-      return 
+      return
     end
     clear_buffer(node.abs_path)
   end
@@ -412,8 +424,6 @@ local function refresh_and_focus(tree, node)
   git.update(tree.cwd)
   tree:go_to_node(tree.root:find_node_by_path(node.abs_path))
 end
-
-
 
 yanil.setup({
   git = {
@@ -480,7 +490,6 @@ yanilTree:setup({
   },
 })
 
-
 canvas.register_hooks({
   -- on_exit()
   -- on_enter()
@@ -492,8 +501,8 @@ canvas.register_hooks({
     api.nvim_command("doautocmd User YanilTreeEnter")
     vim.wo.cursorline = true
     vim.wo.statuscolumn = ""
-    vim.api.nvim_set_hl(0, "YanilGitUntracked", { link="Comment" })
-    vim.api.nvim_set_hl(0, "YanilTreeDirectory", { link="Function" })
+    vim.api.nvim_set_hl(0, "YanilGitUntracked", { link = "Comment" })
+    vim.api.nvim_set_hl(0, "YanilTreeDirectory", { link = "Function" })
     vim.api.nvim_set_hl(0, "YanilTreeLinkTo", { bg = "none" })
     vim.api.nvim_set_hl(0, "YanilTreeFile", { bg = "none" })
     vim.opt_local.wrap = false
@@ -512,9 +521,9 @@ canvas.setup({
   --yanilBuffers,
   -- side='right',
   sections = {
-    --  buffers, 
-     yanilTree
-     },
+    --  buffers,
+    yanilTree,
+  },
   autocmds = {
     {
       event = "User",
@@ -523,7 +532,7 @@ canvas.setup({
         git.refresh_tree(yanilTree)
       end,
     },
-   
+
     -- {
     -- event = "User",
     -- pattern = "LspDiagnosticsChanged",

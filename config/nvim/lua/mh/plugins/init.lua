@@ -35,7 +35,7 @@ return require("lazy").setup({
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
-      bigfile = { enabled = false },
+      bigfile = { enabled = true },
       statuscolumn = { enabled = true, right = { "git" } },
       dim = { animate = { enabled = false } },
       zen = { enabled = false },
@@ -78,10 +78,9 @@ return require("lazy").setup({
                   title = "{title} {live} {flags}",
                   title_pos = "left",
                 },
-                { win = "list", border = "single", height=5 },
+                { win = "list", border = "single", height = 5 },
               },
             },
-
           },
           colorschemes = {
             prompt = "󱥚 ",
@@ -142,20 +141,20 @@ return require("lazy").setup({
                 height = 0.8,
                 border = "none",
                 box = "vertical",
-                title="",
-                  {
-                    win = "input",
-                    height = 1,
-                    row = 1,
-                    border = "single",
-                    title = "{title} {live} {flags}",
-                    title_pos = "center",
-                  },
-                  {
-                    box = "horizontal",
-                    { win = "list", border = "single" },
-                    { win = "preview", title = "{preview}", border = "single", width = 0.5, minimal=true },
-                  },
+                title = "",
+                {
+                  win = "input",
+                  height = 1,
+                  row = 1,
+                  border = "single",
+                  title = "{title} {live} {flags}",
+                  title_pos = "center",
+                },
+                {
+                  box = "horizontal",
+                  { win = "list", border = "single" },
+                  { win = "preview", title = "{preview}", border = "single", width = 0.5, minimal = true },
+                },
               },
             },
           },
@@ -171,20 +170,20 @@ return require("lazy").setup({
                 height = 0.8,
                 border = "none",
                 box = "vertical",
-                title="",
-                  {
-                    win = "input",
-                    height = 1,
-                    row = 1,
-                    border = "single",
-                    title = "{title} {live} {flags}",
-                    title_pos = "center",
-                  },
-                  {
-                    box = "horizontal",
-                    { win = "list", border = "single" },
-                    { win = "preview", title = "{preview}", border = "single", width = 0.5, minimal=true },
-                  },
+                title = "",
+                -- {
+                --   win = "input",
+                --   height = 1,
+                --   row = 1,
+                --   border = "single",
+                --   title = "{title} {live} {flags}",
+                --   title_pos = "center",
+                -- },
+                {
+                  box = "horizontal",
+                  { win = "list", border = "single" },
+                  { win = "preview", title = "{preview}", border = "single", width = 0.5, minimal = true },
+                },
               },
             },
           },
@@ -246,16 +245,16 @@ return require("lazy").setup({
   -- UI Stuff
   { "nvim-lualine/lualine.nvim" },
   { "akinsho/bufferline.nvim" },
-  {
-    "brenoprata10/nvim-highlight-colors",
-    config = function()
-      require("nvim-highlight-colors").setup({
-        render = "virtual",
-        virtual_symbol = "■",
-        enable_named_colors = true,
-      })
-    end,
-  },
+  -- {
+  --   "brenoprata10/nvim-highlight-colors",
+  --   config = function()
+  --     require("nvim-highlight-colors").setup({
+  --       render = "virtual",
+  --       virtual_symbol = "■",
+  --       enable_named_colors = true,
+  --     })
+  --   end,
+  -- },
   -- ColorScheme
   { "clearaspect/onehalf" },
   { "Khaledgarbaya/night-owl-vim-theme" },
@@ -303,10 +302,7 @@ return require("lazy").setup({
   -- Markdown
   { "dhruvasagar/vim-table-mode" },
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
-  {
-    "davidmh/mdx.nvim",
-    config = true,
-  },
+  { "davidmh/mdx.nvim", config = true },
   {
     "tigion/nvim-asciidoc-preview",
     ft = { "asciidoc" },
@@ -317,6 +313,8 @@ return require("lazy").setup({
   },
   { "antonk52/vim-browserslist" },
 
+  -- Java
+  -- {'nvim-java/nvim-java', config=true},
   -- Swift/
   -- { "wojciech-kulik/xcodebuild.nvim", config = true },
   -- Rust
@@ -332,6 +330,9 @@ return require("lazy").setup({
       { "rafamadriz/friendly-snippets" },
       { "Kaiser-Yang/blink-cmp-git" },
       { "Kaiser-Yang/blink-cmp-dictionary" },
+      {
+        "giuxtaposition/blink-cmp-copilot",
+      },
     },
     version = "1.*",
     ---@module 'blink.cmp'
@@ -392,13 +393,37 @@ return require("lazy").setup({
             min_keyword_length = 3,
             opts = {},
           },
+          -- copilot = {
+          --   name = "copilot",
+          --   module = "blink-cmp-copilot",
+          --   score_offset = 100,
+          --   async = true,
+          -- },
         },
       },
       fuzzy = { implementation = "prefer_rust" },
     },
     opts_extend = { "sources.default" },
   },
-
+  { "zbirenbaum/copilot.lua", config = true },
+  {
+    "olimorris/codecompanion.nvim",
+    config = function()
+      require("codecompanion").setup({
+        adapters = {
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              schema = {
+                model = {
+                  default = "gpt-4o",
+                },
+              },
+            })
+          end,
+        },
+      })
+    end,
+  },
   -- {
   --   "iguanacucumber/magazine.nvim",
   --   name = "nvim-cmp",

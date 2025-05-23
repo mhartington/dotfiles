@@ -73,6 +73,7 @@ local on_attach = function(client, bufnr)
   keymap("n", "<Leader>rn", vim.lsp.buf.rename, bufopts)
   keymap("n", "<Leader>gr", vim.lsp.buf.references, bufopts)
   keymap("n", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
+  keymap("v", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
   keymap("n", "<Leader>sd", vim.diagnostic.open_float, bufopts)
 
   -- vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
@@ -101,19 +102,26 @@ local on_attach = function(client, bufnr)
     })
   end
 
+  if client:supports_method("textDocument/documentColor") then
+    vim.lsp.document_color.enable(true, bufnr, { style = "virtual" })
+  end
+
   -- if client:supports_method("textDocument/foldingRange") then
   --   local win = vim.api.nvim_get_current_win()
   --   vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
   -- end
 end
 
-local servers = { "pylsp", "bashls", "html", "cssls", "vimls", "svelte", "zls" } --"biome" }
+local servers = { "pylsp", "bashls", "html", "cssls", "vimls", "svelte", "zls", "jdtls", "nxls" } --"biome" }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
+  vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     capabilities = capabilities,
   })
+  -- lspconfig[lsp].setup({
+  -- })
 end
 
 lspconfig.sourcekit.setup({
@@ -127,8 +135,8 @@ lspconfig.sourcekit.setup({
     capabilities.textDocument,
   },
 })
-
-lspconfig.vtsls.setup({
+vim.lsp.enable('vtsls')
+vim.lsp.config('vtslt', {
   root_dir = function(file)
     return vim.fs.dirname(vim.fs.find(".git", { path = file, upward = true })[1])
       or util.root_pattern(".git", "package.json", "tsconfig.json")(file)
@@ -136,6 +144,7 @@ lspconfig.vtsls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   single_file_support = true,
+
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -172,7 +181,6 @@ lspconfig.vtsls.setup({
   },
 })
 
-lspconfig.nxls.setup({})
 
 configs.emmet_ls = {
   default_config = {

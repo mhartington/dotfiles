@@ -62,6 +62,7 @@ vim.g.clipboard = {
 vim.cmd('let &t_8f = "\\<Esc>[38;2;%lu;%lu;%lum"')
 vim.cmd('let &t_8b = "\\<Esc>[48;2;%lu;%lu;%lum"')
 
+-- vim.o.messagesopt = 'history:500,wait:0'
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
 vim.g.oceanic_next_terminal_italic = true
@@ -76,4 +77,15 @@ vim.g.skip_ts_context_commentstring_module = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+    require('vim._extui').enable({
+     enable = true, -- Whether to enable or disable the UI.
+     msg = { -- Options related to the message module.
+       ---@type 'box'|'cmd' Type of window used to place messages, either in the
+       ---cmdline or in a separate message box window with ephemeral messages.
+       pos = 'box',
+       box = { -- Options related to the message box window.
+         timeout = 4000, -- Time a message is visible.
+       },
+     },
+    })
 return M
