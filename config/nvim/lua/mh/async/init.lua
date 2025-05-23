@@ -91,7 +91,7 @@ end
 function M.uv()
     return require('mh.async.uv')
 end
-
+M.system = M.async(vim.system)
 M.api = setmetatable({}, {
     __index = function(t, key)
         t[key] = function(...)
