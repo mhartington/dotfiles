@@ -49,7 +49,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.spell = false
 vim.opt.foldlevel = 99
 vim.opt.foldmethod = "syntax"
-vim.opt.foldtext = "v:lua.foldText()"
+-- vim.opt.foldtext = "v:lua.foldText()"
+vim.opt.foldtext = ''
 vim.opt.linebreak = true
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.clipboard = {
@@ -78,14 +79,12 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
     require('vim._extui').enable({
-     enable = true, -- Whether to enable or disable the UI.
+     enable = false, -- Whether to enable or disable the UI.
      msg = { -- Options related to the message module.
        ---@type 'box'|'cmd' Type of window used to place messages, either in the
        ---cmdline or in a separate message box window with ephemeral messages.
-       pos = 'box',
-       box = { -- Options related to the message box window.
-         timeout = 4000, -- Time a message is visible.
-       },
+       target = 'cmd',
+       timeout = 4000, -- Time a message is visible.
      },
     })
 return M
