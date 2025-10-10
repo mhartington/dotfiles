@@ -1,5 +1,3 @@
-local parsers = require("nvim-treesitter.parsers")
-
 vim.api.nvim_create_autocmd("BufReadPost", {
   desc = "Move Cursor to last line",
   callback = function()
@@ -15,13 +13,6 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
-vim.api.nvim_create_autocmd("CompleteDone", {
-  desc = "Close Pmenu when done",
-  callback = function()
-    vim.cmd("pclose")
-  end,
-})
-
 vim.api.nvim_create_autocmd("TermOpen", {
   desc = "Hide number, hide buffer, make insert for terminal",
   callback = function()
@@ -31,19 +22,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-local configs = parsers.get_parser_configs()
-local ft_str = vim.tbl_map(function(ft)
-  return configs[ft].filetype or ft
-end, parsers.available_parsers())
-
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = ft_str,
-  desc = "Use Treesitter for Folds",
-  callback = function()
-    vim.wo.foldmethod = "expr"
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-  end,
-})
 
 vim.api.nvim_create_autocmd("LspProgress", {
   ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}

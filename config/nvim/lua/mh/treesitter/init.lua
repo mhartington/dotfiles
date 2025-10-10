@@ -15,12 +15,8 @@ ts.setup({
 		additional_vim_regex_highlighting = false,
 	},
 	indent = { enable = true },
-	autopairs = {
-		enable = true,
-	},
-	autotag = {
-		enable = true,
-	},
+	autopairs = { enable = true, },
+	autotag = { enable = true, },
 	query_linter = {
 		enable = true,
 		use_virtual_text = true,
@@ -54,27 +50,15 @@ ts.setup({
 			move = {
 				enable = false,
 				set_jumps = true, -- whether to set jumps in the jumplist
-				goto_next_start = {
-					["]]"] = "@function.outer",
-				},
-				goto_next_end = {
-					["]["] = "@function.outer",
-				},
-				goto_previous_start = {
-					["[["] = "@function.outer",
-				},
-				goto_previous_end = {
-					["[]"] = "@function.outer",
-				},
+				goto_next_start = { ["]]"] = "@function.outer", },
+				goto_next_end = { ["]["] = "@function.outer", },
+				goto_previous_start = { ["[["] = "@function.outer", },
+				goto_previous_end = { ["[]"] = "@function.outer", },
 			},
 			swap = {
 				enable = false,
-				swap_next = {
-					["<leader>a"] = "@parameter.inner",
-				},
-				swap_previous = {
-					["<leader>A"] = "@parameter.inner",
-				},
+				swap_next = { ["<leader>a"] = "@parameter.inner", },
+				swap_previous = { ["<leader>A"] = "@parameter.inner", },
 			},
 		},
 	},

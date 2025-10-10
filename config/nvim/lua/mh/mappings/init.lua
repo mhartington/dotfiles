@@ -61,6 +61,8 @@ M.keymap("v", "<", "<gv")
 M.keymap("v", ">", ">gv")
 M.keymap("n", "<Leader>d", '"_d')
 M.keymap("v", "<Leader>d", '"_d')
+M.keymap("n", "<Leader>p", '"_dp')
+M.keymap("v", "<Leader>p", '"_dP')
 M.keymap("n", "<Esc>", "<cmd>noh<cr>")
 -- terminal M.mappings
 M.keymap("t", "<Esc>", "<c-\\><c-n><esc><cr>")
