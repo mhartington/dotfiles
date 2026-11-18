@@ -34,7 +34,7 @@ vim.opt.complete = ".,w,b,u,t,k"
 vim.opt.completeopt = "menu,menuone,noinsert,noselect"
 vim.opt.formatoptions = "jtcroql"
 vim.opt.inccommand = "nosplit"
-vim.opt.shortmess = "atIcF"
+-- vim.opt.shortmess = "atIcF"
 vim.opt.diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall"
 vim.opt.splitbelow = true
 vim.opt.emoji = false
@@ -42,7 +42,6 @@ vim.opt.showmatch = false
 vim.opt.splitkeep = "screen"
 vim.opt.swapfile = false
 vim.opt.shiftwidth = 2
-vim.opt.indentexpr = "nvim_treesitter#indent()"
 vim.opt.number = true
 vim.opt.numberwidth = 1
 vim.opt.signcolumn = "yes"
@@ -77,14 +76,46 @@ vim.g.override_nvim_web_devicons = true
 vim.g.skip_ts_context_commentstring_module = true
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-    require('vim._extui').enable({
-     enable = false, -- Whether to enable or disable the UI.
-     msg = { -- Options related to the message module.
-       ---@type 'box'|'cmd' Type of window used to place messages, either in the
-       ---cmdline or in a separate message box window with ephemeral messages.
-       target = 'cmd',
-       timeout = 4000, -- Time a message is visible.
-     },
-    })
+-- require('vim._core.ui2').enable({
+--  enable = true, -- Whether to enable or disable the UI.
+--  msg = { -- Options related to the message module.
+--    ---@type 'box'|'cmd' Type of window used to place messages, either in the
+--    ---cmdline or in a separate message box window with ephemeral messages.
+--    target = 'cmd',
+--    timeout = 4000, -- Time a message is visible.
+--  },
+-- require("vim._core.ui2").enable({
+--   enable = true,
+--   msg = {
+--     targets = {
+--       default = "msg",
+--       typed_cmd = "msgarea",
+--       wmsg = "msgarea",
+--       emsg = "msgarea",
+--       lua_error = "msgarea",
+--       list_cmd  = "msgarea",
+--       lua_print = "msgarea",
+--       echoerr = "msgarea",
+--       shell_out = "msgarea",
+--       shell_cmd = "msgarea",
+--       shell_err = "msgarea",
+--
+--       confirm = "pager",
+--       rpc_error = "pager",
+--     },
+--     msg = { timeout = 4000 },
+--     pager = { height = 0.75 },
+--   }
+-- })
+--
+-- })
+-- require('vim._extui').enable({
+--  enable = false, -- Whether to enable or disable the UI.
+--  msg = { -- Options related to the message module.
+--    ---@type 'box'|'cmd' Type of window used to place messages, either in the
+--    ---cmdline or in a separate message box window with ephemeral messages.
+--    target = 'msg',
+--    timeout = 4000, -- Time a message is visible.
+--  },
+-- })
 return M

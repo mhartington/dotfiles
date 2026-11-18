@@ -1,6 +1,91 @@
 return {
 
-  { "nvim-treesitter/nvim-treesitter", lazy = false, branch = "master", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter", lazy = false, branch = "main", build = ":TSUpdate", config=function() 
+    local ts = require('nvim-treesitter')
+
+    -- Install core parsers at startup
+    ts.install({
+      'angular',
+      'bash',
+      'comment',
+      'css',
+      'diff',
+      'fish',
+      'git_config',
+      'git_rebase',
+      'gitcommit',
+      'gitignore',
+      'html',
+      'javascript',
+      'json',
+      'latex',
+      'lua',
+      'luadoc',
+      'make',
+      'markdown',
+      'markdown_inline',
+      -- 'norg',
+      'python',
+      'query',
+      'regex',
+      'scss',
+      'svelte',
+      'toml',
+      'tsx',
+      'typescript',
+      'typst',
+      'vim',
+      'vimdoc',
+      'vue',
+      'xml',
+    })
+
+    local group = vim.api.nvim_create_augroup('TreesitterSetup', { clear = true })
+
+    local ignore_filetypes = {
+      'checkhealth',
+      'lazy',
+      'mason',
+      'snacks_dashboard',
+      'snacks_notif',
+      'snacks_win',
+      'cmd',
+      'dialog',
+      'msg',
+      'pager',
+      'snacks_layout_box',
+      'snacks_picker_input',
+      'snacks_picker_list',
+      'snacks_layout_box',
+      'snacks_picker_input',
+      'snacks_picker_list',
+      'blink-cmp-menu',
+    }
+
+    -- Auto-install parsers and enable highlighting on FileType
+    vim.api.nvim_create_autocmd('FileType', {
+      group = group,
+      desc = 'Enable treesitter highlighting and indentation',
+      callback = function(event)
+        if vim.tbl_contains(ignore_filetypes, event.match) then
+          return
+        end
+
+        local lang = vim.treesitter.language.get_lang(event.match) or event.match
+        local buf = event.buf
+
+        -- Start highlighting immediately (works if parser exists)
+        pcall(vim.treesitter.start, buf, lang)
+
+        -- Enable treesitter indentation
+        vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo[0][0].foldmethod = 'expr'
+        -- Install missing parsers (async, no-op if already installed)
+        ts.install({ lang })
+      end,
+    })
+  end },
   { "bezhermoso/tree-sitter-ghostty", build = "make nvim_install" },
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "folke/todo-comments.nvim", config = true },

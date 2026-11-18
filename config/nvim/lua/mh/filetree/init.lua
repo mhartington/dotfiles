@@ -12,8 +12,8 @@ local canvas = require("yanil/canvas")
 local Section = require("yanil/section")
 local keymap = require("mh.mappings").keymap
 local mapBuf = require("mh.mappings").mapBuf
-local c = require("oceanic-next.config").colors
-local darken = require("oceanic-next.utils").darken
+-- local c = require("oceanic-next.config").colors
+-- local darken = require("oceanic-next.utils").darken
 
 local dotutil = require("mh/util")
 
@@ -121,6 +121,9 @@ local function iconDecorator(node)
       text = node.is_open and "" or ""
       hl = node:is_link() and "YanilTreeLink" or "YanilTreeDirectory"
     end
+  elseif node.name == 'prisma.config.ts' then
+    text, hl = devicons.get_icon(node.name, node.extension)
+    text = ""
   else
     text, hl = devicons.get_icon(node.name, node.extension)
     text = text or ""
@@ -386,13 +389,17 @@ local delete_node = a.wrap(function(tree, node)
   refresh()
 end)
 
+local find_in_folder  = function(tree, node)
+  require("snacks").picker.grep({ cwd = node.abs_path  })
+end
+
 local function menu_float(tree, node)
   vim.ui.select({
     "Add",
     "Delete",
     "Move",
     "Copy",
-    "Reveal",
+    "Reveal","Find In Folder"
   }, {
     prompt = "Choose Item",
     format_item = function(item)
@@ -413,6 +420,9 @@ local function menu_float(tree, node)
     end
     if choice == "Reveal" then
       reveal_in_finder(tree, node)
+    end
+    if choice == "Find In Folder" then
+      find_in_folder(tree, node)
     end
   end)
 end
@@ -501,10 +511,10 @@ canvas.register_hooks({
     api.nvim_command("doautocmd User YanilTreeEnter")
     vim.wo.cursorline = true
     vim.wo.statuscolumn = ""
-    vim.api.nvim_set_hl(0, "YanilGitUntracked", { link = "Comment" })
-    vim.api.nvim_set_hl(0, "YanilTreeDirectory", { link = "Function" })
-    vim.api.nvim_set_hl(0, "YanilTreeLinkTo", { bg = "none" })
-    vim.api.nvim_set_hl(0, "YanilTreeFile", { bg = "none" })
+    api.nvim_set_hl(0, "YanilGitUntracked", { link = "Comment", default=true })
+    api.nvim_set_hl(0, "YanilTreeDirectory", { link = "Function", default=true  })
+    api.nvim_set_hl(0, "YanilTreeLinkTo", { bg = "none" })
+    api.nvim_set_hl(0, "YanilTreeFile", { bg = "none" })
     vim.opt_local.wrap = false
     git.update(yanilTree.cwd)
     -- vim.wo.winhighlight =

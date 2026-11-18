@@ -30,7 +30,7 @@ source <(ng completion script)
 
 # Antigen, zsh plugins
 source "/opt/homebrew/share/antigen/antigen.zsh"
-# antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle mafredri/zsh-async@main
 antigen bundle agkozak/zsh-z
 antigen apply
@@ -41,3 +41,7 @@ zstyle ':notify:*' success-title "Success"
 # zprof
 
 [ -s "/Users/mhartington/.bun/_bun" ] && source "/Users/mhartington/.bun/_bun"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/mhartington/.local/bin:$PATH"

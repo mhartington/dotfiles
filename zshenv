@@ -1,6 +1,6 @@
 export EVENT_NOKQUEUE=1
-
-
+# export LAYA_BASE_URL="https://api.impossibl.com"
+# export LAYA_API_KEY="imp-rt-TDHjgjdpPs7WSsLtdwEXuJPN9a0i7ms4"
 function strip_diff_leading_symbols(){
     color_code_regex=$'(\x1B\\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K])'
 
@@ -279,3 +279,5 @@ function ghPatch () {
   curl -L $1.patch | git am
 }
 
+
+alias webstorm="/Applications/WebStorm.app/Contents/MacOS/webstorm"

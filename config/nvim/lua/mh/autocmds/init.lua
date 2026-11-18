@@ -23,25 +23,25 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 
-vim.api.nvim_create_autocmd("LspProgress", {
-  ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-  callback = function(ev)
-    vim.notify(vim.lsp.status(), "info", {
-      id = "lsp_progress",
-      title = "LSP Progress",
-    })
-  end,
-})
+-- vim.api.nvim_create_autocmd("LspProgress", {
+--   ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+--   callback = function(ev)
+--     vim.notify(vim.lsp.status(), "info", {
+--       id = "lsp_progress",
+--       title = "LSP Progress",
+--     })
+--   end,
+-- })
 
-vim.api.nvim_create_autocmd("TermResponse", {
-  once = true,
-  callback = function(args)
-    -- print(vim.inspect(args))
-    -- local bg = vim.o.bg
-    -- if bg == "dark" then
-    --   vim.cmd.colorscheme("OceanicNext")
-    -- else
-    --   vim.cmd.colorscheme("OceanicNextLight")
-    -- end
-  end,
-})
+-- vim.api.nvim_create_autocmd("TermResponse", {
+--   callback = function(args)
+--     local bg = vim.o.bg
+--     if bg == "dark" then
+--       vim.opt.background = "dark"
+--       vim.cmd.colorscheme("OceanicNext")
+--     else
+--       vim.opt.background = "light"
+--       vim.cmd.colorscheme("OceanicNextLight")
+--     end
+--   end,
+-- })

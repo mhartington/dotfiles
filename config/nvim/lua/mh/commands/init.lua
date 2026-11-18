@@ -23,7 +23,7 @@ function M.BufDel()
   if bufType == "quickfix" or bufType == "nofile" and vim.bo.filetype == "vim" or bufType == "Yanil" then
     cmd("close")
     return
-  elseif bufType == "terminal" then
+  elseif bufType == "terminal" or bufType=='minipick' then
     cmd("bd!")
     return
   else

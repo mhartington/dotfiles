@@ -1,35 +1,35 @@
 local M = {}
 M.normal = {
-  a = {bg = vim.g.base00, fg = vim.g.base07},
-  b = {bg = vim.g.base00, fg = vim.g.base07},
-  c = {bg = vim.g.base00, fg = vim.g.base07}
+  a = { link = "TabLineFill" },
+  b = { link = "TabLineFill" },
+  c = { link = "TabLineFill" },
 }
 M.insert = {
-  a = {bg = vim.g.base00, fg = vim.g.base07},
-  b = {bg = vim.g.base00, fg = vim.g.base07},
-  c = {bg = vim.g.base00, fg = vim.g.green}
+  a = { bg = vim.g.base00, fg = vim.g.base07 },
+  b = { bg = vim.g.base00, fg = vim.g.base07 },
+  c = { bg = vim.g.base00, fg = vim.g.green },
 }
 M.visual = {
-  a = {bg = vim.g.base00, fg = vim.g.base07},
-  b = {bg = vim.g.base00, fg = vim.g.base07},
-  c = {bg = vim.g.base00, fg = vim.g.orange}
+  a = { bg = vim.g.base00, fg = vim.g.base07 },
+  b = { bg = vim.g.base00, fg = vim.g.base07 },
+  c = { bg = vim.g.base00, fg = vim.g.orange },
 }
 M.replace = {
-  a = {bg = vim.g.base00, fg = vim.g.base07},
-  b = {bg = vim.g.base00, fg = vim.g.base07},
-  c = {bg = vim.g.base00, fg = vim.g.red}
+  a = { bg = vim.g.base00, fg = vim.g.base07 },
+  b = { bg = vim.g.base00, fg = vim.g.base07 },
+  c = { bg = vim.g.base00, fg = vim.g.red },
 }
 M.command = {
-  a = {bg = vim.g.base00, fg = vim.g.base07},
-  b = {bg = vim.g.base00, fg = vim.g.base07},
-  c = {bg = vim.g.base00, fg = vim.g.cyan}
+  a = { bg = vim.g.base00, fg = vim.g.base07 },
+  b = { bg = vim.g.base00, fg = vim.g.base07 },
+  c = { bg = vim.g.base00, fg = vim.g.cyan },
 }
 
 M.terminal = M.normal
 
 M.inactive = {
-  a = {bg = vim.g.base00, fg = vim.g.base03},
-  b = {bg = vim.g.base00, fg = vim.g.base03},
-  c = {bg = vim.g.base00, fg = vim.g.base03}
+  a = { bg = vim.g.base00, fg = vim.g.base03 },
+  b = { bg = vim.g.base00, fg = vim.g.base03 },
+  c = { bg = vim.g.base00, fg = vim.g.base03 },
 }
 return M

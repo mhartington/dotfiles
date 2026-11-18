@@ -79,12 +79,18 @@ Key.on('u', ['alt', 'shift'], () => {
 Key.on('o', ['alt', 'shift'], () => {
   move({ x: 6, y: 0, width: 3, height: 2, rows: 1, cols: 9 });
 });
+Key.on('u', ['alt', 'ctrl'], () => {
+  move({ x: 0, y: 0, width: 3, height: 2, rows: 1, cols: 9 });
+});
+Key.on('o', ['alt', 'ctrl'], () => {
+  move({ x: 3, y: 0, width: 6, height: 2, rows: 1, cols: 9 });
+});
 
 Key.on('l', ['alt', 'shift'], () => {
   const win = Window.focused();
   moveToScreen(win, win.screen().previous());
 });
-Key.on('h', ['alt', 'shift'], function () {
+Key.on('h', ['alt', 'shift'], () => {
   const win = Window.focused();
   moveToScreen(win, win.screen().next());
 });
@@ -99,12 +105,12 @@ const launch = (appName, focus = true) => {
 // Key.on('f', ['alt'],  () => launch('WezTerm'));
 Key.on('f', ['alt'],  () => launch('Ghostty'));
 Key.on('s', ['alt'],  () => launch('Safari'));
-Key.on('e', ['alt'],  () => launch('Simulator'));
+Key.on('e', ['alt'],  () => launch('iPhone Mirroring'));
 Key.on('k', ['shift', 'alt'],  () => launch('Keynote'));
 Key.on('c', ['alt'],  () => launch('Arc'));
-Key.on('c', ['shift', 'alt'],  () => launch('Microsoft Edge'));
-Key.on('s', ['shift', 'alt'],  () => launch('Safari Technology Preview'));
-Key.on('z', ['alt'],  () => launch('zoom.us'));
+// Key.on('c', ['shift', 'alt'],  () => launch('Microsoft Edge'));
+// Key.on('s', ['shift', 'alt'],  () => launch('Safari Technology Preview'));
+// Key.on('z', ['alt'],  () => launch('zoom.us'));
 Key.on('d', ['alt'],  () => launch('Slack'));
 Key.on('d', ['shift', 'alt'],  () => launch('Discord'));
 Key.on('t', ['alt'],  () => launch('Messages'));

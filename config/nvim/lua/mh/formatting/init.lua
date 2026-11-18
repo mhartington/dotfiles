@@ -5,7 +5,7 @@ local util = require("formatter.util")
 local prettierConfig = function()
   return {
     exe = "prettier",
-    args = { "--stdin-filepath", util.escape_path(util.get_current_buffer_file_path()), "--single-quote" },
+    args = { "--stdin-filepath", util.escape_path(util.get_current_buffer_file_path())},
     stdin = true,
   }
 end

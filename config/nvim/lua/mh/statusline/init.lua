@@ -7,7 +7,7 @@ lualine.setup({
   sections = {
     lualine_a = { "" },
     lualine_b = { { "branch", icon = "" } },
-    lualine_c = { "filename" },
+    lualine_c = { "filename"},
     lualine_x = { "b:gitsigns_status" },
     lualine_y = { "filetype" },
     lualine_z = {

@@ -24,8 +24,8 @@ function M.keymap(modes, mapping, func, opts)
   vim.keymap.set(modes, mapping, func, opts)
 end
 
-M.map("n", "Q", "<nop>")
-M.map("n", "q", "<nop>")
+-- M.map("n", "Q", "<nop>")
+-- M.map("n", "q", "<nop>")
 
 M.keymap("n", "<c-p>", Snacks.picker.files)
 M.keymap("n", "<Leader>h", Snacks.picker.help)
@@ -56,6 +56,15 @@ M.keymap("v", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true})
 M.keymap('v', "Ô", ":m '>+1<CR>gv=gv")
 M.keymap('v', "", ":m '<-2<CR>gv=gv")
 
+-- M.keymap("n", "<Esc>", "<cmd>noh<cr>")
+M.keymap(
+    'n',
+    '<ESC>',
+    '<Cmd>nohlsearch<Bar>diffupdate'
+      .. '<Bar>call nvim_buf_clear_namespace(0, nvim_create_namespace("nvim.multicursor"), 0, -1)<cr>',
+    { desc = ':help CTRL-L-default' }
+  )
+
 
 M.keymap("v", "<", "<gv")
 M.keymap("v", ">", ">gv")
@@ -63,7 +72,6 @@ M.keymap("n", "<Leader>d", '"_d')
 M.keymap("v", "<Leader>d", '"_d')
 M.keymap("n", "<Leader>p", '"_dp')
 M.keymap("v", "<Leader>p", '"_dP')
-M.keymap("n", "<Esc>", "<cmd>noh<cr>")
 -- terminal M.mappings
 M.keymap("t", "<Esc>", "<c-\\><c-n><esc><cr>")
 M.keymap("t", "<Leader>,", "<c-\\><c-n>:bnext<cr>")
@@ -86,6 +94,9 @@ M.keymap("t", "<C-h>", "<c-\\><c-n>:TmuxNavigateLeft<CR>")
 
 M.keymap("n", "<Leader>tm", "<cmd>TableModeToggle<cr>")
 M.keymap("n", "<Leader>u", "<cmd>Lazy update<cr>")
+
+
+M.keymap("n", "<Leader>gb", "<cmd>Git blame_line<cr>")
 
 for i = 1, 9 do
   M.keymap("n", "<leader>" .. i, function() require("bufferline").go_to(i, true) end)

@@ -19,6 +19,7 @@ require "mh.colors"
 
 require "mh.autocmds"
 require "mh.folds"
+require("mh.git").setup()
 require "mh.filetree"
 require "mh.statusline"
 require "mh.tabline"

@@ -17,7 +17,9 @@ local capabilities = {
   },
 }
 capabilities.textDocument.colorProvider = { dynamicRegistration = false }
-capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+-- capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
+
+
 
 local M = {}
 
@@ -65,7 +67,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
     keymap("v", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
     keymap("n", "<Leader>sd", vim.diagnostic.open_float, bufopts)
+--     vim.lsp.completion.enable(true, client.id, bufnr, {
+--       autotrigger = true,
+--       convert = function(item)
+--         return { abbr = item.label:gsub('%b()', '') }
+--       end,
+-- })
   end,
+  
 })
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
   group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
@@ -83,20 +92,20 @@ vim.lsp.handlers["client/registerCapability"] = (function(overridden)
     end
     for bufnr, _ in pairs(client.attached_buffers) do
       if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-        vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
-        vim.api.nvim_create_autocmd("CursorHold", {
-          callback = vim.lsp.buf.document_highlight,
-          buffer = bufnr,
-          group = "lsp_document_highlight",
-          desc = "Document Highlight",
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-          callback = vim.lsp.buf.clear_references,
-          buffer = bufnr,
-          group = "lsp_document_highlight",
-          desc = "Clear All the References",
-        })
+        -- vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+        -- vim.api.nvim_clear_autocmds({ buffer = bufnr, group = "lsp_document_highlight" })
+        -- vim.api.nvim_create_autocmd("CursorHold", {
+        --   callback = vim.lsp.buf.document_highlight,
+        --   buffer = bufnr,
+        --   group = "lsp_document_highlight",
+        --   desc = "Document Highlight",
+        -- })
+        -- vim.api.nvim_create_autocmd("CursorMoved", {
+        --   callback = vim.lsp.buf.clear_references,
+        --   buffer = bufnr,
+        --   group = "lsp_document_highlight",
+        --   desc = "Clear All the References",
+        -- })
       end
 
       if client:supports_method("textDocument/documentColor") then
@@ -116,9 +125,11 @@ local servers = {
   "svelte",
   "zls",
   "nxls",
+  -- 'mdx_analyzer',
   "sourcekit",
   "emmylua_ls",
   "harper_ls",
+  -- 'tsgo',
   "vtsls",
   "emmet_language_server",
   "vue_ls",
@@ -128,7 +139,9 @@ local servers = {
   "dartls",
   -- "eslint-lsp",
   "rust_analyzer",
-  "kotlin_lsp"
+  "kotlin_lsp",
+  "prismals",
+  "oxlint"
 }
 vim.lsp.enable(servers)
 
